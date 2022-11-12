@@ -1,9 +1,9 @@
 NAME	= minishell
-
-SRCS	= $(shell find "." -name "*.c")
+DIRS	= run 
+SRCS	= $(shell find ${DIRS} -name "*.c")
 OBJS	= $(SRCS:.c=.o)
 CC		= cc
-CFLAGS	= -Wall -Wextra -Werror 
+CFLAGS	= -Wall -Wextra -Werror -I ./headers
 READFL  = -lreadline
 RM		= rm -f
 
@@ -13,7 +13,7 @@ RM		= rm -f
 all : ${NAME}
 
 ${NAME} : ${OBJS}
-	${CC} ${CFLAGS} ${READFL} ${OBJS} -o ${NAME}
+	${CC} ${CFLAGS} ${READFL} ${OBJS} -o ${NAME} 
 
 clean : 
 	${RM} ${OBJS}
