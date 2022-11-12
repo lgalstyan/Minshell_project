@@ -1,7 +1,11 @@
 #include "minishell.h"
 
-void	cmp_pwd()
+void	cmd_pwd()
 {
-	char cwd[1024];
-	getcwd(cwd, sizeof(cwd));
+	char cwd[256];
+
+    if (!getcwd(cwd, sizeof(cwd)))
+      perror("getcwd() error");
+    else
+      printf("%s\n", cwd);
 }

@@ -25,29 +25,26 @@ void ignore_signals()
     signal(SIGQUIT, SIG_IGN);
 }
 
-// int main()
-// {
-// 	char *line;
-// 	int i  = 0; 
-// 	int fd = open("./dup.txt", O_CREAT);
-// 	if(fd < 0)
-//         printf("Error: File not found\n");
-// 	dup(fd);
-// 	// ignore_signals();
-// 	dup2(fd, 1);
-// 	while (i < 2)
-// 	{
-// 		execve();
-// 		line = readline("Line :");
-// 		// printf("%s \n", line);
-// 		write(fd, line, ft_strlen(line));
-// 		++i;
-// 	}
-// 	return (0);
-// }
-
-int main() {
-    char cwd[1024];
-    getcwd(cwd, sizeof(cwd));
-    printf("%s\n", cwd);
+int main()
+{
+	char *line;
+	t_node node;
+	int i  = 0; 
+	int fd = open("./../dup.txt", O_CREAT | O_WRONLY);
+	if(fd < 0)
+        printf("Error: File not found\n");
+	dup(fd);
+	// ignore_signals();
+	dup2(fd, 1);
+	while (i < 5)
+	{
+		//execve();
+		line = readline("Line :");
+		// parser_node();
+		node.cmd = &line;
+		switch_commands(node);
+		write(fd, line, ft_strlen(line));
+		++i;
+	}
+	return (0);
 }

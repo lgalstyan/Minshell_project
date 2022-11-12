@@ -3,7 +3,8 @@
 
 # include <unistd.h>
 
+void	cmd_pwd();
+void	cmd_echo();
 
-void	cmp_pwd();
 
 #endif

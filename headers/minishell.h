@@ -11,6 +11,7 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include "libft.h"
+# include "commands.h"
 
 #define RESET   "\033[0m"
 #define BOLD    "\033[1m"

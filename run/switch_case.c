@@ -5,37 +5,40 @@ void	switch_commands(t_node node)
 {
 	if (!ft_strcmp(node.cmd[0], "echo"))
 	{
-		printf("->echo<-");
-		//cmp_echo();
+		printf("                      -> echo <-\n");
+		cmd_echo();
 	}
 	if (!ft_strcmp(node.cmd[0], "cd"))
 	{
-		printf("-> cd <-");
+		printf("                      -> cd <-");
 		//cmp_cd();
 	}
 	else if (!ft_strcmp(node.cmd[0], "pwd"))
 	{
-		printf("-> pwd <-");
-		// cmp_pwd();
+		printf("                      -> pwd <-\n");
+		cmd_pwd();
 	}
 	else if (!ft_strcmp(node.cmd[0], "export"))
 	{
-		printf("-> export <-");
+		printf("                      -> export <-\n");
 		//cmp_export();
 	}
 	else if (!ft_strcmp(node.cmd[0], "unset"))
 	{
-		printf("-> unset <-");
+		printf("                      -> unset <-\n");
 		//cmp_unset();
 	}
 	else if (!ft_strcmp(node.cmd[0], "env"))
 	{
-		printf("-> env <-");
-		//cmp_env();
+		printf("                      -> env <-\n");
+		//cmd_env();
 	}
 	else if (!ft_strcmp(node.cmd[0], "exit"))
 	{
-		printf("-> exit <-");
-		//cmp_exit();
+		printf("                      -> exit <-\n");
+		//cmd_exit();
+	}
+	else {
+		printf("                      -> unknown commands <-\n");
 	}
 }
