@@ -33,6 +33,12 @@ typedef struct s_node
 	struct s_node	*next;
 }			t_node;
 
+typedef struct s_env
+{
+	char	*key;
+	char	*value;
+}			t_env;
+
 void	switch_commands(t_node node);
 
 #endif
