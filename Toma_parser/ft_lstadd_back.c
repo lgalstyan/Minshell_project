@@ -1,42 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tyenokya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/05 13:32:22 by tyenokya          #+#    #+#             */
-/*   Updated: 2022/11/13 17:18:43 by tyenokya         ###   ########.fr       */
+/*   Created: 2022/03/25 18:17:43 by tyenokya          #+#    #+#             */
+/*   Updated: 2022/11/13 17:16:21 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-//heardock <<
-//append >>
-//infile >
-//outfile <
 
-int main(int argc, char **argv)
+void	ft_lstadd_back(t_node **lst, t_node *new)
 {
-	int		i;
-	char	*str;
-	char	**sp;
-	t_node	*node;
-	t_node	new;
+	t_node	*back;
 
-	i = 0;
-	str = "";
-	while (++i < argc)
-		str = ft_strjoin(str, argv[i]);
-	if (!checkquotes(str))
-		return (0);
-	sp = ft_split(str, '|');
-	printf("aaaaaaaaaa: %s\n", sp[0]);
-	i = 0;
-	while (sp[i++])
+	back = *lst;
+	if (!(lst))
+		return ;
+	if (!*lst)
+		*lst = new;
+	else
 	{
-		new = initialize(sp[i]);
-		ft_lstadd_back(&node, &new);
+		back = ft_lstlast(*lst);
+		back->next = new;
 	}
-	//printf("bbbbbbbb: %s\n", sp[0]);
 }

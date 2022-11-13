@@ -6,7 +6,7 @@
 /*   By: tyenokya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 13:33:14 by tyenokya          #+#    #+#             */
-/*   Updated: 2022/11/13 16:02:02 by tyenokya         ###   ########.fr       */
+/*   Updated: 2022/11/13 17:17:57 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int		checkquotes(char *str);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	**ft_split(char *s, char c);
 int		ft_strlen(const char *s);
+void	ft_lstadd_back(t_node **lst, t_node *new);
 t_node	initialize(char *str);
+t_node	*ft_lstlast(t_node *lst);
 
 #endif
