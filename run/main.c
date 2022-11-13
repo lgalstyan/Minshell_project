@@ -25,17 +25,31 @@ void ignore_signals()
     signal(SIGQUIT, SIG_IGN);
 }
 
-int main()
+void environments(char **env, t_env *envir)
+{
+	int	i;
+	i = 0;
+	while (env[i])
+	{
+		printf("%s", env[i]);
+		i++;
+	}
+}
+
+int main(int argc, char **argv, char **env)
 {
 	char *line;
 	t_node node;
+	t_env *envir;
+	envir = malloc(sizeof(t_env));
 	int i  = 0; 
+	environments(env, envir);
 	int fd = open("./../dup.txt", O_CREAT | O_WRONLY);
 	if(fd < 0)
         printf("Error: File not found\n");
-	dup(fd);
+	// dup(fd);
 	// ignore_signals();
-	dup2(fd, 1);
+	// dup2(fd, 1);
 	while (i < 5)
 	{
 		//execve();
