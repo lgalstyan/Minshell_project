@@ -1,3 +1,5 @@
+#include "libft.h"
+
 int	ft_strlen(char *s)
 {
 	int	i;
@@ -26,7 +28,7 @@ int	ft_strcmp(char *s1, char *s2)
 	return (0);
 }
 
-char	*ft_strrchr(const char *s, int c)
+char	*ft_strrchr(char *s, int c)
 {
 	char	*ret;
 
@@ -44,7 +46,7 @@ char	*ft_strrchr(const char *s, int c)
 	return (ret);
 }
 
-char	*ft_substr(char *s, unsigned int start, int len)
+char	*ft_substr(char *s, int start, int len)
 {
 	char	*s2;
 	int		count;

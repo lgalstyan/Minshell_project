@@ -6,7 +6,7 @@ void	switch_commands(t_node node)
 	if (!ft_strcmp(node.cmd[0], "echo"))
 	{
 		printf("                      -> echo <-\n");
-		cmd_echo(node);                         //????????????harc Tomayin "vortexa pahvac linelu echo -ic heto ekox toxy?????????" ||| vortex en pahvelu optionnery
+		//cmd_echo(node);                         //????????????harc Tomayin "vortexa pahvac linelu echo -ic heto ekox toxy?????????" ||| vortex en pahvelu optionnery
 	}
 	if (!ft_strcmp(node.cmd[0], "cd"))
 	{

@@ -27,17 +27,44 @@ void ignore_signals()
 
 void environments(char **env, t_env *envir)
 {
+	/////////to do sarqel list/////////////
+
+	// (void)envir;
+	// int	i;
+	// i = 0;
+	// while (env[i])
+	// {
+	// 	printf("%s\n", env[i]);
+	// 	i++;
+	// }
+	(void)envir;
 	int	i;
+	int	j;
+
+	j = 0;
 	i = 0;
 	while (env[i])
 	{
-		printf("%s", env[i]);
-		i++;
+		while(env[i][j] && env[i][j] != "=")
+		{
+			envir->key[i] = env[i];
+			++j;
+		}
+		envir->key[i] = '\0';
+		while (env[i][j])
+		{
+			envir->value[j] = env[i];
+			++j;
+		}
+		envir->value[j] = '\0';
+		++i;
 	}
 }
 
 int main(int argc, char **argv, char **env)
 {
+	(void)argc;
+	(void)argv;
 	char *line;
 	t_node node;
 	t_env *envir;

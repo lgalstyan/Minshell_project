@@ -5,6 +5,6 @@
 # include "minishell.h"
 
 void	cmd_pwd();
-void	cmd_echo(t_node n);
+//void	cmd_echo(t_node n);
 
 #endif

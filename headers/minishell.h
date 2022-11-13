@@ -39,6 +39,7 @@ typedef struct s_env
 	char	*value;
 }			t_env;
 
+void	ft_lstadd_back(t_node **lst, t_node *new);
 void	switch_commands(t_node node);
 
 #endif
