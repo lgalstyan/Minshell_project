@@ -84,3 +84,28 @@ int	ft_strlcpy(char *dst, char *src, int l)
 	dst[i] = '\0';
 	return (ft_strlen(src));
 }
+
+
+char	*ft_strnstr(char *str, char *to_find, int len)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	if (to_find[0] == '\0')
+		return ((char *)str);
+	if (str[0] == '\0')
+		return (0);
+	while (str[i] && i < len && len > 0)
+	{
+		j = 0;
+		while (str[i + j] == to_find[j] && len > i + j)
+		{
+			if (!(to_find[j + 1]))
+				return ((char *)(str + i));
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}

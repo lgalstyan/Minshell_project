@@ -1,19 +1,41 @@
 #include "minishell.h"
 
-// int main( int argc, char **argv, char **envp)
-// {
-//     int numberLines = 0;
-//     if ( (argc == 2) && strcmp(argv[1], "/n" ) == 0 )
-//          numberLines = 1;
 
-//     for ( int i = 0; envp[i] != NULL; ++i )
-//     {
-//         if ( numberLines )
-//             printf("%d : ", i);
-//         printf("%s\n", envp[i]);
-//     }
-// 	return (0);
-// }
+void ft_inint_env(char *elem1, char *elem2, t_env *node)
+{
+	node->key = elem1;
+	node->value = elem2;
+	node->next = NULL;
+}
+
+void print_list(t_env **node)
+{
+
+	while(*(node))
+	{
+		printf("%s=", (*node)->key);
+		printf("%s\n", (*node)->value);
+		(*node) = (*node)->next;
+	}
+}
+
+void environments(char **env, t_env **envir)
+{
+	int		i;
+	char 	**array;
+	t_env	*new_node;
+
+	i = 0;
+	while (env[i])
+	{
+		new_node = malloc(sizeof(t_env));
+		array = ft_split(env[i], '=');
+		ft_inint_env(array[0], array[1], new_node);
+		ft_lstadd_back(envir, new_node);
+		++i;
+	}
+	// print_list(envir);
+}
 
 void ignore_signals()
 {
@@ -25,50 +47,15 @@ void ignore_signals()
     signal(SIGQUIT, SIG_IGN);
 }
 
-void environments(char **env, t_env *envir)
-{
-	/////////to do sarqel list/////////////
-
-	// (void)envir;
-	// int	i;
-	// i = 0;
-	// while (env[i])
-	// {
-	// 	printf("%s\n", env[i]);
-	// 	i++;
-	// }
-	(void)envir;
-	int	i;
-	int	j;
-
-	j = 0;
-	i = 0;
-	while (env[i])
-	{
-		while(env[i][j] && env[i][j] != "=")
-		{
-			envir->key[i] = env[i];
-			++j;
-		}
-		envir->key[i] = '\0';
-		while (env[i][j])
-		{
-			envir->value[j] = env[i];
-			++j;
-		}
-		envir->value[j] = '\0';
-		++i;
-	}
-}
-
 int main(int argc, char **argv, char **env)
 {
 	(void)argc;
 	(void)argv;
 	char *line;
 	t_node node;
-	t_env *envir;
-	envir = malloc(sizeof(t_env));
+	t_env **envir;
+	envir = malloc(sizeof(t_env*));
+	*envir = NULL;
 	int i  = 0; 
 	environments(env, envir);
 	int fd = open("./../dup.txt", O_CREAT | O_WRONLY);

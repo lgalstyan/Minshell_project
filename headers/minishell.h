@@ -35,11 +35,12 @@ typedef struct s_node
 
 typedef struct s_env
 {
-	char	*key;
-	char	*value;
+	char			*key;
+	char			*value;
+	struct	s_env	*next;
 }			t_env;
 
-void	ft_lstadd_back(t_node **lst, t_node *new);
+void	ft_lstadd_back(t_env **lst, t_env *new);
 void	switch_commands(t_node node);
 
 #endif
