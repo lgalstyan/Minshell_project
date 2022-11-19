@@ -1,14 +1,14 @@
 #include "minishell.h"
 
 // stanum e char **, stugum e te inch hramar e u kanchum e hamapatasxany 
-void	switch_commands(t_node node)
+void	switch_commands(t_node node, t_env **en)
 {
-	if (!ft_strcmp(node.cmd[0], "echo"))
+	if (!ft_strcmp(node.cmd[0], "echo "))
 	{
 		printf("                      -> echo <-\n");
-		//cmd_echo(node);                         //????????????harc Tomayin "vortexa pahvac linelu echo -ic heto ekox toxy?????????" ||| vortex en pahvelu optionnery
+		cmd_echo(node, en);                         //????????????harc Tomayin "vortexa pahvac linelu echo -ic heto ekox toxy?????????" ||| vortex en pahvelu optionnery
 	}
-	if (!ft_strcmp(node.cmd[0], "cd"))
+	else if (!ft_strcmp(node.cmd[0], "cd"))
 	{
 		printf("                      -> cd <-\n");
 		//cmp_cd();

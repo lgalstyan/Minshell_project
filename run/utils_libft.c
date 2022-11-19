@@ -86,6 +86,7 @@ int	ft_strlcpy(char *dst, char *src, int l)
 }
 
 
+
 char	*ft_strnstr(char *str, char *to_find, int len)
 {
 	int	i;

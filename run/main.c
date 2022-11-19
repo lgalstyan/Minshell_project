@@ -34,7 +34,7 @@ void environments(char **env, t_env **envir)
 		ft_lstadd_back(envir, new_node);
 		++i;
 	}
-	// print_list(envir);
+//  print_list(envir);
 }
 
 void ignore_signals()
@@ -67,10 +67,11 @@ int main(int argc, char **argv, char **env)
 	while (i < 5)
 	{
 		//execve();
-		line = readline("Line :");
+		line = readline("\nLine :");
 		// parser_node();
-		node.cmd = &line;
-		switch_commands(node);
+		node.cmd = ft_split(line, '"'); //Tomayi grac parsy
+		//printf("%s\n%s", node.cmd[0], node.cmd[1]);
+		switch_commands(node, envir);
 		write(fd, line, ft_strlen(line));
 		++i;
 	}

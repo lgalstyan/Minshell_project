@@ -1,54 +1,90 @@
 #include "minishell.h"
 // find all values of varable and change. 
-static void var_init(char *str)
-{
-
-	printf("%s", str);
-}
-
-// char *ft_strfind(char  *str, char c)
+// static void var_init(char *str)
 // {
-// 	int	i;
-// 	int start;
-// 	char *word;
 
-// 	word = malloc(100);
-// 	i = 0;
-// 	while(str[i])
-// 	{
-// 		if(str[i] == c)
-// 		{
-// 			start = i + 1;
-// 			while(str[i] == ' ' || str[i] == '\t')
-// 				i++;
-// 			if(ft_substr(str, start, i - start + 1))
-// 				;
-// 		}
-// 		else
-// 		{
-// 			printf("%c", str[i]);
-// 		}
-// 		++i;
-// 	}
-// 	return 0;
+// 	printf("%s", str);
 // }
 
-void cmd_echo(t_node node)
+int	check_valid(char c)
 {
-	int flag;
+	if(c == '_' || (c > 47 && c < 58) || 
+			(c > 64 && c < 91) || (c > 96 && c < 123))
+		return (1);
+	return (0);
+}
+
+void var_values(char *str, t_env *en)
+{
+	// printf("Ayoooooooooo\n");
+	// printf("%s_", str);
+	while (en)
+	{
+		// printf("\n%s_%s_", en->key, str);
+		// printf("%d", ft_strcmp(en->key, str));
+		if (!ft_strcmp(en->key, str))
+		{
+			printf("%s", en->value);
+		}
+		en = en->next;
+	}
+}
+
+void	ft_strfind(char  *str, t_env **en)
+{
+	int	i;
+	int start;
+	char *word;
+
+	i = 0;
+	while(str[i])
+	{
+		if(str[i] == '$')
+		{
+			// printf("$/ start, %d \n", i);
+			i++;
+			start = i;
+			while (check_valid(str[i]))
+				i++;
+			word = ft_substr(str, start, i - start);
+			// printf("%s", word);
+			var_values(word, *en);
+		}
+		else
+		{
+			printf("%c", str[i]);
+			++i;
+		}
+	}
+}
+
+//echo " Hello my name is $SHELL $a
+
+void cmd_echo(t_node node, t_env **en)
+{
+	int		flag;
+	// char	*tmp;
 	
 	flag = 1;
 	if (!ft_strcmp(node.cmd[1], "-n"))
 		flag = 2;
-	//if (!ft_strfind(node.cmd[flag], '$'))
-	if(!ft_strnstr(node.cmd[flag], "$", ft_strlen(node.cmd[flag])))
-	{
-		var_init(node.cmd[flag]);
-	}
-	else
-	{
-		printf("%s", node.cmd[flag]);
-	}
-	if (flag == 2)
+	ft_strfind(node.cmd[flag], en);
+	if (flag == 1)
 		printf("\n");
 }
+
+
+
+
+
+
+	
+	// //printf("%s", ft_strnstr(node.cmd[flag], "$", ft_strlen(node.cmd[flag])));
+	// //if(!ft_strnstr(node.cmd[flag], "$", ft_strlen(node.cmd[flag])))
+	// //{
+	// //	var_init(node.cmd[flag]);
+	// //}
+	// else
+	// {
+	// 	printf("%s", node.cmd[flag]);
+	// }
