@@ -13,7 +13,7 @@ RM		= rm -f
 all : ${NAME}
 
 ${NAME} : ${OBJS}
-	${CC} ${CFLAGS} ${READFL} ${OBJS} -o ${NAME} 
+	${CC} ${CFLAGS} ${READFL} ${OBJS} -o ${NAME} && ./minishell
 
 clean : 
 	${RM} ${OBJS}

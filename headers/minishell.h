@@ -42,8 +42,13 @@ typedef struct s_env
 
 void	ft_lstadd_back(t_env **lst, t_env *new);
 void	switch_commands(t_node node, t_env **en);
+void	ft_inint_env(char *elem1, char *elem2, t_env *node);
 void	cmd_pwd();
 void	cmd_echo(t_node n, t_env **en);
+void	cmd_export(char *new_env, t_env **en);
+// void	cmd_unset(char *del_env, t_env **env);
+void	cmd_unset(char *del_env, t_env *env);
+void	print_list(t_env **node);
 void	ft_strfind(char  *str, t_env **en);
 char	**ft_split(char *s, char c);
 

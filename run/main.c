@@ -1,22 +1,10 @@
 #include "minishell.h"
 
-
 void ft_inint_env(char *elem1, char *elem2, t_env *node)
 {
 	node->key = elem1;
 	node->value = elem2;
 	node->next = NULL;
-}
-
-void print_list(t_env **node)
-{
-
-	while(*(node))
-	{
-		printf("%s=", (*node)->key);
-		printf("%s\n", (*node)->value);
-		(*node) = (*node)->next;
-	}
 }
 
 void environments(char **env, t_env **envir)
@@ -29,12 +17,12 @@ void environments(char **env, t_env **envir)
 	while (env[i])
 	{
 		new_node = malloc(sizeof(t_env));
-		array = ft_split(env[i], '=');
+		array = ft_split(env[i], '='); 
+		
 		ft_inint_env(array[0], array[1], new_node);
 		ft_lstadd_back(envir, new_node);
 		++i;
 	}
-//  print_list(envir);
 }
 
 void ignore_signals()
@@ -59,20 +47,22 @@ int main(int argc, char **argv, char **env)
 	int i  = 0; 
 	environments(env, envir);
 	int fd = open("./../dup.txt", O_CREAT | O_WRONLY);
-	if(fd < 0)
-        printf("Error: File not found\n");
+	// if(fd < 0)
+    //     printf("Error: File not found\n");
+
 	// dup(fd);
 	// ignore_signals();
 	// dup2(fd, 1);
-	while (i < 5)
+	while (i < 10)
 	{
 		//execve();
-		line = readline("\nLine :");
+		line = readline("Line :");
 		// parser_node();
-		node.cmd = ft_split(line, '"'); //Tomayi grac parsy
-		//printf("%s\n%s", node.cmd[0], node.cmd[1]);
+		node.cmd = ft_split(line, ' '); //Tomayi grac parsy
+		// printf("%s\n%s\n%s", node.cmd[0], node.cmd[1], node.cmd[2]);
 		switch_commands(node, envir);
 		write(fd, line, ft_strlen(line));
+		// print_list(envir);
 		++i;
 	}
 	return (0);
