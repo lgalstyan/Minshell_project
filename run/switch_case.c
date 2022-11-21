@@ -19,5 +19,5 @@ void	switch_commands(t_node node, t_env **en)
 	else if (!ft_strcmp(node.cmd[0], "exit"))
 		cmd_exit();
 	else 
-		printf("Error: Unknown commands!\n");
+		printf("Error: Unknown command!\n");
 }

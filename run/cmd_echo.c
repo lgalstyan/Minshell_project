@@ -25,17 +25,17 @@ void	ft_strfind(char  *str, t_env **en)
 	char *word;
 
 	i = 0;
-	while(str[i])
+	if (!str)
+		return ;
+	while (str[i])
 	{
 		if(str[i] == '$')
 		{
-			// printf("$/ start, %d \n", i);
 			i++;
 			start = i;
 			while (check_valid(str[i]))
 				i++;
 			word = ft_substr(str, start, i - start);
-			// printf("%s", word);
 			var_values(word, *en);
 		}
 		else
@@ -51,11 +51,19 @@ void	ft_strfind(char  *str, t_env **en)
 void cmd_echo(t_node node, t_env **en)
 {
 	int		flag;
-	// char	*tmp;
 	
 	flag = 1;
+	if (!node.cmd[1])
+	{
+		printf("\n");
+		return ;
+	}
 	if (!ft_strcmp(node.cmd[1], "-n"))
+	{
 		flag = 2;
+		if (!node.cmd[2])
+			return ;
+	}
 	ft_strfind(node.cmd[flag], en);
 	if (flag == 1)
 		printf("\n");

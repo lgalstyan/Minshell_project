@@ -53,10 +53,11 @@ int main(int argc, char **argv, char **env)
 	// dup(fd);
 	// ignore_signals();
 	// dup2(fd, 1);
+	printf("%s", ESC_RESET_COLOR);
 	while (1)
 	{
 		//execve();
-		line = readline("RESET Line :");
+		line = readline("Line :");
 		while (!line)
 			line = readline("Line :");
 		// parser_node();
