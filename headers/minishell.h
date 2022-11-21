@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:44:17 by lgalstya          #+#    #+#             */
-/*   Updated: 2022/11/21 11:49:43 by lgalstya         ###   ########.fr       */
+/*   Updated: 2022/11/21 12:34:55 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@
 # define WHITE 		 "\033[0;37m"
 # define BOLD_WHITE  "\033[1;37m"
 # define RESET_COLOR "\033[0m"
-
 # define ESC_BLACK		 "\001\033[0;30m"
 # define ESC_BOLD_BLACK  "\001\033[1;30m\002"
 # define ESC_RED 		 "\001\033[0;31m\002"

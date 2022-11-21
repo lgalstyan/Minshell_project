@@ -53,13 +53,15 @@ int main(int argc, char **argv, char **env)
 	// dup(fd);
 	// ignore_signals();
 	// dup2(fd, 1);
-	printf("%s", ESC_RESET_COLOR);
+	printf(ESC_CYAN );
 	while (1)
 	{
 		//execve();
-		line = readline("Line :");
-		while (!line)
-			line = readline("Line :");
+		line = readline("minishell :");
+		if (line[0])
+			add_history(line);
+		else
+			continue ;
 		// parser_node();
 		node.cmd = ft_split(line, ' '); //Tomayi grac parsy
 		// printf("%s\n%s\n%s", node.cmd[0], node.cmd[1], node.cmd[2]);
