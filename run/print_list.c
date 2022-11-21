@@ -2,10 +2,13 @@
 
 void print_list(t_env **node)
 {
-	while(*(node))
+	t_env	*curr;
+
+	curr = (*node);
+	while(curr)
 	{
-		printf("%s=", (*node)->key);
-		printf("%s\n", (*node)->value);
-		(*node) = (*node)->next;
+		printf("%s=", curr->key);
+		printf("%s\n", curr->value);
+		curr = curr->next;
 	}
 }

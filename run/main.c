@@ -53,10 +53,12 @@ int main(int argc, char **argv, char **env)
 	// dup(fd);
 	// ignore_signals();
 	// dup2(fd, 1);
-	while (i < 10)
+	while (1)
 	{
 		//execve();
-		line = readline("Line :");
+		line = readline("RESET Line :");
+		while (!line)
+			line = readline("Line :");
 		// parser_node();
 		node.cmd = ft_split(line, ' '); //Tomayi grac parsy
 		// printf("%s\n%s\n%s", node.cmd[0], node.cmd[1], node.cmd[2]);

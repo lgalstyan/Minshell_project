@@ -1,5 +1,17 @@
-#ifndef MINISHELL
-#define MINISHELL
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minishell.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/21 11:44:17 by lgalstya          #+#    #+#             */
+/*   Updated: 2022/11/21 11:49:43 by lgalstya         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef MINISHELL_H
+# define MINISHELL_H
 
 # include <unistd.h>
 # include <fcntl.h>
@@ -13,15 +25,41 @@
 # include "libft.h"
 # include "commands.h"
 
-#define RESET   "\033[0m"
-#define BOLD    "\033[1m"
-#define RED     "\033[31m"
-#define GREEN   "\033[32m"
-#define YELLOW  "\033[33m"
-#define BLUE    "\033[34m"
-#define MAGENTA "\033[35m"
-#define CYAN    "\033[36m"
-#define WHITE   "\033[37m"
+# define BLACK		 "\033[0;30m"
+# define BOLD_BLACK  "\033[1;30m"
+# define RED		 "\033[0;31m"
+# define BOLD_RED	 "\033[1;31m"
+# define GREEN 		 "\033[0;32m"
+# define BOLD_GREEN  "\033[1;32m"
+# define YELLOW 	 "\033[0;33m"
+# define BOLD_YELLOW "\033[1;33m"
+# define BLUE 		 "\033[0;34m"
+# define BOLD_BLUE 	 "\033[1;34m"
+# define PURPLE 	 "\033[0;35m"
+# define BOLD_PURPLE "\033[1;35m"
+# define CYAN 		 "\033[0;36m"
+# define BOLD_CYAN   "\033[1;36m"
+# define WHITE 		 "\033[0;37m"
+# define BOLD_WHITE  "\033[1;37m"
+# define RESET_COLOR "\033[0m"
+
+# define ESC_BLACK		 "\001\033[0;30m"
+# define ESC_BOLD_BLACK  "\001\033[1;30m\002"
+# define ESC_RED 		 "\001\033[0;31m\002"
+# define ESC_BOLD_RED 	 "\001\033[1;31m\002"
+# define ESC_GREEN 		 "\001\033[0;32m\002"
+# define ESC_BOLD_GREEN  "\001\033[1;32m\002"
+# define ESC_YELLOW 	 "\001\033[0;33m\002"
+# define ESC_BOLD_YELLOW "\001\033[1;33m\002"
+# define ESC_BLUE 		 "\001\033[0;34m\002"
+# define ESC_BOLD_BLUE   "\001\033[1;34m\002"
+# define ESC_PURPLE 	 "\001\033[0;35m\002"
+# define ESC_BOLD_PURPLE "\001\033[1;35m\002"
+# define ESC_CYAN 		 "\001\033[0;36m\002"
+# define ESC_BOLD_CYAN   "\001\033[1;36m\002"
+# define ESC_WHITE 		 "\001\033[0;37m\002"
+# define ESC_BOLD_WHITE  "\001\033[1;37m\002"
+# define ESC_RESET_COLOR "\001\033[0m\002"
 
 typedef struct s_node
 {
@@ -29,7 +67,7 @@ typedef struct s_node
 	char			**append; //  <<
 	char			**infile; // >
 	char			**outfile; // <
-	char 			**cmd;
+	char			**cmd;
 	struct s_node	*next;
 }			t_node;
 
@@ -37,20 +75,21 @@ typedef struct s_env
 {
 	char			*key;
 	char			*value;
-	struct	s_env	*next;
+	struct s_env	*next;
 }			t_env;
 
 void	ft_lstadd_back(t_env **lst, t_env *new);
 void	switch_commands(t_node node, t_env **en);
 void	ft_inint_env(char *elem1, char *elem2, t_env *node);
-void	cmd_pwd();
+void	cmd_pwd(void);
 void	cmd_echo(t_node n, t_env **en);
 void	cmd_export(char *new_env, t_env **en);
-// void	cmd_unset(char *del_env, t_env **env);
-void	cmd_unset(char *del_env, t_env *env);
+void	cmd_unset(char *del_env, t_env **env);
 void	print_list(t_env **node);
-void	ft_strfind(char  *str, t_env **en);
+void	ft_strfind(char *str, t_env **en);
 char	**ft_split(char *s, char c);
-
+char	search_list(t_env *env, char *key);
+void	delete_list(t_env **env);
+void	cmd_exit(void);
 
 #endif
