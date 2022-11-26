@@ -2,19 +2,18 @@
 
 
 //hashvarkac choi vor kara "=" i koxqy space lini, zut split a anum = ov
-void	equal_only(char *new_env, t_env **en)
+void	equal_only(char **array, t_env **en)
 {
-	char 	**array;
 	t_env	*new_node;
 	t_env	*curr;
 	int		flag = 0;
 
-	array = ft_split(new_env, '=');
 	curr = *en;
 	while (curr)
 	{
 		if (!ft_strcmp(curr->key, array[0]))
 		{
+			printf("%s", array[1]);
 			curr->value = array[1];
 			flag = 1;
 		}
@@ -30,31 +29,35 @@ void	equal_only(char *new_env, t_env **en)
 	}
 }
 
-void	pluse_equal(char *new_env, t_env **en)
+void	pluse_equal(char **array, t_env **en)
 {
-	char 	**array;
 	int		flag;
 	t_env	*curr;
 
 	flag = 0;
-	array = ft_split(new_env, '+');
 	curr = *en;
-	if (!array[1] || !(*array[1]++))
+	if (!array[1])
 		return ;
 	while (curr)
 	{
+		// printf("%s", array[0]);
 		if (!ft_strcmp(curr->key, array[0]))
 		{
+			printf("petq e mtni aystex\n%s, %s", curr->value, array[1]);
 			curr->value = ft_strjoin(curr->value, array[1]);
 			flag = 1;
 		}
 		curr = curr->next;
 		if (flag)
+		{
+			// printf("asasas");
 			return ;
+		}
 		if (!curr && !flag)
 		{
-			printf("+=\n");
-			equal_only(new_env, en);
+			// (*array[1])++;
+			// printf("ennttt %s, %s", array[0], array[1]);
+			equal_only(array, en);
 		}
 	}
 }
@@ -95,19 +98,21 @@ void	cmd_export(char *new_env, t_env **en)
 		printf("export: `%s': not a valid identifier\n", new_env);
 		return ;
 	}
-	// if (ft_strnstr(new_env, "+=", ft_strlen(new_env)))
-	// {
-	// 	array = ft_split(new_env, '+');
-	// 	// (*array[1]++);
-	// 	pluse_equal(array, en);
-	// }
-	// else
-	// {
-	// 	array = ft_split(new_env, '=');
-	// 	equal_only(array, en);
-	// }
 	if (ft_strnstr(new_env, "+=", ft_strlen(new_env)))
-		pluse_equal(new_env, en);
+	{
+		array = ft_split(new_env, '+');
+		array[1]++;
+		printf("%s, %s", array[0], array[1]);
+		pluse_equal(array, en);
+	}
 	else
-		equal_only(new_env, en);
+	{
+		array = ft_split(new_env, '=');
+		printf("%s, %s", array[0], array[1]);
+		equal_only(array, en);
+	}
+	// if (ft_strnstr(new_env, "+=", ft_strlen(new_env)))
+	// 	pluse_equal(new_env, en);
+	// else
+	// 	equal_only(new_env, en);
 }

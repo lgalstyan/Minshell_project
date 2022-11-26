@@ -57,7 +57,8 @@ int main(int argc, char **argv, char **env)
 	while (1)
 	{
 		//execve();
-		line = readline("minishell :");
+		printf(BOLD_GREEN);
+		line = readline("minishell :"ESC_WHITE);
 		if (line[0])
 			add_history(line);
 		else
