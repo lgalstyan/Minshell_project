@@ -119,7 +119,7 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	i = 0;
 	j = 0;
-	str = malloc (ft_strlen (s1) + ft_strlen (s2) + 10);
+	str = malloc (ft_strlen (s1) + ft_strlen (s2) + 1);
 	if(!str)
 		return (0);
 	while (s1[i])
@@ -128,7 +128,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	while (s2[i])
 		str[j++] = s2[i++];
 	str[j] = '\0';
-	if (s1)
-		free(s1);
+	// if (s1)
+		// free(s1);
 	return (str);
 }

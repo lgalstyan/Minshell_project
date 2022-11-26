@@ -1,6 +1,5 @@
 #include "minishell.h"
 
-
 //hashvarkac choi vor kara "=" i koxqy space lini, zut split a anum = ov
 void	equal_only(char **array, t_env **en)
 {
@@ -13,7 +12,6 @@ void	equal_only(char **array, t_env **en)
 	{
 		if (!ft_strcmp(curr->key, array[0]))
 		{
-			printf("%s", array[1]);
 			curr->value = array[1];
 			flag = 1;
 		}
@@ -40,25 +38,16 @@ void	pluse_equal(char **array, t_env **en)
 		return ;
 	while (curr)
 	{
-		// printf("%s", array[0]);
 		if (!ft_strcmp(curr->key, array[0]))
 		{
-			printf("petq e mtni aystex\n%s, %s", curr->value, array[1]);
 			curr->value = ft_strjoin(curr->value, array[1]);
 			flag = 1;
 		}
 		curr = curr->next;
 		if (flag)
-		{
-			// printf("asasas");
 			return ;
-		}
 		if (!curr && !flag)
-		{
-			// (*array[1])++;
-			// printf("ennttt %s, %s", array[0], array[1]);
 			equal_only(array, en);
-		}
 	}
 }
 
@@ -78,10 +67,7 @@ int	check_valid_identif(char *str)
 	while (array[0][i])
 	{
 		if(!check_valid(array[0][i]))
-		{
-			printf("%c", array[0][i]);
-			return 0;
-		}
+			return (0);
 		++i;
 	}
 	return 1;
@@ -102,17 +88,11 @@ void	cmd_export(char *new_env, t_env **en)
 	{
 		array = ft_split(new_env, '+');
 		array[1]++;
-		printf("%s, %s", array[0], array[1]);
 		pluse_equal(array, en);
 	}
 	else
 	{
 		array = ft_split(new_env, '=');
-		printf("%s, %s", array[0], array[1]);
 		equal_only(array, en);
 	}
-	// if (ft_strnstr(new_env, "+=", ft_strlen(new_env)))
-	// 	pluse_equal(new_env, en);
-	// else
-	// 	equal_only(new_env, en);
 }

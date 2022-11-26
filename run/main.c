@@ -53,14 +53,14 @@ int main(int argc, char **argv, char **env)
 	// dup(fd);
 	// ignore_signals();
 	// dup2(fd, 1);
-	printf(BOLD_GREEN);
+	// printf(BOLD_GREEN);
 	while (1)
 	{
 		//execve();
-		printf(BOLD_GREEN);
+		printf(ESC_RED);
 		line = readline("minishell :"ESC_WHITE);
 		if (line[0])
-			add_history(line);
+			add_history(line); 
 		else
 			continue ;
 		// parser_node();
