@@ -53,7 +53,7 @@ int main(int argc, char **argv, char **env)
 	// dup(fd);
 	// ignore_signals();
 	// dup2(fd, 1);
-	printf(ESC_CYAN );
+	printf(BOLD_GREEN);
 	while (1)
 	{
 		//execve();

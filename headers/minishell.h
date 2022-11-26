@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:44:17 by lgalstya          #+#    #+#             */
-/*   Updated: 2022/11/21 12:34:55 by lgalstya         ###   ########.fr       */
+/*   Updated: 2022/11/26 11:50:02 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,7 @@ char	**ft_split(char *s, char c);
 char	search_list(t_env *env, char *key);
 void	delete_list(t_env **env);
 void	cmd_exit(void);
+int		check_valid(char c);
+int		check_valid_identif(char *str);
 
 #endif
