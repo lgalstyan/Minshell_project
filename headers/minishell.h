@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:44:17 by lgalstya          #+#    #+#             */
-/*   Updated: 2022/11/26 11:50:02 by lgalstya         ###   ########.fr       */
+/*   Updated: 2022/11/27 15:38:09 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <sys/wait.h>
 # include <readline/readline.h>
 # include <readline/history.h>
+// # include <dirent.h>
 # include "libft.h"
 # include "commands.h"
 
@@ -80,16 +81,17 @@ typedef struct s_env
 void	ft_lstadd_back(t_env **lst, t_env *new);
 void	switch_commands(t_node node, t_env **en);
 void	ft_inint_env(char *elem1, char *elem2, t_env *node);
-void	cmd_pwd(void);
+int		cmd_pwd();
+int		cmd_cd(t_node node, t_env **en);
 void	cmd_echo(t_node n, t_env **en);
 void	cmd_export(char *new_env, t_env **en);
+void	cmd_exit(void);
 void	cmd_unset(char *del_env, t_env **env);
 void	print_list(t_env **node);
 void	ft_strfind(char *str, t_env **en);
 char	**ft_split(char *s, char c);
-char	search_list(t_env *env, char *key);
+char	*search_list(t_env *env, char *key);
 void	delete_list(t_env **env);
-void	cmd_exit(void);
 int		check_valid(char c);
 int		check_valid_identif(char *str);
 
