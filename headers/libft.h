@@ -10,5 +10,6 @@ int		ft_strlcpy(char *dst, char *src, int l);
 char	*ft_strnstr(char *str, char *to_find, int len);
 char	**ft_split(char *s, char c);
 char	*ft_strjoin(char *s1, char *s2);
+char	*ft_strdup(char *src);
  
 #endif

@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 12:51:45 by lgalstya          #+#    #+#             */
-/*   Updated: 2022/11/27 13:27:48 by lgalstya         ###   ########.fr       */
+/*   Updated: 2022/11/27 17:12:48 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,21 @@ void	ft_lstadd_back(t_env **lst, t_env *new)
 	{
 		back = ft_lstlast(*lst);
 		back->next = new;
+	}
+}
+
+void	update_list_item(t_env **lst, char *key, char *value)
+{
+	t_env	*curr;
+
+	curr = *lst;
+	while (curr)
+	{
+		if (!ft_strcmp(key, curr->key))
+		{
+			curr->value = value;
+			return ;
+		}
+		curr = curr->next;
 	}
 }
