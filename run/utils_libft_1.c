@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 12:55:07 by lgalstya          #+#    #+#             */
-/*   Updated: 2022/11/27 12:57:24 by lgalstya         ###   ########.fr       */
+/*   Updated: 2022/11/28 10:15:50 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,24 @@ char	*ft_strjoin(char *s1, char *s2)
 	// if (s1)
 		// free(s1);
 	return (str);
+}
+
+char	*ft_strdup(char *src)
+{
+	int		i;
+	char	*tox;
+
+	i = 0;
+	if (!src)
+		return (0);
+	tox = (char *)malloc(ft_strlen(src) + 1);
+	if (!tox)
+		return (0);
+	while (src[i])
+	{
+		tox[i] = src[i];
+		i++;
+	}
+	tox[i] = 0;
+	return (tox);
 }

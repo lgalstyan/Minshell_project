@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:44:17 by lgalstya          #+#    #+#             */
-/*   Updated: 2022/11/27 17:05:55 by lgalstya         ###   ########.fr       */
+/*   Updated: 2022/11/28 10:25:49 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ typedef struct s_env
 }			t_env;
 
 void	ft_lstadd_back(t_env **lst, t_env *new);
-void	switch_commands(t_node node, t_env **en);
+int		builtin(t_node node, t_env **en);
 void	ft_inint_env(char *elem1, char *elem2, t_env *node);
 int		cmd_pwd();
 int		cmd_cd(t_node node, t_env **en);
@@ -95,5 +95,6 @@ void	delete_list(t_env **env);
 int		check_valid(char c);
 int		check_valid_identif(char *str);
 void	update_list_item(t_env **lst, char *key, char *value);
+char	*get_current_path(void);
 
 #endif

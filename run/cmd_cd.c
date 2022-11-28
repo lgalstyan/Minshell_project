@@ -14,10 +14,8 @@ void	add_oldpwd(char *path, t_env **en)
 		update_list_item(en, "OLDPWD", path);
 }
 
-//if (cd ~ || cd ) => to HOME
 int	cmd_cd(t_node node, t_env **en)
 {
-	char	cwd[256];
 	char	*path;
 
 	if ((!node.cmd[1]) || ft_strcmp(node.cmd[1], "~") == 0)
@@ -25,17 +23,17 @@ int	cmd_cd(t_node node, t_env **en)
 		if(!chdir(search_list(*en, "HOME")))
 		{
 			add_oldpwd(search_list(*en, "HOME"), en);
-			return (1);
+			return (0);
 		}
 		else
 			return (-1);
 	}
 	else if (node.cmd[1])
 	{
-		path = ft_strdup(getcwd(cwd, sizeof(cwd)));
+		path = get_current_path();
 		add_oldpwd(path, en);
 		if(!chdir(node.cmd[1]))
-			return (1);
+			return (0);
 		else
 			return (-1);
 	}

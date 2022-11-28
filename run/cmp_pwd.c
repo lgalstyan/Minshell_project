@@ -1,12 +1,5 @@
 #include "minishell.h"
 
-void	*get_path()
-{
-	char cwd[256];
-	printf("%s\n", getcwd(cwd, sizeof(cwd)));
-	return (0);
-}
-
 int	cmd_pwd()
 {
 	char cwd[256];
@@ -17,6 +10,7 @@ int	cmd_pwd()
 		return (-1);
 	}
 	else
-		get_path();
+		printf("%s\n", get_current_path());
+		//get_path();
 	  return 0;
 }

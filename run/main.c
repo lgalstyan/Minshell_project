@@ -39,6 +39,7 @@ int main(int argc, char **argv, char **env)
 {
 	(void)argc;
 	(void)argv;
+	int status = 1;
 	char *line;
 	t_node node;
 	t_env **envir;
@@ -66,7 +67,7 @@ int main(int argc, char **argv, char **env)
 		// parser_node();
 		node.cmd = ft_split(line, ' '); //Tomayi grac parsy
 		// printf("%s\n%s\n%s", node.cmd[0], node.cmd[1], node.cmd[2]);
-		switch_commands(node, envir);
+		status = builtin(node, envir);
 		write(fd, line, ft_strlen(line));
 		// print_list(envir);
 		++i;
