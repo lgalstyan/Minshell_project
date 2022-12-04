@@ -20,7 +20,7 @@ int	builtin(t_node node, t_env **en)
 	else if (!ft_strcmp(node.cmd[0], "pwd"))
 		cmd_pwd(&status);
 	else if (!ft_strcmp(node.cmd[0], "export"))
-		cmd_export(node.cmd[1], en);
+		cmd_export(node, en);
 	else if (!ft_strcmp(node.cmd[0], "unset"))
 		cmd_unset(node.cmd[1], en);
 	else if (!ft_strcmp(node.cmd[0], "env"))

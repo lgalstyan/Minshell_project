@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:44:17 by lgalstya          #+#    #+#             */
-/*   Updated: 2022/11/28 10:25:49 by lgalstya         ###   ########.fr       */
+/*   Updated: 2022/12/04 13:45:10 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	ft_inint_env(char *elem1, char *elem2, t_env *node);
 int		cmd_pwd();
 int		cmd_cd(t_node node, t_env **en);
 void	cmd_echo(t_node n, t_env **en);
-void	cmd_export(char *new_env, t_env **en);
+void	cmd_export(t_node n, t_env **en);
 void	cmd_exit(void);
 void	cmd_unset(char *del_env, t_env **env);
 void	print_list(t_env **node);
@@ -96,5 +96,6 @@ int		check_valid(char c);
 int		check_valid_identif(char *str);
 void	update_list_item(t_env **lst, char *key, char *value);
 char	*get_current_path(void);
+void	print_for_export(t_env **node);
 
 #endif

@@ -17,16 +17,32 @@ void	add_oldpwd(char *path, t_env **en)
 int	cmd_cd(t_node node, t_env **en)
 {
 	char	*path;
+	int		st;
 
-	if ((!node.cmd[1]) || ft_strcmp(node.cmd[1], "~") == 0)
+	st = 0;
+	if ((!node.cmd[1]) || !ft_strcmp(node.cmd[1], "~"))
 	{
 		if(!chdir(search_list(*en, "HOME")))
 		{
 			add_oldpwd(search_list(*en, "HOME"), en);
 			return (0);
 		}
+		return (-1);
+	}
+	else if (!ft_strcmp(node.cmd[1], "-"))
+	{
+		if(search_list(*en, "OLDPWD") == 0)
+			printf("cd: OLDPWD not set\n");
 		else
+		{
+			if(!chdir(search_list(*en, "OLDPWD")))
+			{
+				add_oldpwd(search_list(*en, "OLDPWD"), en);
+				st = cmd_pwd();
+				return (st);
+			}
 			return (-1);
+		}
 	}
 	else if (node.cmd[1])
 	{

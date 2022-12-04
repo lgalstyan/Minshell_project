@@ -73,26 +73,29 @@ int	check_valid_identif(char *str)
 	return 1;
 }
 
-void	cmd_export(char *new_env, t_env **en)
+void	cmd_export(t_node new_env, t_env **en)
 {
 	char	**array;
 
-	if (!new_env)
-		return ;
-	if(!check_valid_identif(new_env))
+	if (!new_env.cmd[1])
 	{
-		printf("export: `%s': not a valid identifier\n", new_env);
+		print_for_export(en);
 		return ;
 	}
-	if (ft_strnstr(new_env, "+=", ft_strlen(new_env)))
+	if(!check_valid_identif(new_env.cmd[1]))
 	{
-		array = ft_split(new_env, '+');
+		printf("export: `%s': not a valid identifier\n", new_env.cmd[1]);
+		return ;
+	}
+	else if (ft_strnstr(new_env.cmd[1], "+=", ft_strlen(new_env.cmd[1])))
+	{
+		array = ft_split(new_env.cmd[1], '+');
 		array[1]++;
 		pluse_equal(array, en);
 	}
 	else
 	{
-		array = ft_split(new_env, '=');
+		array = ft_split(new_env.cmd[1], '=');
 		equal_only(array, en);
 	}
 }

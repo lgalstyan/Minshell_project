@@ -50,7 +50,6 @@ int main(int argc, char **argv, char **env)
 	int fd = open("./../dup.txt", O_CREAT | O_WRONLY);
 	// if(fd < 0)
     //     printf("Error: File not found\n");
-
 	// dup(fd);
 	// ignore_signals();
 	// dup2(fd, 1);
