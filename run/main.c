@@ -35,6 +35,24 @@ void ignore_signals()
     signal(SIGQUIT, SIG_IGN);
 }
 
+int prompt(t_node node, t_env **env, char ** envir)
+{
+	int status;
+
+	status = 0;
+	if (!is_builtin(node.cmd[0]))
+	{
+		printf("esiminchi\n");
+		builtin(node, env);
+	}
+	else if(execve(node.cmd[0], node.cmd, envir) != 0)
+	{
+		printf("minishell: %s: command not found", node.cmd[0]);
+		return (-1);
+	}
+	return (0);
+}
+
 int main(int argc, char **argv, char **env)
 {
 	(void)argc;
@@ -66,7 +84,8 @@ int main(int argc, char **argv, char **env)
 		// parser_node();
 		node.cmd = ft_split(line, ' '); //Tomayi grac parsy
 		// printf("%s\n%s\n%s", node.cmd[0], node.cmd[1], node.cmd[2]);
-		status = builtin(node, envir);
+		// status = builtin(node, envir);
+		status = prompt(node, envir, env);
 		write(fd, line, ft_strlen(line));
 		// print_list(envir);
 		++i;

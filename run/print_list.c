@@ -13,8 +13,21 @@ void print_list(t_env **node)
 	}
 }
 
-void sortList(t_env **env) {
+static void print_list_added(t_env **node)
+{
+	t_env	*curr;
 
+	curr = (*node);
+	while(curr)
+	{
+		printf("declare -x %s=", curr->key);
+		printf("\"%s\"\n", curr->value);
+		curr = curr->next;
+	}
+}
+
+void sortList(t_env **env)
+{
     t_env	*current = *env;
 	t_env	*index = NULL;  
     char	*temp;  
@@ -33,11 +46,6 @@ void sortList(t_env **env) {
             index = index->next;  
         }  
         current = current->next;       
-    }  
-    }  
-
-void print_for_export(t_env **node)
-{
-	sortList(node);
-	print_list(node);
+    }
+	print_list_added(env);
 }

@@ -79,7 +79,7 @@ void	cmd_export(t_node new_env, t_env **en)
 
 	if (!new_env.cmd[1])
 	{
-		print_for_export(en);
+		sortList(en);
 		return ;
 	}
 	if(!check_valid_identif(new_env.cmd[1]))
