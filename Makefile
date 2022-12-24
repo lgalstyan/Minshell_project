@@ -1,5 +1,5 @@
 NAME	= minishell
-DIRS	= run 
+DIRS	= run Toma_parser
 SRCS	= $(shell find ${DIRS} -name "*.c")
 OBJS	= $(SRCS:.c=.o)
 CC		= cc

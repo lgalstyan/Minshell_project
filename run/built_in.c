@@ -38,7 +38,7 @@ int	builtin(t_node node, t_env **en)
 	else if (!ft_strcmp(node.cmd[0], "exit"))
 	{
 		status = 0;
-		cmd_exit();
+		cmd_exit(node.cmd[1][0]);
 	}
 	else 
 	{

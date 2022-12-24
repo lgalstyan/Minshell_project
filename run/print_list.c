@@ -34,11 +34,11 @@ void sortList(t_env **env)
       
     if(env == NULL)
         return;  
-    while(current != NULL) {  
-        index = current->next;  
-        while(index != NULL) { 
+    while(current != NULL) {
+        index = current->next;
+        while(index != NULL) {
             if(ft_strcmp(current->key, index->key) > 0)
-			{  
+			{
                 temp = current->key;  
                 current->key = index->key;  
                 index->key = temp;  

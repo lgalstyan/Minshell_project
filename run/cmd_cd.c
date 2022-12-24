@@ -8,7 +8,7 @@ void	add_oldpwd(char *path, t_env **en)
 	if (!search_list(*en, "OLDPWD"))
 	{
 		ft_inint_env("OLDPWD", path, new_env);
-		ft_lstadd_back(en, new_env);
+		ft_lstadd_back_env(en, new_env);
 	}
 	else
 		update_list_item(en, "OLDPWD", path);

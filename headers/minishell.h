@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:44:17 by lgalstya          #+#    #+#             */
-/*   Updated: 2022/12/04 14:35:55 by lgalstya         ###   ########.fr       */
+/*   Updated: 2022/12/24 17:40:03 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,15 +78,32 @@ typedef struct s_env
 	struct s_env	*next;
 }			t_env;
 
-void	ft_lstadd_back(t_env **lst, t_env *new);
+int		wcount(char *s, char c);
+int		checkquotes(char *str);
+char	*ft_strjoin(char *s1, char *s2);
+char	**ft_split_pars(char *s, char c);
+char	ft_strgtav(char *str, int c);
+char	*ft_strcpy(char *dst, char *src);
+char	*ft_strdup(char *s1);
+char	*rm_space(char *str);
+int		put_in(t_node *node, char *str, int s);
+int		put_cmd(t_node *node, char *str, int s);
+void	ft_lstadd_back(t_node **lst, t_node *new);
+t_node	*initialize(char *str, t_node *node);
+t_node	*ft_lstlast(t_node *lst);
+
+
+
+void	ft_lstadd_back_env(t_env **lst, t_env *new);
 int		builtin(t_node node, t_env **en);
 int		is_builtin(char *cmd);
 void	ft_inint_env(char *elem1, char *elem2, t_env *node);
+int		ft_atoi(char *str);
 int		cmd_pwd();
 int		cmd_cd(t_node node, t_env **en);
 void	cmd_echo(t_node n, t_env **en);
 void	cmd_export(t_node n, t_env **en);
-void	cmd_exit(void);
+void	cmd_exit(char i);
 void	cmd_unset(char *del_env, t_env **env);
 void	print_list(t_env **node);
 void	ft_strfind(char *str, t_env **en);

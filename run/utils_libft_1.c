@@ -6,11 +6,18 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 12:55:07 by lgalstya          #+#    #+#             */
-/*   Updated: 2022/11/28 10:15:50 by lgalstya         ###   ########.fr       */
+/*   Updated: 2022/12/24 17:41:26 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	ft_isdigit(char c)
+{
+	if (c > 47 && c < 58)
+		return (1);
+	return (0);
+}
 
 char	*ft_strnstr(char *str, char *to_find, int len)
 {
@@ -58,22 +65,22 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (str);
 }
 
-char	*ft_strdup(char *src)
-{
-	int		i;
-	char	*tox;
+// char	*ft_strdup(char *src)
+// {
+// 	int		i;
+// 	char	*tox;
 
-	i = 0;
-	if (!src)
-		return (0);
-	tox = (char *)malloc(ft_strlen(src) + 1);
-	if (!tox)
-		return (0);
-	while (src[i])
-	{
-		tox[i] = src[i];
-		i++;
-	}
-	tox[i] = 0;
-	return (tox);
-}
+// 	i = 0;
+// 	if (!src)
+// 		return (0);
+// 	tox = (char *)malloc(ft_strlen(src) + 1);
+// 	if (!tox)
+// 		return (0);
+// 	while (src[i])
+// 	{
+// 		tox[i] = src[i];
+// 		i++;
+// 	}
+// 	tox[i] = 0;
+// 	return (tox);
+// }

@@ -23,7 +23,7 @@ void	equal_only(char **array, t_env **en)
 	{
 		new_node = malloc(sizeof(t_env));
 		ft_inint_env(array[0], array[1], new_node);
-		ft_lstadd_back(en, new_node);
+		ft_lstadd_back_env(en, new_node);
 	}
 }
 

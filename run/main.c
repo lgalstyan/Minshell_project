@@ -20,7 +20,7 @@ void environments(char **env, t_env **envir)
 		array = ft_split(env[i], '='); 
 		
 		ft_inint_env(array[0], array[1], new_node);
-		ft_lstadd_back(envir, new_node);
+		ft_lstadd_back_env(envir, new_node);
 		++i;
 	}
 }
@@ -42,7 +42,6 @@ int prompt(t_node node, t_env **env, char ** envir)
 	status = 0;
 	if (!is_builtin(node.cmd[0]))
 	{
-		printf("esiminchi\n");
 		builtin(node, env);
 	}
 	else if(execve(node.cmd[0], node.cmd, envir) != 0)
@@ -78,7 +77,7 @@ int main(int argc, char **argv, char **env)
 		printf(ESC_GREEN);
 		line = readline("minishell :"ESC_WHITE);
 		if (line[0])
-			add_history(line); 
+			add_history(line);
 		else
 			continue ;
 		// parser_node();

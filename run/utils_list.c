@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 12:51:45 by lgalstya          #+#    #+#             */
-/*   Updated: 2022/12/03 16:19:47 by lgalstya         ###   ########.fr       */
+/*   Updated: 2022/12/24 17:39:09 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	delete_list(t_env **env)
 	return ;
 }
 
-static t_env	*ft_lstlast(t_env *lst)
+static t_env	*ft_lstlast_env(t_env *lst)
 {
 	if (lst == NULL)
 		return (0);
@@ -50,7 +50,7 @@ static t_env	*ft_lstlast(t_env *lst)
 	return (lst);
 }
 
-void	ft_lstadd_back(t_env **lst, t_env *new)
+void	ft_lstadd_back_env(t_env **lst, t_env *new)
 {
 	t_env	*back;
 
@@ -61,7 +61,7 @@ void	ft_lstadd_back(t_env **lst, t_env *new)
 		*lst = new;
 	else
 	{
-		back = ft_lstlast(*lst);
+		back = ft_lstlast_env(*lst);
 		back->next = new;
 	}
 }
