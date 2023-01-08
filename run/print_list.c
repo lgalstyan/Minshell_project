@@ -7,8 +7,11 @@ void print_list(t_env **node)
 	curr = (*node);
 	while(curr)
 	{
-		printf("%s=", curr->key);
-		printf("%s\n", curr->value);
+		if (curr->value)
+		{
+			printf("%s", curr->key);
+			printf("=%s\n", curr->value);
+		}
 		curr = curr->next;
 	}
 }
@@ -18,10 +21,13 @@ static void print_list_added(t_env **node)
 	t_env	*curr;
 
 	curr = (*node);
-	while(curr)
+	while (curr)
 	{
-		printf("declare -x %s=", curr->key);
-		printf("\"%s\"\n", curr->value);
+		printf("declare -x %s", curr->key);
+		if (curr->value)
+			printf("=\"%s\"\n", curr->value);
+		else
+			printf("\n");
 		curr = curr->next;
 	}
 }

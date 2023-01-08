@@ -73,6 +73,27 @@ int	check_valid_identif(char *str)
 	return 1;
 }
 
+static void	add_only(char *array, t_env **en)
+{
+	t_env	*new_node;
+	t_env	*curr;
+	int		flag = 0;
+
+	curr = *en;
+	while (curr)
+	{
+		if (!ft_strcmp(curr->key, array))
+			flag = 1;
+		curr = curr->next;
+	}
+	if (!flag)
+	{
+		new_node = malloc(sizeof(t_env));
+		ft_inint_env(array, NULL, new_node);
+		ft_lstadd_back_env(en, new_node);
+	}
+}
+
 void	cmd_export(t_node new_env, t_env **en)
 {
 	char	**array;
@@ -82,7 +103,7 @@ void	cmd_export(t_node new_env, t_env **en)
 		sortList(en);
 		return ;
 	}
-	if(!check_valid_identif(new_env.cmd[1]))
+	if(!check_valid_identif(new_env.cmd[1]) || (new_env.cmd[1][0] > 47 && new_env.cmd[1][0] < 58))
 	{
 		printf("export: `%s': not a valid identifier\n", new_env.cmd[1]);
 		return ;
@@ -93,9 +114,17 @@ void	cmd_export(t_node new_env, t_env **en)
 		array[1]++;
 		pluse_equal(array, en);
 	}
-	else
+	else if (ft_strnstr(new_env.cmd[1], "=", ft_strlen(new_env.cmd[1])))
 	{
 		array = ft_split(new_env.cmd[1], '=');
 		equal_only(array, en);
 	}
+	else
+	{
+		add_only(new_env.cmd[1], en);
+	}
 }
+//export a => env NULL, export => declare -x a
+//export a=1=1=1=1
+//export a=23 b=54 c=98
+//errorneric el a++=2, ete demic tiv 

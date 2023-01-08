@@ -52,6 +52,38 @@ static void	*fr(char **s, int i)
 	return (0);
 }
 
+char	**ft_split_export(char *s, char c)
+{
+	char	**tab;
+	int	start;
+	int	i;
+
+	start = 0;
+	i = 0;
+	tab = malloc(sizeof(char *) * (cnt_word (s, c) + 1));
+	if (!(tab) || !s)
+		return (0);
+	while (s[start])
+	{
+		if (s[start] && s[start] == c)
+		{
+			tab[0] = ml(s, 0, start);
+			i++;
+			if (s[start + 1])
+			{
+				tab[1] = ml(s, start + 1, ft_strlen(s));
+				i++;
+			}
+		}
+		else
+			start++;
+		if (!tab[0])
+			fr (tab, 0);
+	}
+	tab[i] = 0;
+	return (tab);
+}
+
 char	**ft_split(char *s, char c)
 {
 	int	i;
