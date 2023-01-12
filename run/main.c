@@ -37,9 +37,9 @@ void ignore_signals()
 
 int prompt(t_node node, t_env **env, char ** envir)
 {
-	int status;
+	// int status;
 
-	status = 0;
+	// status = 0;
 	if (!is_builtin(node.cmd[0]))
 	{
 		builtin(node, env);
@@ -56,7 +56,8 @@ int main(int argc, char **argv, char **env)
 {
 	(void)argc;
 	(void)argv;
-	int status = 1;
+	int st;
+	st = 1;
 	char *line;
 	t_node node;
 	t_env **envir;
@@ -85,9 +86,10 @@ int main(int argc, char **argv, char **env)
 		node.cmd = ft_split(line, ' '); //Tomayi grac parsy
 		// printf("%s\n%s\n%s", node.cmd[0], node.cmd[1], node.cmd[2]);
 		// status = builtin(node, envir);
-		status = prompt(node, envir, env);
+		st = prompt(node, envir, env);
 		write(fd, line, ft_strlen(line));
 		// print_list(envir);
+		printf("%d", st);
 	}
 	return (0);
 }

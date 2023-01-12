@@ -98,11 +98,14 @@ static void	add_only(char *array, t_env **en)
 
 static int	check_pluse_equal(char *str)
 {
-	while (str)
+	int	i;
+
+	i = 0;
+	while (str[i])
 	{
-		if ((*str) == '+' && (*str + 1) != '=')
+		if (str[i] == '+' && str[i + 1] != '=')
 			return (0);
-		(*str)++;
+		i++;
 	}
 	return (1);
 }
@@ -128,7 +131,6 @@ void	cmd_export(t_node new_env, t_env **en)
 			printf("export: `%s': not a valid identifier\n", new_env.cmd[1]);
 			return ;
 		}
-
 		array = ft_split_export(new_env.cmd[1], '+');
 		array[1]++;
 		pluse_equal(array, en);
