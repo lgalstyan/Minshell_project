@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:44:17 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/01/09 15:51:12 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/12 14:33:31 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int		cmd_pwd();
 int		cmd_cd(t_node node, t_env **en);
 void	cmd_echo(t_node n, t_env **en);
 void	cmd_export(t_node n, t_env **en);
-void	cmd_exit(char i);
+void	cmd_exit(char** cmd);
 void	cmd_unset(char *del_env, t_env **env);
 void	print_list(t_env **node);
 void	ft_strfind(char *str, t_env **en);

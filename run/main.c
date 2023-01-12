@@ -62,7 +62,7 @@ int main(int argc, char **argv, char **env)
 	t_env **envir;
 	envir = malloc(sizeof(t_env*));
 	*envir = NULL;
-	int i  = 0; 
+
 	environments(env, envir);
 	int fd = open("./../dup.txt", O_CREAT | O_WRONLY);
 	// if(fd < 0)
@@ -74,6 +74,7 @@ int main(int argc, char **argv, char **env)
 	while (1)
 	{
 		//execve();
+		// system("leaks minishell");
 		printf(ESC_GREEN);
 		line = readline("minishell :"ESC_WHITE);
 		if (line[0])
@@ -87,7 +88,6 @@ int main(int argc, char **argv, char **env)
 		status = prompt(node, envir, env);
 		write(fd, line, ft_strlen(line));
 		// print_list(envir);
-		++i;
 	}
 	return (0);
 }
