@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:44:17 by lgalstya          #+#    #+#             */
-/*   Updated: 2022/12/24 17:40:03 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/09 15:51:12 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ int		wcount(char *s, char c);
 int		checkquotes(char *str);
 char	*ft_strjoin(char *s1, char *s2);
 char	**ft_split_pars(char *s, char c);
+char	**ft_split_export(char *s, char c);
 char	ft_strgtav(char *str, int c);
 char	*ft_strcpy(char *dst, char *src);
 char	*ft_strdup(char *s1);

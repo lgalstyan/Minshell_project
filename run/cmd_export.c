@@ -17,8 +17,9 @@ void	equal_only(char **array, t_env **en)
 		}
 		curr = curr->next;
 	}
-	if (!array[1])
-		return ;
+	if (!array[1]){
+		array[1] = "";
+	}
 	if (!flag)
 	{
 		new_node = malloc(sizeof(t_env));
@@ -35,7 +36,7 @@ void	pluse_equal(char **array, t_env **en)
 	flag = 0;
 	curr = *en;
 	if (!array[1])
-		return ;
+		array[1] = "";
 	while (curr)
 	{
 		if (!ft_strcmp(curr->key, array[0]))
@@ -60,6 +61,7 @@ int	check_valid_identif(char *str)
 	if (ft_strnstr(str, "+=", ft_strlen(str)))
 	{
 		array = ft_split(str, '+');
+		printf("hello_%s_\n", array[1]);
 		++i;
 	}
 	else
@@ -94,6 +96,17 @@ static void	add_only(char *array, t_env **en)
 	}
 }
 
+static int	check_pluse_equal(char *str)
+{
+	while (str)
+	{
+		if ((*str) == '+' && (*str + 1) != '=')
+			return (0);
+		(*str)++;
+	}
+	return (1);
+}
+
 void	cmd_export(t_node new_env, t_env **en)
 {
 	char	**array;
@@ -110,13 +123,19 @@ void	cmd_export(t_node new_env, t_env **en)
 	}
 	else if (ft_strnstr(new_env.cmd[1], "+=", ft_strlen(new_env.cmd[1])))
 	{
-		array = ft_split(new_env.cmd[1], '+');
+		if (!check_pluse_equal(new_env.cmd[1]))
+		{
+			printf("export: `%s': not a valid identifier\n", new_env.cmd[1]);
+			return ;
+		}
+
+		array = ft_split_export(new_env.cmd[1], '+');
 		array[1]++;
 		pluse_equal(array, en);
 	}
 	else if (ft_strnstr(new_env.cmd[1], "=", ft_strlen(new_env.cmd[1])))
 	{
-		array = ft_split(new_env.cmd[1], '=');
+		array = ft_split_export(new_env.cmd[1], '=');
 		equal_only(array, en);
 	}
 	else

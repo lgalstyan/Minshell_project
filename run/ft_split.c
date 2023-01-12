@@ -51,16 +51,14 @@ static void	*fr(char **s, int i)
 	free(s);
 	return (0);
 }
-
+#include <stdio.h>
 char	**ft_split_export(char *s, char c)
 {
 	char	**tab;
 	int	start;
-	int	i;
 
 	start = 0;
-	i = 0;
-	tab = malloc(sizeof(char *) * (cnt_word (s, c) + 1));
+	tab = malloc(sizeof(char **) * 3);
 	if (!(tab) || !s)
 		return (0);
 	while (s[start])
@@ -68,19 +66,18 @@ char	**ft_split_export(char *s, char c)
 		if (s[start] && s[start] == c)
 		{
 			tab[0] = ml(s, 0, start);
-			i++;
+			printf("tab0=%s", tab[0]);
 			if (s[start + 1])
 			{
-				tab[1] = ml(s, start + 1, ft_strlen(s));
-				i++;
+				tab[1] = ml(s, start + 1, ft_strlen(s) - start - 1);
+				printf("tab1=%s", tab[1]);
+				tab[2] = 0;
+				return (tab);
 			}
 		}
-		else
-			start++;
-		if (!tab[0])
-			fr (tab, 0);
+		start++;
 	}
-	tab[i] = 0;
+
 	return (tab);
 }
 
