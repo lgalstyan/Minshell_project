@@ -6,22 +6,18 @@
 /*   By: tyenokya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 18:05:54 by tyenokya          #+#    #+#             */
-/*   Updated: 2022/11/26 17:15:26 by tyenokya         ###   ########.fr       */
+/*   Updated: 2022/12/17 16:18:46 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_node	*ft_lstlast(t_node *lst)
+t_node	*ft_lstlast(t_node *node)
 {
-	t_node	*node;
-
-	node = lst;
 	if (node == NULL)
-		return (NULL);
+		return (0);
 	while (node -> next != NULL)
 	{
-		write(1, "here\n", 5);
 		node = node -> next;
 	}
 	return (node);

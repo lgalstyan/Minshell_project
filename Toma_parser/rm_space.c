@@ -1,43 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   rm_space.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tyenokya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/16 18:19:36 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/15 16:19:49 by tyenokya         ###   ########.fr       */
+/*   Created: 2022/12/11 15:02:14 by tyenokya          #+#    #+#             */
+/*   Updated: 2023/01/15 16:24:53 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*ft_strcpy(char *dst, char *src)
+char	*rm_space(char *str)
 {
-	int		i;
+	int 	i;
+	int		d;
+	char	*dst;
 
 	i = 0;
-	if (src[i] == '-' || src[i] == '>' || src[i] == '<' )
+	d = 0;
+	dst = malloc((ft_strlen(str)));
+	while(str[i])
 	{
-		dst[i] = src[i];
-		++i;
-		if (src[i] == '>' && src[i - 1] == '>')
-		{
-			dst[i] = src[i];
+		if (str[i] == ' ')
 			++i;
-		}
-		if (src[i] == '<' && src[i - 1] == '<')
-		{
-			dst[i] = src[i];
-			++i;
-		}
+		else if (str[i] == '\"')
+			while (str[i] != '\"')
+				dst[d++] = str[i++];
+		else if (str[i] == '\'')
+			while (str[++i] != '\'')
+				dst[d++] = str[i++];
+		dst[d++] = str[i++];
 	}
-	while (src[i] != ' ' && src[i] != '\0' && src[i] != '<'
-		&& src[i] != '>' && src[i] != '\'' && src[i] != '\"' && src[i] != '-')
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
+	dst[d] = '\0';
 	return (dst);
 }

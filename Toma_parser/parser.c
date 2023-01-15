@@ -1,43 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tyenokya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/16 18:19:36 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/15 16:19:49 by tyenokya         ###   ########.fr       */
+/*   Created: 2022/12/24 17:25:38 by tyenokya          #+#    #+#             */
+/*   Updated: 2022/12/24 17:28:08 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*ft_strcpy(char *dst, char *src)
+t_node *parser(char *str)
 {
 	int		i;
+	char	**sp;
+	t_node	*node;
+	t_node	*new;
 
+	new = malloc(sizeof(t_node));
 	i = 0;
-	if (src[i] == '-' || src[i] == '>' || src[i] == '<' )
+	node = NULL;
+	if (!checkquotes(str))
+		return (0);
+	sp = ft_split(str, '|');
+	i = 0;
+	while (i < wcount(str, '|') && sp[i])
 	{
-		dst[i] = src[i];
+		initialize(sp[i], new);
+		ft_lstadd_back(&node, new);
 		++i;
-		if (src[i] == '>' && src[i - 1] == '>')
-		{
-			dst[i] = src[i];
-			++i;
-		}
-		if (src[i] == '<' && src[i - 1] == '<')
-		{
-			dst[i] = src[i];
-			++i;
-		}
 	}
-	while (src[i] != ' ' && src[i] != '\0' && src[i] != '<'
-		&& src[i] != '>' && src[i] != '\'' && src[i] != '\"' && src[i] != '-')
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
-	return (dst);
+	return (node);
 }

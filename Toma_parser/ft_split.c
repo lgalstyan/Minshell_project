@@ -6,7 +6,7 @@
 /*   By: tyenokya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 12:38:27 by tyenokya          #+#    #+#             */
-/*   Updated: 2022/11/26 15:51:25 by tyenokya         ###   ########.fr       */
+/*   Updated: 2022/12/25 14:28:26 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,7 @@ char	**ft_split(char *s, char c)
 					;
 			++t;
 		}
-		//printf("i = %d\nh = %d\nt = %d\n", i, h, t);
 		sp[i] = fill(s, h, t - h);
-		//printf("spi = /%s/\nchar = %c\n", sp[i], s[h]);
 		h = t + 1;
 	}
 	sp[i] = 0;
