@@ -60,11 +60,10 @@ int main(int argc, char **argv, char **env)
 	st = 1;
 	char *line;
 	t_node node;
-	t_env **envir;
-	envir = malloc(sizeof(t_env*));
-	*envir = NULL;
+	t_env *envir;
+	envir = NULL;
 
-	environments(env, envir);
+	environments(env, &envir);
 	int fd = open("./../dup.txt", O_CREAT | O_WRONLY);
 	// if(fd < 0)
     //     printf("Error: File not found\n");
@@ -86,7 +85,7 @@ int main(int argc, char **argv, char **env)
 		node.cmd = ft_split(line, ' '); //Tomayi grac parsy
 		// printf("%s\n%s\n%s", node.cmd[0], node.cmd[1], node.cmd[2]);
 		// status = builtin(node, envir);
-		st = prompt(node, envir, env);
+		st = prompt(node, &envir, env);
 		write(fd, line, ft_strlen(line));
 		// print_list(envir);
 		//printf("%d", st);

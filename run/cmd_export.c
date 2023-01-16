@@ -61,7 +61,7 @@ int	check_valid_identif(char *str)
 	if (ft_strnstr(str, "+=", ft_strlen(str)))
 	{
 		array = ft_split(str, '+');
-		// printf("hello_%s_\n", array[1]);
+		printf("hello_%s_\n", array[1]);
 		++i;
 	}
 	else

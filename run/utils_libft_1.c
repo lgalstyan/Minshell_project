@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 12:55:07 by lgalstya          #+#    #+#             */
-/*   Updated: 2022/12/24 17:41:26 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/16 14:03:57 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,10 @@ char	*ft_strjoin(char *s1, char *s2)
 	i = 0;
 	j = 0;
 	str = malloc (ft_strlen (s1) + ft_strlen (s2) + 1);
-	if(!str)
+	if (!str)
 		return (0);
+	if (!s1)
+		return (s2);
 	while (s1[i])
 		str[j++] = s1[i++];
 	i = 0;
