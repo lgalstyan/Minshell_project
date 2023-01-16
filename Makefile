@@ -3,7 +3,7 @@ DIRS	= run Toma_parser
 SRCS	= $(shell find ${DIRS} -name "*.c")
 OBJS	= $(SRCS:.c=.o)
 CC		= cc
-CFLAGS	= -Wall -Wextra -Werror -I ./headers
+CFLAGS	= -Wall -Wextra -Werror -I ./headers #-fsanitize=address -g
 READFL  = -lreadline
 RM		= rm -f
 

@@ -12,11 +12,10 @@ int is_builtin(char *cmd)
 	return (-1);
 }
 
-int	builtin(t_node node, t_env **en)
+void	builtin(t_node node, t_env **en)
 {
-	int status;
-
-	status = -1;
+	// int status;
+	// status = -1;
 	if (!ft_strcmp(node.cmd[0], "echo"))
 	{
 		printf(BOLD_BLUE);
@@ -28,7 +27,7 @@ int	builtin(t_node node, t_env **en)
 		// printf("%s\n",getcwd(node.cmd[1], ft_strlen(node.cmd[1])));
 	}
 	else if (!ft_strcmp(node.cmd[0], "pwd"))
-		cmd_pwd(&status);
+		cmd_pwd();
 	else if (!ft_strcmp(node.cmd[0], "export"))
 		cmd_export(node, en);
 	else if (!ft_strcmp(node.cmd[0], "unset"))
@@ -37,14 +36,9 @@ int	builtin(t_node node, t_env **en)
 		print_list(en);
 	else if (!ft_strcmp(node.cmd[0], "exit"))
 	{
-		status = 0;
+		// status = 0;
 		cmd_exit(node.cmd);
 	}
-	else 
-	{
-		char *const args[] = {"/bin/bash", "-c", "echo"};
-		execve("/bin/bash", args, args);
-	}
-		// printf("%s: command not found\n", node.cmd[0]);
-		return (status);
+	// printf("%s: command not found\n", node.cmd[0]);
+	// return (status);
 }
