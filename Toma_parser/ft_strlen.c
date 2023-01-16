@@ -1,36 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/24 17:25:38 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/16 15:17:32 by lgalstya         ###   ########.fr       */
+/*   Created: 2022/03/11 13:57:52 by tyenokya          #+#    #+#             */
+/*   Updated: 2023/01/16 15:14:31 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-t_node *parser(char *str)
+int	pars_ft_strlen(const char *s)
 {
-	int		i;
-	char	**sp;
-	t_node	*node;
-	t_node	*new;
+	int	length;
 
-	new = malloc(sizeof(t_node));
-	i = 0;
-	node = NULL;
-	if (!checkquotes(str))
-		return (0);
-	sp = pars_ft_split(str, '|');
-	i = 0;
-	while (i < wcount(str, '|') && sp[i])
-	{
-		initialize(sp[i], new);
-		ft_lstadd_back(&node, new);
-		++i;
-	}
-	return (node);
+	length = 0;
+	while (*s++)
+		length++;
+	return (length);
 }

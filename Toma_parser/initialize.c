@@ -3,38 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   initialize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyenokya <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 14:34:10 by tyenokya          #+#    #+#             */
-/*   Updated: 2022/12/18 16:51:51 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/01/16 16:29:20 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "parser.h"
 
 t_node	*initialize(char *str, t_node *node)
 {
 	int		i;
 
-	//node->cmd[0] = ft_strdup(str);
-	//printf("%s", node->cmd[0]);
 	i = 0;
+	
+	// printf("%s\n", str);
+	str = rm_space(str);
+	printf("%s\n", str);
+	printf("aaa%s\n", node->cmd[0]);
 	i += put_cmd(node, str, i);
 	while (str && str[i])
 	{
-		if (str[i] == '<' && str[i] + 1 != '<')
-		{
+		if (str[i] == '\"')
+			while (str[++i] != '\"')
+				;
+		if (str[i] == '>' && str[i + 1] == '>')
+			i += put_hd(node, str, i);
+		else if (str[i] == '<' && str[i + 1] == '<')
+			i += put_ap(node, str, i);
+		else if (str[i] == '>' && str[i + 1] != '>')
 			i += put_in(node, str, i);
-		}
-		write(1, "hello\n", 6);
+		else if (str[i] == '<' && str[i + 1] != '<')
+			put_out(node, str, i);
 		++i;
-		/*else if (*str == '>' && *str + 1 == '>')
-			put_heardock(&node, &str);
-		else if (*str == '<' && *str + 1 != '<')
-			put_out(&node, &str);
-		else if (*str == '<' && *str + 1 == '<')
-			put_append(&node, &str);*/
 	}
 	node->next = NULL;
+	node->redir = fill_redir(str, node); 
 	return (node);
 }

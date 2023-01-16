@@ -35,22 +35,36 @@ void ignore_signals()
     signal(SIGQUIT, SIG_IGN);
 }
 
-int prompt(t_node node, t_env **env, char ** envir)
+char	*accses_to_exec(char *cmd, char *path)
 {
-	// int status;
+	int i;
+	char **token;
+	char *cmd_accs;
+	
+	i = -1;
+	token =ft_split(path, ':');
+	write(1, "Hello malmlo\n", 13);
+	while (token[++i])
+	{
+		cmd_accs = ft_strjoin(token[i], cmd);
+		if (access(cmd_accs, 0))
+			return (cmd_accs);
+	}
+	return (cmd);
+}
 
-	// status = 0;
-	if (!is_builtin(node.cmd[0]))
-	{
-		builtin(node, env);
-	}
-	else if(execve(node.cmd[0], node.cmd, envir) != 0)
-	{
-		printf("minishell: %s: command not found", node.cmd[0]);
-		return (-1);
-	}
+int prompt(t_node node, t_env **envir, char **env)
+{
+	char	*cmd;
+	char	*path;
+
+	builtin(node, envir);
+	path = search_list(*envir, node.cmd[0]);
+	cmd = accses_to_exec(node.cmd[0], path);
+	execve(cmd, node.cmd, env);
 	return (0);
 }
+
 
 int main(int argc, char **argv, char **env)
 {
@@ -59,7 +73,7 @@ int main(int argc, char **argv, char **env)
 	int st;
 	st = 1;
 	char *line;
-	t_node node;
+	t_node *node;
 	t_env *envir;
 	envir = NULL;
 
@@ -82,16 +96,35 @@ int main(int argc, char **argv, char **env)
 		else
 			continue ;
 		// parser_node();
-		node.cmd = ft_split(line, ' '); //Tomayi grac parsy
+		// node.cmd = ft_split(line, ' '); //Tomayi grac parsy
+		node = pars(line);
+		printf("%s\n", node->cmd[0]);
 		// printf("%s\n%s\n%s", node.cmd[0], node.cmd[1], node.cmd[2]);
 		// status = builtin(node, envir);
-		st = prompt(node, &envir, env);
+		st = prompt(*node, &envir, env);
 		write(fd, line, ft_strlen(line));
 		// print_list(envir);
 		//printf("%d", st);
 	}
 	return (0);
 }
+
+// int prompt(t_node node, t_env **env, char ** envir)
+// {
+// 	// int status;
+
+// 	// status = 0;
+// 	if (!is_builtin(node.cmd[0]))
+// 	{
+// 		builtin(node, env);
+// 	}
+// 	else if(execve(node.cmd[0], node.cmd, envir) != 0)
+// 	{
+// 		printf("minishell: %s: command not found", node.cmd[0]);
+// 		return (-1);
+// 	}
+// 	return (0);
+// }
 
 
 
@@ -132,23 +165,6 @@ int main(int argc, char **argv, char **env)
 //     signal(SIGQUIT, SIG_IGN);
 // }
 
-// char	*accses_to_exec(char *cmd, char *path)
-// {
-// 	int i;
-// 	char **token;
-// 	char *cmd_accs;
-	
-// 	i = -1;
-// 	token =ft_split(path, ':');
-// 	write(1, "Hello malmlo\n", 13);
-// 	while (token[++i])
-// 	{
-// 		cmd_accs = ft_strjoin(token[i], cmd);
-// 		if (access(cmd_accs, 0))
-// 			return (cmd_accs);
-// 	}
-// 	return (cmd);
-// }
 
 // int prompt(t_node node, t_env **envir, char **env)
 // {

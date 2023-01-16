@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/24 17:25:38 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/16 15:17:32 by lgalstya         ###   ########.fr       */
+/*   Created: 2022/03/17 13:08:38 by tyenokya          #+#    #+#             */
+/*   Updated: 2023/01/16 15:15:26 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-t_node *parser(char *str)
+char	*pars_ft_strjoin(char *s1, char *s2)
 {
-	int		i;
-	char	**sp;
-	t_node	*node;
-	t_node	*new;
+	char	*ns;
+	size_t	i;
+	size_t	k;
 
-	new = malloc(sizeof(t_node));
 	i = 0;
-	node = NULL;
-	if (!checkquotes(str))
-		return (0);
-	sp = pars_ft_split(str, '|');
-	i = 0;
-	while (i < wcount(str, '|') && sp[i])
+	ns = malloc(pars_ft_strlen(s1) + pars_ft_strlen(s2));
+	while (s1[i] != '\0')
 	{
-		initialize(sp[i], new);
-		ft_lstadd_back(&node, new);
-		++i;
+		ns[i] = s1[i];
+		i++;
 	}
-	return (node);
+	k = 0;
+	while (s2[k] != '\0')
+	{
+		ns[i] = s2[k];
+		k++;
+		i++;
+	}
+	ns[i] = '\0';
+	//free(s1);
+	return (ns);
 }

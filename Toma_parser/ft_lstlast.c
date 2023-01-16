@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyenokya <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 18:05:54 by tyenokya          #+#    #+#             */
-/*   Updated: 2022/12/17 16:18:46 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/01/16 15:12:55 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "parser.h"
 
 t_node	*ft_lstlast(t_node *node)
 {

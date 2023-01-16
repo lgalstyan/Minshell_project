@@ -6,11 +6,11 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 12:38:27 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/08 17:16:55 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/16 15:16:44 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "parser.h"
 
 int wcount(char *s, char c)
 {
@@ -20,12 +20,12 @@ int wcount(char *s, char c)
 
 	i = 0;
 	count = 1;
-	l = ft_strlen(s);
+	l = pars_ft_strlen(s);
 	while (s[i++] && s[i] == ' ')
 		;
 	while (s[--l] && s[l] == ' ' && i < l)
 		;
-	if (i == ft_strlen(s))
+	if (i == pars_ft_strlen(s))
 		return (0);
 	//write(1, "cucu\n", 5);
 	while (s[i] && i < l)
@@ -58,7 +58,7 @@ static char	*fill(char *s, size_t h, int l)
 	return (str);
 }
 	
-char	**ft_split_pars(char *s, char c)
+char	**pars_ft_split(char *s, char c)
 {
 	int		i;
 	int		t;
@@ -69,7 +69,7 @@ char	**ft_split_pars(char *s, char c)
 	i = -1;
 	h = 0;
 	count = wcount(s, c);
-	//printf("len = %d\ncount = %d\n", ft_strlen(s), count);
+	//printf("len = %d\ncount = %d\n", pars_ft_strlen(s), count);
 	sp = malloc(sizeof(char *) * (count + 1));
 	if (!s || !sp)
 		return (NULL);
@@ -85,9 +85,7 @@ char	**ft_split_pars(char *s, char c)
 					;
 			++t;
 		}
-		//printf("i = %d\nh = %d\nt = %d\n", i, h, t);
 		sp[i] = fill(s, h, t - h);
-		//printf("spi = /%s/\nchar = %c\n", sp[i], s[h]);
 		h = t + 1;
 	}
 	sp[i] = 0;
@@ -105,12 +103,12 @@ static size_t	gtav(char const *s, char c)
 
 	i = -1;
 	count = 1;
-	l = ft_strlen(s);
+	l = pars_ft_strlen(s);
 	while (s[++i] && s[i] == c)
 		;
 	while (s[--l] && s[l] == c && i < l)
 		;
-	if (i == ft_strlen(s))
+	if (i == pars_ft_strlen(s))
 		return (0);
 	while (s[i] && i < l)
 	{

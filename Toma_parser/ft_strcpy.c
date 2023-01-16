@@ -1,29 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyenokya <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 18:19:36 by tyenokya          #+#    #+#             */
-/*   Updated: 2022/12/18 16:31:24 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/01/16 15:13:01 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "parser.h"
 
 char	*ft_strcpy(char *dst, char *src)
 {
 	int		i;
-//	char	c;
 
 	i = 0;
-	//src[i] = '\0';
-	//c = ft_strgtav(src, ' ');
-	write(1, "ttt\n", 4);
-	write(1, &src[i], 1);
+	if (src[i] == '-' || src[i] == '>' || src[i] == '<' )
+	{
+		dst[i] = src[i];
+		++i;
+		if (src[i] == '>' && src[i - 1] == '>')
+		{
+			dst[i] = src[i];
+			++i;
+		}
+		if (src[i] == '<' && src[i - 1] == '<')
+		{
+			dst[i] = src[i];
+			++i;
+		}
+	}
 	while (src[i] != ' ' && src[i] != '\0' && src[i] != '<'
-		&& src[i] != '>' && src[i] != '\'' && src[i] != '\"')
+		&& src[i] != '>' && src[i] != '\'' && src[i] != '\"' && src[i] != '-')
 	{
 		dst[i] = src[i];
 		i++;

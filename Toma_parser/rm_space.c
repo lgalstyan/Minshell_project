@@ -3,47 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   rm_space.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyenokya <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 15:02:14 by tyenokya          #+#    #+#             */
-/*   Updated: 2022/12/24 16:40:46 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/01/16 16:14:21 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "parser.h"
 
 char	*rm_space(char *str)
 {
 	int 	i;
 	int		d;
+	int		flag;
 	char	*dst;
 
 	i = 0;
 	d = 0;
-	dst = malloc((ft_strlen(str)));
+	flag = 0;
+	dst = malloc((pars_ft_strlen(str)));
 	while(str[i])
 	{
-		if (str[i] == ' ')
+		while (str[i] == ' ')
+		{
+			flag = 1;
 			++i;
+		}
+		if (flag)
+		{
+			dst[d++] = ' ';
+			flag = 0;
+		}
 		else if (str[i] == '\"')
-		{
-			printf("hello");
 			while (str[i] != '\"')
-			{
 				dst[d++] = str[i++];
-			}
-		}
 		else if (str[i] == '\'')
-		{
-			printf("hello");
 			while (str[++i] != '\'')
-			{
 				dst[d++] = str[i++];
-			}
-		}
 		dst[d++] = str[i++];
 	}
 	dst[d] = '\0';
-	printf("////////%s///////\n", dst);
 	return (dst);
 }

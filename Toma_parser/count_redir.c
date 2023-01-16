@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
+/*   count_redir.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/24 17:25:38 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/16 15:17:32 by lgalstya         ###   ########.fr       */
+/*   Created: 2023/01/08 16:04:31 by tyenokya          #+#    #+#             */
+/*   Updated: 2023/01/16 15:12:44 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-t_node *parser(char *str)
+int	count_redir(t_node *node)
 {
-	int		i;
-	char	**sp;
-	t_node	*node;
-	t_node	*new;
+	int	i;
+	int count;
 
-	new = malloc(sizeof(t_node));
-	i = 0;
-	node = NULL;
-	if (!checkquotes(str))
-		return (0);
-	sp = pars_ft_split(str, '|');
-	i = 0;
-	while (i < wcount(str, '|') && sp[i])
-	{
-		initialize(sp[i], new);
-		ft_lstadd_back(&node, new);
-		++i;
-	}
-	return (node);
+	count = 0;
+	if (!node)
+		return(0);
+	while ((i = 0) && node->infile[++i])
+		++count;
+	while ((i = 0) && node->outfile[++i])
+		++count;
+	while ((i = 0) && node->heardock[++i])
+		++count;
+	while ((i = 0) && node->append[++i])
+		++count;
+	return (count);
 }
