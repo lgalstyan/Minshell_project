@@ -119,6 +119,6 @@ void	sortList(t_env **env);
 
 
 
-t_node	*pars(char *argv);
+t_node	*parser(char *str);
 
 #endif

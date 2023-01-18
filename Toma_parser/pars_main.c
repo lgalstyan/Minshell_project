@@ -16,7 +16,7 @@
 //output >
 //input <
 //./a.out "  ls -l | echo -s | vhewgvdhwe |djbhc jhw | echo"
-
+/*
 t_node	*pars(char *argv)
 {
 	int		i;
@@ -35,7 +35,6 @@ t_node	*pars(char *argv)
 	i = 0;
 	while (i < wcount(str, '|') && sp[i])
 	{
-		
 		initialize(sp[i], new);
 		// if (new)
 			// write(1, "aystex hasnum e\n", 15);
@@ -43,4 +42,4 @@ t_node	*pars(char *argv)
 		++i;
 	}
 	return (node);
-}
+}*/

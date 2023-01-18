@@ -22,20 +22,12 @@ char	*rm_space(char *str)
 	i = 0;
 	d = 0;
 	flag = 0;
-	dst = malloc((pars_ft_strlen(str)));
+	dst = malloc((pars_ft_strlen(str)) + 1);
 	while(str[i])
 	{
 		while (str[i] == ' ')
-		{
-			flag = 1;
 			++i;
-		}
-		if (flag)
-		{
-			dst[d++] = ' ';
-			flag = 0;
-		}
-		else if (str[i] == '\"')
+		if (str[i] == '\"')
 			while (str[i] != '\"')
 				dst[d++] = str[i++];
 		else if (str[i] == '\'')

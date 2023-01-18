@@ -1,5 +1,5 @@
 #include "libft.h"
-
+/*
 static int	cnt_word(char *str, char delim)
 {
 	int	prev_del;
@@ -79,44 +79,92 @@ char	**ft_split_export(char *s, char c)
 	}
 
 	return (tab);
+}*/
+
+int	ft_strlen(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s && s[i] != 0)
+		i++;
+	return (i);
+}
+
+static	int	gtav(char *s, char c)
+{
+	int	count;
+	int	i;
+	int	l;
+
+	i = -1;
+	count = 1;
+	l = ft_strlen(s);
+	while (s[++i] && s[i] == c)
+		;
+	while (s[--l] && s[l] == c && i < l)
+		;
+	if (i == ft_strlen(s))
+		return (0);
+	while (s[i] && i < l)
+	{
+		if (s[i] == c && s[i - 1] != c)
+			count++;
+		i++;
+	}
+	return (count);
+}
+
+static char	*lcnel(char *s,	int h,	int l)
+{
+	char	*str;
+	int	i;
+
+	i = -1;
+	str = malloc(sizeof(char) * (l + 1));
+	if (!str)
+		return (NULL);
+	while (++i < l)
+		str[i] = s[h + i];
+	str[i] = 0;
+	return (str);
 }
 
 char	**ft_split(char *s, char c)
 {
+	int	h;
+	int	t;
 	int	i;
-	char	**tab;
-	int	start;
-	int	end;
+	int	count;
+	char	**str;
 
-	start = 0;
-	end = 0;
+	h = 0;
 	i = -1;
-	tab = malloc(sizeof(char *) * (cnt_word (s, c) + 1));
-	if (!(tab) || !s)
-		return (0);
-	while (++i < cnt_word (s, c))
+	count = gtav(s, c);
+	str = malloc(sizeof(char *) * (count + 1));
+	if (!s || !str)
+		return (NULL);
+	while (++i < count)
 	{
-		while (s[start] && s[start] == c)
-			start++;
-		end = start;
-		while (s[end] && s[end] != c)
-			end++;
-		tab[i] = ml(s, start, end - start);
-		if (!tab[i])
-			fr (tab, i);
-		start = end;
+		while (s[h] && s[h] == c)
+			h++;
+		t = h;
+		while (s[t] && s[t] != c)
+			t++;
+		str[i] = lcnel(s, h, t - h);
+		h = t;
 	}
-	tab[i] = 0;
-	return (tab);
+	str[i] = 0;
+	return (str);
 }
 
 // #include "libft.h"
 
-// static size_t	word_count(char const *str, char delim)
+// static	int	word_count(char const *str, char delim)
 // {
-// 	size_t	prev_del;
-// 	size_t	i;
-// 	size_t	count;
+// 	int	prev_del;
+// 	int	i;
+// 	int	count;
 
 // 	i = 0;
 // 	count = 0;
@@ -134,9 +182,9 @@ char	**ft_split(char *s, char c)
 // 	return (count);
 // }
 
-// static char	*word_fill(const char *s, size_t start, size_t len)
+// static char	*word_fill(const char *s,	int start,	int len)
 // {
-// 	size_t	i;
+// 	int	i;
 // 	char	*word;
 
 // 	i = 0;
@@ -152,7 +200,7 @@ char	**ft_split(char *s, char c)
 // 	return (word);
 // }
 
-// static void	*str_free(char **str, size_t i)
+// static void	*str_free(char **str,	int i)
 // {
 // 	while (i >= 0)
 // 	{
@@ -165,9 +213,9 @@ char	**ft_split(char *s, char c)
 
 // char	**ft_split(char const *s, char c)
 // {
-// 	size_t	start;
-// 	size_t	end;
-// 	size_t i;
+// 	int	start;
+// 	int	end;
+// 	int i;
 // 	char	**str;
 
 // 	i = -1;
@@ -193,11 +241,11 @@ char	**ft_split(char *s, char c)
 
 
 
-// // static size_t	cnt_word(char *str, char delim)
+// // static	int	cnt_word(char *str, char delim)
 // // {
-// // 	size_t	prev_del;
-// // 	size_t	i;
-// // 	size_t	count;
+// // 	int	prev_del;
+// // 	int	i;
+// // 	int	count;
 
 // // 	i = 0;
 // // 	count = 0;
@@ -274,7 +322,7 @@ char	**ft_split(char *s, char c)
 
 // // char	**ft_split(char *s, char c)
 // // {
-// // 	size_t	i;
+// // 	int	i;
 // // 	char	**tab;
 // // 	int	start;
 // // 	int	end;

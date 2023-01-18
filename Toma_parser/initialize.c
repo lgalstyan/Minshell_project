@@ -18,10 +18,7 @@ t_node	*initialize(char *str, t_node *node)
 
 	i = 0;
 	
-	// printf("%s\n", str);
 	str = rm_space(str);
-	printf("%s\n", str);
-	printf("aaa%s\n", node->cmd[0]);
 	i += put_cmd(node, str, i);
 	while (str && str[i])
 	{
@@ -35,7 +32,7 @@ t_node	*initialize(char *str, t_node *node)
 		else if (str[i] == '>' && str[i + 1] != '>')
 			i += put_in(node, str, i);
 		else if (str[i] == '<' && str[i + 1] != '<')
-			put_out(node, str, i);
+			i += put_out(node, str, i);
 		++i;
 	}
 	node->next = NULL;

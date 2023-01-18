@@ -50,7 +50,7 @@ int		put_hd(t_node *node, char *str, int s);
 int		put_ap(t_node *node, char *str, int s);
 int		put_cmd(t_node *node, char *str, int s);
 void	ft_lstadd_back(t_node **lst, t_node *n);
-t_node	*initialize(char *str, t_node **node);
+t_node	*initialize(char *str, t_node *node);
 t_node	*ft_lstlast(t_node *lst);
 
 #endif

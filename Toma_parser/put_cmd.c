@@ -18,12 +18,11 @@ int	put_cmd(t_node *node, char *str, int s)
 	int l;
 
 	i = 0;
+	node->cmd = malloc(sizeof(char *));
 	node->cmd[i++] = ft_strdup(str);
-	printf("malmlo\n");
-	//str = rm_space(str);
+
 	l = pars_ft_strlen(str);
 	s = pars_ft_strlen(node->cmd[0]);
-	printf("baby\n");
 	while (str[s] && s < l)
 	{
 		if (str[s] && str[s] != ' ')
@@ -35,13 +34,10 @@ int	put_cmd(t_node *node, char *str, int s)
 			if (str[s] == '<' || str[s] == '>')
 				return (s);
 			node->cmd[i] = ft_strdup(str + s);
-			printf("cmd[%d] = %s\n", i, node->cmd[i]);
 			s += pars_ft_strlen(node->cmd[i]);
-			printf("s = %d str + s = %s\n", s, str + s);
 		}
 		else
 			return(s);
-		write(1, &str+s, 1);
 		++i;
 		++s;
 	}

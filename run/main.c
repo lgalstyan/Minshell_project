@@ -66,7 +66,7 @@ int prompt(t_node node, t_env **envir, char **env)
 }
 
 
-int main(int argc, char **argv, char **env)
+int main(char **env)
 {
 	(void)argc;
 	(void)argv;
@@ -97,7 +97,7 @@ int main(int argc, char **argv, char **env)
 			continue ;
 		// parser_node();
 		// node.cmd = ft_split(line, ' '); //Tomayi grac parsy
-		node = pars(line);
+		node = parser(line);
 		printf("%s\n", node->cmd[0]);
 		// printf("%s\n%s\n%s", node.cmd[0], node.cmd[1], node.cmd[2]);
 		// status = builtin(node, envir);
