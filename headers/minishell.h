@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:44:17 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/01/16 15:19:03 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/19 17:41:05 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ t_node	*ft_lstlast(t_node *lst);
 
 
 void	ft_lstadd_back_env(t_env **lst, t_env *new_env);
-void	builtin(t_node node, t_env **en);
+int		builtin(t_node node, t_env **en);
 int		is_builtin(char *cmd);
 void	ft_inint_env(char *elem1, char *elem2, t_env *node);
 int		ft_atoi(char *str);
