@@ -22,6 +22,17 @@ static int	cnt_word(char *str, char delim)
 	return (count);
 }
 
+static void	*fr(char **s, int i)
+{
+	while (i > 0)
+	{
+		free(s[i]);
+		i--;
+	}
+	free(s);
+	return (0);
+}
+*/
 static char	*ml(char *s, int st, int len)
 {
 	char	*tab;
@@ -41,16 +52,6 @@ static char	*ml(char *s, int st, int len)
 	return (tab);
 }
 
-static void	*fr(char **s, int i)
-{
-	while (i > 0)
-	{
-		free(s[i]);
-		i--;
-	}
-	free(s);
-	return (0);
-}
 
 char	**ft_split_export(char *s, char c)
 {
@@ -79,16 +80,6 @@ char	**ft_split_export(char *s, char c)
 	}
 
 	return (tab);
-}*/
-
-int	ft_strlen(char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s && s[i] != 0)
-		i++;
-	return (i);
 }
 
 static	int	gtav(char *s, char c)

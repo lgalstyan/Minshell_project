@@ -65,8 +65,7 @@ int prompt(t_node node, t_env **envir, char **env)
 	return (0);
 }
 
-
-int main(char **env)
+int main(int argc, char **argv, char **env)
 {
 	(void)argc;
 	(void)argv;
