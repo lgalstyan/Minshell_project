@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cmd_export.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/20 15:59:41 by lgalstya          #+#    #+#             */
+/*   Updated: 2023/01/20 16:04:58 by lgalstya         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 //hashvarkac choi vor kara "=" i koxqy space lini, zut split a anum = ov
@@ -5,8 +17,9 @@ void	equal_only(char **array, t_env **en)
 {
 	t_env	*new_node;
 	t_env	*curr;
-	int		flag = 0;
+	int		flag;
 
+	flag = 0;
 	curr = *en;
 	while (curr)
 	{
@@ -17,9 +30,8 @@ void	equal_only(char **array, t_env **en)
 		}
 		curr = curr->next;
 	}
-	if (!array[1]){
+	if (!array[1])
 		array[1] = "";
-	}
 	if (!flag)
 	{
 		new_node = malloc(sizeof(t_env));
@@ -52,35 +64,13 @@ void	pluse_equal(char **array, t_env **en)
 	}
 }
 
-int	check_valid_identif(char *str)
-{
-	int		i;
-	char	**array;
-
-	i = 0;
-	if (ft_strnstr(str, "+=", ft_strlen(str)))
-	{
-		array = ft_split(str, '+');
-		printf("hello_%s_\n", array[1]);
-		++i;
-	}
-	else
-		array = ft_split(str, '=');
-	while (array[0][i])
-	{
-		if(!check_valid(array[0][i]))
-			return (0);
-		++i;
-	}
-	return 1;
-}
-
 static void	add_only(char *array, t_env **en)
 {
 	t_env	*new_node;
 	t_env	*curr;
-	int		flag = 0;
+	int		flag;
 
+	flag = 0;
 	curr = *en;
 	while (curr)
 	{
@@ -119,7 +109,8 @@ void	cmd_export(t_node new_env, t_env **en)
 		sortList(en);
 		return ;
 	}
-	if(!check_valid_identif(new_env.cmd[1]) || (new_env.cmd[1][0] > 47 && new_env.cmd[1][0] < 58))
+	if (!check_valid_identif(new_env.cmd[1])
+		|| (new_env.cmd[1][0] > 47 && new_env.cmd[1][0] < 58))
 	{
 		printf("export: `%s': not a valid identifier\n", new_env.cmd[1]);
 		return ;
@@ -265,7 +256,8 @@ void	cmd_export(t_node new_env, t_env **en)
 // 		sortList(en);
 // 		return ;
 // 	}
-// 	if(!check_valid_identif(new_env.cmd[1]) || (new_env.cmd[1][0] > 47 && new_env.cmd[1][0] < 58))
+// 	if(!check_valid_identif(new_env.cmd[1])
+//		|| (new_env.cmd[1][0] > 47 && new_env.cmd[1][0] < 58))
 // 	{
 // 		printf("export: `%s': not a valid identifier\n", new_env.cmd[1]);
 // 		return ;

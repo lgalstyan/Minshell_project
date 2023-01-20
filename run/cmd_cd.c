@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cmd_cd.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/20 15:41:37 by lgalstya          #+#    #+#             */
+/*   Updated: 2023/01/20 15:42:58 by lgalstya         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 void	add_oldpwd(char *path, t_env **en)
@@ -22,7 +34,7 @@ int	cmd_cd(t_node node, t_env **en)
 	st = 0;
 	if ((!node.cmd[1]) || !ft_strcmp(node.cmd[1], "~"))
 	{
-		if(!chdir(search_list(*en, "HOME")))
+		if (!chdir(search_list(*en, "HOME")))
 		{
 			add_oldpwd(search_list(*en, "HOME"), en);
 			return (0);
@@ -31,11 +43,11 @@ int	cmd_cd(t_node node, t_env **en)
 	}
 	else if (!ft_strcmp(node.cmd[1], "-"))
 	{
-		if(search_list(*en, "OLDPWD") == 0)
+		if (search_list(*en, "OLDPWD") == 0)
 			printf("cd: OLDPWD not set\n");
 		else
 		{
-			if(!chdir(search_list(*en, "OLDPWD")))
+			if (!chdir(search_list(*en, "OLDPWD")))
 			{
 				add_oldpwd(search_list(*en, "OLDPWD"), en);
 				st = cmd_pwd();
@@ -48,7 +60,7 @@ int	cmd_cd(t_node node, t_env **en)
 	{
 		path = get_current_path();
 		add_oldpwd(path, en);
-		if(!chdir(node.cmd[1]))
+		if (!chdir(node.cmd[1]))
 			return (0);
 		else
 			return (-1);

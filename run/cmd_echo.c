@@ -1,14 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cmd_echo.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/20 15:57:27 by lgalstya          #+#    #+#             */
+/*   Updated: 2023/01/20 15:58:48 by lgalstya         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 int	check_valid(char c)
 {
-	if(c == '_' || (c > 47 && c < 58) || 
-			(c > 64 && c < 91) || (c > 96 && c < 123))
+	if (c == '_' || (c > 47 && c < 58)
+		|| (c > 64 && c < 91) || (c > 96 && c < 123))
 		return (1);
 	return (0);
 }
 
-void var_values(char *str, t_env *en)
+void	var_values(char *str, t_env *en)
 {
 	while (en)
 	{
@@ -18,18 +30,18 @@ void var_values(char *str, t_env *en)
 	}
 }
 
-void	ft_strfind(char  *str, t_env **en)
+void	ft_strfind(char *str, t_env **en)
 {
-	int	i;
-	int start;
-	char *word;
+	int		i;
+	int		start;
+	char	*word;
 
 	i = 0;
 	if (!str)
 		return ;
 	while (str[i])
 	{
-		if(str[i] == '$')
+		if (str[i] == '$')
 		{
 			i++;
 			start = i;
@@ -46,12 +58,10 @@ void	ft_strfind(char  *str, t_env **en)
 	}
 }
 
-//echo " Hello my name is $SHELL $a
-
-void cmd_echo(t_node node, t_env **en)
+void	cmd_echo(t_node node, t_env **en)
 {
 	int		flag;
-	
+
 	flag = 1;
 	if (!node.cmd[1])
 	{

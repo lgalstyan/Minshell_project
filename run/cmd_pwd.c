@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_exit.c                                         :+:      :+:    :+:   */
+/*   cmd_pwd.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 15:59:01 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/01/20 15:59:23 by lgalstya         ###   ########.fr       */
+/*   Created: 2023/01/20 16:06:10 by lgalstya          #+#    #+#             */
+/*   Updated: 2023/01/20 16:08:02 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	cmd_exit(char **cmd)
+int	cmd_pwd(void)
 {
-	int	dig;
+	char	cwd[256];
 
-	dig = 255;
-	if (cmd[1])
+	if (!(getcwd(cwd, sizeof(cwd))))
 	{
-		if (ft_isdigit(cmd[1][0]))
-		{
-			dig = ft_atoi(&cmd[1][0]) % 256;
-			printf("%d", dig);
-		}
+		perror("getcwd() error");
+		return (-1);
 	}
-	exit(0);
+	else
+		printf("%s\n", get_current_path());
+	return (0);
 }

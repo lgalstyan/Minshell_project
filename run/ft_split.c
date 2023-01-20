@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/20 16:08:52 by lgalstya          #+#    #+#             */
+/*   Updated: 2023/01/20 16:09:56 by lgalstya         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 /*
 static int	cnt_word(char *str, char delim)
@@ -36,7 +48,7 @@ static void	*fr(char **s, int i)
 static char	*ml(char *s, int st, int len)
 {
 	char	*tab;
-	int	i;
+	int		i;
 
 	i = 0;
 	tab = malloc(len + 1);
@@ -52,11 +64,10 @@ static char	*ml(char *s, int st, int len)
 	return (tab);
 }
 
-
 char	**ft_split_export(char *s, char c)
 {
 	char	**tab;
-	int	start;
+	int		start;
 
 	start = 0;
 	tab = malloc(sizeof(char **) * 3);
@@ -67,18 +78,15 @@ char	**ft_split_export(char *s, char c)
 		if (s[start] && s[start] == c)
 		{
 			tab[0] = ml(s, 0, start);
-			// printf("tab0=%s", tab[0]);
 			if (s[start + 1])
 			{
 				tab[1] = ml(s, start + 1, ft_strlen(s) - start - 1);
-				// printf("tab1=%s", tab[1]);
 				tab[2] = 0;
 				return (tab);
 			}
 		}
 		start++;
 	}
-
 	return (tab);
 }
 
@@ -109,7 +117,7 @@ static	int	gtav(char *s, char c)
 static char	*lcnel(char *s,	int h,	int l)
 {
 	char	*str;
-	int	i;
+	int		i;
 
 	i = -1;
 	str = malloc(sizeof(char) * (l + 1));
@@ -123,10 +131,10 @@ static char	*lcnel(char *s,	int h,	int l)
 
 char	**ft_split(char *s, char c)
 {
-	int	h;
-	int	t;
-	int	i;
-	int	count;
+	int		h;
+	int		t;
+	int		i;
+	int		count;
 	char	**str;
 
 	h = 0;
@@ -229,8 +237,6 @@ char	**ft_split(char *s, char c)
 // 	str[i] = 0;
 // 	return (str);
 // }
-
-
 
 // // static	int	cnt_word(char *str, char delim)
 // // {

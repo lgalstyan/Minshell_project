@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_exit.c                                         :+:      :+:    :+:   */
+/*   enviroments.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 15:59:01 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/01/20 15:59:23 by lgalstya         ###   ########.fr       */
+/*   Created: 2023/01/20 16:17:28 by lgalstya          #+#    #+#             */
+/*   Updated: 2023/01/20 16:18:09 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	cmd_exit(char **cmd)
+void	ft_inint_env(char *elem1, char *elem2, t_env *node)
 {
-	int	dig;
+	node->key = elem1;
+	node->value = elem2;
+	node->next = NULL;
+}
 
-	dig = 255;
-	if (cmd[1])
+void	environments(char **env, t_env **envir)
+{
+	int		i;
+	char	**array;
+	t_env	*new_node;
+
+	i = 0;
+	while (env[i])
 	{
-		if (ft_isdigit(cmd[1][0]))
-		{
-			dig = ft_atoi(&cmd[1][0]) % 256;
-			printf("%d", dig);
-		}
+		new_node = malloc(sizeof(t_env));
+		array = ft_split(env[i], '=');
+		ft_inint_env(array[0], array[1], new_node);
+		ft_lstadd_back_env(envir, new_node);
+		++i;
 	}
-	exit(0);
 }
