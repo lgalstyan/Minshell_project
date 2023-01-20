@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:59:41 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/01/20 16:04:58 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/20 17:30:05 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void	cmd_export(t_node new_env, t_env **en)
 
 	if (!new_env.cmd[1])
 	{
-		sortList(en);
+		sort_list(en);
 		return ;
 	}
 	if (!check_valid_identif(new_env.cmd[1])

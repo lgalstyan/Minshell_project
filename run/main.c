@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:10:37 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/01/20 16:18:56 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/20 17:53:19 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,9 @@ static void	take_pars_val(t_node *node, t_env **envir, char **env)
 
 	i = 0;
 	status = 0;
-	while (node[i].cmd)
+	while (node[i].cmd[0])
 	{
 		status = prompt(node[i], envir, env);
-		printf("xelooooooooo\n");
 		if(!status)
 		{
 			printf("unknown command\n");
@@ -63,6 +62,7 @@ int	main(int argc, char **argv, char **env)
 	// printf(BOLD_GREEN);
 	while (1)
 	{
+		
 		printf(ESC_GREEN);
 		line = readline("minishell :"ESC_WHITE);
 		if (line[0])

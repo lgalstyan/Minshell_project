@@ -6,11 +6,11 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:02:06 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/01/20 16:02:54 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/20 17:28:12 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minishell.h"
 
 int	check_valid_identif(char *str)
 {
