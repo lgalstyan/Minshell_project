@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:39:38 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/01/21 16:48:47 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/21 17:04:39 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	builtin(t_node node, t_env **en)
 	int	status;
 
 	status = -1;
-	printf("mtav builtin and cmd is %s\n", node.cmd[0]);
+	// printf("mtav builtin and cmd is %s\n", node.cmd[0]);
 	if (!ft_strcmp(node.cmd[0], "echo"))
 	{
 		printf(BOLD_BLUE);

@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:16:22 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/01/21 16:48:53 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/21 17:25:33 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,24 @@ int	prompt(t_node node, t_env **envir, char **env)
 	char	*path;
 	int		st;
 	int		exec_status;
+	int		pid;
 
 	st = 0;
 	if (is_builtin(node.cmd[0]))
 		st = builtin(node, envir);
 	else
-	{	
-		path = search_list(*envir, "PATH");
-		cmd = accses_to_exec(node.cmd[0], path);
-		exec_status = execve(cmd, node.cmd, env);
-		if (exec_status == -1)
-			printf("Syntax error\n");
+	{
+		pid = fork();
+		if (!pid)
+		{
+			path = search_list(*envir, "PATH");
+			printf("%s\n", path);
+			cmd = accses_to_exec(node.cmd[0], path);
+			exec_status = execve(cmd, node.cmd, env);
+			if (exec_status == -1)
+				printf("Syntax error\n");
+		}
+		wait(0);
 	}
 	return (st);
 }
