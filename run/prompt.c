@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:16:22 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/01/20 16:16:39 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/21 13:18:11 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ int	prompt(t_node node, t_env **envir, char **env)
 	st = 0;
 	st = builtin(node, envir);
 	path = search_list(*envir, node.cmd[0]);
-	if (!path)
-		printf("path-y chka\n");
 	if (path)
 	{
 		cmd = accses_to_exec(node.cmd[0], path);

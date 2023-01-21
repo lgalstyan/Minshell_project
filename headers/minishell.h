@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:44:17 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/01/20 17:29:37 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/21 13:12:26 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,12 @@
 typedef struct s_node
 {
 	char			**heardock;
-	char			**append; //  <<
-	char			**infile; // >
-	char			**outfile; // <
+	char			**append;
+	char			**infile;
+	char			**outfile;
 	char			**cmd;
-	struct s_node	*next;
+	struct	s_node	*next;
+	int				*redir;
 }			t_node;
 
 typedef struct s_env

@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 18:13:03 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/20 15:15:51 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/21 13:03:28 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	put_cmd(t_node *node, char *str, int s)
 	node->cmd = malloc(sizeof(char *));
 	node->cmd[i++] = ft_strdup(str);
 	// node->cmd[i] = ft_strdup(NULL);
-	printf("node->cmd[i] = %s\n", node->cmd[0]);
+	//printf("node->cmd[i] = %s\n", node->cmd[0]);
 
 	l = pars_ft_strlen(str);
 	s = pars_ft_strlen(node->cmd[0]);
