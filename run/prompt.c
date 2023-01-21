@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:16:22 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/01/21 13:18:11 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/21 16:48:53 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,32 +18,48 @@ char	*accses_to_exec(char *cmd, char *path)
 	char	**token;
 	char	*cmd_accs;
 
-	i = -1;
-	write(1, "Hello malmlo\n", 13);
+	i = 0;
 	token = ft_split(path, ':');
-	write(1, "after  Hello malmlo\n", 13);
-	while (token[++i])
+	cmd = ft_strjoin("/", cmd);
+	while (token[i])
 	{
 		cmd_accs = ft_strjoin(token[i], cmd);
-		if (access(cmd_accs, 0))
+		if (access(cmd_accs, 0) == 0)
+		{
 			return (cmd_accs);
+		}
+		i++;
 	}
 	return (cmd);
 }
+
+// int is_builtin(char *cmd)
+// {
+// 	if (!(ft_strcmp(cmd, "echo")) || !(ft_strcmp(cmd, "pwd"))
+// 		|| !(ft_strcmp(cmd, "unset")) || !(ft_strcmp(cmd, "exit"))
+// 		|| !(ft_strcmp(cmd, "cd")) || !(ft_strcmp(cmd, "export"))
+// 		|| !(ft_strcmp(cmd, "env")))
+// 		return (1);
+// 	return (0);
+// }
 
 int	prompt(t_node node, t_env **envir, char **env)
 {
 	char	*cmd;
 	char	*path;
 	int		st;
+	int		exec_status;
 
 	st = 0;
-	st = builtin(node, envir);
-	path = search_list(*envir, node.cmd[0]);
-	if (path)
-	{
+	if (is_builtin(node.cmd[0]))
+		st = builtin(node, envir);
+	else
+	{	
+		path = search_list(*envir, "PATH");
 		cmd = accses_to_exec(node.cmd[0], path);
-		execve(cmd, node.cmd, env);
+		exec_status = execve(cmd, node.cmd, env);
+		if (exec_status == -1)
+			printf("Syntax error\n");
 	}
 	return (st);
 }

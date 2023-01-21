@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:20:48 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/01/20 16:27:32 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/21 13:21:38 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void	sort_list(t_env **env)
 
 	index = NULL;
 	current = *env;
-	printf("wwwwwwwww =\n");
 	if (env == NULL)
 		return ;
 	while (!current)

@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:10:37 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/01/21 13:17:13 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/21 16:39:05 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,12 @@ static void	take_pars_val(t_node *node, t_env **envir, char **env)
 	while (curr)
 	{
 		status = prompt(*curr, envir, env);
-		if(!status)
-		{
-			printf("unknown command\n");
-			return ;
-		}
+		printf("curr\n");
+		// if(status)
+		// {
+		// 	printf("unknown command\n");
+		// 	return ;
+		// }
 		curr = curr->next;
 	}
 }
@@ -75,6 +76,7 @@ int	main(int argc, char **argv, char **env)
 		// printf("node1=%s\n", node[0].cmd[0]);
 		// printf("node2=%s\n", node[0].cmd[1]);
 		take_pars_val(node, envir, env);
+		printf("11111111111");
 		write(fd, line, ft_strlen(line));
 	}
 	return (0);

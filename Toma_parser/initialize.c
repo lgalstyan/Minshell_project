@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 14:34:10 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/20 15:18:19 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/21 16:51:20 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_node	*initialize(char *str, t_node *node)
 
 	i = 0;
 	
-	str = rm_space(str);
+	// str = rm_space(str);
 		i += put_cmd(node, str, i);
 	while (str && str[i])
 	{

@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:59:41 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/01/20 17:30:05 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/21 16:50:00 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ void	cmd_export(t_node new_env, t_env **en)
 {
 	char	**array;
 
+	printf("new_env\n");
 	if (!new_env.cmd[1])
 	{
 		sort_list(en);
@@ -117,6 +118,7 @@ void	cmd_export(t_node new_env, t_env **en)
 	}
 	else if (ft_strnstr(new_env.cmd[1], "+=", ft_strlen(new_env.cmd[1])))
 	{
+		printf("+= i depq\n");
 		if (!check_pluse_equal(new_env.cmd[1]))
 		{
 			printf("export: `%s': not a valid identifier\n", new_env.cmd[1]);
@@ -128,11 +130,13 @@ void	cmd_export(t_node new_env, t_env **en)
 	}
 	else if (ft_strnstr(new_env.cmd[1], "=", ft_strlen(new_env.cmd[1])))
 	{
+		printf("= i depq\n");
 		array = ft_split_export(new_env.cmd[1], '=');
 		equal_only(array, en);
 	}
 	else
 	{
+		printf("miayn varable enq avelacnum\n");
 		add_only(new_env.cmd[1], en);
 	}
 }
