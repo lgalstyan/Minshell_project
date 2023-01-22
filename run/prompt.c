@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:16:22 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/01/22 14:12:00 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/22 15:00:28 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ char	*accses_to_exec(char *cmd, char *path)
 
 	i = 0;
 	token = ft_split(path, ':');
-	cmd = ft_strjoin("/", cmd);
+	// printf("%s\n", cmd);
+	if (cmd[0] != '.')
+		cmd = ft_strjoin("/", cmd);
 	while (token[i])
 	{
 		cmd_accs = ft_strjoin(token[i], cmd);
@@ -54,16 +56,9 @@ int	prompt(t_node node, t_env **envir)
 		{
 			path = search_list(*envir, "PATH");
 			cmd = accses_to_exec(node.cmd[0], path);
-			printf("cmd =%s\n,", cmd);
-			printf("node.cmd =%s\n,", *node.cmd);
 			exec_status = execve(cmd, node.cmd, ch_env);
 			if (exec_status == -1)
 			{
-				int i = 0;
-				while (ch_env[i])
-				{
-					printf("ch_env =%s\n,", ch_env[i++]);	
-				}
 				printf("errno = %d\n", errno);
 				perror("execve : ");
 				printf("Syntax error\n");

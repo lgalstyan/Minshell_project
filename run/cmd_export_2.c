@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:02:06 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/01/20 17:28:12 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/22 16:37:04 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	check_valid_identif(char *str)
 	if (ft_strnstr(str, "+=", ft_strlen(str)))
 	{
 		array = ft_split(str, '+');
-		printf("hello_%s_\n", array[1]);
+		// printf("hello_%s_\n", array[1]);
 		++i;
 	}
 	else
