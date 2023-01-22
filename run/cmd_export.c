@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:59:41 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/01/21 16:50:00 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/22 12:01:33 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,6 @@ void	cmd_export(t_node new_env, t_env **en)
 {
 	char	**array;
 
-	printf("new_env\n");
 	if (!new_env.cmd[1])
 	{
 		sort_list(en);

@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:10:37 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/01/21 17:04:27 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/22 12:13:35 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ignore_signals(void)
     signal(SIGQUIT, SIG_IGN);
 }
 
-static void	take_pars_val(t_node *node, t_env **envir, char **env)
+static void	take_pars_val(t_node *node, t_env **envir)
 {
 	int 	status;
 	int 	i;
@@ -33,7 +33,7 @@ static void	take_pars_val(t_node *node, t_env **envir, char **env)
 	status = 0;
 	while (curr)
 	{
-		status = prompt(*curr, envir, env);
+		status = prompt(*curr, envir);
 		curr = curr->next;
 	}
 }
@@ -68,7 +68,7 @@ int	main(int argc, char **argv, char **env)
 		node = parser(line);
 		// printf("node1=%s\n", node[0].cmd[0]);
 		// printf("node2=%s\n", node[0].cmd[1]);
-		take_pars_val(node, envir, env);
+		take_pars_val(node, envir);
 		// printf("11111111111\n");
 		//write(fd, line, ft_strlen(line));
 	}

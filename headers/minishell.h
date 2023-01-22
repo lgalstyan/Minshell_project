@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:44:17 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/01/21 13:12:26 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/22 12:13:58 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,8 +117,9 @@ int		check_valid_identif(char *str);
 void	update_list_item(t_env **lst, char *key, char *value);
 char	*get_current_path(void);
 void	sort_list(t_env **env);
-int		prompt(t_node node, t_env **envir, char **env);
+int		prompt(t_node node, t_env **envir);
 void	environments(char **env, t_env **envir);
+char	**list_to_char(t_env *env);
 
 
 
