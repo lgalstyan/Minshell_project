@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:10:37 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/01/22 12:13:35 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/22 14:22:44 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,9 @@ void	ignore_signals(void)
 static void	take_pars_val(t_node *node, t_env **envir)
 {
 	int 	status;
-	int 	i;
 	t_node	*curr;
 
 	curr = node;
-	i = 0;
 	status = 0;
 	while (curr)
 	{
@@ -47,7 +45,7 @@ int	main(int argc, char **argv, char **env)
 	t_env	**envir;
 	int		fd;
 
-	envir = malloc(sizeof(t_env*));
+	envir = malloc(sizeof(t_env *));
 	*envir = NULL;
 	environments(env, envir);
 	fd = open("./../dup.txt", O_CREAT | O_WRONLY);
@@ -66,10 +64,9 @@ int	main(int argc, char **argv, char **env)
 		else
 			continue ;
 		node = parser(line);
-		// printf("node1=%s\n", node[0].cmd[0]);
-		// printf("node2=%s\n", node[0].cmd[1]);
+		// node.cmd = ft_split(line, ' ');
+		// printf("%s\n", node.cmd[0]);
 		take_pars_val(node, envir);
-		// printf("11111111111\n");
 		//write(fd, line, ft_strlen(line));
 	}
 	return (0);

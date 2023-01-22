@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:16:22 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/01/22 12:31:09 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/22 14:12:00 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ int	prompt(t_node node, t_env **envir)
 
 	st = 0;
 	printf("cmd1=%s_end\n", node.cmd[0]);
-	if (node.cmd[1])
-		printf("cmd2=%s_end\n", node.cmd[1]);	
 	ch_env = list_to_char(*envir);
 	if (is_builtin(node.cmd[0]))
 		st = builtin(node, envir);
@@ -56,11 +54,22 @@ int	prompt(t_node node, t_env **envir)
 		{
 			path = search_list(*envir, "PATH");
 			cmd = accses_to_exec(node.cmd[0], path);
+			printf("cmd =%s\n,", cmd);
+			printf("node.cmd =%s\n,", *node.cmd);
 			exec_status = execve(cmd, node.cmd, ch_env);
 			if (exec_status == -1)
+			{
+				int i = 0;
+				while (ch_env[i])
+				{
+					printf("ch_env =%s\n,", ch_env[i++]);	
+				}
+				printf("errno = %d\n", errno);
+				perror("execve : ");
 				printf("Syntax error\n");
+			}
 		}
-		wait(0);
+		wait(NULL);
 	}
 	return (st);
 }

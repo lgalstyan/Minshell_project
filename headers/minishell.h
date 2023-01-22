@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:44:17 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/01/22 12:13:58 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/22 14:27:00 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 // # include <dirent.h>
 # include "libft.h"
 # include "commands.h"
+# include <errno.h>
 
 # define BLACK		 "\033[0;30m"
 # define BOLD_BLACK  "\033[1;30m"
@@ -60,6 +61,7 @@
 # define ESC_WHITE 		 "\001\033[0;37m\002"
 # define ESC_BOLD_WHITE  "\001\033[1;37m\002"
 # define ESC_RESET_COLOR "\001\033[0m\002"
+# define METACHARACTERS  "|&;()<> \n\t"
 
 typedef struct s_node
 {
