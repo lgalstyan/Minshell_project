@@ -57,6 +57,7 @@ int	prompt(t_node node, t_env **envir)
 			path = search_list(*envir, "PATH");
 			cmd = accses_to_exec(node.cmd[0], path);
 			exec_status = execve(cmd, node.cmd, ch_env);
+			printf("++++++++++++++++++++++++++++\n");
 			if (exec_status == -1)
 			{
 				printf("errno = %d\n", errno);

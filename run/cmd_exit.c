@@ -20,6 +20,7 @@ void	cmd_exit(char **cmd)
 	if (cmd[1] && (ft_isdigit(cmd[1][0]) || cmd[1][0] == '-'))
 	{
 		dig = ft_atoi(cmd[1]) % 256;
+		exit(dig);
 	}
 	else if (cmd[1])
 	{

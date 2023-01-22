@@ -24,14 +24,12 @@ void	ignore_signals(void)
 
 static void	take_pars_val(t_node *node, t_env **envir)
 {
-	int 	status;
 	t_node	*curr;
 
 	curr = node;
-	status = 0;
 	while (curr)
 	{
-		status = prompt(*curr, envir);
+		prompt(*curr, envir);
 		curr = curr->next;
 	}
 }
@@ -63,13 +61,13 @@ int	main(int argc, char **argv, char **env)
 	char	*line;
 	t_node	node;
 	t_env	**envir;
-	int		fd;
+	// int		fd;
 
 	envir = malloc(sizeof(t_env *));
 	*envir = NULL;
 	environments(env, envir);
 	shlvl(envir);
-	fd = open("./../dup.txt", O_CREAT | O_WRONLY);
+	// fd = open("./../dup.txt", O_CREAT | O_WRONLY);
 	// if(fd < 0)
     // 	printf("Error: File not found\n");
 	// dup(fd);
@@ -87,6 +85,7 @@ int	main(int argc, char **argv, char **env)
 		// node = parser(line);
 		node.cmd = ft_split(line, ' ');
 		// printf("%s\n", node.cmd[0]);
+		printf("xello\n");
 		take_pars_val(&node, envir);
 		//write(fd, line, ft_strlen(line));
 	}

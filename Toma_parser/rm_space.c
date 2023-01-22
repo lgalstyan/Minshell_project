@@ -16,12 +16,10 @@ char	*rm_space(char *str)
 {
 	int 	i;
 	int		d;
-	int		flag;
 	char	*dst;
 
 	i = 0;
 	d = 0;
-	flag = 0;
 	dst = malloc((pars_ft_strlen(str)) + 1);
 	while(str[i])
 	{
