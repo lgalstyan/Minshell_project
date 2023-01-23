@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:44:17 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/01/22 14:27:00 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/23 14:55:43 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,16 +63,26 @@
 # define ESC_RESET_COLOR "\001\033[0m\002"
 # define METACHARACTERS  "|&;()<> \n\t"
 
+typedef struct s_size
+{
+	int			s_infile;	//<
+	int			s_outfile;	//>
+	int			s_heredoc;	//<<
+	int			s_append;	//>>
+}				t_size;
+
 typedef struct s_node
 {
-	char			**heardock;
+	t_size			counts;
+	char			*readline;
+	char			**heredoc;
 	char			**append;
 	char			**infile;
 	char			**outfile;
 	char			**cmd;
-	struct	s_node	*next;
 	int				*redir;
-}			t_node;
+	struct	s_node	*next;
+}					t_node;
 
 typedef struct s_env
 {
@@ -88,7 +98,7 @@ char	**ft_split_pars(char *s, char c);
 char	**ft_split_export(char *s, char c);
 char	ft_strgtav(char *str, int c);
 char	*ft_strcpy(char *dst, char *src);
-char	*ft_strdup(char *s1);
+char	*run_ft_strdup(char *s1);
 char	*rm_space(char *str);
 int		put_in(t_node *node, char *str, int s);
 int		put_cmd(t_node *node, char *str, int s);
@@ -125,6 +135,7 @@ char	**list_to_char(t_env *env);
 
 
 
-t_node	*parser(char *str);
+t_node	*lexer(char *str);
+t_node	*parser(t_node *node);
 
 #endif

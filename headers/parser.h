@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 13:33:14 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/22 15:18:22 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/23 14:10:12 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,26 @@
 #include <readline/history.h>
 #include <stdlib.h>
 
+typedef struct s_size
+{
+	int			s_infile;	//<
+	int			s_outfile;	//>
+	int			s_heredoc;	//<<
+	int			s_append;	//>>
+}				t_size;
+
 typedef struct s_node
 {
-	char			**heardock;
+	t_size			counts;
+	char			*readline;
+	char			**heredoc;
 	char			**append;
 	char			**infile;
 	char			**outfile;
 	char			**cmd;
-	struct	s_node	*next;
 	int				*redir;
-}			t_node;
+	struct	s_node	*next;
+}					t_node;
 
 int		wcount(char *s, char c);
 int		checkquotes(char *str);
@@ -51,6 +61,11 @@ int		put_ap(t_node *node, char *str, int s);
 int		put_cmd(t_node *node, char *str, int s);
 void	ft_lstadd_back(t_node **lst, t_node *n);
 t_node	*initialize(char *str, t_node *node);
-t_node	*ft_lstlast(t_node *lst);
+void	*ft_calloc(size_t c, size_t s);
+
+int		ft_infile_count(char *line);
+int		ft_outfile_count(char *line);
+int		ft_heredoc_count(char *line);
+int		ft_append_count(char *line);
 
 #endif

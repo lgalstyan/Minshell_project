@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:10:37 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/01/23 12:09:59 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/23 15:01:29 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@ void	ignore_signals(void)
     signal(SIGQUIT, SIG_IGN);
 }
 
-static void	take_pars_val(t_node *node, t_env **envir)
-{
-	t_node	*curr;
+// static void	take_pars_val(t_node *node, t_env **envir)
+// {
+// 	t_node	*curr;
 
-	curr = node;
-	while (curr)
-	{
-		prompt(*curr, envir);
-		curr = curr->next;
-	}
-}
+// 	curr = node;
+// 	while (curr)
+// 	{
+// 		prompt(*curr, envir);
+// 		curr = curr->next;
+// 	}
+// }
 
 void	shlvl(t_env **en)
 {
@@ -59,7 +59,7 @@ int	main(int argc, char **argv, char **env)
 	(void)argc;
 	(void)argv;
 	char	*line;
-	t_node	node;
+	t_node	*node;
 	t_env	**envir;
 	// int		fd;
 
@@ -82,9 +82,10 @@ int	main(int argc, char **argv, char **env)
 			add_history(line);
 		else
 			continue ;
-		// node = parser(line);
-		node.cmd = ft_split(line, ' ');
-		take_pars_val(&node, envir);
+		node = lexer(line);
+		node = parser(node);
+		// node.cmd = ft_split(line, ' ');
+		// take_pars_val(&node, envir);
 		//write(fd, line, ft_strlen(line));
 	}
 	return (0);
