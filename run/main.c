@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:10:37 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/01/22 16:37:26 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/23 12:09:59 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,6 @@ int	main(int argc, char **argv, char **env)
 			continue ;
 		// node = parser(line);
 		node.cmd = ft_split(line, ' ');
-		// printf("%s\n", node.cmd[0]);
-		printf("xello\n");
 		take_pars_val(&node, envir);
 		//write(fd, line, ft_strlen(line));
 	}
