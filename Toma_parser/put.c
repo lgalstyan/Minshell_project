@@ -6,32 +6,29 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 15:06:25 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/23 14:46:05 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/24 12:37:45 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-int	put_in(t_node *node, char *str, int s)
+int	put_in(t_node *node, int s)
 {
 	int	i;
 	int	l;
 
 	i = 0;
-	l = pars_ft_strlen(str);
-	while (str[s] && s < l)
+	l = pars_ft_strlen(node->readline);
+	while (node->readline[s] && s < l)
 	{
-		if (str[s] && str[s] != ' ')
+		if (node->readline[s] && node->readline[s] != ' ')
 		{
-			//printf("str+s = %s\n", str+s);
-			node->infile[i] = ft_strdup(str + s);
-			//printf("infile[%d] = %s\n", i, node->infile[i]);
+			node->infile[i] = ft_strdup(node->readline + s);
 			s += pars_ft_strlen(node->infile[i]);
 		}
-		if (str[s] != ' ' && str[s])
+		if (node->readline[s] != ' ' && node->readline[s])
 		{
-			ft_strcpy(node->infile[i], str + s);
-			write(1, &*node->infile[i], 1);
+			ft_strcpy(node->infile[i], node->readline + s);
 			s += pars_ft_strlen(node->infile[i]);
 		}
 		else
@@ -43,29 +40,24 @@ int	put_in(t_node *node, char *str, int s)
 }
 
 
-int	put_out(t_node *node, char *str, int s)
+int	put_out(t_node *node, int s)
 {
 	int	i;
 	int	l;
 
 	i = 0;
-	l = pars_ft_strlen(str);
-	node->outfile = malloc(sizeof(char *));
-	while (str[s] && s < l)
+	l = pars_ft_strlen(node->readline);
+	while (node->readline[s] && s < l)
 	{
-		if (str[s] && str[s] != ' ')
+		if (node->readline[s] && node->readline[s] != ' ')
 		{
-			//printf("str+s = %s\n", str+s);
-			if(node->outfile[i] && str + s)
-				//printf("baby\n");
-			node->outfile[i] = ft_strdup(str + s);
-			//printf("outfile[%d] = %s\n", i, node->outfile[i]);
+			if(node->outfile[i] && node->readline + s)
+			node->outfile[i] = ft_strdup(node->readline + s);
 			s += pars_ft_strlen(node->outfile[i]);
 		}
-		if (str[s] != ' ' && str[s])
+		if (node->readline[s] != ' ' && node->readline[s])
 		{
-			ft_strcpy(node->outfile[i], str + s);
-			write(1, &*node->outfile[i], 1);
+			ft_strcpy(node->outfile[i], node->readline + s);
 			s += pars_ft_strlen(node->outfile[i]);
 		}
 		else
@@ -76,60 +68,53 @@ int	put_out(t_node *node, char *str, int s)
 	return (s);
 }
 
-
-// int	put_hd(t_node *node, char *str, int s)
-// {
-// 	int	i;
-// 	int	l;
-
-// 	i = 0;
-// 	l = pars_ft_strlen(str);
-// 	node->heardock = malloc(sizeof(char *));
-// 	while (str[s] && s < l)
-// 	{
-// 		if (str[s] && str[s] != ' ')	
-// 		{
-// 			//printf("str+s = %s\n", str+s);
-// 			node->heardock[i] = ft_strdup(str + s);
-// 			//printf("heardock[%d] = %s\n", i, node->heardock[i]);
-// 			s += pars_ft_strlen(node->heardock[i]);
-// 		}
-// 		if (str[s] != ' ' && str[s])
-// 		{
-// 			ft_strcpy(node->heardock[i], str + s);
-// 			write(1, &*node->heardock[i], 1);
-// 			s += pars_ft_strlen(node->heardock[i]);
-// 		}
-// 		else
-// 			return(s);;
-// 		++i;
-// 		++s;
-// 	}
-// 	return (s);
-// }
-
-
-int	put_ap(t_node *node, char *str, int s)
+int	put_hd(t_node *node, int s)
 {
 	int	i;
 	int	l;
 
 	i = 0;
-	l = pars_ft_strlen(str);
+	l = pars_ft_strlen(node->readline);
+	node->heredoc = malloc(sizeof(char *));
+	while (node->readline[s] && s < l)
+	{
+		if (node->readline[s] && node->readline[s] != ' ')	
+		{
+			node->heredoc[i] = ft_strdup(node->readline + s);
+			s += pars_ft_strlen(node->heredoc[i]);
+		}
+		if (node->readline[s] != ' ' && node->readline[s])
+		{
+			ft_strcpy(node->heredoc[i], node->readline + s);
+			s += pars_ft_strlen(node->heredoc[i]);
+		}
+		else
+			return(s);;
+		++i;
+		++s;
+	}
+	return (s);
+}
+
+
+int	put_ap(t_node *node, int s)
+{
+	int	i;
+	int	l;
+
+	i = 0;
+	l = pars_ft_strlen(node->readline);
 	node->append = malloc(sizeof(char *));
-	while (str[s] && s < l)
+	while (node->readline[s] && s < l)
 	{
-		if (str[s] && str[s] != ' ')	
+		if (node->readline[s] && node->readline[s] != ' ')	
 		{
-			//printf("str+s = %s\n", str+s);
-			node->append[i] = ft_strdup(str + s);
-			//printf("append[%d] = %s\n", i, node->append[i]);
+			node->append[i] = ft_strdup(node->readline + s);
 			s += pars_ft_strlen(node->append[i]);
 		}
-		if (str[s] != ' ' && str[s])
+		if (node->readline[s] != ' ' && node->readline[s])
 		{
-			ft_strcpy(node->append[i], str + s);
-			write(1, &*node->append[i], 1);
+			ft_strcpy(node->append[i], node->readline + s);
 			s += pars_ft_strlen(node->append[i]);
 		}
 		else

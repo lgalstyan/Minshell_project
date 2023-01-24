@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:44:17 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/01/23 14:55:43 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/24 12:00:13 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@
 # include <sys/wait.h>
 # include <readline/readline.h>
 # include <readline/history.h>
-// # include <dirent.h>
+# include <errno.h>
 # include "libft.h"
 # include "commands.h"
-# include <errno.h>
+# include "structs.h"
 
 # define BLACK		 "\033[0;30m"
 # define BOLD_BLACK  "\033[1;30m"
@@ -63,33 +63,6 @@
 # define ESC_RESET_COLOR "\001\033[0m\002"
 # define METACHARACTERS  "|&;()<> \n\t"
 
-typedef struct s_size
-{
-	int			s_infile;	//<
-	int			s_outfile;	//>
-	int			s_heredoc;	//<<
-	int			s_append;	//>>
-}				t_size;
-
-typedef struct s_node
-{
-	t_size			counts;
-	char			*readline;
-	char			**heredoc;
-	char			**append;
-	char			**infile;
-	char			**outfile;
-	char			**cmd;
-	int				*redir;
-	struct	s_node	*next;
-}					t_node;
-
-typedef struct s_env
-{
-	char			*key;
-	char			*value;
-	struct s_env	*next;
-}			t_env;
 
 int		wcount(char *s, char c);
 int		checkquotes(char *str);

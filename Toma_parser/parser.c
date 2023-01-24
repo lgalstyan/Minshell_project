@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 17:25:38 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/23 16:01:17 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/24 12:38:16 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,12 @@ t_node *lexer(char *str)
 	new = malloc(sizeof(t_node));
 	i = 0;
 	node = NULL;
-	if (!checkquotes(str)) //lava
+	if (!checkquotes(str))
 	{
 		printf("Syntax error: the number of quotes is incorrect\n");
 		return (0);
 	}
-	sp = pars_ft_split(str, '|'); // lava	
+	sp = pars_ft_split(str, '|');	
 	while (i < wcount(str, '|') && sp[i])
 	{
 		initialize(sp[i], new);
@@ -87,15 +87,39 @@ void	allocate_matrix(t_node	*head)
 	head->counts.s_heredoc = ft_heredoc_count(head->readline);
 	head->counts.s_append = ft_append_count(head->readline);
 	
-	printf("s_infile = %d, s_outfile = %d, s_heredoc = %d, s_append = %d\n", head->counts.s_infile, head->counts.s_outfile, head->counts.s_heredoc, head->counts.s_append);
-	head->infile = calloc((head->counts.s_infile + 1), sizeof(char *));
-	head->outfile = calloc((head->counts.s_outfile + 1), sizeof(char *));
-	head->heredoc = calloc((head->counts.s_heredoc + 1), sizeof(char *));
-	head->append = calloc((head->counts.s_append + 1), sizeof(char *));
+	printf("s_infile <= %d, s_outfile >= %d, s_heredoc <<= %d, s_append >>= %d\n", head->counts.s_infile, head->counts.s_outfile, head->counts.s_heredoc, head->counts.s_append);
+	head->infile = ft_calloc((head->counts.s_infile + 1), sizeof(char *));
+	head->outfile = ft_calloc((head->counts.s_outfile + 1), sizeof(char *));
+	head->heredoc = ft_calloc((head->counts.s_heredoc + 1), sizeof(char *));
+	head->append = ft_calloc((head->counts.s_append + 1), sizeof(char *));
+}
+
+void	initial_nodes(t_node *node)
+{
+	int	i;
+
+	i = 0;
+	i += put_cmd(node, i);
+	while (node->readline && node->readline[i])
+	{
+		if (node->readline[i] == '\"')
+			while (node->readline[++i] != '\"')
+				;
+		if (node->readline[i] == '>' && node->readline[i + 1] == '>')
+			i += put_hd(node, i);
+		else if (node->readline[i] == '<' && node->readline[i + 1] == '<')
+			i += put_ap(node, i);
+		else if (node->readline[i] == '>' && node->readline[i + 1] != '>')
+			i += put_in(node, i);
+		else if (node->readline[i] == '<' && node->readline[i + 1] != '<')
+			i += put_out(node, i);
+		++i;
+	}
 }
 
 t_node	*parser(t_node *head)
 {	
 	allocate_matrix(head);
+	initial_nodes(head);
 	return (head);
 }
