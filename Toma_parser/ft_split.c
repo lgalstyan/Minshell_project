@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 12:38:27 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/16 15:16:44 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/24 17:22:02 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int wcount(char *s, char c)
 		;
 	while (s[--l] && s[l] == ' ' && i < l)
 		;
-	if (i == pars_ft_strlen(s))
-		return (0);
+	// if (i == pars_ft_strlen(s))
+	// 	return (0);
 	while (s[i] && i < l)
 	{
 		if (s[i] == '\"')
@@ -68,6 +68,7 @@ char	**pars_ft_split(char *s, char c)
 	i = -1;
 	h = 0;
 	count = wcount(s, c);
+	printf("count = %d\n", count);
 	sp = malloc(sizeof(char *) * (count + 1));
 	if (!s || !sp)
 		return (NULL);
@@ -87,6 +88,7 @@ char	**pars_ft_split(char *s, char c)
 		h = t + 1;
 	}
 	sp[i] = 0;
+	printf("%s", sp[0]);
 	return (sp);
 }
 

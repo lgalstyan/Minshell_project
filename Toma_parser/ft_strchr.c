@@ -6,11 +6,27 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 17:46:50 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/16 15:12:59 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/24 17:11:59 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
+
+char	*ft_strchr(const char *s, int c)
+{
+	char	*new_s;
+
+	new_s = (char *)s;
+	while (*new_s != '\0')
+	{
+		if (*new_s == c)
+			return (new_s);
+		new_s++;
+	}
+	if (*new_s == '\0' && c == '\0')
+		return (new_s);
+	return (0);
+}
 
 char	ft_strgtav(char *str, int c)
 {
