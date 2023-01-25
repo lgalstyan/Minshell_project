@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 12:38:27 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/24 17:22:02 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/25 12:33:56 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ char	**pars_ft_split(char *s, char c)
 		h = t + 1;
 	}
 	sp[i] = 0;
-	printf("%s", sp[0]);
+	// printf("%s", sp[0]);
 	return (sp);
 }
 

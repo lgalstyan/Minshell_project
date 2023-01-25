@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_unset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgalstya <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:05:34 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/01/20 16:05:35 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/25 12:19:53 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	cmd_unset(char *del_env, t_env **env)
 				curr->next = NULL;
 			else
 				curr->next = curr->next->next;
+			free(delet->value);
+			free(delet->key);
 			free(delet);
 		}
 		if (curr->next)

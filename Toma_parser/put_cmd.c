@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 18:13:03 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/24 14:15:39 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/25 12:46:58 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,3 +47,39 @@ int	put_cmd(t_node *node, int s)
 	// printf("%s", node->cmd[i]);
 	return (s);
 }
+// static int	is_space(char *str)
+// {
+// 	int	i;
+
+// 	i = -1;
+// 	while (str && str[++i])
+// 		if (str[i] != ' ')
+// 			return (0);
+// 	return (1);
+// }
+
+// char	*pars_cmd(t_node *data, char *str, int index)
+// {
+// 	int			i;
+// 	static int	l = 0;
+
+// 	i = 0;
+// 	if (is_space(str))
+// 		return (NULL);
+// 	if (str[i + index] == '"')
+// 	{
+// 		++i;
+// 		while (str[i + index] && str[i + index] != '"')
+// 			++i;
+// 		++i;
+// 	}
+// 	else
+// 		while (str[i + index] && is_meta(str[i + index]))
+// 			++i;
+// 	data->cmd[l] = ft_substr(str, index, i);
+// 	// printf("cmd[%d] = !%s!\n\n", l, data->cmd[l]);
+// 	++l;
+// 	if (l == 3)
+// 		l = 0;
+// 	return (ft_strcut(str, index, i));
+// }
