@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 17:25:38 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/25 13:45:11 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/25 16:58:39 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ t_node *lexer(char *str)
 	{
 		initialize(sp[i], new);
 		ft_lstadd_back(&node, new);
+		printf("%s", node->readline);
 		++i;
 	}
 	return (node);
@@ -112,6 +113,7 @@ void	initial_nodes(t_node *node)
 		// if (node->readline[i] == '\"')
 		// 	while (node->readline[++i] != '\"')
 		// 		; 
+		put_cmd(node);
 		if (node->readline[i] == '>' && node->readline[i + 1] == '>')
 			put_hd_app(node, ">>");
 		else if (node->readline[i] == '<' && node->readline[i + 1] == '<')
@@ -122,7 +124,6 @@ void	initial_nodes(t_node *node)
 			put_in_out(node, '<');
 		++i;
 	}
-	// i += put_cmd(node, r);
 }
 
 // cat a >> asas asasa < sasa >  ds < sda >> dsd < << < <
@@ -131,7 +132,7 @@ t_node	*parser(t_node *head)
 {	
 	allocate_matrix(head);
 	initial_nodes(head);
-	// print_node(head);
+	print_node(head);
 	// printf("line = %s\n", head->infile[0]);
 	return (head);
 }

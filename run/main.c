@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:10:37 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/01/23 15:01:29 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/25 16:53:30 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@ void	ignore_signals(void)
     signal(SIGQUIT, SIG_IGN);
 }
 
-// static void	take_pars_val(t_node *node, t_env **envir)
-// {
-// 	t_node	*curr;
+static void	take_pars_val(t_node *node, t_env **envir)
+{
+	t_node	*curr;
 
-// 	curr = node;
-// 	while (curr)
-// 	{
-// 		prompt(*curr, envir);
-// 		curr = curr->next;
-// 	}
-// }
+	curr = node;
+	while (curr)
+	{
+		prompt(*curr, envir);
+		curr = curr->next;
+	}
+}
 
 void	shlvl(t_env **en)
 {
@@ -53,6 +53,8 @@ void	shlvl(t_env **en)
 		curr = curr->next;
 	}
 }
+// TODO
+// heredoc_eri mej " ' ery ogtagorcel function vory ignora anum squtery
 
 int	main(int argc, char **argv, char **env)
 {
@@ -74,6 +76,7 @@ int	main(int argc, char **argv, char **env)
 	// ignore_signals();
 	// dup2(fd, 1);
 	// printf(BOLD_GREEN);
+	
 	while (1)
 	{
 		printf(ESC_GREEN);
@@ -85,7 +88,7 @@ int	main(int argc, char **argv, char **env)
 		node = lexer(line);
 		node = parser(node);
 		// node.cmd = ft_split(line, ' ');
-		// take_pars_val(&node, envir);
+		take_pars_val(node, envir);
 		//write(fd, line, ft_strlen(line));
 	}
 	return (0);
