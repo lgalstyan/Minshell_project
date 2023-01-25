@@ -6,7 +6,7 @@
 /*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 17:25:38 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/25 13:27:06 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/25 13:45:11 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ t_node	*parser(t_node *head)
 {	
 	allocate_matrix(head);
 	initial_nodes(head);
-	print_node(head);
+	// print_node(head);
 	// printf("line = %s\n", head->infile[0]);
 	return (head);
 }
