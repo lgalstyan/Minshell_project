@@ -22,6 +22,7 @@
 # include <stdlib.h>
 # include "structs.h"
 # define METACHARACTERS  "|&;()<> \n\t"
+# define SPACES  " \n\t"
 
 int		wcount(char *s, char c);
 int		checkquotes(char *str);
@@ -53,6 +54,7 @@ int		ft_append_count(char *line);
 int		ft_size_all(char *str);
 int		ft_all_redir_size(t_node *node);
 int		is_meta(char c);
+int		is_space(char c);
 void	ignore_quotes(char *str);
 
 

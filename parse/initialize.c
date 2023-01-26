@@ -23,7 +23,7 @@ void	initial_nodes(t_node *node)
 	{
 		// if (node->readline[i] == '\"')
 		// 	while (node->readline[++i] != '\"')
-		// 		; 
+		// 		;
 		put_cmd(node);
 		if (node->readline[i] == '>' && node->readline[i + 1] == '>')
 			put_hd_app(node, ">>");

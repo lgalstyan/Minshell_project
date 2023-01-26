@@ -33,7 +33,7 @@ void	ignore_quotes(char *str)
 
 static int	size_curr_str(char *str, int i)
 {
-	while (str[i] && !is_meta(str[i]))
+	while (str[i] && !is_space(str[i]))
 		i++;
 	return (i);
 }
@@ -48,7 +48,6 @@ void	put_cmd(t_node *node)
 	l = 0;
 	index = 0;
 	printf("cmd = %d\n", node->counts.s_cmd);
-	node->cmd = malloc(sizeof(char*) * node->counts.s_cmd);
 	while (index <= pars_ft_strlen(node->readline) && node->readline[index])
 	{
 		l = size_curr_str(node->readline, index);

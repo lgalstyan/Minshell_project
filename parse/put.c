@@ -19,6 +19,13 @@ int	is_meta(char c)
 	return (0);
 }
 
+int	is_space(char c)
+{
+	if (ft_strchr(SPACES, c) != 0)
+		return (1);
+	return (0);
+}
+
 static int size_infile(char *str, int i, char c)
 {
 	if (str[i] == c)

@@ -62,6 +62,7 @@
 # define ESC_BOLD_WHITE  "\001\033[1;37m\002"
 # define ESC_RESET_COLOR "\001\033[0m\002"
 # define METACHARACTERS  "|&;()<> \n\t"
+# define SPACES  " \n\t"
 
 
 int		wcount(char *s, char c);
