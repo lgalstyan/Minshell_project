@@ -68,7 +68,6 @@ char	**pars_ft_split(char *s, char c)
 	i = -1;
 	h = 0;
 	count = wcount(s, c);
-	printf("count = %d\n", count);
 	sp = malloc(sizeof(char *) * (count + 1));
 	if (!s || !sp)
 		return (NULL);

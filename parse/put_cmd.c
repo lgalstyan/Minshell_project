@@ -12,7 +12,7 @@
 
 #include "parser.h"
 
-void	go_in_quotes(char *str)
+void	ignore_quotes(char *str)
 {
 	int	i;
 	
@@ -38,19 +38,6 @@ static int	size_curr_str(char *str, int i)
 	return (i);
 }
 
-// static int	size_cmd(char *str)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	if (str[i])
-// 	{
-// 		while (str[i] && !is_meta(str[i]))
-// 			i++;
-// 	}
-// 	return (i);
-// }
-
 void	put_cmd(t_node *node)
 {
 	int	i;
@@ -60,10 +47,12 @@ void	put_cmd(t_node *node)
 	i = 0;
 	l = 0;
 	index = 0;
-	node->cmd = malloc(sizeof(char*) * 3); //////// sizey hashvellll
+	printf("cmd = %d\n", node->counts.s_cmd);
+	node->cmd = malloc(sizeof(char*) * node->counts.s_cmd);
 	while (index <= pars_ft_strlen(node->readline) && node->readline[index])
 	{
 		l = size_curr_str(node->readline, index);
+		printf("l=%d, ind=%d, line=%s\n\n", l, index, ft_substr(node->readline, index, l));
 		if (index != l)
 		{
 			node->cmd[i] = ft_substr(node->readline, index, l);

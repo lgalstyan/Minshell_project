@@ -42,7 +42,7 @@ int		put_hd_app(t_node *node, char *c);
 // int		put_cmd(t_node *node, int s);
 void	put_cmd(t_node *node);
 void	ft_lstadd_back(t_node **lst, t_node *n);
-t_node	*initialize(char *str, t_node *node);
+void	initial_nodes(t_node *node);
 void	*ft_calloc(size_t c, size_t s);
 char	*ft_substr(char *s, int start, int len);
 
@@ -50,7 +50,10 @@ int		ft_infile_count(char *line);
 int		ft_outfile_count(char *line);
 int		ft_heredoc_count(char *line);
 int		ft_append_count(char *line);
+int		ft_size_all(char *str);
+int		ft_all_redir_size(t_node *node);
 int		is_meta(char c);
+void	ignore_quotes(char *str);
 
 
 #endif

@@ -12,13 +12,27 @@
 
 #include "parser.h"
 
-t_node	*initialize(char *str, t_node *node)
+void	initial_nodes(t_node *node)
 {
-	int		i;
+	int	i;
+	// int r;
 
+	// r = 0;
 	i = 0;
-	node->readline = ft_strdup(str);
-	node->next = NULL;
-	// node->redir = fill_redir(str, node); 
-	return (node);
+	while (node->readline && node->readline[i])
+	{
+		// if (node->readline[i] == '\"')
+		// 	while (node->readline[++i] != '\"')
+		// 		; 
+		put_cmd(node);
+		if (node->readline[i] == '>' && node->readline[i + 1] == '>')
+			put_hd_app(node, ">>");
+		else if (node->readline[i] == '<' && node->readline[i + 1] == '<')
+			put_hd_app(node, "<<");
+		else if (node->readline[i] == '>' && node->readline[i + 1] != '>')
+			put_in_out(node, '>');
+		else if (node->readline[i] == '<' && node->readline[i + 1] != '<')
+			put_in_out(node, '<');
+		++i;
+	}
 }
