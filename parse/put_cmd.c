@@ -33,13 +33,17 @@ void	ignore_quotes(char *str)
 
 static int	size_curr_str(char *str, int i)
 {
-	while (str[i] && !is_space(str[i]))
+	while (str && str[i] && !is_space(str[i]))
+	{
+		printf("line[%d]=%c\n", i, str[i]);
 		i++;
+	}
 	return (i);
 }
 
 void	put_cmd(t_node *node)
 {
+	printf("put_cmd\n");
 	int	i;
 	int	l;
 	int	index;
@@ -47,12 +51,13 @@ void	put_cmd(t_node *node)
 	i = 0;
 	l = 0;
 	index = 0;
-	printf("cmd = %d\n", node->counts.s_cmd);
-	while (index <= pars_ft_strlen(node->readline) && node->readline[index])
+	// printf("cmd = %d\n", node->counts.s_cmd);
+	while (index <= pars_ft_strlen(node->readline) && node->readline[index] && i < node->counts.s_cmd)
 	{
 		l = size_curr_str(node->readline, index);
-		printf("l=%d, ind=%d, line=%s\n\n", l, index, ft_substr(node->readline, index, l));
-		if (index != l)
+		printf("while%d\n", index);
+		// printf("l=%d, ind=%d, line=%s\n\n", l, index, ft_substr(node->readline, index, l));
+		if (l != 0)
 		{
 			node->cmd[i] = ft_substr(node->readline, index, l);
 			index += l;

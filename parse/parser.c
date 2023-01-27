@@ -71,7 +71,7 @@ void	allocate_matrix(t_node	*head)
 	head->counts.s_all = ft_size_all(head->readline);
 	head->counts.s_cmd = head->counts.s_all - ft_all_redir_size(head);
 
-	printf("s_inf < %d, s_outf > %d, s_here << %d, s_app>> %d\n", head->counts.s_infile, head->counts.s_outfile, head->counts.s_heredoc, head->counts.s_append);
+	printf("s_inf < %d, s_outf > %d, s_here << %d, s_app>> %d, s_cmd %d\n", head->counts.s_infile, head->counts.s_outfile, head->counts.s_heredoc, head->counts.s_append, head->counts.s_cmd);
 	head->infile = ft_calloc((head->counts.s_infile + 1), sizeof(char *));
 	head->outfile = ft_calloc((head->counts.s_outfile + 1), sizeof(char *));
 	head->heredoc = ft_calloc((head->counts.s_heredoc + 1), sizeof(char *));
@@ -82,7 +82,7 @@ void	allocate_matrix(t_node	*head)
 // cat a >> asas asasa < sasa >  ds < sda >> dsd < << < <
 
 t_node	*parser(t_node *head)
-{	
+{
 	allocate_matrix(head);
 	initial_nodes(head);
 	print_node(head);
