@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 13:33:14 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/25 15:39:33 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/27 16:20:48 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define METACHARACTERS  "|&;()<> \n\t"
 # define SPACES  " \n\t"
 
-int		wcount(char *s, char c);
+int ft_wcount(char *s, char c);
 int		checkquotes(char *str);
 int		count_redir(t_node *node);
 int		*fill_redir(char *str, t_node *node);
@@ -41,7 +41,7 @@ int		pars_ft_strlen(const char *s);
 int		put_in_out(t_node *node, char c);
 int		put_hd_app(t_node *node, char *c);
 // int		put_cmd(t_node *node, int s);
-void	put_cmd(t_node *node);
+int 	put_cmd(t_node *node, int i);
 void	ft_lstadd_back(t_node **lst, t_node *n);
 void	initial_nodes(t_node *node);
 void	*ft_calloc(size_t c, size_t s);

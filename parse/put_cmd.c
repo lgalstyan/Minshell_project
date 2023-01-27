@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put_cmd.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 18:13:03 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/25 16:52:26 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/27 16:10:04 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,44 +33,49 @@ void	ignore_quotes(char *str)
 
 static int	size_curr_str(char *str, int i)
 {
+	int count;
+
+	count = 0;
 	while (str && str[i] && !is_space(str[i]))
 	{
 		printf("line[%d]=%c\n", i, str[i]);
+		count++;
 		i++;
 	}
-	return (i);
+	return (count);
 }
 
-void	put_cmd(t_node *node)
+int	put_cmd(t_node *node, int index)
 {
-	printf("put_cmd\n");
+	// printf("put_cmd\n");
 	int	i;
 	int	l;
-	int	index;
 
 	i = 0;
 	l = 0;
-	index = 0;
 	// printf("cmd = %d\n", node->counts.s_cmd);
 	while (index <= pars_ft_strlen(node->readline) && node->readline[index] && i < node->counts.s_cmd)
 	{
 		l = size_curr_str(node->readline, index);
-		printf("while%d\n", index);
-		// printf("l=%d, ind=%d, line=%s\n\n", l, index, ft_substr(node->readline, index, l));
+		printf("l=%d, ind=%d, line=%s\n\n", l, index, ft_substr(node->readline, index, l));
 		if (l != 0)
 		{
+			printf("enter\n");
 			node->cmd[i] = ft_substr(node->readline, index, l);
 			index += l;
 			i++;
 		}
 		else
 		{
+			printf("elseeeee\n");
 			if (!node->readline[index])
 				break;
 			index++;
 		}
 	}
 	node->cmd[i] = NULL;
+	printf("index = %d\n", index);
+	return(index);
 }
 
 // int	put_cmd(t_node *node, int s)

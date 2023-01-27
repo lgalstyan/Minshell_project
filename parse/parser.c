@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 17:25:38 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/26 15:44:45 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/27 16:21:03 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,9 @@ void	allocate_matrix(t_node	*head)
 	head->counts.s_outfile = ft_outfile_count(head->readline);
 	head->counts.s_heredoc = ft_heredoc_count(head->readline);
 	head->counts.s_append = ft_append_count(head->readline);
-	head->counts.s_all = ft_size_all(head->readline);
+	head->counts.s_all = ft_wcount(head->readline, ' ');
+	// head->counts.s_all = ft_size_all(head->readline);
+	printf("count=%d\n", head->counts.s_all);
 	head->counts.s_cmd = head->counts.s_all - ft_all_redir_size(head);
 
 	printf("s_inf < %d, s_outf > %d, s_here << %d, s_app>> %d, s_cmd %d\n", head->counts.s_infile, head->counts.s_outfile, head->counts.s_heredoc, head->counts.s_append, head->counts.s_cmd);

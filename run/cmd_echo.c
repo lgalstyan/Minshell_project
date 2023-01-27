@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_echo.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:57:27 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/01/20 15:58:48 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/27 18:29:06 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,23 +58,55 @@ void	ft_strfind(char *str, t_env **en)
 	}
 }
 
+static int	ft_option_check(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str && str[i] && str[i] == 'n')
+		i++;
+	if (str[i])
+		return (0);
+	return (1);
+}
+
+static int	ft_wait_n(char **cmd)
+{
+	int	flag;
+	int	i;
+
+	i = 1;
+	flag = 0;
+	while (cmd[i][0] == '-')
+	{
+		if (ft_option_check(cmd[i]) == 0)
+			return (i);		
+		i++;
+	}
+	return (i);
+}
+
 void	cmd_echo(t_node node, t_env **en)
 {
 	int		flag;
+	int		i;
 
-	flag = 1;
-	if (!node.cmd[1])
+	flag = 0;
+	i = 1;
+	if (!node.cmd[i])
 	{
 		printf("\n");
 		return ;
 	}
-	if (!ft_strcmp(node.cmd[1], "-n"))
+	if (node.cmd[i][0] == '-')
 	{
-		flag = 2;
-		if (!node.cmd[2])
+		i = ft_wait_n(node.cmd);
+		flag = 1;
+		printf("i = %d\n", i);
+		if (!node.cmd[i])
 			return ;
 	}
-	ft_strfind(node.cmd[flag], en);
-	if (flag == 1)
+	ft_strfind(node.cmd[i], en);
+	if (!flag)
 		printf("\n");
 }

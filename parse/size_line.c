@@ -95,7 +95,7 @@ int	ft_size_all(char *str)
 	f1 = 0;
 	f2 = 0;
 	f3 = 0;
-	count = 1;
+	count = 0;
 	while (str && str[i])
 	{
 		ignore_quotes(str);

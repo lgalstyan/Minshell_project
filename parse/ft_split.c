@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 12:38:27 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/25 12:33:56 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/27 16:20:23 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-int wcount(char *s, char c)
+int ft_wcount(char *s, char c)
 {
 	int	i;
 	int	l;
@@ -67,7 +67,7 @@ char	**pars_ft_split(char *s, char c)
 
 	i = -1;
 	h = 0;
-	count = wcount(s, c);
+	count = ft_wcount(s, c);
 	sp = malloc(sizeof(char *) * (count + 1));
 	if (!s || !sp)
 		return (NULL);

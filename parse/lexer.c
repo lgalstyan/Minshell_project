@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lexer.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 16:59:37 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/01/26 15:45:20 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/27 16:21:22 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_node *lexer(char *str)
 		return (0);
 	}
 	sp = pars_ft_split(str, '|');
-	while (i < wcount(str, '|') && sp[i])
+	while (i < ft_wcount(str, '|') && sp[i])
 	{
 		initialize(sp[i], new);
 		ft_lstadd_back(&node, new);
