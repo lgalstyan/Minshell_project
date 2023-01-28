@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 17:25:38 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/27 16:21:03 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/01/28 13:50:41 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	print_node(t_node *node)
 	{
 		while (node->cmd && node->cmd[i])
 		{
-			printf("cmd%d = %s\n", i, node->cmd[i]);
+			printf("cmd%d=%s_\n", i, node->cmd[i]);
 			i++;
 		}
 		i = 0; 

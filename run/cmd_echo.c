@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:57:27 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/01/27 18:29:06 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/01/28 13:52:37 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,13 @@ static int	ft_option_check(char *str)
 {
 	int	i;
 
-	i = 0;
-	while (str && str[i] && str[i] == 'n')
+	i = 1;
+	while (str && str[i])
+	{
+		if (str[i] != 'n')
+			return (0);	
 		i++;
-	if (str[i])
-		return (0);
+	}
 	return (1);
 }
 
@@ -80,7 +82,7 @@ static int	ft_wait_n(char **cmd)
 	while (cmd[i][0] == '-')
 	{
 		if (ft_option_check(cmd[i]) == 0)
-			return (i);		
+			return (i * (-1));
 		i++;
 	}
 	return (i);
@@ -101,12 +103,23 @@ void	cmd_echo(t_node node, t_env **en)
 	if (node.cmd[i][0] == '-')
 	{
 		i = ft_wait_n(node.cmd);
-		flag = 1;
+		printf("i = %d\n", i);
+		if ((i < -1 && (i *= (-1))) || i > 0)
+			flag = 1;
+		else if (i < 0)
+			i *= (-1);
 		printf("i = %d\n", i);
 		if (!node.cmd[i])
 			return ;
 	}
-	ft_strfind(node.cmd[i], en);
+	while (node.cmd && node.cmd[i])
+	{
+		ft_strfind(node.cmd[i], en);
+		i++;
+		if (node.cmd[i])
+			printf(" ");
+	}
+	// printf("flag = %d\n", flag);
 	if (!flag)
 		printf("\n");
 }
