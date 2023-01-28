@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 13:33:14 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/28 14:42:04 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/01/28 16:50:42 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@
 # define METACHARACTERS  "|&;()<> \n\t"
 # define SPACES  " \n\t"
 
-int ft_wcount(char *s, char c);
+int     ft_wcount(char *s, char c);
 int		checkquotes(char *str);
-int		count_redir(t_node *node);
+t_node	*cut_redir(t_node *node);
 int		*fill_redir(char *str, t_node *node);
 char	*pars_ft_strjoin(char *s1, char *s2);
 char	**pars_ft_split(char *s, char c);
@@ -55,5 +55,6 @@ int		is_meta(char c);
 int		is_space(char c);
 void	ignore_quotes(char *str);
 char    *ft_strtrim(char *s1, char *set);
+char    *ft_strcut(char *readline, char *str);
 
 #endif

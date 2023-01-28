@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 17:25:38 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/28 13:50:41 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/01/28 17:11:56 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,8 @@ t_node	*parser(t_node *head)
 {
 	allocate_matrix(head);
 	initial_nodes(head);
+	
+	printf("readline = %s\n", head->readline);
 	print_node(head);
 	return (head);
 }

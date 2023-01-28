@@ -6,27 +6,47 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 16:04:31 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/27 16:16:56 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/01/28 17:49:18 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "parser.h"
+#include "parser.h"
 
-// int	count_redir(t_node *node)
-// {
-// 	int	i;
-// 	int count;
+t_node	*cut_redir(t_node *node)
+{
+	int	i;
 
-// 	count = 0;
-// 	if (!node)
-// 		return(0);
-// 	while ((i = 0) && node->infile[++i])
-// 		++count;
-// 	while ((i = 0) && node->outfile[++i])
-// 		++count;
-// 	while ((i = 0) && node->heredoc[++i])
-// 		++count;
-// 	while ((i = 0) && node->append[++i])
-// 		++count;
-// 	return (count);
-// }
+	if (!node)
+		return (0);
+    i = 0;
+	while (node->infile[i])
+    {
+        // petqa poxel nenc vor ft_strcuty lcni nayev node->inflie[i]-n u iran stugel voch te while "(node->infile[i])" - ov stugel
+        // sranuv u mtnel kanchel
+		node->readline = ft_strcut(node->readline, node->infile[i]);
+        printf("1 = %s\n 1.1 = %s\n", node->readline, node->infile[i]);
+        i++;
+    }
+    i = 0;
+	while (node->outfile[i])
+    {
+		node->readline = ft_strcut(node->readline, node->outfile[i]);
+        printf("2 = %s\n", node->readline);
+        i++;
+    }
+    i = 0;
+	while (node->heredoc[++i])
+    {
+		node->readline = ft_strcut(node->readline, node->heredoc[i]);
+        printf("3 = %s\n", node->readline);
+        i++;
+    }
+    i = 0;
+	while (node->append[++i])
+    {
+		node->readline = ft_strcut(node->readline, node->append[i]);
+        printf("4 = %s\n", node->readline);
+        i++;
+    }
+    return (node);
+}

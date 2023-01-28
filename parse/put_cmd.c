@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 18:13:03 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/28 14:55:57 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/01/28 17:43:32 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	size_curr_str(char *str, int i)
 	count = 0;
 	while (str && str[i] && !is_space(str[i]))
 	{
-		printf("line[%d]=%c\n", i, str[i]);
+		// printf("line[%d]=%c\n", i, str[i]);
 		count++;
 		i++;
 	}
