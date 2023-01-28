@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 18:13:03 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/27 16:10:04 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/01/28 14:55:57 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,13 @@ static int	size_curr_str(char *str, int i)
 
 int	put_cmd(t_node *node, int index)
 {
-	// printf("put_cmd\n");
 	int	i;
 	int	l;
 
 	i = 0;
 	l = 0;
-	// printf("cmd = %d\n", node->counts.s_cmd);
+	
+	printf("node->counts.s_cmd = %d\n\n\n\n", node->counts.s_cmd);
 	while (index <= pars_ft_strlen(node->readline) && node->readline[index] && i < node->counts.s_cmd)
 	{
 		l = size_curr_str(node->readline, index);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   built_in.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:39:38 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/01/22 16:21:54 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/28 14:13:51 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int	builtin(t_node node, t_env **en)
 	int	status;
 
 	status = -1;
-	// printf("mtav builtin and cmd is %s\n", node.cmd[0]);
 	if (!ft_strcmp(node.cmd[0], "echo"))
 	{
 		printf(BOLD_BLUE);
@@ -39,9 +38,7 @@ int	builtin(t_node node, t_env **en)
 	else if (!ft_strcmp(node.cmd[0], "pwd"))
 		cmd_pwd();
 	else if (!ft_strcmp(node.cmd[0], "export"))
-	{
 		cmd_export(node, en);
-	}
 	else if (!ft_strcmp(node.cmd[0], "unset"))
 		cmd_unset(node.cmd[1], en);
 	else if (!ft_strcmp(node.cmd[0], "env"))

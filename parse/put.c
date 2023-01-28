@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 15:06:25 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/25 13:38:41 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/28 14:53:01 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,12 @@ int	put_hd_app(t_node *node, char *c)
 		{
 			if (c[0] == '<')
 				node->heredoc[i] = ft_substr(node->readline, start, l);
-			else if (c[0] == '>')
+			else if (c[0] == '>'){
+				if (node->append[i])
+					printf("appeennnddd =%s\n", node->append[i]);
+				
 				node->append[i] = ft_substr(node->readline, start, l);
+			}
 			s += l;
 			i++;
 		}

@@ -3,7 +3,7 @@ DIRS	= run parse
 SRCS	= $(shell find ${DIRS} -name "*.c")
 OBJS	= $(SRCS:.c=.o)
 CC		= cc
-CFLAGS	= -Wall -Wextra -Werror -I ./headers -fsanitize=address -g
+CFLAGS	= -Wall -Wextra -Werror -I ./headers #-fsanitize=address -g
 READFL  = -lreadline
 RM		= rm -f
 

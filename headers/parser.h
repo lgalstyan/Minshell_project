@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 13:33:14 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/27 16:20:48 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/01/28 14:42:04 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,8 @@ char	*ft_strpaste(char *dst, char *src);
 char	*ft_strdup(char *s1);
 char	*rm_space(char *str);
 int		pars_ft_strlen(const char *s);
-// int		put_in(t_node *node, char *str, int s);
 int		put_in_out(t_node *node, char c);
 int		put_hd_app(t_node *node, char *c);
-// int		put_cmd(t_node *node, int s);
 int 	put_cmd(t_node *node, int i);
 void	ft_lstadd_back(t_node **lst, t_node *n);
 void	initial_nodes(t_node *node);
@@ -56,6 +54,6 @@ int		ft_all_redir_size(t_node *node);
 int		is_meta(char c);
 int		is_space(char c);
 void	ignore_quotes(char *str);
-
+char    *ft_strtrim(char *s1, char *set);
 
 #endif
