@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 17:25:38 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/29 13:54:40 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/01/29 18:01:49 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 // stugel | piperi qanaky lini spliti qanak -1
 // amen mi pipe qcel mi nodei mej
 // hanel redirectionnery
+//cat >> djh <<< dic > duhi  < jcoe <k >j
 
 void	print_node(t_node *node)
 {

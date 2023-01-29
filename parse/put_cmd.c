@@ -6,13 +6,13 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 18:13:03 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/28 17:43:32 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/01/29 18:53:01 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-void	ignore_quotes(char *str)
+int	ignore_quotes(char *str)
 {
 	int	i;
 	
@@ -29,19 +29,27 @@ void	ignore_quotes(char *str)
 		while (str[i] != '\'')
 			i++;
 	}
+	return (i);
 }
 
-static int	size_curr_str(char *str, int i)
+static int	size_curr_str(char *str)
 {
+	int i;
 	int count;
 
+	i = 0;
 	count = 0;
-	while (str && str[i] && !is_space(str[i]))
+	while (str && str[i])
 	{
-		// printf("line[%d]=%c\n", i, str[i]);
+		if (ignore_quotes(str + i))
+			return (count + ignore_quotes(str + i));
+		printf("%d %s\n", i, str);
+		if (is_space(str[i]))
+			return (count);
 		count++;
 		i++;
 	}
+	printf("count = %d\n", count);
 	return (count);
 }
 
@@ -52,29 +60,23 @@ int	put_cmd(t_node *node, int index)
 
 	i = 0;
 	l = 0;
-	
-	printf("node->counts.s_cmd = %d\n\n\n\n", node->counts.s_cmd);
 	while (index <= pars_ft_strlen(node->readline) && node->readline[index] && i < node->counts.s_cmd)
 	{
-		l = size_curr_str(node->readline, index);
-		printf("l=%d, ind=%d, line=%s\n\n", l, index, ft_substr(node->readline, index, l));
+		l = size_curr_str(node->readline + index);
 		if (l != 0)
 		{
-			printf("enter\n");
-			node->cmd[i] = ft_substr(node->readline, index, l);
+			node->cmd[i] = ft_substr(node->readline, index, l + 1);
 			index += l;
 			i++;
 		}
 		else
 		{
-			printf("elseeeee\n");
 			if (!node->readline[index])
 				break;
 			index++;
 		}
 	}
 	node->cmd[i] = NULL;
-	printf("index = %d\n", index);
 	return(index);
 }
 

@@ -8,7 +8,6 @@ static int	 ft_find(char *str, char *to_find)
 	i = 0;
 	if (to_find[0] == '\0')
         return (0);
-		// return ((char *)str);
 	if (str[0] == '\0')
 		return (0);
 	while (str[i])
@@ -18,7 +17,6 @@ static int	 ft_find(char *str, char *to_find)
 		{
 			if (!(to_find[j + 1]))
                 return (i);
-				//return ((char *)(str + i));
 			j++;
 		}
 		i++;
@@ -54,6 +52,5 @@ char    *ft_strcut(char *readline, char *str)
     }
     cmdline[i] = '\0';
     free(readline);
-    printf("cmdline ------ = %s\n", cmdline);  
     return (cmdline);
 }
