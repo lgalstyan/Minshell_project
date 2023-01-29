@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 14:34:10 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/29 12:53:17 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/01/29 14:08:20 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	initial_nodes(t_node *node)
 
 	r = 0;
 	i = 0;
-	// r += put_cmd(node, r);
 	while (node->readline && node->readline[i])
 	{
 		// if (node->readline[i] == '\"')
@@ -37,9 +36,9 @@ void	initial_nodes(t_node *node)
 			put_in_out(node, '<');
 		++i;
 	}
-	// node = cut_redir(node);
+	node = cut_redir(node);
 	if (node->readline)
 		printf("--=++%s\n", node->readline);
-	r += put_cmd(node, r);      
+	//r += put_cmd(node, r);      
 	
 }

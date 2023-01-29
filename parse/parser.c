@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 17:25:38 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/28 17:11:56 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/01/29 13:54:40 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,10 @@ void	allocate_matrix(t_node	*head)
 	head->counts.s_append = ft_append_count(head->readline);
 	head->counts.s_all = ft_wcount(head->readline, ' ');
 	// head->counts.s_all = ft_size_all(head->readline);
-	printf("count=%d\n", head->counts.s_all);
+	//printf("count=%d\n", head->counts.s_all);
 	head->counts.s_cmd = head->counts.s_all - ft_all_redir_size(head);
 
-	printf("s_inf < %d, s_outf > %d, s_here << %d, s_app>> %d, s_cmd %d\n", head->counts.s_infile, head->counts.s_outfile, head->counts.s_heredoc, head->counts.s_append, head->counts.s_cmd);
+	//printf("s_inf < %d, s_outf > %d, s_here << %d, s_app>> %d, s_cmd %d\n", head->counts.s_infile, head->counts.s_outfile, head->counts.s_heredoc, head->counts.s_append, head->counts.s_cmd);
 	head->infile = ft_calloc((head->counts.s_infile + 1), sizeof(char *));
 	head->outfile = ft_calloc((head->counts.s_outfile + 1), sizeof(char *));
 	head->heredoc = ft_calloc((head->counts.s_heredoc + 1), sizeof(char *));

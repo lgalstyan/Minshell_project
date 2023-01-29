@@ -39,27 +39,21 @@ char    *ft_strcut(char *readline, char *str)
         return (NULL);
     if (!(find = ft_find(readline, str)))
         return (0);
-    printf("find = %d~~~\n", find);
-    cmdline = malloc(pars_ft_strlen(readline) - pars_ft_strlen(str));
+    cmdline = ft_calloc(sizeof(char), (pars_ft_strlen(readline) - pars_ft_strlen(str)) + 1);
     while (readline[i] && i < find)
     {
         cmdline[i] = readline[i];
         i++;
     }
     k = i + pars_ft_strlen(str);
-    printf("k = %d\n", k);
-    while (str[k] && i < pars_ft_strlen(readline))
+    while (readline[k] && i < pars_ft_strlen(readline) - pars_ft_strlen(str))
     {
-        printf("str[k] = %c\n", readline[k]);
         cmdline[i] = readline[k];
-        // printf("cmdline = %c\n", cmdline[i]);
         i++;
         k++;
     }
     cmdline[i] = '\0';
     free(readline);
-    free(str);
-
     printf("cmdline ------ = %s\n", cmdline);  
     return (cmdline);
 }

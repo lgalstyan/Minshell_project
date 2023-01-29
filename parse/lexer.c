@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 16:59:37 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/01/27 16:21:22 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/01/29 13:49:40 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ t_node *lexer(char *str)
 	{
 		initialize(sp[i], new);
 		ft_lstadd_back(&node, new);
-		printf("%s", node->readline);
 		++i;
 	}
 	return (node);
