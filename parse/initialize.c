@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "parser.h"
-
+//mi ban poxeci parseri mej)))
 void	initial_nodes(t_node *node)
 {
 	int	i;
