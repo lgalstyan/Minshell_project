@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 13:33:14 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/28 16:50:42 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/01/29 12:52:58 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include "structs.h"
 # define METACHARACTERS  "|&;()<> \n\t"
 # define SPACES  " \n\t"
-
+ 
 int     ft_wcount(char *s, char c);
 int		checkquotes(char *str);
 t_node	*cut_redir(t_node *node);
@@ -38,7 +38,7 @@ char	*ft_strdup(char *s1);
 char	*rm_space(char *str);
 int		pars_ft_strlen(const char *s);
 int		put_in_out(t_node *node, char c);
-int		put_hd_app(t_node *node, char *c);
+int		put_hd_app(t_node *node, char c);
 int 	put_cmd(t_node *node, int i);
 void	ft_lstadd_back(t_node **lst, t_node *n);
 void	initial_nodes(t_node *node);

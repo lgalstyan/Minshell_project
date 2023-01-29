@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 16:04:31 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/28 17:49:18 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/01/28 18:37:56 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_node	*cut_redir(t_node *node)
     {
         // petqa poxel nenc vor ft_strcuty lcni nayev node->inflie[i]-n u iran stugel voch te while "(node->infile[i])" - ov stugel
         // sranuv u mtnel kanchel
+        //heredocy chi lcnum appendnel dra hamarel ft_strcut chi gnum stugeci ifov heredocy chkar
 		node->readline = ft_strcut(node->readline, node->infile[i]);
         printf("1 = %s\n 1.1 = %s\n", node->readline, node->infile[i]);
         i++;
@@ -35,6 +36,8 @@ t_node	*cut_redir(t_node *node)
         i++;
     }
     i = 0;
+    if (node->heredoc[i])
+        printf("~~~~~~~~~~~~\n");
 	while (node->heredoc[++i])
     {
 		node->readline = ft_strcut(node->readline, node->heredoc[i]);
