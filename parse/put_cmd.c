@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 18:13:03 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/30 11:48:06 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/01/30 12:47:55 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,9 @@ int	put_cmd(t_node *node, int index)
 
 	i = 0;
 	l = 0;
+	printf("xelo\n");
+	if (!pars_ft_strlen(node->readline))
+		return (-1);
 	while (index <= pars_ft_strlen(node->readline) && node->readline[index] && i < node->counts.s_cmd)
 	{
 		l = size_curr_str(node->readline + index);

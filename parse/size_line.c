@@ -43,29 +43,35 @@ int	ft_heredoc_count(char *line) // <<
 	int		count;
 
 	count = 0;
-	i = -1;
-	while (line && line[++i])
+	i = 0;
+	if (!line)
+		return (0);
+	while (line && line[i])
 	{
-		if (line[i] == '<' && line[i + 1] == '<')
+		if (line[i] == '<' && line[i + 1] && line[i + 1] == '<')
 			++count;
-		while (line[i] == '<')
+		while (line[i] && line[i] == '<')
 			++i;
+		if (line[i])
+			i++;
 	}
 	return (count);
 }
 
-int	ft_append_count(char *line) // >>
+int	ft_append_count(char *line)
 {
 	int		i;
 	int		count;
 
-	i = -1;
+	i = 0;
 	count = 0;
-	while (line && line[++i])
+	while (line && line[i])
 	{
-		if (line[i] == '>' && line[i + 1] == '>')
+		if (line[i] == '>' && line[i + 1] && line[i + 1] == '>')
 			++count;
-		while (line[i] == '>')
+		while (line && line[i] && line[i] == '>')
+			++i;
+		if (line[i])
 			++i;
 	}
 	return (count);
