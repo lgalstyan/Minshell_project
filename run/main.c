@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:10:37 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/01/25 16:53:30 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/30 11:49:18 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	main(int argc, char **argv, char **env)
 		node = parser(node);
 		// node.cmd = ft_split(line, ' ');
 		take_pars_val(node, envir);
-		//write(fd, line, ft_strlen(line));
+		//write(fd, line, ft_strlen(line)); 
 	}
 	return (0);
 }

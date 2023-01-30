@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 13:33:14 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/29 12:52:58 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/01/29 18:27:17 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int		ft_size_all(char *str);
 int		ft_all_redir_size(t_node *node);
 int		is_meta(char c);
 int		is_space(char c);
-void	ignore_quotes(char *str);
+int     ignore_quotes(char *str);
 char    *ft_strtrim(char *s1, char *set);
 char    *ft_strcut(char *readline, char *str);
 

@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 18:13:03 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/29 18:53:01 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/01/30 11:48:06 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ static int	size_curr_str(char *str)
 	{
 		if (ignore_quotes(str + i))
 			return (count + ignore_quotes(str + i));
-		printf("%d %s\n", i, str);
+		// printf("%d %s\n", i, str);
 		if (is_space(str[i]))
 			return (count);
 		count++;
 		i++;
 	}
-	printf("count = %d\n", count);
+	// printf("count = %d\n", count);
 	return (count);
 }
 
