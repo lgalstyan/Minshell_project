@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 14:02:15 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/30 11:57:56 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/01/30 13:17:16 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,16 +62,17 @@ char	*ft_strtrim(char *s1, char *set)
 		len = 1;
 	else
 		len = last(s1, set) - first(s1, set) + 1;
-	trim = malloc(len);
+	trim = malloc(len + 1);
+	if (!trim)
+		return (0);
 	start = first(s1, set);
-	while (i < len)
+	while (s1[start] && i < len)
 	{
 		trim[i] = s1[start];
 		i++;
 		start++;
 	}
 	trim[i] = '\0';
-	printf("without spaces is:%s:\n", trim);
 	free(s1);
 	return (trim);
 }

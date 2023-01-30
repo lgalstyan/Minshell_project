@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 18:13:03 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/30 12:47:55 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/01/30 13:24:52 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@ int	ignore_quotes(char *str)
 	int	i;
 	
 	i = 0;
-	if (str[i] == '\"')
+	if (str && str[i] == '\"')
 	{
 		i++;
-		while (str[i] != '\"')
+		while (str[i] && str[i] != '\"')
 			i++;
 	}
-	if (str[i] == '\'')
+	if (str && str[i] == '\'')
 	{
 		i++;
-		while (str[i] != '\'')
+		while (str && str[i] != '\'')
 			i++;
 	}
 	return (i);
@@ -60,7 +60,6 @@ int	put_cmd(t_node *node, int index)
 
 	i = 0;
 	l = 0;
-	printf("xelo\n");
 	if (!pars_ft_strlen(node->readline))
 		return (-1);
 	while (index <= pars_ft_strlen(node->readline) && node->readline[index] && i < node->counts.s_cmd)

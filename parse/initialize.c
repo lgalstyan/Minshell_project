@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 14:34:10 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/30 12:50:10 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/01/30 13:21:22 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,5 @@ void	initial_nodes(t_node *node)
 		++i;
 	}
 	node = cut_redir(node);
-	if (node->readline)
-		printf("readline is:%s\n", node->readline);
-	else
-		printf("not readline\n");
-		
 	r += put_cmd(node, r);
 }
