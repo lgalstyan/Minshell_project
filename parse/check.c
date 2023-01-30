@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 13:21:42 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/16 15:12:35 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/01/30 14:38:46 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-int	checkquotes(char	*str)
+int	checkquotes(char *str)
 {
 	int	i;
 	int	count[2];
