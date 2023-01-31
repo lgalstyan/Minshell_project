@@ -29,8 +29,8 @@ int	checkquotes(char *str)
 		++i;
 	}
 	if (count[0] % 2 || count[1] % 2)
-		return (0);
-	return (1);
+		return (1);
+	return (0);
 }
 
 int	check_quote_2(t_node *node)

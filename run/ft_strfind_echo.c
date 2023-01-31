@@ -31,9 +31,14 @@ void	ft_strfind(char *str, t_env **en)
 	{
 		if (str[i] == '$')
 		{
-			i++;
+			if (str[++i] == '?' && i++)
+			{
+				print_exit_code();
+				printf("%s", str + i);
+				return ;
+			}
 			start = i;
-			while (check_valid(str[i]))
+			while (str[i] && check_valid(str[i]))
 				i++;
 			word = ft_substr(str, start, i - start);
 			var_values(word, *en);

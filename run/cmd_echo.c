@@ -40,7 +40,7 @@ static int	ft_wait_n(char **cmd)
 	return (i);
 }
 
-static	int	print_exit_code()
+int	print_exit_code()
 {
 	printf("%d", exit_code);
 	return (0);
@@ -87,7 +87,7 @@ void	cmd_echo(t_node node, t_env **en)
 		printf("\n");
 		return ;
 	}
-	if (node.cmd[i][0] == '-')
+	if (node.cmd[i][0] == '-' && node.cmd[i][1] && node.cmd[i][1] == 'n')
 	{
 		i = check_index(i, node, &flag);
 		if (!node.cmd[i])

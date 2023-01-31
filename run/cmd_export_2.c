@@ -25,7 +25,7 @@ int	check_valid_identif(char *str)
 	}
 	else
 		array = ft_split(str, '=');
-	while (array[0][i])
+	while (array[0] && array[0][i])
 	{
 		if (!check_valid(array[0][i]))
 		{

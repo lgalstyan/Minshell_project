@@ -48,6 +48,7 @@ int		is_builtin(char *cmd);
 void	ft_inint_env(char *elem1, char *elem2, t_env *node);
 int		ft_atoi(char *str);
 int		cmd_pwd();
+int     print_exit_code();
 int		cmd_cd(t_node node, t_env **en);
 void	cmd_echo(t_node n, t_env **en);
 void	cmd_export(t_node n, t_env **en);
@@ -74,7 +75,6 @@ t_node	*parser(t_node *node);
 //parser.h
 
 int     ft_wcount(char *s, char c);
-int		checkquotes(char *str);
 t_node	*cut_redir(t_node *node);
 int		*fill_redir(char *str, t_node *node);
 char	*pars_ft_strjoin(char *s1, char *s2);

@@ -31,6 +31,7 @@ int	builtin(t_node node, t_env **en)
 	{
 		// printf(BOLD_BLUE);
 		cmd_echo(node, en);
+		exit_code = 0;
 	}	
 	else if (!ft_strcmp(node.cmd[0], "cd"))
 		cmd_cd(node, en);

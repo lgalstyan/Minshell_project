@@ -64,7 +64,12 @@ int	prompt(t_node node, t_env **envir)
 	{
 		pid = fork();
 		if (!pid)
+		{
 			exec_status = child_proc(node, envir, ch_env);
+			if (exec_status < 0)
+				exit_code = 1;
+			// printf("exit code = %d\n", exec_status);
+		}
 		wait(NULL);
 	}
 	return (exec_status);

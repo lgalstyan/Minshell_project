@@ -19,6 +19,38 @@ static	t_node	*init_readline(char *str, t_node *node)
 	return (node);
 }
 
+static int	pipe_count(char *line)
+{
+	int	count;
+	int	i;
+
+	i = 0;
+	count = 0;
+	while (line && line[i])
+	{
+		if (line[i] == '|')
+			count++;
+		i++;
+	}
+	return (count);
+}
+
+static int	checks(char *str)
+{
+	if (checkquotes(str))
+	{
+		printf("Syntax error: the number of quotes is incorrect\n");
+		exit_code = 258;
+		return (1);
+	}
+	if (pipe_count(str) + 1 != ft_wcount(str, '|'))
+	{
+		printf("Syntax error: the number of pipe is incorrect\n");
+		exit_code = 258;
+		return (1);
+	}
+	return (0);
+}
 
 t_node *lexer(char *str)
 {
@@ -30,12 +62,8 @@ t_node *lexer(char *str)
 	new = malloc(sizeof(t_node));
 	i = 0;
 	node = NULL;
-	if (!checkquotes(str))
-	{
-		printf("Syntax error: the number of quotes is incorrect\n");
-		exit_code = 258;
+	if (checks(str))
 		return (0);
-	}
 	sp = pars_ft_split(str, '|');
 	while (i < ft_wcount(str, '|') && sp[i])
 	{
