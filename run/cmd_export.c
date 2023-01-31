@@ -106,6 +106,7 @@ void	cmd_export(t_node new_env, t_env **en)
 
 	if (!new_env.cmd[1])
 	{
+		printf("miayn exportn e\n");
 		sort_list(en);
 		return ;
 	}
