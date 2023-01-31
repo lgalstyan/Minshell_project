@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "minishell.h"
 
 int	gtav(char *str, char c)
 {
@@ -42,7 +42,7 @@ int	last(char *s, char *set)
 {
 	int	i;
 
-	i = pars_ft_strlen(s) - 1;
+	i = ft_strlen(s) - 1;
 	while (gtav(set, s[i]) == 1 && i > 0)
 	{
 		i--;
@@ -58,7 +58,7 @@ char	*ft_strtrim(char *s1, char *set)
 	int		len;
 
 	i = 0;
-	if (last(s1, set) == 0 && first(s1, set) == pars_ft_strlen(s1))
+	if (last(s1, set) == 0 && first(s1, set) == ft_strlen(s1))
 		len = 1;
 	else
 		len = last(s1, set) - first(s1, set) + 1;

@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
-//mi ban poxeci parseri mej)))
+#include "minishell.h"
+
 void	initial_nodes(t_node *node)
 {
 	int	i;

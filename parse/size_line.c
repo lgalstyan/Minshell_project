@@ -1,7 +1,6 @@
-#include "parser.h"
-// #include "minishell.h"
+#include "minishell.h"
 
-int	ft_infile_count(char *line) // <
+int	ft_infile_count(char *line)
 {
 	int		i;
 	int		count;
@@ -19,7 +18,7 @@ int	ft_infile_count(char *line) // <
 	return (count);
 }
 
-int	ft_outfile_count(char *line) // >
+int	ft_outfile_count(char *line)
 {
 	int		i;
 	int		count;
@@ -37,7 +36,7 @@ int	ft_outfile_count(char *line) // >
 	return (count);
 }
 
-int	ft_heredoc_count(char *line) // <<
+int	ft_heredoc_count(char *line)
 {
 	int		i;
 	int		count;

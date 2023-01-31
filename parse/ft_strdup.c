@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "minishell.h"
 
 char	*ft_strdup(char *src)
 {
@@ -20,7 +20,7 @@ char	*ft_strdup(char *src)
 	i = 0;
 	if (!src)
 		return (0);
-	tox = (char *)malloc(pars_ft_strlen(src) + 1);
+	tox = (char *)malloc(ft_strlen(src) + 1);
 	if (!tox)
 		return (0);
 	while (src[i])
@@ -36,7 +36,7 @@ char	*ft_strdup(char *src)
 // {
 // 	char	*dest;
 
-// 	dest = malloc(pars_ft_strlen(s1) + 1);
+// 	dest = malloc(ft_strlen(s1) + 1);
 // 	if (dest == NULL)
 // 		return (NULL);
 // 	if (*s1 == '\"' || *s1 == '\'')

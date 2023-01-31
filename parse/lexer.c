@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h" 
+#include "minishell.h" 
 
-static	t_node	*initialize(char *str, t_node *node)
+static	t_node	*init_readline(char *str, t_node *node)
 {
 	node->readline = ft_strdup(str);
 	node->next = NULL;
@@ -39,7 +39,7 @@ t_node *lexer(char *str)
 	sp = pars_ft_split(str, '|');
 	while (i < ft_wcount(str, '|') && sp[i])
 	{
-		initialize(sp[i], new);
+		init_readline(sp[i], new);
 		ft_lstadd_back(&node, new);
 		++i;
 	}

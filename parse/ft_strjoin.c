@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "minishell.h"
 
 char	*pars_ft_strjoin(char *s1, char *s2)
 {
@@ -19,7 +19,7 @@ char	*pars_ft_strjoin(char *s1, char *s2)
 	size_t	k;
 
 	i = 0;
-	ns = malloc(pars_ft_strlen(s1) + pars_ft_strlen(s2));
+	ns = malloc(ft_strlen(s1) + ft_strlen(s2));
 	while (s1[i] != '\0')
 	{
 		ns[i] = s1[i];

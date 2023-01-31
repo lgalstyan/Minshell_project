@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "minishell.h"
 
 char	*rm_space(char *str)
 {
@@ -20,7 +20,7 @@ char	*rm_space(char *str)
 
 	i = 0;
 	d = 0;
-	dst = malloc((pars_ft_strlen(str)) + 1);
+	dst = malloc((ft_strlen(str)) + 1);
 	while(str[i])
 	{
 		while (str[i] == ' ')

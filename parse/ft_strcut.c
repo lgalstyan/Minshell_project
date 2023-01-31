@@ -1,4 +1,4 @@
-#include "parser.h"
+#include "minishell.h"
 
 static int	 ft_find(char *str, char *to_find)
 {
@@ -37,14 +37,14 @@ char    *ft_strcut(char *readline, char *str)
         return (NULL);
     if (!(find = ft_find(readline, str)))
         return (0);
-    cmdline = ft_calloc(sizeof(char), (pars_ft_strlen(readline) - pars_ft_strlen(str)) + 1);
+    cmdline = ft_calloc(sizeof(char), (ft_strlen(readline) - ft_strlen(str)) + 1);
     while (readline[i] && i < find)
     {
         cmdline[i] = readline[i];
         i++;
     }
-    k = i + pars_ft_strlen(str);
-    while (readline[k] && i < pars_ft_strlen(readline) - pars_ft_strlen(str))
+    k = i + ft_strlen(str);
+    while (readline[k] && i < ft_strlen(readline) - ft_strlen(str))
     {
         cmdline[i] = readline[k];
         i++;

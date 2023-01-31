@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "minishell.h"
 
-static t_node	*ft_lstlast(t_node *lst)
+t_node	*ft_lstlast(t_node *lst)
 {
 	if (lst == NULL)
 		return (0);

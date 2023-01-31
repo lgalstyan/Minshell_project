@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "minishell.h"
 // stugel "-eri qanaky zuyg lini
 // stugel | piperi qanaky lini spliti qanak -1
 // amen mi pipe qcel mi nodei mej

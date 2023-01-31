@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "minishell.h"
 
 int	ignore_quotes(char *str)
 {
@@ -60,9 +60,9 @@ int	put_cmd(t_node *node, int index)
 
 	i = 0;
 	l = 0;
-	if (!pars_ft_strlen(node->readline))
+	if (!ft_strlen(node->readline))
 		return (-1);
-	while (index <= pars_ft_strlen(node->readline) && node->readline[index] && i < node->counts.s_cmd)
+	while (index <= ft_strlen(node->readline) && node->readline[index] && i < node->counts.s_cmd)
 	{
 		l = size_curr_str(node->readline + index);
 		if (l != 0)
@@ -93,8 +93,8 @@ int	put_cmd(t_node *node, int index)
 // 	// node->cmd[i] = ft_strdup(NULL);
 // 	//printf("node->cmd[i] = %s\n", node->cmd[0]);
 
-// 	l = pars_ft_strlen(node->readline);
-// 	s = pars_ft_strlen(node->cmd[0]);
+// 	l = ft_strlen(node->readline);
+// 	s = ft_strlen(node->cmd[0]);
 // 	while (node->readline[s] && s < l)
 // 	{
 // 		if (node->readline[s] && node->readline[s] != ' ')
@@ -102,11 +102,11 @@ int	put_cmd(t_node *node, int index)
 // 			if (node->readline[s - 1] == '-')
 // 				s -= 1;
 // 	/*		if ((node->readline[s] == '\"' || node->readline[s] == '\'') && node->cmd[i] == ft_strdup(str + s))
-// 				s += pars_ft_strlen(node->cmd[i]); */
+// 				s += ft_strlen(node->cmd[i]); */
 // 			if (node->readline[s] == '<' || node->readline[s] == '>')
 // 				return (s);
 // 			node->cmd[i] = ft_strdup(node->readline + s);
-// 			s += pars_ft_strlen(node->cmd[i]);
+// 			s += ft_strlen(node->cmd[i]);
 // 		}
 // 		else
 // 			return(s);

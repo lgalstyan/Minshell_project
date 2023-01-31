@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "minishell.h"
 
 int ft_wcount(char *s, char c)
 {
@@ -20,12 +20,12 @@ int ft_wcount(char *s, char c)
 
 	i = 0;
 	count = 1;
-	l = pars_ft_strlen(s);
+	l = ft_strlen(s);
 	while (s[i++] && s[i] == ' ')
 		;
 	while (s[--l] && s[l] == ' ' && i < l)
 		;
-	// if (i == pars_ft_strlen(s))
+	// if (i == ft_strlen(s))
 	// 	return (0);
 	while (s[i] && i < l)
 	{
@@ -102,12 +102,12 @@ static size_t	gtav(char const *s, char c)
 
 	i = -1;
 	count = 1;
-	l = pars_ft_strlen(s);
+	l = ft_strlen(s);
 	while (s[++i] && s[i] == c)
 		;
 	while (s[--l] && s[l] == c && i < l)
 		;
-	if (i == pars_ft_strlen(s))
+	if (i == ft_strlen(s))
 		return (0);
 	while (s[i] && i < l)
 	{
