@@ -12,7 +12,6 @@
 
 #include "minishell.h"
 
-//hashvarkac choi vor kara "=" i koxqy space lini, zut split a anum = ov
 void	equal_only(char **array, t_env **en)
 {
 	t_env	*new_node;
@@ -100,13 +99,11 @@ static int	check_pluse_equal(char *str)
 	return (1);
 }
 
-
 static void	cmd_one_export(char *cmd, t_env **en)
 {
 	char	**array;
 
-	if (!check_valid_identif(cmd)
-		|| (cmd[0] > 47 && cmd[0] < 58))
+	if (!check_valid_identif(cmd) || (cmd[0] > 47 && cmd[0] < 58))
 	{
 		printf("export: `%s': not a valid identifier\n", cmd);
 		exit_code = 1;
@@ -130,9 +127,7 @@ static void	cmd_one_export(char *cmd, t_env **en)
 		equal_only(array, en);
 	}
 	else
-	{
 		add_only(cmd, en);
-	}
 }
 
 void	cmd_export(t_node node, t_env **en)
@@ -143,6 +138,7 @@ void	cmd_export(t_node node, t_env **en)
 	if (!node.cmd[1])
 	{
 		sort_list(en);
+		exit_code = 0;
 		return ;
 	}
 	while (node.cmd[i])
@@ -151,8 +147,3 @@ void	cmd_export(t_node node, t_env **en)
 		i++;
 	}
 }
-
-// //export a => env NULL, export => declare -x a
-// //export a=1=1=1=1
-// //export a=23 b=54 c=98
-// //errorneric el a++=2, ete demic tiv 

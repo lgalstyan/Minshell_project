@@ -24,7 +24,14 @@ int	check_valid_identif(char *str)
 		++i;
 	}
 	else
+	{
 		array = ft_split(str, '=');
+	}
+	if (!array[0])
+	{
+		free(array);
+		return (0);
+	}
 	while (array[0] && array[0][i])
 	{
 		if (!check_valid(array[0][i]))
