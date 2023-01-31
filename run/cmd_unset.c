@@ -12,12 +12,34 @@
 
 #include "minishell.h"
 
+static int	is_valid(char *key)
+{
+	int	i;
+
+	i = 0;
+	if (!key)
+		return (2);
+	while (key[i])
+	{
+		if (!check_valid(key[i]) || (key[0] > 47 && key[0] < 58))
+		{
+			exit_code = 1;
+			printf("unset: `%s': not a valid identifier\n", key);
+			return (1);
+		}
+		i++;
+	}
+	return (0);
+}
+
 void	cmd_unset(char *del_env, t_env **env)
 {
 	t_env	*curr;
 	t_env	*delet;
 
 	curr = (*env);
+	if (is_valid(del_env))
+		return ;
 	while (curr->next)
 	{
 		if (!ft_strcmp(curr->next->key, del_env))

@@ -65,18 +65,11 @@ int	main(int argc, char **argv, char **env)
 	t_env	**envir;
 	// int		fd;
 
+	exit_code = 0;
 	envir = malloc(sizeof(t_env *));
 	*envir = NULL;
 	environments(env, envir);
 	shlvl(envir);
-	// fd = open("./../dup.txt", O_CREAT | O_WRONLY);
-	// if(fd < 0)
-    // 	printf("Error: File not found\n");
-	// dup(fd);
-	// ignore_signals();
-	// dup2(fd, 1);
-	// printf(BOLD_GREEN);
-	
 	while (1)
 	{
 		printf(ESC_GREEN);

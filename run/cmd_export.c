@@ -106,7 +106,6 @@ void	cmd_export(t_node new_env, t_env **en)
 
 	if (!new_env.cmd[1])
 	{
-		printf("miayn exportn e\n");
 		sort_list(en);
 		return ;
 	}
@@ -114,14 +113,15 @@ void	cmd_export(t_node new_env, t_env **en)
 		|| (new_env.cmd[1][0] > 47 && new_env.cmd[1][0] < 58))
 	{
 		printf("export: `%s': not a valid identifier\n", new_env.cmd[1]);
+		exit_code = 1;
 		return ;
 	}
 	else if (ft_strnstr(new_env.cmd[1], "+=", ft_strlen(new_env.cmd[1])))
 	{
-		printf("+= i depq\n");
 		if (!check_pluse_equal(new_env.cmd[1]))
 		{
 			printf("export: `%s': not a valid identifier\n", new_env.cmd[1]);
+			exit_code = 1;
 			return ;
 		}
 		array = ft_split_export(new_env.cmd[1], '+');
@@ -130,13 +130,11 @@ void	cmd_export(t_node new_env, t_env **en)
 	}
 	else if (ft_strnstr(new_env.cmd[1], "=", ft_strlen(new_env.cmd[1])))
 	{
-		printf("= i depq\n");
 		array = ft_split_export(new_env.cmd[1], '=');
 		equal_only(array, en);
 	}
 	else
 	{
-		printf("miayn varable enq avelacnum\n");
 		add_only(new_env.cmd[1], en);
 	}
 }

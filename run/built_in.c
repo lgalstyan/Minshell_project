@@ -29,9 +29,8 @@ int	builtin(t_node node, t_env **en)
 	status = -1;
 	if (!ft_strcmp(node.cmd[0], "echo"))
 	{
-		printf(BOLD_BLUE);
+		// printf(BOLD_BLUE);
 		cmd_echo(node, en);
-		status = 1;
 	}	
 	else if (!ft_strcmp(node.cmd[0], "cd"))
 		cmd_cd(node, en);

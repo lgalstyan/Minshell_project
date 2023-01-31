@@ -18,7 +18,8 @@ int	cmd_pwd(void)
 
 	if (!(getcwd(cwd, sizeof(cwd))))
 	{
-		perror("getcwd() error");
+		exit_code = 1;
+		perror("minishell: ");
 		return (-1);
 	}
 	else

@@ -40,11 +40,20 @@ static int	ft_wait_n(char **cmd)
 	return (i);
 }
 
+static	int	print_exit_code()
+{
+	printf("%d", exit_code);
+	return (0);
+}
+
 static void	ft_print_echo(t_node	node, int i, t_env **en)
 {
 	while (node.cmd && node.cmd[i])
 	{
-		ft_strfind(node.cmd[i], en);
+		if (!ft_strcmp(node.cmd[i], "$?"))
+			print_exit_code();
+		else
+			ft_strfind(node.cmd[i], en);
 		i++;
 		if (node.cmd[i])
 			printf(" ");

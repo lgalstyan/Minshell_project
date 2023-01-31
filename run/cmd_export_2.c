@@ -21,7 +21,6 @@ int	check_valid_identif(char *str)
 	if (ft_strnstr(str, "+=", ft_strlen(str)))
 	{
 		array = ft_split(str, '+');
-		// printf("hello_%s_\n", array[1]);
 		++i;
 	}
 	else
@@ -29,7 +28,10 @@ int	check_valid_identif(char *str)
 	while (array[0][i])
 	{
 		if (!check_valid(array[0][i]))
+		{
+			exit_code = 1;
 			return (0);
+		}
 		++i;
 	}
 	return (1);
