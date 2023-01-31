@@ -28,11 +28,9 @@ static int	ft_option_check(char *str)
 
 static int	ft_wait_n(char **cmd)
 {
-	int	flag;
 	int	i;
 
 	i = 1;
-	flag = 0;
 	while (cmd[i][0] == '-')
 	{
 		if (ft_option_check(cmd[i]) == 0)

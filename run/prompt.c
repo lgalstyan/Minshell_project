@@ -52,15 +52,14 @@ static int	child_proc(t_node node, t_env **envir, char **ch_env)
 
 int	prompt(t_node node, t_env **envir)
 {
-	int		st;
 	int		exec_status;
 	int		pid;
 	char	**ch_env;
 
-	st = 0;
+	exec_status = 0;
 	ch_env = list_to_char(*envir);
 	if (is_builtin(node.cmd[0]))
-		st = builtin(node, envir);
+		exec_status = builtin(node, envir);
 	else
 	{
 		pid = fork();
@@ -68,5 +67,5 @@ int	prompt(t_node node, t_env **envir)
 			exec_status = child_proc(node, envir, ch_env);
 		wait(NULL);
 	}
-	return (st);
+	return (exec_status);
 }
