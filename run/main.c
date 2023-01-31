@@ -53,8 +53,6 @@ void	shlvl(t_env **en)
 		curr = curr->next;
 	}
 }
-// TODO
-// heredoc_eri mej " ' ery ogtagorcel function vory ignora anum squtery
 
 int	main(int argc, char **argv, char **env)
 {
@@ -62,14 +60,12 @@ int	main(int argc, char **argv, char **env)
 	(void)argv;
 	char	*line;
 	t_node	*node;
-	t_env	**envir;
-	// int		fd;
+	t_env	*envir;
 
 	exit_code = 0;
-	envir = malloc(sizeof(t_env *));
-	*envir = NULL;
-	environments(env, envir);
-	shlvl(envir);
+	envir = NULL;
+	environments(env, &envir);
+	shlvl(&envir);
 	while (1)
 	{
 		printf(ESC_GREEN);
@@ -79,9 +75,13 @@ int	main(int argc, char **argv, char **env)
 		else
 			continue ;
 		node = lexer(line);
+		if (!node)
+			continue;
 		node = parser(node);
+		if (!node)
+			continue;
 		// node.cmd = ft_split(line, ' ');
-		take_pars_val(node, envir);
+		take_pars_val(node, &envir);
 		//write(fd, line, ft_strlen(line)); 
 	}
 	return (0);

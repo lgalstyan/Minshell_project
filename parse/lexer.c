@@ -33,6 +33,7 @@ t_node *lexer(char *str)
 	if (!checkquotes(str))
 	{
 		printf("Syntax error: the number of quotes is incorrect\n");
+		exit_code = 258;
 		return (0);
 	}
 	sp = pars_ft_split(str, '|');
