@@ -45,7 +45,7 @@ void	shlvl(t_env **en)
 	{
 		if (!ft_strcmp(curr->key, "SHLVL"))
 		{
-			value = run_ft_strdup(curr->value);
+			value = ft_strdup(curr->value);
 			free(curr->value);
 			curr->value = ft_itoa(ft_atoi(value) + 1);
 			free(value);

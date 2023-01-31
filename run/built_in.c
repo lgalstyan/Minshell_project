@@ -29,7 +29,6 @@ int	builtin(t_node node, t_env **en)
 	status = -1;
 	if (!ft_strcmp(node.cmd[0], "echo"))
 	{
-		// printf(BOLD_BLUE);
 		cmd_echo(node, en);
 		exit_code = 0;
 	}	
