@@ -23,7 +23,8 @@
 # include "structs.h"
 # define METACHARACTERS  "|&;()<> \n\t"
 # define SPACES  " \n\t"
- 
+
+int     exit_code;
 int     ft_wcount(char *s, char c);
 int		checkquotes(char *str);
 t_node	*cut_redir(t_node *node);
@@ -56,5 +57,7 @@ int		is_space(char c);
 int     ignore_quotes(char *str);
 char    *ft_strtrim(char *s1, char *set);
 char    *ft_strcut(char *readline, char *str);
+int     check_quote_2(t_node *node);
+int     unexpected_tokens(t_node *p);
 
 #endif

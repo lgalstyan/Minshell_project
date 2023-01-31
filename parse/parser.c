@@ -107,6 +107,8 @@ t_node	*ft_clean_spasec(t_node *head)
 
 t_node	*parser(t_node *head)
 {
+	if ((check_quote_2(head)|| unexpected_tokens(head)))
+		return (0);
 	allocate_matrix(head);
 	initial_nodes(head);
 	// print_node(head);

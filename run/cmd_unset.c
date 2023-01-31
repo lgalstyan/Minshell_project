@@ -23,8 +23,8 @@ static int	is_valid(char *key)
 	{
 		if (!check_valid(key[i]) || (key[0] > 47 && key[0] < 58))
 		{
-			exit_code = 1;
 			printf("unset: `%s': not a valid identifier\n", key);
+			exit_code = 1;
 			return (1);
 		}
 		i++;

@@ -64,7 +64,7 @@
 # define METACHARACTERS  "|&;()<> \n\t"
 # define SPACES  " \n\t"
 
-extern int exit_code;
+int exit_code;
 
 int		wcount(char *s, char c);
 int		checkquotes(char *str);
