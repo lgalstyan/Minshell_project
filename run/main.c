@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:10:37 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/01/30 11:49:18 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/01 15:14:19 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ int	main(int argc, char **argv, char **env)
 
 	exit_code = 0;
 	envir = NULL;
+	rl_catch_signals = 0;
 	environments(env, &envir);
 	shlvl(&envir);
 	while (1)

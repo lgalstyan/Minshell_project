@@ -31,6 +31,8 @@ void	ft_strfind(char *str, t_env **en)
 	{
 		if (str[i] == '$')
 		{
+			if (!str[i + 1] || (is_space(str[i]) && i++))
+				printf("$");
 			if (str[++i] == '?' && i++)
 			{
 				print_exit_code();

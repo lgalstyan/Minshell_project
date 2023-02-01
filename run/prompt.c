@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:16:22 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/01/28 14:28:30 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/01 13:57:57 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,12 @@ static int	child_proc(t_node node, t_env **envir, char **ch_env)
 	status = execve(cmd, node.cmd, ch_env);
 	if (status == -1)
 	{
-		printf("errno = %d\n", errno);
-		perror("execve : ");
-		printf("Syntax error\n");
+		// printf("errno = %d\n", errno);
+		// perror("execve : ");
+		printf("Command not found\n");
+		exit_code = 127;
 	}
+	printf("status = %d\n", status);
 	return (status);
 }
 
@@ -54,6 +56,7 @@ int	prompt(t_node node, t_env **envir)
 {
 	int		exec_status;
 	int		pid;
+	int		status;
 	char	**ch_env;
 
 	exec_status = 0;
@@ -67,10 +70,15 @@ int	prompt(t_node node, t_env **envir)
 		{
 			exec_status = child_proc(node, envir, ch_env);
 			if (exec_status < 0)
-				exit_code = 1;
-			// printf("exit code = %d\n", exec_status);
+				exit_code = 127;
+			printf("exec status = %d\n", exec_status);
 		}
-		wait(NULL);
+		wait(&status);
+		if (WIFEXITED(status) && exec_status == 0)
+		{
+			printf("WIFEXITED %d\n",status);
+			exit_code = WEXITSTATUS(status);
+		}
 	}
 	return (exec_status);
 }
