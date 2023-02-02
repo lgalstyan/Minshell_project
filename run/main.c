@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vasargsy <vasargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:10:37 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/02/02 14:05:53 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/02 16:34:01 by vasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ int	main(int argc, char **argv, char **env)
 
 	(void)argv;
 	(void)argc;
-	exit_code = 0;
 	envir = NULL;
 	node = NULL;
 	rl_catch_signals = 0;

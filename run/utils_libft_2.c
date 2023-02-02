@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   utils_libft_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vasargsy <vasargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:19:47 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/02/01 16:42:36 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/02 15:29:22 by vasargsy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_atoi(char *str)
+long long	ft_atoi(char *str)
 {
-	int	c;
-	int	min;
-	int	n;
+	long	c;
+	long	min;
+	long	n;
 
 	c = 0;
 	min = 1;

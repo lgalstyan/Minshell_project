@@ -22,7 +22,7 @@ topdir = ..
 srcdir = .
 
 
-prefix = /Users/tyenokya/Desktop/minishell/readline_larisa
+prefix = /Users/vasargsy/Desktop/minishell_larisa/readline_larisa
 
 datarootdir = ${prefix}/share
 
@@ -49,7 +49,7 @@ RM = rm -f
 INSTALL = /usr/bin/install -c
 INSTALL_DATA = ${INSTALL} -m 644
 
-BUILD_DIR = /Users/tyenokya/Desktop/minishell/readline-master
+BUILD_DIR = /Users/vasargsy/Desktop/minishell_larisa/readline-master
 TEXINPUTDIR = $(srcdir)
 
 MAKEINFO    = LANGUAGE= makeinfo
