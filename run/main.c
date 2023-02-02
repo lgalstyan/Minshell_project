@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:10:37 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/02/01 15:14:19 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/02 14:05:53 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ static void	take_pars_val(t_node *node, t_env **envir)
 	t_node	*curr;
 
 	curr = node;
+
+	// ft_pipe(node, envir);
 	while (curr)
 	{
 		prompt(*curr, envir);
@@ -54,19 +56,11 @@ void	shlvl(t_env **en)
 	}
 }
 
-int	main(int argc, char **argv, char **env)
+void	readline_main(t_node *node, t_env *envir)
 {
-	(void)argc;
-	(void)argv;
 	char	*line;
-	t_node	*node;
-	t_env	*envir;
 
-	exit_code = 0;
-	envir = NULL;
-	rl_catch_signals = 0;
-	environments(env, &envir);
-	shlvl(&envir);
+	line = NULL;
 	while (1)
 	{
 		printf(ESC_GREEN);
@@ -77,13 +71,27 @@ int	main(int argc, char **argv, char **env)
 			continue ;
 		node = lexer(line);
 		if (!node)
-			continue;
+			continue ;
 		node = parser(node);
 		if (!node)
-			continue;
-		// node.cmd = ft_split(line, ' ');
+			continue ;
 		take_pars_val(node, &envir);
-		//write(fd, line, ft_strlen(line)); 
 	}
+}
+
+int	main(int argc, char **argv, char **env)
+{
+	t_node	*node;
+	t_env	*envir;
+
+	(void)argv;
+	(void)argc;
+	exit_code = 0;
+	envir = NULL;
+	node = NULL;
+	rl_catch_signals = 0;
+	environments(env, &envir);
+	shlvl(&envir);
+	readline_main(node, envir);
 	return (0);
 }

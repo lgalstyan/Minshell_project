@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:57:27 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/01/28 14:12:19 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/01 16:41:35 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,6 @@ static int	ft_wait_n(char **cmd)
 		i++;
 	}
 	return (i);
-}
-
-int	print_exit_code()
-{
-	printf("%d", exit_code);
-	return (0);
 }
 
 static void	ft_print_echo(t_node	node, int i, t_env **en)

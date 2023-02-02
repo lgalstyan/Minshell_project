@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils_libft_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgalstya <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:19:47 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/01/20 16:19:53 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/02/01 16:42:36 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "minishell.h"
 
 int	ft_atoi(char *str)
 {
@@ -33,4 +35,10 @@ int	ft_atoi(char *str)
 		c++;
 	}
 	return (n * min);
+}
+
+int	print_exit_code()
+{
+	printf("%d", exit_code);
+	return (0);
 }
