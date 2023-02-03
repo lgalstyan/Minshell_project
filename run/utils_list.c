@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 12:51:45 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/02/01 16:19:12 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/03 11:53:08 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,17 @@ void	update_list_item(t_env **lst, char *key, char *value)
 		}
 		curr = curr->next;
 	}
+}
+
+int	ft_lstsize(t_node *lst)
+{
+	int	l;
+
+	l = 0;
+	while (lst)
+	{
+		l++;
+		lst = lst->next;
+	}
+	return (l);
 }

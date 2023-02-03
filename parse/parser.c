@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 17:25:38 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/30 13:24:35 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/03 17:45:05 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ char	**ft_clean(char **str)
 	return (str);
 }
 
-t_node	*ft_clean_spasec(t_node *head)
+void	ft_clean_spasec(t_node *head)
 {
 	t_node	*node;
 
@@ -102,7 +102,6 @@ t_node	*ft_clean_spasec(t_node *head)
 		node->heredoc = ft_clean(node->heredoc);	
 		node = node->next;
 	}
-	return (head);
 }
 
 t_node	*parser(t_node *head)
@@ -112,7 +111,7 @@ t_node	*parser(t_node *head)
 	allocate_matrix(head);
 	initial_nodes(head);
 	// print_node(head);
-	head = ft_clean_spasec(head);
+	ft_clean_spasec(head);
 	// print_node(head);
 	return (head);
 }

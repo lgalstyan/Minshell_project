@@ -6,13 +6,13 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 16:59:37 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/01/29 13:49:40 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/03 17:40:46 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h" 
 
-static	t_node	*init_readline(char *str, t_node *node)
+	t_node	*init_readline(char *str, t_node *node)
 {
 	node->readline = ft_strdup(str);
 	node->next = NULL;
@@ -59,16 +59,16 @@ t_node *lexer(char *str)
 	t_node	*node;
 	t_node	*new;
   
-	new = malloc(sizeof(t_node));
 	i = 0;
 	node = NULL;
 	if (checks(str))
 		return (0);
 	sp = pars_ft_split(str, '|');
-	while (i < ft_wcount(str, '|') && sp[i])
+	while (sp && sp[i])
 	{
+		new = malloc(sizeof(t_node));
 		init_readline(sp[i], new);
-		ft_lstadd_back(&node, new);
+		ft_list_add_back(&node, new);
 		++i;
 	}
 	return (node);

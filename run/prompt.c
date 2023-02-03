@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prompt.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vasargsy <vasargsy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:16:22 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/02/02 14:15:56 by vasargsy         ###   ########.fr       */
+/*   Updated: 2023/02/03 11:31:37 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,20 +45,20 @@ static int	child_proc(t_node node, t_env **envir, char **ch_env)
 	{
 	// 	printf("errno = %d\n", errno);
 	// 	perror("execve : ");
-		printf("Command not found\n");
+		printf("minisshell: Command not found %s\n", node.cmd[0]);
 		exit_code = 127;
 	}
 	return (status);
 }
 
-// void	status_wait(int status, int exec_status)
-// {
-// 	if (WIFEXITED(status) && exec_status == 0)
-// 	{
-// 		printf("WIFEXITED %d\n", status);
-// 		exit_code = WEXITSTATUS(status);
-// 	}
-// }
+void	status_wait(int status, int exec_status)
+{
+	if (WIFEXITED(status) && exec_status == 0)
+	{
+		// printf("WIFEXITED %d\n", status);
+		exit_code = WEXITSTATUS(status);
+	}
+}
 
 int	prompt(t_node node, t_env **envir)
 {
@@ -79,10 +79,10 @@ int	prompt(t_node node, t_env **envir)
 			exec_status = child_proc(node, envir, ch_env);
 			if (exec_status < 0)
 				exit_code = 127;
-			printf("exec status = %d\n", exec_status);
+			// printf("exec status = %d\n", exec_status);
 		}
 		wait(&status);
-		// status_wait(status, exec_status);
+		status_wait(status, exec_status);
 	}
 	return (exec_status);
 }

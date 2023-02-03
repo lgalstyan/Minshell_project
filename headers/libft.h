@@ -12,7 +12,6 @@ int			ft_strlcpy(char *dst, char *src, int l);
 char		*ft_strnstr(char *str, char *to_find, int len);
 int			ft_isdigit(char c);
 char		*ft_itoa(int n);
-long long	ft_atoi(char *str);
 void		*ft_calloc(size_t c, size_t s);
 int			ft_wcount(char *s, char c);
 char		*ft_strchr(const char *s, int c);
@@ -22,6 +21,7 @@ char		*ft_strtrim(char *s1, char *set);
 char		**ft_split(char *s, char c);
 char		**ft_split_pars(char *s, char c);
 char		**ft_split_export(char *s, char c);
+long long	ft_atoi(char *str);
 
  
 #endif

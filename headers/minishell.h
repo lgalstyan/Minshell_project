@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:44:17 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/02/01 15:10:43 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/03 17:36:57 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,9 @@ void	environments(char **env, t_env **envir);
 char	**list_to_char(t_env *env);
 t_node	*lexer(char *str);
 t_node	*parser(t_node *node);
+int     ft_lstsize(t_node *lst);
+void    ft_pipe(t_node *node, t_env **envir);
+void	print_node(t_node *node);
 
 //parser.h
 
@@ -78,4 +81,5 @@ int		is_space(char c);
 int     ignore_quotes(char *str);
 int     check_quote_2(t_node *node);
 int     unexpected_tokens(t_node *p);
+void	ft_list_add_back(t_node **lst, t_node *new);
 #endif
