@@ -137,6 +137,7 @@ int	unexpected_tokens(t_node *node)
 
 	i = 0;
 	curr = node->readline;
+
 	while (curr[i])
 	{
 		if (check_redir(curr + i))

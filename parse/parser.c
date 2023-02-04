@@ -95,7 +95,7 @@ void	ft_clean_spasec(t_node *head)
 	node = head;	
 	while (node)
 	{
-		node->cmd = ft_clean(node->cmd);	
+		node->cmd = ft_clean(node->cmd);
 		node->infile = ft_clean(node->infile);	
 		node->outfile = ft_clean(node->outfile);	
 		node->append = ft_clean(node->append);	
@@ -108,8 +108,12 @@ t_node	*parser(t_node *head)
 {
 	if ((check_quote_2(head)|| unexpected_tokens(head)))
 		return (0);
-	allocate_matrix(head);
-	initial_nodes(head);
+	while(head)
+	{
+		allocate_matrix(head);
+		initial_nodes(head);
+		head = head->next;
+	}
 	// print_node(head);
 	ft_clean_spasec(head);
 	// print_node(head);

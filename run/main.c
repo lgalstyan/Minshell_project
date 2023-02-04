@@ -22,18 +22,22 @@ void	ignore_signals(void)
     signal(SIGQUIT, SIG_IGN);
 }
 
-static void	take_pars_val(t_node *node, t_env **envir)
-{
-	t_node	*curr;
+// static void	take_pars_val(t_node *node, t_env **envir)
+// {
+// 	t_node	*curr;
 
-	curr = node;
-	ft_pipe(node, envir);
-	// while (curr)
-	// {
-	// 	prompt(*curr, envir);
-	// 	curr = curr->next;
-	// }
-}
+// 	curr = node;
+// 	(void)envir;
+// 	// ft_pipe(node, envir);
+
+		
+// 	while (curr)
+// 	{
+// 		printf("readline %s\n", node->cmd[0]);
+// 		// prompt(*curr, envir);
+// 		curr = curr->next;
+// 	}
+// }
 
 void	shlvl(t_env **en)
 {
@@ -60,6 +64,7 @@ void	readline_main(t_node *node, t_env *envir)
 	char	*line;
 
 	line = NULL;
+	(void)envir;
 	while (1)
 	{
 		printf(ESC_GREEN);
@@ -72,9 +77,14 @@ void	readline_main(t_node *node, t_env *envir)
 		if (!node)
 			continue ;
 		node = parser(node);
+		// while (node)
+		// {
+		// 	printf("koko= %s\n", node->cmd[0]);
+		// 	node = node->next;
+		// }
 		if (!node)
 			continue ;
-		take_pars_val(node, &envir);
+		// take_pars_val(node, &envir);
 	}
 }
 

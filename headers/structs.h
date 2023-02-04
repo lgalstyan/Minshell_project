@@ -7,6 +7,7 @@ typedef struct s_size
 	int			s_outfile;	//>
 	int			s_heredoc;	//<<
 	int			s_append;	//>>
+	int			s_pipe;
 	int			s_cmd;
 	int			s_all;
 }				t_size;
