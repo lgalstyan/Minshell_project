@@ -110,6 +110,7 @@ void	initialize(t_node	*head)
 	{
 		allocate_matrix(head);
 		initial_nodes(head);
+		ft_clean_spasec(head);
 		head = head->next;
 	}
 }
@@ -120,7 +121,6 @@ t_node	*parser(t_node *head)
 		return (0);
 	initialize(head);
 	// print_node(head);
-	ft_clean_spasec(head);
 	// print_node(head);
 	return (head);
 }
