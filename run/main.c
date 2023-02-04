@@ -24,19 +24,11 @@ void	ignore_signals(void)
 
 static void	take_pars_val(t_node *node, t_env **envir)
 {
-	t_node	*curr;
-
-	curr = node;
 	// (void)envir;
-	// ft_pipe(node, envir);
-
-		
-	while (curr)
-	{
-		printf("readline %s\n", node->cmd[0]);
-		prompt(*curr, envir);
-		curr = curr->next;
-	}
+	if (node->counts.s_pipe)
+		ft_pipe(node, envir);
+	else
+		prompt(*node, envir);
 }
 
 void	shlvl(t_env **en)

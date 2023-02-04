@@ -74,7 +74,7 @@ int	prompt(t_node node, t_env **envir)
 	else
 	{
 		pid = fork();
-		if (!pid)
+		if (pid == 0)
 		{
 			exec_status = child_proc(node, envir, ch_env);
 			if (exec_status < 0)

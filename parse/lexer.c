@@ -71,6 +71,7 @@ t_node *lexer(char *str)
 		ft_list_add_back(&node, new);
 		++i;
 	}
+
 	// while(node)
 	// {
 	// 	printf("lexreadline{%s}\n", node->readline);
