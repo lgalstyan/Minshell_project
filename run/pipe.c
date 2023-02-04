@@ -10,7 +10,7 @@ void    ft_pipe(t_node *node, t_env **envir)
     curr = node;
 	// fd_arrays = malloc(sizeof(t_));
     if (!curr->next)
-            prompt(*curr, envir);
+        prompt(*curr, envir);
     else
     {
 	    while (curr && i < 2)

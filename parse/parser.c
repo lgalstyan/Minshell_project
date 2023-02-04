@@ -104,16 +104,21 @@ void	ft_clean_spasec(t_node *head)
 	}
 }
 
-t_node	*parser(t_node *head)
+void	initialize(t_node	*head)
 {
-	if ((check_quote_2(head)|| unexpected_tokens(head)))
-		return (0);
 	while(head)
 	{
 		allocate_matrix(head);
 		initial_nodes(head);
 		head = head->next;
 	}
+}
+
+t_node	*parser(t_node *head)
+{
+	if ((check_quote_2(head)|| unexpected_tokens(head)))
+		return (0);
+	initialize(head);
 	// print_node(head);
 	ft_clean_spasec(head);
 	// print_node(head);
