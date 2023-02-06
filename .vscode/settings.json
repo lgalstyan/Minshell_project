@@ -1,7 +1,0 @@
-{
-    "files.associations": {
-		"__node_handle": "c",
-		"type_traits": "c",
-		"minishell.h": "c"
-	}
-}

@@ -43,8 +43,8 @@ static int	child_proc(t_node node, t_env **envir, char **ch_env)
 	status = execve(cmd, node.cmd, ch_env);
 	if (status == -1)
 	{
-	// 	printf("errno = %d\n", errno);
-	// 	perror("execve : ");
+		printf("errno = %d\n", errno);
+		perror("execve : ");
 		printf("minisshell: Command not found %s\n", node.cmd[0]);
 		exit_code = 127;
 	}
@@ -54,10 +54,7 @@ static int	child_proc(t_node node, t_env **envir, char **ch_env)
 void	status_wait(int status, int exec_status)
 {
 	if (WIFEXITED(status) && exec_status == 0)
-	{
-		// printf("WIFEXITED %d\n", status);
 		exit_code = WEXITSTATUS(status);
-	}
 }
 
 int	prompt(t_node node, t_env **envir)
@@ -79,7 +76,6 @@ int	prompt(t_node node, t_env **envir)
 			exec_status = child_proc(node, envir, ch_env);
 			if (exec_status < 0)
 				exit_code = 127;
-			// printf("exec status = %d\n", exec_status);
 		}
 		wait(&status);
 		status_wait(status, exec_status);

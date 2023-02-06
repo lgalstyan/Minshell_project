@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pipe.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lgalstya <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/06 16:44:07 by lgalstya          #+#    #+#             */
+/*   Updated: 2023/02/06 16:44:10 by lgalstya         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 void	ft_close(int (*fd)[2], int len)
@@ -13,57 +25,54 @@ void	ft_close(int (*fd)[2], int len)
 	}
 }
 
-int nd_len(t_node *node)
+static void	child_process(int (*fds)[2], int i, int n)
 {
-	int res = 0;
-	while (node)
+	if (i == 0)
+		dup2(fds[i][1], 1);
+	else if (i == n - 1)
+		dup2(fds[i - 1][0], 0);
+	else
 	{
-		node = node->next;
-		res++;
+		dup2(fds[i - 1][0], 0);
+		dup2(fds[i][1], 1);
 	}
-	return(res);	
+	ft_close(fds, n);
 }
 
-void    ft_pipe(t_node *node, t_env **envir)
+static void	ft_filedisc_init(int (*fds)[2], int n)
 {
-	int		(*fds)[2];
-    int   child;
 	int	i;
-	int n;
-	
-	n = nd_len(node);
+
 	i = -1;
-	fds = ft_calloc(sizeof(int*),  node->counts.s_pipe + 1);
 	while (++i <= n)
 		pipe(fds[i]);
-	i = 0;
-	while (i < n)
+}
+
+void	ft_pipe(t_node *node, t_env **envir)
+{
+	int	(*fds)[2];
+	int	child;
+	int	i;
+	int	n;
+
+	i = -1;
+	n = node_len(node);
+	fds = ft_calloc(sizeof(int *), node->counts.s_pipe + 1);
+	ft_filedisc_init(fds, n);
+	while (++i < n)
 	{
 		child = fork();
 		if (child == -1)
-        {
-            perror("minishell: fork ");
-            exit(1);
-        }
+			child_error();
 		else if (child == 0)
 		{
-			if (i == 0)
-				dup2(fds[i][1], 1);
-			else if (i == n - 1)
-				dup2(fds[i - 1][0], 0);
-			else
-			{
-				dup2(fds[i - 1][0], 0);
-				dup2(fds[i][1], 1);
-			}
-			ft_close(fds, n);
+			child_process(fds, i, n);
 			prompt(*node, envir);
 			exit(1);
 		}
 		node = node->next;
-		i++;
 	}
 	ft_close(fds, n);
-	while(wait(0) != -1)
+	while (wait(0) != -1)
 		;
 }

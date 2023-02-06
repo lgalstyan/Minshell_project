@@ -82,15 +82,13 @@ void	update_list_item(t_env **lst, char *key, char *value)
 	}
 }
 
-int	ft_lstsize(t_node *lst)
+int node_len(t_node *node)
 {
-	int	l;
-
-	l = 0;
-	while (lst)
+	int res = 0;
+	while (node)
 	{
-		l++;
-		lst = lst->next;
+		node = node->next;
+		res++;
 	}
-	return (l);
+	return(res);	
 }

@@ -85,24 +85,11 @@ static void	add_only(char *array, t_env **en)
 	}
 }
 
-static int	check_pluse_equal(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '+' && str[i + 1] != '=')
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
 static void	cmd_one_export(char *cmd, t_env **en)
 {
 	char	**array;
 
+	array = NULL;
 	if (!check_valid_identif(cmd) || (cmd[0] > 47 && cmd[0] < 58))
 	{
 		printf("export: `%s': not a valid identifier\n", cmd);
@@ -110,17 +97,7 @@ static void	cmd_one_export(char *cmd, t_env **en)
 		return ;
 	}
 	else if (ft_strnstr(cmd, "+=", ft_strlen(cmd)))
-	{
-		if (!check_pluse_equal(cmd))
-		{
-			printf("export: `%s': not a valid identifier\n", cmd);
-			exit_code = 1;
-			return ;
-		}
-		array = ft_split_export(cmd, '+');
-		array[1]++;
-		pluse_equal(array, en);
-	}
+		pluse_equal_2(cmd, en, array);
 	else if (ft_strnstr(cmd, "=", ft_strlen(cmd)))
 	{
 		array = ft_split_export(cmd, '=');

@@ -56,9 +56,13 @@ void	environments(char **env, t_env **envir);
 char	**list_to_char(t_env *env);
 t_node	*lexer(char *str);
 t_node	*parser(t_node *node);
-int     ft_lstsize(t_node *lst);
+int		node_len(t_node *node);
 void    ft_pipe(t_node *node, t_env **envir);
 void	print_node(t_node *node);
+int		check_pluse_equal(char *str);
+void	pluse_equal_2(char *cmd, t_env **en, char **array);
+void	pluse_equal(char **array, t_env **en);
+void	child_error(void);
 
 //parser.h
 

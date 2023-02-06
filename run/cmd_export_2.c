@@ -43,3 +43,30 @@ int	check_valid_identif(char *str)
 	}
 	return (1);
 }
+
+int	check_pluse_equal(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '+' && str[i + 1] != '=')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+void	pluse_equal_2(char *cmd, t_env **en, char **array)
+{
+	if (!check_pluse_equal(cmd))
+	{
+		printf("export: `%s': not a valid identifier\n", cmd);
+		exit_code = 1;
+		return ;
+	}
+	array = ft_split_export(cmd, '+');
+	array[1]++;
+	pluse_equal(array, en);
+}
