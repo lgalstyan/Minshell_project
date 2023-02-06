@@ -25,7 +25,12 @@ void	ignore_signals(void)
 static void	take_pars_val(t_node *node, t_env **envir)
 {
 	// (void)envir;
-	if (node->counts.s_pipe)
+	// while (node)
+	// {
+	// 	prompt(*node, envir);
+	// 	node = node->next;
+	// }
+	if (node->counts.s_pipe > 0)
 		ft_pipe(node, envir);
 	else
 		prompt(*node, envir);
