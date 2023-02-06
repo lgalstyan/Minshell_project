@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 12:51:45 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/02/03 11:53:08 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/06 17:36:31 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	delete_list(t_env **env)
 		(*env) = (*env)->next;
 		free(tmp);
 	}
-	// free(env);
 	return ;
 }
 
@@ -66,29 +65,15 @@ void	ft_lstadd_back_env(t_env **lst, t_env *new)
 	}
 }
 
-void	update_list_item(t_env **lst, char *key, char *value)
+int	node_len(t_node *node)
 {
-	t_env	*curr;
+	int	res;
 
-	curr = *lst;
-	while (curr)
-	{
-		if (!ft_strcmp(key, curr->key))
-		{
-			curr->value = value;
-			return ;
-		}
-		curr = curr->next;
-	}
-}
-
-int node_len(t_node *node)
-{
-	int res = 0;
+	res = 0;
 	while (node)
 	{
 		node = node->next;
 		res++;
 	}
-	return(res);	
+	return (res);
 }

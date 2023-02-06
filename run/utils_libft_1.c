@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 12:55:07 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/02/01 16:19:26 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/06 17:36:49 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,5 @@ char	*ft_strjoin(char *s1, char *s2)
 	while (s2[i])
 		str[j++] = s2[i++];
 	str[j] = '\0';
-	// if (s1)
-	// 	free(s1);
 	return (str);
 }

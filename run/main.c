@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:10:37 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/02/03 17:47:55 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/06 17:33:21 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,6 @@ void	ignore_signals(void)
 
 static void	take_pars_val(t_node *node, t_env **envir)
 {
-	// (void)envir;
-	// while (node)
-	// {
-	// 	prompt(*node, envir);
-	// 	node = node->next;
-	// }
 	if (node->counts.s_pipe > 0)
 		ft_pipe(node, envir);
 	else

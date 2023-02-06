@@ -6,7 +6,7 @@
 /*   By: vasargsy <vasargsy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:19:47 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/02/02 15:29:22 by vasargsy         ###   ########.fr       */
+/*   Updated: 2023/02/06 17:36:21 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,24 @@ long long	ft_atoi(char *str)
 	return (n * min);
 }
 
-int	print_exit_code()
+int	print_exit_code(void)
 {
 	printf("%d", exit_code);
 	return (0);
+}
+
+void	update_list_item(t_env **lst, char *key, char *value)
+{
+	t_env	*curr;
+
+	curr = *lst;
+	while (curr)
+	{
+		if (!ft_strcmp(key, curr->key))
+		{
+			curr->value = value;
+			return ;
+		}
+		curr = curr->next;
+	}
 }
