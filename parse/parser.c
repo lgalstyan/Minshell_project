@@ -11,11 +11,6 @@
 /* ************************************************************************** */
 
 #include "minishell.h"
-// stugel "-eri qanaky zuyg lini
-// stugel | piperi qanaky lini spliti qanak -1
-// amen mi pipe qcel mi nodei mej
-// hanel redirectionnery
-//cat >> djh <<< dic > duhi  < jcoe <k >j
 
 void	print_node(t_node *node)
 {

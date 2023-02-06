@@ -67,7 +67,7 @@ void	ft_pipe(t_node *node, t_env **envir)
 		else if (child == 0)
 		{
 			child_process(fds, i, n);
-			prompt(*node, envir);
+			commands(*node, envir);
 			exit(1);
 		}
 		node = node->next;

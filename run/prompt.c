@@ -57,7 +57,7 @@ void	status_wait(int status, int exec_status)
 		exit_code = WEXITSTATUS(status);
 }
 
-int	prompt(t_node node, t_env **envir)
+int	commands(t_node node, t_env **envir)
 {
 	int		exec_status;
 	int		pid;

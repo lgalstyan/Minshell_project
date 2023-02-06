@@ -51,7 +51,7 @@ int		check_valid_identif(char *str);
 void	update_list_item(t_env **lst, char *key, char *value);
 char	*get_current_path(void);
 void	sort_list(t_env **env);
-int		prompt(t_node node, t_env **envir);
+int		commands(t_node node, t_env **envir);
 void	environments(char **env, t_env **envir);
 char	**list_to_char(t_env *env);
 t_node	*lexer(char *str);

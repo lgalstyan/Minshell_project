@@ -27,7 +27,7 @@ static void	take_pars_val(t_node *node, t_env **envir)
 	if (node->counts.s_pipe > 0)
 		ft_pipe(node, envir);
 	else
-		prompt(*node, envir);
+		commands(*node, envir);
 }
 
 void	shlvl(t_env **en)
