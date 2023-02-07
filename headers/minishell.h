@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:44:17 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/02/07 16:56:28 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/07 19:20:40 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int		check_pluse_equal(char *str);
 void	pluse_equal_2(char *cmd, t_env **en, char **array);
 void	pluse_equal(char **array, t_env **en);
 void	child_error(void);
+int     ft_arrlen(char **str);
 
 //parser.h
 
