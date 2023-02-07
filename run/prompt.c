@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:16:22 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/02/06 17:35:46 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/02/07 17:02:29 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int	child_proc(t_node node, t_env **envir, char **ch_env)
 	{
 		printf("errno = %d\n", errno);
 		perror("execve : ");
-		printf("minisshell: Command not found %s\n", node.cmd[0]);
+		printf("minishell: Command not found %s\n", node.cmd[0]);
 		exit_code = 127;
 	}
 	return (status);

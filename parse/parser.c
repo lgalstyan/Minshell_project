@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 17:25:38 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/02/03 17:45:05 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/07 17:04:02 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,37 +70,47 @@ void	allocate_matrix(t_node	*head)
 
 // cat a >> asas asasa < sasa >  ds < sda >> dsd < << < <
 
-char	**ft_clean(char **str)
+char	**ft_clean(char **str, t_env **envir)
 {
 	int	i;
+	int	f;
 	
 	i = 0;
+	f = 0;
 	while (str && str[i])
 	{
-		str[i] = ft_strtrim(str[i], SPACES);
+		str[i] = ft_strtrim(str[i], SPACES, &f);
+		str[i] = ft_strtrim(str[i], "\"", &f);
+		if (f)
+			ft_strfind(str[i], envir);
+		str[i] = ft_strtrim(str[i], "\'", &f);
+		if (!f)
+			ft_strfind(str[i], envir);
+			
 		i++;
 	}
 	return (str);
 }
 
-void	ft_clean_spasec(t_node *head)
+void	ft_clean_spasec(t_node *head, t_env **envir)
 {
 	t_node	*node;
 
 	node = head;	
 	while (node)
 	{
-		node->cmd = ft_clean(node->cmd);
-		node->infile = ft_clean(node->infile);	
-		node->outfile = ft_clean(node->outfile);	
-		node->append = ft_clean(node->append);	
-		node->heredoc = ft_clean(node->heredoc);	
+		node->cmd = ft_clean(node->cmd, envir);
+		node->infile = ft_clean(node->infile, envir);	
+		node->outfile = ft_clean(node->outfile, envir);	
+		node->append = ft_clean(node->append, envir);	
+		node->heredoc = ft_clean(node->heredoc, envir);	
 		node = node->next;
 	}
 }
 
 void	initialize(t_node	*head)
 {
+
 	while(head)
 	{
 		allocate_matrix(head);
@@ -109,11 +119,11 @@ void	initialize(t_node	*head)
 	}
 }
 
-t_node	*parser(t_node *head)
+t_node	*parser(t_node *head, t_env **envir)
 {
 	if ((check_quote_2(head)|| unexpected_tokens(head)))
 		return (0);
 	initialize(head);
-	ft_clean_spasec(head);
+	ft_clean_spasec(head, envir);
 	return (head);
 }

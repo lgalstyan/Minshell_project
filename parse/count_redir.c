@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 16:04:31 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/30 13:21:05 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/07 17:00:08 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ t_node	*cut_redir(t_node *node)
 	if (!node)
 		return (0);
     i = 0;
-	if (node->infile[i])
-		printf("inf\n");
+	// if (node->infile[i])
+	// 	printf("inf\n");
 	while (node && node->infile && node->infile[i])
     {
 		node->readline = ft_strcut(node->readline, node->infile[i]);

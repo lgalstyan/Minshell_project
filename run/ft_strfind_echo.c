@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strfind_echo.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgalstya <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 17:23:13 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/02/06 17:23:15 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/02/07 17:05:30 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ void	ft_strfind(char *str, t_env **en)
 	char	*word;
 
 	i = 0;
-	if (!str)
-		return ;
-	while (str[i])
+
+	while (str && str[i])
 	{
 		if (str[i] == '$')
 		{
+			// printf("kuku\n");
 			if (!str[i + 1] || (is_space(str[i]) && i++))
 				printf("$");
 			if (str[++i] == '?' && i++)
@@ -58,9 +58,11 @@ void	ft_strfind(char *str, t_env **en)
 			var_values(word, *en);
 		}
 		else
-		{
-			printf("%c", str[i]);
-			++i;
-		}
+			i++;
+		// else
+		// {
+		// 	printf("%c", str[i]);
+		// 	++i;
+		// }
 	}
 }

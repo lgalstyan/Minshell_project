@@ -17,7 +17,7 @@ int			ft_wcount(char *s, char c);
 char		*ft_strchr(const char *s, int c);
 char		*ft_strpaste(char *dst, char *src);
 char		*ft_strdup(char *s1);
-char		*ft_strtrim(char *s1, char *set);
+char		*ft_strtrim(char *s1, char *set, int *f);
 char		**ft_split(char *s, char c);
 char		**ft_split_pars(char *s, char c);
 char		**ft_split_export(char *s, char c);

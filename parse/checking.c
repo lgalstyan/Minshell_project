@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   check.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/06 13:21:42 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/30 14:38:46 by tyenokya         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "minishell.h"
 
 int	checkquotes(char *str)
@@ -20,12 +8,20 @@ int	checkquotes(char *str)
 	i = 0;
 	count[0] = 0;
 	count[1] = 0;
-	while (str[i])
+	while (str && str[i])
 	{
 		if (str[i] == '\"')
+		{
+			while (str[i] != '\"')
+				++i;
 			++count[0];
-		if (str[i] == '\'')
+		}
+		else if (str[i] == '\'')
+		{
+			while (str[i] != '\'')
+				++i;		
 			++count[1];
+		}
 		++i;
 	}
 	if (count[0] % 2 || count[1] % 2)

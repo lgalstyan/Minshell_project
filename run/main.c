@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:10:37 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/02/06 17:33:21 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/02/07 17:02:57 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	readline_main(t_node *node, t_env *envir)
 		node = lexer(line);
 		if (!node)
 			continue ;
-		node = parser(node);
+		node = parser(node, &envir);
 		if (!node)
 			continue ;
 		take_pars_val(node, &envir);

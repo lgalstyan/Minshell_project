@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:44:17 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/02/03 17:36:57 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/07 16:56:28 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int		commands(t_node node, t_env **envir);
 void	environments(char **env, t_env **envir);
 char	**list_to_char(t_env *env);
 t_node	*lexer(char *str);
-t_node	*parser(t_node *node);
+t_node	*parser(t_node *node, t_env **en);
 int		node_len(t_node *node);
 void    ft_pipe(t_node *node, t_env **envir);
 void	print_node(t_node *node);

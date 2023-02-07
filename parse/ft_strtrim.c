@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 14:02:15 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/30 13:17:16 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/07 16:48:39 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	last(char *s, char *set)
 	return (i);
 }
 
-char	*ft_strtrim(char *s1, char *set)
+char	*ft_strtrim(char *s1, char *set, int *f)
 {
 	int		i;
 	int		start;
@@ -58,6 +58,7 @@ char	*ft_strtrim(char *s1, char *set)
 	int		len;
 
 	i = 0;
+	*f = 0;
 	if (last(s1, set) == 0 && first(s1, set) == ft_strlen(s1))
 		len = 1;
 	else
@@ -73,6 +74,8 @@ char	*ft_strtrim(char *s1, char *set)
 		start++;
 	}
 	trim[i] = '\0';
+	if (ft_strlen(s1) != ft_strlen(set))
+		(*f) = 1; 		
 	free(s1);
 	return (trim);
 }
