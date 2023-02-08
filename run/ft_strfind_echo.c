@@ -58,11 +58,9 @@ void	ft_strfind(char *str, t_env **en)
 			var_values(word, *en);
 		}
 		else
-			i++;
-		// else
-		// {
-		// 	printf("%c", str[i]);
-		// 	++i;
-		// }
+		{
+			printf("%c", str[i]);
+			++i;
+		}
 	}
 }

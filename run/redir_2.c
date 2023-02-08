@@ -7,7 +7,7 @@ void    ft_heredoc(t_node *node)
     i = -1;
     if (*node->heredoc)
     {
-        while (*node->heredoc[++i])
+        while (node->heredoc[++i])
         {
             if (i == ft_arrlen(node->heredoc) - 1)
                 heredoc(node->heredoc[i]);
@@ -45,9 +45,9 @@ void	ft_outfile(t_node *node)
 		while (node->outfile[++i])
 		{
 			if (i == ft_arrlen(node->outfile) - 1)
-				cmd_outfile(node->outfile[i], 0);
-			else
 				cmd_outfile(node->outfile[i], 1);
+			else
+				cmd_outfile(node->outfile[i], 0);
 		}
 	}
 }
@@ -62,9 +62,9 @@ void	ft_append(t_node *node)
 		while (node->append[++i])
 		{
 			if (i == ft_arrlen(node->append) - 1)
-				cmd_append(node->append[i], 0);
-			else
 				cmd_append(node->append[i], 1);
+			else
+				cmd_append(node->append[i], 0);
 		}
     }
 }	
@@ -75,4 +75,5 @@ void    ft_redirs(t_node *node)
 	ft_infile(node);
 	ft_outfile(node);
 	ft_append(node);
+
 }

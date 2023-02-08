@@ -22,12 +22,14 @@ void	ignore_signals(void)
     signal(SIGQUIT, SIG_IGN);
 }
 
-static void	take_pars_val(t_node *node, t_env **envir)
+static void	take_pars_val(t_node *node, t_env **envir, int in_cpy, int out_cpy)
 {
 	if (node->counts.s_pipe > 0)
 		ft_pipe(node, envir);
 	else
 		commands(*node, envir);
+	dup2(in_cpy, 0);
+	dup2(out_cpy, 1);
 }
 
 void	shlvl(t_env **en)
@@ -50,7 +52,7 @@ void	shlvl(t_env **en)
 	}
 }
 
-void	readline_main(t_node *node, t_env *envir)
+void	readline_main(t_node *node, t_env *envir, int in_cpy, int out_cpy)
 {
 	char	*line;
 
@@ -70,7 +72,7 @@ void	readline_main(t_node *node, t_env *envir)
 		node = parser(node, &envir);
 		if (!node)
 			continue ;
-		take_pars_val(node, &envir);
+		take_pars_val(node, &envir, in_cpy, out_cpy);
 	}
 }
 
@@ -78,14 +80,19 @@ int	main(int argc, char **argv, char **env)
 {
 	t_node	*node;
 	t_env	*envir;
+	int		in_cpy;
+	int		out_cpy;
 
 	(void)argv;
 	(void)argc;
 	envir = NULL;
 	node = NULL;
-	rl_catch_signals = 0;
+	in_cpy = dup(0);
+	out_cpy = dup(1);
+	rl_catch_signals = 0;	
 	environments(env, &envir);
 	shlvl(&envir);
-	readline_main(node, envir);
+	readline_main(node, envir, in_cpy, out_cpy);
+	close(out_cpy);
 	return (0);
 }

@@ -1,10 +1,10 @@
 #include "minishell.h"
 
-void	ft_print_hered(char **line, int fd)
+void	ft_print_hered(char *line, int fd)
 {
-	write(fd, line, ft_strlen(*line));
+	write(fd, line, ft_strlen(line));
 	write(fd, "\n", 1);
-	free(line);
+	// free(line);
 	line = NULL;
 }
 
@@ -80,9 +80,13 @@ void	heredoc(char *str)
 	while (1)
 	{
 		s = readline("> ");
+		// if (!ft_strcmp(s, str))
+		// 	break ;
+			// break ;
 		if (ft_stop(s, str))
 			break ;
-		ft_print_hered(&s, fd);
+			// printf("s = %s\n", s);
+		ft_print_hered(s, fd);
 	}
 	ft_dup_here(fd, &file, 1);
 }
@@ -101,9 +105,11 @@ void	heredoc_not(char *str)
 		s = readline("> ");
 		if (!s)
 			return ;
-		if (ft_strcmp(str, s) == 0)
+		if (!ft_strcmp(s, str))
 			break ;
-		ft_print_hered(&s, fd);
+		// if (ft_strcmp(str, s) == 0)
+		// 	break ;
+		ft_print_hered(s, fd);
 	}
 	ft_dup_here(fd, &file, 0);
 }

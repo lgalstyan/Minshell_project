@@ -16,7 +16,7 @@ void	cmd_infile(char *file, int flag)
 {
 	int	fd;
 
-	fd = open(file, O_RDONLY, 0644);
+	fd = open(++file, O_RDONLY, 0644);
 	if (fd < 0)
 		perror("minishell : no such file or directori");
 	if (!flag)
@@ -28,7 +28,7 @@ void	cmd_outfile(char *file, int flag)
 {
 	int	fd;
 
-	fd = open(file, O_CREAT | O_WRONLY | O_TRUNC, 0644);
+	fd = open(++file, O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	if (flag == 1)
 		dup2(fd, 1);
 	close(fd);

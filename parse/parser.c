@@ -74,19 +74,23 @@ char	**ft_clean(char **str, t_env **envir)
 {
 	int	i;
 	int	f;
+	int	t;
 	
 	i = 0;
 	f = 0;
+	t = 0;
 	while (str && str[i])
 	{
+		// str[i] = change_doll(str[i], envir);
 		str[i] = ft_strtrim(str[i], SPACES, &f);
 		str[i] = ft_strtrim(str[i], "\"", &f);
-		if (f)
+		if ((f || t) && !ft_strcmp(str[0], "echo") && i != 0)
 			ft_strfind(str[i], envir);
-		str[i] = ft_strtrim(str[i], "\'", &f);
-		if (!f)
+		str[i] = ft_strtrim(str[i], "\'", &t);
+		if (!f && t && !ft_strcmp(str[0], "echo") && i != 0)
+			printf("%s", str[i]);
+		if (!f && !t && !ft_strcmp(str[0], "echo") && i != 0)
 			ft_strfind(str[i], envir);
-			
 		i++;
 	}
 	return (str);
@@ -125,5 +129,6 @@ t_node	*parser(t_node *head, t_env **envir)
 		return (0);
 	initialize(head);
 	ft_clean_spasec(head, envir);
+	print_node(head);
 	return (head);
 }
