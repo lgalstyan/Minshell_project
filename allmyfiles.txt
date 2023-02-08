@@ -1,0 +1,10 @@
+Makefile
+a
+allmyfiles.txt
+dup.txt
+headers
+minishell
+parse
+readline-master
+readline_larisa
+run

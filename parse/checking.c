@@ -14,7 +14,7 @@ int	checkquotes(char *str)
 		{
 			while (str[i] != '\"')
 				++i;
-			count[0] ;
+			++count[0];
 		}
 		else if (str[i] == '\'')
 		{

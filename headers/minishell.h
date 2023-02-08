@@ -64,6 +64,16 @@ void	pluse_equal_2(char *cmd, t_env **en, char **array);
 void	pluse_equal(char **array, t_env **en);
 void	child_error(void);
 int     ft_arrlen(char **str);
+void	ft_free_str(char *cmd);
+void	cmd_infile(char *file, int flag);
+void	cmd_outfile(char *file, int flag);
+void	cmd_append(char *file, int flag);
+void	heredoc(char *str);
+void	heredoc_not(char *str);
+void	ft_print_hered(char **line, int fd);
+void    ft_redirs(t_node *node);
+
+
 
 //parser.h
 

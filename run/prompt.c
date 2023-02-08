@@ -66,6 +66,7 @@ int	commands(t_node node, t_env **envir)
 
 	exec_status = 0;
 	ch_env = list_to_char(*envir);
+	ft_redirs(&node);
 	if (is_builtin(node.cmd[0]))
 		exec_status = builtin(node, envir);
 	else
