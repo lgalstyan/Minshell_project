@@ -123,11 +123,74 @@ void	initialize(t_node	*head)
 	}
 }
 
+char	*ft_clean_spase_between(char *str)
+{
+	int		i;
+	char	*res;
+	char	*temp;
+	int		start;
+	int		end;
+
+	i = 0;
+	start = 0;
+	end = 0;
+	temp = NULL;
+	res = NULL;
+	while (str && str[i])
+	{
+		start = i;
+		while (str[i] && is_space(str[i]))
+			i++;
+		end = i;
+		if (start != end)
+		{
+			res = ft_substr(str, 0, start);
+			temp = ft_substr(str, i, ft_strlen(str) - i);
+			res = ft_strjoin(res, temp);
+
+		}
+		if (str[i])
+			i++;
+	}
+	return (res);
+}
+
+void	ft_clean_sp_redir(t_node *node)
+{
+	int	i;
+
+	i = 0;
+	while (node->heredoc && node->heredoc[i])
+	{
+		node->heredoc[i] = ft_clean_spase_between(node->heredoc[i]);
+		i++;
+	}
+	i = 0; 
+	while (node->append && node->append[i])
+	{
+		node->append[i] = ft_clean_spase_between(node->append[i]);
+		i++;
+	}
+	i = 0; 
+	while (node->outfile && node->outfile[i])
+	{
+		node->outfile[i] = ft_clean_spase_between(node->outfile[i]);
+		i++;
+	}
+	i = 0; 
+	while (node->infile && node->infile[i])
+	{
+		node->infile[i] = ft_clean_spase_between(node->infile[i]);
+		i++;
+	}
+}
+
 t_node	*parser(t_node *head, t_env **envir)
 {
 	if ((check_quote_2(head)|| unexpected_tokens(head)))
 		return (0);
 	initialize(head);
+	ft_clean_sp_redir(head);
 	ft_clean_spasec(head, envir);
 	print_node(head);
 	return (head);
