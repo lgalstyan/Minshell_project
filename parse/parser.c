@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 17:25:38 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/02/07 17:04:02 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/08 17:17:10 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ void	allocate_matrix(t_node	*head)
 	head->counts.s_append = ft_append_count(head->readline);
 	head->counts.s_all = ft_wcount(head->readline, ' ');
 	head->counts.s_cmd = head->counts.s_all - ft_all_redir_size(head);
-	
 	head->infile = ft_calloc((head->counts.s_infile + 1), sizeof(char *));
 	head->outfile = ft_calloc((head->counts.s_outfile + 1), sizeof(char *));
 	head->heredoc = ft_calloc((head->counts.s_heredoc + 1), sizeof(char *));
@@ -68,54 +67,9 @@ void	allocate_matrix(t_node	*head)
 	head->cmd = ft_calloc((head->counts.s_cmd + 1), sizeof(char *));
 }
 
-// cat a >> asas asasa < sasa >  ds < sda >> dsd < << < <
-
-char	**ft_clean(char **str, t_env **envir)
-{
-	int	i;
-	int	f;
-	int	t;
-	
-	i = 0;
-	f = 0;
-	t = 0;
-	while (str && str[i])
-	{
-		// str[i] = change_doll(str[i], envir);
-		str[i] = ft_strtrim(str[i], SPACES, &f);
-		str[i] = ft_strtrim(str[i], "\"", &f);
-		if ((f || t) && !ft_strcmp(str[0], "echo") && i != 0)
-			ft_strfind(str[i], envir);
-		str[i] = ft_strtrim(str[i], "\'", &t);
-		if (!f && t && !ft_strcmp(str[0], "echo") && i != 0)
-			printf("%s", str[i]);
-		if (!f && !t && !ft_strcmp(str[0], "echo") && i != 0)
-			ft_strfind(str[i], envir);
-		i++;
-	}
-	return (str);
-}
-
-void	ft_clean_spasec(t_node *head, t_env **envir)
-{
-	t_node	*node;
-
-	node = head;	
-	while (node)
-	{
-		node->cmd = ft_clean(node->cmd, envir);
-		node->infile = ft_clean(node->infile, envir);	
-		node->outfile = ft_clean(node->outfile, envir);	
-		node->append = ft_clean(node->append, envir);	
-		node->heredoc = ft_clean(node->heredoc, envir);	
-		node = node->next;
-	}
-}
-
 void	initialize(t_node	*head)
 {
-
-	while(head)
+	while (head)
 	{
 		allocate_matrix(head);
 		initial_nodes(head);
@@ -123,75 +77,12 @@ void	initialize(t_node	*head)
 	}
 }
 
-char	*ft_clean_spase_between(char *str)
-{
-	int		i;
-	char	*res;
-	char	*temp;
-	int		start;
-	int		end;
-
-	i = 0;
-	start = 0;
-	end = 0;
-	temp = NULL;
-	res = NULL;
-	while (str && str[i])
-	{
-		start = i;
-		while (str[i] && is_space(str[i]))
-			i++;
-		end = i;
-		if (start != end)
-		{
-			res = ft_substr(str, 0, start);
-			temp = ft_substr(str, i, ft_strlen(str) - i);
-			res = ft_strjoin(res, temp);
-
-		}
-		if (str[i])
-			i++;
-	}
-	return (res);
-}
-
-void	ft_clean_sp_redir(t_node *node)
-{
-	int	i;
-
-	i = 0;
-	while (node->heredoc && node->heredoc[i])
-	{
-		node->heredoc[i] = ft_clean_spase_between(node->heredoc[i]);
-		i++;
-	}
-	i = 0; 
-	while (node->append && node->append[i])
-	{
-		node->append[i] = ft_clean_spase_between(node->append[i]);
-		i++;
-	}
-	i = 0; 
-	while (node->outfile && node->outfile[i])
-	{
-		node->outfile[i] = ft_clean_spase_between(node->outfile[i]);
-		i++;
-	}
-	i = 0; 
-	while (node->infile && node->infile[i])
-	{
-		node->infile[i] = ft_clean_spase_between(node->infile[i]);
-		i++;
-	}
-}
-
 t_node	*parser(t_node *head, t_env **envir)
 {
-	if ((check_quote_2(head)|| unexpected_tokens(head)))
+	if ((check_quote_2(head) || unexpected_tokens(head)))
 		return (0);
 	initialize(head);
 	ft_clean_sp_redir(head);
 	ft_clean_spasec(head, envir);
-	print_node(head);
 	return (head);
 }

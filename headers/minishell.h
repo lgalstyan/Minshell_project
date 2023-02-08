@@ -97,4 +97,9 @@ int     ignore_quotes(char *str);
 int     check_quote_2(t_node *node);
 int     unexpected_tokens(t_node *p);
 void	ft_list_add_back(t_node **lst, t_node *new);
+char	**ft_clean(char **str, t_env **envir);
+void	ft_clean_spasec(t_node *head, t_env **envir);
+char	*ft_clean_spase_between(char *str);
+void	ft_clean_sp_redir(t_node *node);
+
 #endif
