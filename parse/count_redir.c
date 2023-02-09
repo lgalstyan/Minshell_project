@@ -18,11 +18,9 @@ t_node	*cut_redir(t_node *node)
 
 	if (!node)
 		return (0);
-    i = 0;
-	// if (node->infile[i])
-	// 	printf("inf\n");
+	i = 0;
 	while (node && node->infile && node->infile[i])
-    {
+	{
 		node->readline = ft_strcut(node->readline, node->infile[i]);
 		i++;
 	}
@@ -36,7 +34,7 @@ t_node	*cut_redir(t_node *node)
 	while (node && node->heredoc && node->heredoc[i])
 	{
 		node->readline = ft_strcut(node->readline, node->heredoc[i]);
-        i++;
+		i++;
 	}
 	i = 0;
 	while (node && node->append && node->append[i])

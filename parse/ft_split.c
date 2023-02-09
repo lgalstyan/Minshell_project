@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-int ft_wcount(char *s, char c)
+int	ft_wcount(char *s, char c)
 {
 	int	i;
 	int	l;
@@ -56,7 +56,7 @@ static char	*fill(char *s, size_t h, int l)
 	str[i] = 0;
 	return (str);
 }
-	
+
 char	**pars_ft_split(char *s, char c)
 {
 	int		i;
@@ -91,8 +91,6 @@ char	**pars_ft_split(char *s, char c)
 	return (sp);
 }
 
-
-	
 /*
 static size_t	gtav(char const *s, char c)
 {

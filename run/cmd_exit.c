@@ -20,13 +20,13 @@ void	exit_normal(char **cmd)
 	if (dig < 0)
 	{
 		ft_putstr_fd("exit\n", 2);
-		exit_code = 256 - (dig * (-1)) % 256;
+		g_exit_code = 256 - (dig * (-1)) % 256;
 		exit(256 - (dig * (-1)) % 256);
 	}
 	else
 	{
 		ft_putstr_fd("exit\n", 2);
-		exit_code = dig % 256;
+		g_exit_code = dig % 256;
 		exit(dig % 256);
 	}
 }
@@ -36,7 +36,7 @@ void	cmd_exit(char **cmd)
 	if (!cmd[1])
 	{
 		ft_putstr_fd("exit\n", 2);
-		exit(exit_code);
+		exit(g_exit_code);
 	}
 	if (cmd[1] && (!(ft_isdigit(cmd[1][0]) || cmd[1][0] == '-')
 		|| (ft_strlen(cmd[1]) == 19 && (cmd[1][ft_strlen(cmd[1]) - 1] == '8'
@@ -44,14 +44,14 @@ void	cmd_exit(char **cmd)
 	{
 		ft_putstr_fd("exit\n", 2);
 		ft_putstr_fd("minishell: :exit: numeric argument required\n", 2);
-		exit_code = 255;
-		exit(exit_code);
+		g_exit_code = 255;
+		exit(g_exit_code);
 	}
 	if (cmd[2])
 	{
 		ft_putstr_fd("exit\n", 2);
 		ft_putstr_fd("minishell: :exit: too many arguments: \n", 2);
-		exit_code = 1;
+		g_exit_code = 1;
 		return ;
 	}
 	exit_normal(cmd);

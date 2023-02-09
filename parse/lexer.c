@@ -12,7 +12,7 @@
 
 #include "minishell.h" 
 
-	t_node	*init_readline(char *str, t_node *node)
+t_node	*init_readline(char *str, t_node *node)
 {
 	node->readline = ft_strdup(str);
 	node->next = NULL;
@@ -40,25 +40,25 @@ static int	checks(char *str)
 	if (checkquotes(str))
 	{
 		printf("Syntax error: the number of quotes is incorrect\n");
-		exit_code = 258;
+		g_exit_code = 258;
 		return (1);
 	}
 	if (pipe_count(str) + 1 != ft_wcount(str, '|'))
 	{
 		printf("Syntax error: the number of pipe is incorrect\n");
-		exit_code = 258;
+		g_exit_code = 258;
 		return (1);
 	}
 	return (0);
 }
 
-t_node *lexer(char *str)
+t_node	*lexer(char *str)
 {
 	int		i;
 	char	**sp;
 	t_node	*node;
 	t_node	*new;
-  
+
 	i = 0;
 	node = NULL;
 	if (checks(str))

@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   structs.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lgalstya <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/09 18:08:50 by lgalstya          #+#    #+#             */
+/*   Updated: 2023/02/09 18:08:53 by lgalstya         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
 typedef struct s_size
 {
-	int			s_infile;	//<
-	int			s_outfile;	//>
-	int			s_heredoc;	//<<
-	int			s_append;	//>>
+	int			s_infile;
+	int			s_outfile;
+	int			s_heredoc;
+	int			s_append;
 	int			s_pipe;
 	int			s_cmd;
 	int			s_all;
@@ -22,7 +34,7 @@ typedef struct s_node
 	char			**outfile;
 	char			**cmd;
 	int				*redir;
-	struct	s_node	*next;
+	struct s_node	*next;
 }					t_node;
 
 typedef struct s_env

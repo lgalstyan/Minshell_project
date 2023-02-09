@@ -26,8 +26,7 @@
 # include "libft.h"
 # include "structs.h"
 
-int exit_code;
-
+int		g_exit_code;
 int		checkquotes(char *str);
 char	ft_strgtav(char *str, int c);
 void	ft_lstadd_back(t_node **lst, t_node *new_env);
@@ -36,12 +35,12 @@ void	ft_inint_env(char *elem1, char *elem2, t_env *node);
 void	ft_strfind(char *str, t_env **en);
 int		builtin(t_node node, t_env **en);
 int		is_builtin(char *cmd);
-int		cmd_pwd();
-int     print_exit_code();
+int		cmd_pwd(void);
+int		print_exit_code(void);
 int		cmd_cd(t_node node, t_env **en);
 void	cmd_echo(t_node n, t_env **en);
 void	cmd_export(t_node n, t_env **en);
-void	cmd_exit(char** cmd);
+void	cmd_exit(char **cmd);
 void	cmd_unset(char *del_env, t_env **env);
 void	print_list(t_env **node);
 char	*search_list(t_env *env, char *key);
@@ -57,13 +56,13 @@ char	**list_to_char(t_env *env);
 t_node	*lexer(char *str);
 t_node	*parser(t_node *node, t_env **en);
 int		node_len(t_node *node);
-void    ft_pipe(t_node *node, t_env **envir);
+void	ft_pipe(t_node *node, t_env **envir);
 void	print_node(t_node *node);
 int		check_pluse_equal(char *str);
 void	pluse_equal_2(char *cmd, t_env **en, char **array);
 void	pluse_equal(char **array, t_env **en);
 void	child_error(void);
-int     ft_arrlen(char **str);
+int		ft_arrlen(char **str);
 void	ft_free_str(char *cmd);
 void	cmd_infile(char *file, int flag);
 void	cmd_outfile(char *file, int flag);
@@ -71,32 +70,28 @@ void	cmd_append(char *file, int flag);
 void	heredoc(char *str);
 void	heredoc_not(char *str);
 void	ft_print_hered(char *line, int fd);
-void    ft_redirs(t_node *node);
+void	ft_redirs(t_node *node);
 void	handler(int sig);
 void	ft_quit(int sig);
 void	ft_print_exit(void);
-
-//parser.h
-
 t_node	*cut_redir(t_node *node);
 char	*pars_ft_strjoin(char *s1, char *s2);
 char	**pars_ft_split(char *s, char c);
 int		put_in_out(t_node *node, char c);
 int		put_hd_app(t_node *node, char c);
-int 	put_cmd(t_node *node, int i);
+int		put_cmd(t_node *node, int i);
 void	initial_nodes(t_node *node);
 int		ft_infile_count(char *line);
 int		ft_outfile_count(char *line);
 int		ft_heredoc_count(char *line);
 int		ft_append_count(char *line);
-int		ft_size_all(char *str);
 int		ft_all_redir_size(t_node *node);
-char    *ft_strcut(char *readline, char *str);
+char	*ft_strcut(char *readline, char *str);
 int		is_meta(char c);
 int		is_space(char c);
-int     ignore_quotes(char *str);
-int     check_quote_2(t_node *node);
-int     unexpected_tokens(t_node *p);
+int		ignore_quotes(char *str);
+int		check_quote_2(t_node *node);
+int		unexpected_tokens(t_node *p);
 void	ft_list_add_back(t_node **lst, t_node *new);
 char	**ft_clean(char **str, t_env **envir);
 void	ft_clean_spasec(t_node *head, t_env **envir);

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lgalstya <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/09 18:08:38 by lgalstya          #+#    #+#             */
+/*   Updated: 2023/02/09 18:08:41 by lgalstya         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef LIBFT_H
 # define LIBFT_H
 
@@ -24,5 +36,4 @@ char		**ft_split_export(char *s, char c);
 long long	ft_atoi(char *str);
 void		ft_putstr_fd(char *s, int fd);
 
- 
 #endif

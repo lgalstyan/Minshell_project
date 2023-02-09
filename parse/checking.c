@@ -31,7 +31,7 @@ int	checkquotes(char *str)
 		else if (str[i] == '\'')
 		{
 			while (str[i] != '\'')
-				++i;		
+				++i;	
 			++count[1];
 		}
 		++i;
@@ -57,7 +57,7 @@ int	check_quote_2(t_node *node)
 			if (curr[i] == '\0')
 			{
 				printf("minishell: syntax error near unexpected token\n");
-				exit_code = 258;
+				g_exit_code = 258;
 				return (1);
 			}
 			while (curr[i] && curr[i] != c)
@@ -65,7 +65,7 @@ int	check_quote_2(t_node *node)
 			if (curr[i] != c)
 			{
 				printf("minishell: syntax error near unexpected token\n");
-				exit_code = 258;
+				g_exit_code = 258;
 				return (1);
 			}
 		}
@@ -81,7 +81,7 @@ static int	find_unexpected_token(char *s, int i)
 	if (s[i] == '\0' || ft_strchr("|&;()><", s[i]))
 	{
 		printf("minishell: syntax error near unexpected token\n");
-		exit_code = 258;
+		g_exit_code = 258;
 		return (1);
 	}
 	return (0);
@@ -106,24 +106,6 @@ static int	check_redir(char	*s)
 	return (0);
 }
 
-// static int	unexp_newline(char *tmp, int *i)
-// {
-// 	while (tmp[*i] && !ft_strchr("|&;()", tmp[*i]))
-// 		++(*i);
-// 	if (tmp[*i] && ft_strchr("|&;()", tmp[*i]) && ++(*i))
-// 	{
-// 		while (tmp[*i] && ft_strchr(SPACES, tmp[*i]))
-// 			(*i)++;
-// 		if (tmp[*i] == '\0')
-// 		{
-// 			printf("minishell: syntax error near unexpected token\n");
-// 			exit_code = 258;
-// 			return (1);
-// 		}
-// 	}
-// 	return (0);
-// }
-
 static int	unexp_symv(char *tmp, int i)
 {
 	if (tmp[i] == '\0' || ft_strchr("|&;()", tmp[i]))
@@ -131,7 +113,7 @@ static int	unexp_symv(char *tmp, int i)
 		if (tmp[i] == '\0' || ft_strchr("|&;()", tmp[i]))
 		{
 			printf("minishell: syntax error near unexpected token\n");
-			exit_code = 258;
+			g_exit_code = 258;
 			return (1);
 		}
 	}
@@ -145,7 +127,6 @@ int	unexpected_tokens(t_node *node)
 
 	i = 0;
 	curr = node->readline;
-
 	while (curr[i])
 	{
 		if (check_redir(curr + i))
@@ -157,9 +138,6 @@ int	unexpected_tokens(t_node *node)
 			if (unexp_symv(curr, i))
 				return (1);
 		}
-		// else
-		// 	if (unexp_newline(curr, &i))
-		// 		return (1);
 		if (curr[i] && !ft_strchr("|&;()", curr[i]))
 			i++;
 	}

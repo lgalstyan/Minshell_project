@@ -44,7 +44,7 @@ long long	ft_atoi(char *str)
 
 int	print_exit_code(void)
 {
-	printf("%d", exit_code);
+	printf("%d", g_exit_code);
 	return (0);
 }
 

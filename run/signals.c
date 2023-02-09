@@ -18,7 +18,7 @@
 // 	exit(1);
 // }
 
-void handler(int sig)
+void	handler(int sig)
 {
 	(void)sig;
 	rl_replace_line("", 0);

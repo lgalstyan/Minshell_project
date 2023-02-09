@@ -37,12 +37,10 @@ void	ft_strfind(char *str, t_env **en)
 	char	*word;
 
 	i = 0;
-
 	while (str && str[i])
 	{
 		if (str[i] == '$')
 		{
-			// printf("kuku\n");
 			if (!str[i + 1] || (is_space(str[i]) && i++))
 				printf("$");
 			if (str[++i] == '?' && i++)

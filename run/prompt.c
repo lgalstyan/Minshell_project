@@ -37,7 +37,7 @@ void	not_found_error(char *cmd)
 	ft_putstr_fd("minishell: Command not found: ", 2);
 	ft_putstr_fd(cmd, 2);
 	ft_putstr_fd("\n", 2);
-	exit_code = 127;
+	g_exit_code = 127;
 	exit (127);
 }
 
@@ -51,7 +51,6 @@ static int	child_proc(t_node node, t_env **envir, char **ch_env)
 	signal(SIGINT, SIG_DFL);
 	signal(SIGQUIT, SIG_DFL);
 	signal(SIGTSTP, SIG_IGN);
-    //signal(SIGQUIT, SIG_IGN);
 	ret = 0;
 	path = search_list(*envir, "PATH");
 	cmd = accses_to_exec(node.cmd[0], path);
@@ -67,7 +66,7 @@ static int	child_proc(t_node node, t_env **envir, char **ch_env)
 void	status_wait(int status, int exec_status)
 {
 	if (WIFEXITED(status) && exec_status == 0)
-		exit_code = WEXITSTATUS(status);
+		g_exit_code = WEXITSTATUS(status);
 }
 
 int	commands(t_node node, t_env **envir)
@@ -76,7 +75,7 @@ int	commands(t_node node, t_env **envir)
 	int		pid;
 	int		status;
 	char	**ch_env;
-	
+
 	exec_status = 0;
 	ch_env = list_to_char(*envir);
 	ft_redirs(&node);
@@ -89,11 +88,10 @@ int	commands(t_node node, t_env **envir)
 		{
 			exec_status = child_proc(node, envir, ch_env);
 			if (exec_status < 0)
-				exit_code = 127;
+				g_exit_code = 127;
 		}
 		wait(&status);
 		status_wait(status, exec_status);
-		// rl_catch_signals = 0;
 		signal(SIGINT, &handler);
 		signal(SIGQUIT, SIG_IGN);
 	}

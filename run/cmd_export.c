@@ -93,7 +93,7 @@ static void	cmd_one_export(char *cmd, t_env **en)
 	if (!check_valid_identif(cmd) || (cmd[0] > 47 && cmd[0] < 58))
 	{
 		printf("export: `%s': not a valid identifier\n", cmd);
-		exit_code = 1;
+		g_exit_code = 1;
 		return ;
 	}
 	else if (ft_strnstr(cmd, "+=", ft_strlen(cmd)))
@@ -115,7 +115,7 @@ void	cmd_export(t_node node, t_env **en)
 	if (!node.cmd[1])
 	{
 		sort_list(en);
-		exit_code = 0;
+		g_exit_code = 0;
 		return ;
 	}
 	while (node.cmd[i])

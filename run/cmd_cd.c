@@ -41,7 +41,7 @@ static int	cd_old(t_env **en, int st)
 	if (search_list(*en, "OLDPWD") == 0)
 	{
 		printf("cd: OLDPWD not set\n");
-		exit_code = 1;
+		g_exit_code = 1;
 	}
 	else
 	{
@@ -71,9 +71,9 @@ int	cmd_cd(t_node node, t_env **en)
 		path = get_current_path();
 		add_oldpwd(path, en);
 		if (!chdir(node.cmd[1]))
-			exit_code = 0;
+			g_exit_code = 0;
 		else
-			exit_code = 1;
+			g_exit_code = 1;
 	}
 	return (0);
 }

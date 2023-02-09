@@ -12,22 +12,21 @@
 
 #include "minishell.h"
 
-void    ft_heredoc(t_node *node)
+void	ft_heredoc(t_node *node)
 {
-    int i;
+	int	i;
 
-    i = -1;
-    if (*node->heredoc)
-    {
-        while (node->heredoc[++i])
-        {
-            if (i == ft_arrlen(node->heredoc) - 1)
-                heredoc(node->heredoc[i]);
+	i = -1;
+	if (*node->heredoc)
+	{
+		while (node->heredoc[++i])
+		{
+			if (i == ft_arrlen(node->heredoc) - 1)
+				heredoc(node->heredoc[i]);
 			else
 				heredoc_not(node->heredoc[i]);
-        }
-    }
-
+		}
+	}
 }
 
 void	ft_infile(t_node *node)
@@ -78,14 +77,13 @@ void	ft_append(t_node *node)
 			else
 				cmd_append(node->append[i], 0);
 		}
-    }
+	}
 }	
 
-void    ft_redirs(t_node *node)
+void	ft_redirs(t_node *node)
 {
-    ft_heredoc(node);
+	ft_heredoc(node);
 	ft_infile(node);
 	ft_outfile(node);
 	ft_append(node);
-
 }

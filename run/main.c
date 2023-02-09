@@ -78,7 +78,7 @@ void	readline_main(t_node *node, t_env *envir, int in_cpy, int out_cpy)
 	}
 }
 
-int second_hook(void)
+int	second_hook(void)
 {
 	return (0);
 }

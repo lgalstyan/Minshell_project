@@ -34,7 +34,7 @@ int	check_valid_identif(char *str)
 	{
 		if (!check_valid(str[i]))
 		{
-			exit_code = 1;
+			g_exit_code = 1;
 			return (0);
 		}
 	}
@@ -60,7 +60,7 @@ void	pluse_equal_2(char *cmd, t_env **en, char **array)
 	if (!check_pluse_equal(cmd))
 	{
 		printf("export: `%s': not a valid identifier\n", cmd);
-		exit_code = 1;
+		g_exit_code = 1;
 		return ;
 	}
 	array = ft_split_export(cmd, '+');
