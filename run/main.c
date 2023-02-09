@@ -12,15 +12,15 @@
 
 #include "minishell.h"
 
-void	ignore_signals(void)
-{
-	// "Ctrl-C"
-   	signal(SIGINT, SIG_IGN);
-	// "Ctrl-Z"
-    signal(SIGTSTP, SIG_IGN);
-	// "Ctrl-\"
-    signal(SIGQUIT, SIG_IGN);
-}
+// void	ignore_signals(void)
+// {
+// 	// "Ctrl-C"
+//    	signal(SIGINT, SIG_IGN);
+// 	// "Ctrl-Z"
+//     signal(SIGTSTP, SIG_IGN);
+// 	// "Ctrl-\"
+//     signal(SIGQUIT, SIG_IGN);
+// }
 
 static void	take_pars_val(t_node *node, t_env **envir, int in_cpy, int out_cpy)
 {
@@ -62,6 +62,8 @@ void	readline_main(t_node *node, t_env *envir, int in_cpy, int out_cpy)
 	{
 		printf(ESC_GREEN);
 		line = readline("minishell :"ESC_WHITE);
+		if (!line)
+			ft_print_exit();
 		if (line[0])
 			add_history(line);
 		else
@@ -76,6 +78,11 @@ void	readline_main(t_node *node, t_env *envir, int in_cpy, int out_cpy)
 	}
 }
 
+int second_hook(void)
+{
+	return (0);
+}
+
 int	main(int argc, char **argv, char **env)
 {
 	t_node	*node;
@@ -85,11 +92,14 @@ int	main(int argc, char **argv, char **env)
 
 	(void)argv;
 	(void)argc;
+	rl_catch_signals = 0;
+	rl_event_hook = second_hook;
+	signal(SIGINT, &handler);
+	signal(SIGQUIT, SIG_IGN);
 	envir = NULL;
 	node = NULL;
 	in_cpy = dup(0);
 	out_cpy = dup(1);
-	rl_catch_signals = 0;	
 	environments(env, &envir);
 	shlvl(&envir);
 	readline_main(node, envir, in_cpy, out_cpy);

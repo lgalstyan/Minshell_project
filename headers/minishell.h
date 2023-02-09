@@ -72,8 +72,9 @@ void	heredoc(char *str);
 void	heredoc_not(char *str);
 void	ft_print_hered(char *line, int fd);
 void    ft_redirs(t_node *node);
-
-
+void	handler(int sig);
+void	ft_quit(int sig);
+void	ft_print_exit(void);
 
 //parser.h
 

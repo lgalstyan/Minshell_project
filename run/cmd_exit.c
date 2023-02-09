@@ -12,12 +12,6 @@
 
 #include "minishell.h"
 
-static void	ft_putstr_fd(char *s, int fd)
-{
-	if (s)
-		write(fd, s, ft_strlen(s));
-}
-
 void	exit_normal(char **cmd)
 {
 	long long	dig;

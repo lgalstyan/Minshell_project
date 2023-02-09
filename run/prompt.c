@@ -32,23 +32,36 @@ char	*accses_to_exec(char *cmd, char *path)
 	return (cmd);
 }
 
+void	not_found_error(char *cmd)
+{
+	ft_putstr_fd("minishell: Command not found: ", 2);
+	ft_putstr_fd(cmd, 2);
+	ft_putstr_fd("\n", 2);
+	exit_code = 127;
+	exit (127);
+}
+
 static int	child_proc(t_node node, t_env **envir, char **ch_env)
 {
 	char	*path;
 	char	*cmd;
-	int		status;
+	int		ret;
 
+	rl_catch_signals = 0;
+	signal(SIGINT, SIG_DFL);
+	signal(SIGQUIT, SIG_DFL);
+	signal(SIGTSTP, SIG_IGN);
+    //signal(SIGQUIT, SIG_IGN);
+	ret = 0;
 	path = search_list(*envir, "PATH");
 	cmd = accses_to_exec(node.cmd[0], path);
-	status = execve(cmd, node.cmd, ch_env);
-	if (status == -1)
-	{
-		printf("errno = %d\n", errno);
-		perror("execve : ");
-		printf("minishell: Command not found %s\n", node.cmd[0]);
-		exit_code = 127;
-	}
-	return (status);
+	if (node.cmd[0][0] == '/' || node.cmd[0][0] == '.')
+		ret = execve(node.cmd[0], node.cmd, ch_env);
+	else
+		ret = execve(cmd, node.cmd, ch_env);
+	if (ret == -1)
+		not_found_error(node.cmd[0]);
+	return (ret);
 }
 
 void	status_wait(int status, int exec_status)
@@ -80,6 +93,9 @@ int	commands(t_node node, t_env **envir)
 		}
 		wait(&status);
 		status_wait(status, exec_status);
+		// rl_catch_signals = 0;
+		signal(SIGINT, &handler);
+		signal(SIGQUIT, SIG_IGN);
 	}
 	return (exec_status);
 }
