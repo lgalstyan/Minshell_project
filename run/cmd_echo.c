@@ -40,14 +40,15 @@ static int	ft_wait_n(char **cmd)
 	return (i);
 }
 
-static void	ft_print_echo(t_node	node, int i, t_env **en)
+static void	ft_print_echo(t_node	node, int i)
 {
 	while (node.cmd && node.cmd[i])
 	{
-		if (!ft_strcmp(node.cmd[i], "$?"))
-			print_exit_code(en);
-		else
-			ft_strfind(node.cmd[i], en);
+		// if (!ft_strcmp(node.cmd[i], "$?"))
+		// 	print_exit_code(en);
+		// else
+		ft_putstr_fd(node.cmd[i], 1);
+			// ft_strfind(node.cmd[i], en);
 		i++;
 		if (node.cmd[i])
 			printf(" ");
@@ -75,6 +76,7 @@ void	cmd_echo(t_node node, t_env **en)
 	int		i;
 
 	flag = 0;
+	(void)en;
 	i = 1;
 	if (!node.cmd[i])
 	{
@@ -87,7 +89,7 @@ void	cmd_echo(t_node node, t_env **en)
 		if (!node.cmd[i])
 			return ;
 	}
-	ft_print_echo(node, i, en);
+	ft_print_echo(node, i);
 	if (!flag)
 		printf("\n");
 }

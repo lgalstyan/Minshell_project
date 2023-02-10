@@ -14,6 +14,7 @@
 
 char	**ft_clean(char **str, t_env **envir)
 {
+	(void)envir;
 	int	i;
 	int	f;
 	int	t;
@@ -25,13 +26,13 @@ char	**ft_clean(char **str, t_env **envir)
 	{
 		str[i] = ft_strtrim(str[i], SPACES, &f);
 		str[i] = ft_strtrim(str[i], "\"", &f);
-		if ((f || t) && !ft_strcmp(str[0], "echo") && i != 0)
-			ft_strfind(str[i], envir);
+		// if ((f || t) && !ft_strcmp(str[0], "echo") && i != 0)
+			// ft_strfind(str[i], envir);
 		str[i] = ft_strtrim(str[i], "\'", &t);
 		if (!f && t && !ft_strcmp(str[0], "echo") && i != 0)
 			printf("%s", str[i]);
-		if (!f && !t && !ft_strcmp(str[0], "echo") && i != 0)
-			ft_strfind(str[i], envir);
+		// if (!f && !t && !ft_strcmp(str[0], "echo") && i != 0)
+			// ft_strfind(str[i], envir);
 		i++;
 	}
 	return (str);
