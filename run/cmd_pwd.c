@@ -12,13 +12,13 @@
 
 #include "minishell.h"
 
-int	cmd_pwd(void)
+int	cmd_pwd(t_env **en)
 {
 	char	cwd[256];
 
 	if (!(getcwd(cwd, sizeof(cwd))))
 	{
-		g_exit_code = 1;
+		set_exit_code("1", en);
 		perror("minishell: ");
 		return (-1);
 	}

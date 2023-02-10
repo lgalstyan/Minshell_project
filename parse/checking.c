@@ -41,7 +41,7 @@ int	checkquotes(char *str)
 	return (0);
 }
 
-int	check_quote_2(t_node *node)
+int	check_quote_2(t_node *node, t_env **en)
 {
 	int		i;
 	char	*curr;
@@ -57,7 +57,7 @@ int	check_quote_2(t_node *node)
 			if (curr[i] == '\0')
 			{
 				printf("minishell: syntax error near unexpected token\n");
-				g_exit_code = 258;
+				set_exit_code("258", en);
 				return (1);
 			}
 			while (curr[i] && curr[i] != c)
@@ -65,7 +65,7 @@ int	check_quote_2(t_node *node)
 			if (curr[i] != c)
 			{
 				printf("minishell: syntax error near unexpected token\n");
-				g_exit_code = 258;
+				set_exit_code("258", en);
 				return (1);
 			}
 		}
@@ -74,20 +74,20 @@ int	check_quote_2(t_node *node)
 	return (0);
 }
 
-static int	find_unexpected_token(char *s, int i)
+static int	find_unexpected_token(char *s, int i, t_env **en)
 {
 	while (s[i] && ft_strchr(SPACES, s[i]))
 		i++;
 	if (s[i] == '\0' || ft_strchr("|&;()><", s[i]))
 	{
 		printf("minishell: syntax error near unexpected token\n");
-		g_exit_code = 258;
+		set_exit_code("258", en);
 		return (1);
 	}
 	return (0);
 }
 
-static int	check_redir(char	*s)
+static int	check_redir(char *s, t_env	**en)
 {
 	int	i;
 
@@ -99,28 +99,28 @@ static int	check_redir(char	*s)
 			|| (s[i] == '<' && ++i)
 			|| (s[i] == '>' && ++i))
 		{
-			if (find_unexpected_token(s, i))
+			if (find_unexpected_token(s, i, en))
 				return (1);
 		}
 	}
 	return (0);
 }
 
-static int	unexp_symv(char *tmp, int i)
+static int	unexp_symv(char *tmp, int i, t_env **en)
 {
 	if (tmp[i] == '\0' || ft_strchr("|&;()", tmp[i]))
 	{
 		if (tmp[i] == '\0' || ft_strchr("|&;()", tmp[i]))
 		{
 			printf("minishell: syntax error near unexpected token\n");
-			g_exit_code = 258;
+			set_exit_code("258", en);
 			return (1);
 		}
 	}
 	return (0);
 }
 
-int	unexpected_tokens(t_node *node)
+int	unexpected_tokens(t_node *node, t_env **en)
 {
 	char	*curr;
 	int		i;
@@ -129,13 +129,13 @@ int	unexpected_tokens(t_node *node)
 	curr = node->readline;
 	while (curr[i])
 	{
-		if (check_redir(curr + i))
+		if (check_redir(curr + i, en))
 			return (1);
 		while (curr[i] && ft_strchr(SPACES, curr[i]))
 			i++;
 		if (curr[i] && ft_strchr("|&;()", curr[i]))
 		{
-			if (unexp_symv(curr, i))
+			if (unexp_symv(curr, i, en))
 				return (1);
 		}
 		if (curr[i] && !ft_strchr("|&;()", curr[i]))

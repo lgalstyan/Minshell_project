@@ -68,7 +68,7 @@ void	readline_main(t_node *node, t_env *envir, int in_cpy, int out_cpy)
 			add_history(line);
 		else
 			continue ;
-		node = lexer(line);
+		node = lexer(line, &envir);
 		if (!node)
 			continue ;
 		node = parser(node, &envir);

@@ -45,7 +45,7 @@ static void	ft_print_echo(t_node	node, int i, t_env **en)
 	while (node.cmd && node.cmd[i])
 	{
 		if (!ft_strcmp(node.cmd[i], "$?"))
-			print_exit_code();
+			print_exit_code(en);
 		else
 			ft_strfind(node.cmd[i], en);
 		i++;

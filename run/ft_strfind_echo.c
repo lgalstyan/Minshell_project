@@ -45,7 +45,7 @@ void	ft_strfind(char *str, t_env **en)
 				printf("$");
 			if (str[++i] == '?' && i++)
 			{
-				print_exit_code();
+				print_exit_code(en);
 				printf("%s", str + i);
 				return ;
 			}

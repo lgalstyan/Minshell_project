@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-int	check_valid_identif(char *str)
+int	check_valid_identif(char *str, t_env **en)
 {
 	int		i;
 	char	**array;
@@ -34,7 +34,7 @@ int	check_valid_identif(char *str)
 	{
 		if (!check_valid(str[i]))
 		{
-			g_exit_code = 1;
+			set_exit_code("1", en);
 			return (0);
 		}
 	}
@@ -60,7 +60,7 @@ void	pluse_equal_2(char *cmd, t_env **en, char **array)
 	if (!check_pluse_equal(cmd))
 	{
 		printf("export: `%s': not a valid identifier\n", cmd);
-		g_exit_code = 1;
+		set_exit_code("1", en);
 		return ;
 	}
 	array = ft_split_export(cmd, '+');

@@ -39,7 +39,7 @@ void	initialize(t_node	*head)
 
 t_node	*parser(t_node *head, t_env **envir)
 {
-	if ((check_quote_2(head) || unexpected_tokens(head)))
+	if ((check_quote_2(head, envir) || unexpected_tokens(head, envir)))
 		return (0);
 	initialize(head);
 	ft_clean_sp_redir(head);

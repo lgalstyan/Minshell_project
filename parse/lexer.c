@@ -35,24 +35,24 @@ static int	pipe_count(char *line)
 	return (count);
 }
 
-static int	checks(char *str)
+static int	checks(char *str, t_env **en)
 {
 	if (checkquotes(str))
 	{
 		printf("Syntax error: the number of quotes is incorrect\n");
-		g_exit_code = 258;
+		set_exit_code("258", en);
 		return (1);
 	}
 	if (pipe_count(str) + 1 != ft_wcount(str, '|'))
 	{
 		printf("Syntax error: the number of pipe is incorrect\n");
-		g_exit_code = 258;
+		set_exit_code("258", en);
 		return (1);
 	}
 	return (0);
 }
 
-t_node	*lexer(char *str)
+t_node	*lexer(char *str, t_env **en)
 {
 	int		i;
 	char	**sp;
@@ -61,7 +61,7 @@ t_node	*lexer(char *str)
 
 	i = 0;
 	node = NULL;
-	if (checks(str))
+	if (checks(str, en))
 		return (0);
 	sp = pars_ft_split(str, '|');
 	while (sp && sp[i])

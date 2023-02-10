@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-static int	is_valid(char *key)
+static int	is_valid(char *key, t_env **en)
 {
 	int	i;
 
@@ -24,7 +24,7 @@ static int	is_valid(char *key)
 		if (!check_valid(key[i]) || (key[0] > 47 && key[0] < 58))
 		{
 			printf("unset: `%s': not a valid identifier\n", key);
-			g_exit_code = 1;
+			set_exit_code("1", en);
 			return (1);
 		}
 		i++;
@@ -38,7 +38,7 @@ void	cmd_unset(char *del_env, t_env **env)
 	t_env	*delet;
 
 	curr = (*env);
-	if (is_valid(del_env))
+	if (is_valid(del_env, env))
 		return ;
 	while (curr->next)
 	{

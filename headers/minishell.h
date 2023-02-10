@@ -26,7 +26,7 @@
 # include "libft.h"
 # include "structs.h"
 
-int		g_exit_code;
+// int		g_exit_code;
 int		checkquotes(char *str);
 char	ft_strgtav(char *str, int c);
 void	ft_lstadd_back(t_node **lst, t_node *new_env);
@@ -35,25 +35,25 @@ void	ft_inint_env(char *elem1, char *elem2, t_env *node);
 void	ft_strfind(char *str, t_env **en);
 int		builtin(t_node node, t_env **en);
 int		is_builtin(char *cmd);
-int		cmd_pwd(void);
-int		print_exit_code(void);
+int		cmd_pwd(t_env **en);
+int		print_exit_code(t_env **en);
 int		cmd_cd(t_node node, t_env **en);
 void	cmd_echo(t_node n, t_env **en);
 void	cmd_export(t_node n, t_env **en);
-void	cmd_exit(char **cmd);
+void	cmd_exit(char **cmd, t_env **en);
 void	cmd_unset(char *del_env, t_env **env);
 void	print_list(t_env **node);
 char	*search_list(t_env *env, char *key);
 void	delete_list(t_env **env);
 int		check_valid(char c);
-int		check_valid_identif(char *str);
+int		check_valid_identif(char *str, t_env **en);
 void	update_list_item(t_env **lst, char *key, char *value);
 char	*get_current_path(void);
 void	sort_list(t_env **env);
 int		commands(t_node node, t_env **envir);
 void	environments(char **env, t_env **envir);
 char	**list_to_char(t_env *env);
-t_node	*lexer(char *str);
+t_node	*lexer(char *str, t_env **en);
 t_node	*parser(t_node *node, t_env **en);
 int		node_len(t_node *node);
 void	ft_pipe(t_node *node, t_env **envir);
@@ -90,12 +90,14 @@ char	*ft_strcut(char *readline, char *str);
 int		is_meta(char c);
 int		is_space(char c);
 int		ignore_quotes(char *str);
-int		check_quote_2(t_node *node);
-int		unexpected_tokens(t_node *p);
+void	set_exit_code(char *value, t_env **en);
+int		check_quote_2(t_node *node, t_env **en);
+int		unexpected_tokens(t_node *node, t_env **en);
 void	ft_list_add_back(t_node **lst, t_node *new);
 char	**ft_clean(char **str, t_env **envir);
 void	ft_clean_spasec(t_node *head, t_env **envir);
 char	*ft_clean_spase_between(char *str);
 void	ft_clean_sp_redir(t_node *node);
+int		get_exit_code(t_env **en);
 
 #endif

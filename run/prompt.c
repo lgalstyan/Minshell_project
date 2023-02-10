@@ -32,12 +32,12 @@ char	*accses_to_exec(char *cmd, char *path)
 	return (cmd);
 }
 
-void	not_found_error(char *cmd)
+void	not_found_error(char *cmd, t_env **en)
 {
 	ft_putstr_fd("minishell: Command not found: ", 2);
 	ft_putstr_fd(cmd, 2);
 	ft_putstr_fd("\n", 2);
-	g_exit_code = 127;
+	set_exit_code("127", en);
 	exit (127);
 }
 
@@ -59,14 +59,14 @@ static int	child_proc(t_node node, t_env **envir, char **ch_env)
 	else
 		ret = execve(cmd, node.cmd, ch_env);
 	if (ret == -1)
-		not_found_error(node.cmd[0]);
+		not_found_error(node.cmd[0], envir);
 	return (ret);
 }
 
-void	status_wait(int status, int exec_status)
+void	status_wait(int status, int exec_status, t_env **en)
 {
 	if (WIFEXITED(status) && exec_status == 0)
-		g_exit_code = WEXITSTATUS(status);
+		set_exit_code(ft_itoa(WEXITSTATUS(status)), en);
 }
 
 int	commands(t_node node, t_env **envir)
@@ -88,10 +88,10 @@ int	commands(t_node node, t_env **envir)
 		{
 			exec_status = child_proc(node, envir, ch_env);
 			if (exec_status < 0)
-				g_exit_code = 127;
+				set_exit_code("127", envir);
 		}
 		wait(&status);
-		status_wait(status, exec_status);
+		status_wait(status, exec_status, envir);
 		signal(SIGINT, &handler);
 		signal(SIGQUIT, SIG_IGN);
 	}

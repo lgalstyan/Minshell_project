@@ -42,9 +42,9 @@ long long	ft_atoi(char *str)
 	return (n * min);
 }
 
-int	print_exit_code(void)
+int	print_exit_code(t_env **en)
 {
-	printf("%d", g_exit_code);
+	printf("%d", get_exit_code(en));
 	return (0);
 }
 
