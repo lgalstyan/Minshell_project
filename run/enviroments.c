@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   enviroments.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:17:28 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/01/20 16:18:09 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/02/15 13:52:44 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,5 @@ void	environments(char **env, t_env **envir)
 		ft_lstadd_back_env(envir, new_node);
 		++i;
 	}
+	set_exit_code("0", envir);
 }

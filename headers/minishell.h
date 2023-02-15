@@ -99,5 +99,6 @@ void	ft_clean_spasec(t_node *head, t_env **envir);
 char	*ft_clean_spase_between(char *str);
 void	ft_clean_sp_redir(t_node *node);
 int		get_exit_code(t_env **en);
+char	*change_doll(char *str, t_env **en);
 
 #endif

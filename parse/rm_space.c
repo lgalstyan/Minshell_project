@@ -14,14 +14,14 @@
 
 char	*rm_space(char *str)
 {
-	int		i;
+	int 	i;
 	int		d;
 	char	*dst;
 
 	i = 0;
 	d = 0;
 	dst = malloc((ft_strlen(str)) + 1);
-	while (str[i])
+	while(str[i])
 	{
 		while (str[i] == ' ')
 			++i;

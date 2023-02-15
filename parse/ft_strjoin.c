@@ -33,5 +33,6 @@ char	*pars_ft_strjoin(char *s1, char *s2)
 		i++;
 	}
 	ns[i] = '\0';
+	//free(s1);
 	return (ns);
 }

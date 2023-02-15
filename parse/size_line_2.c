@@ -24,37 +24,37 @@ int	ft_all_redir_size(t_node *node)
 	return (res);
 }
 
-// int	ft_size_all(char *str)
-// {
-// 	int	i;
-// 	int	count;
-// 	int	f1;
-// 	int	f2;
-// 	int	f3;
+int	ft_size_all(char *str)
+{
+	int	i;
+	int	count;
+	int	f1;
+	int	f2;
+	int	f3;
 
-// 	i = 0;
-// 	f1 = 0;
-// 	f2 = 0;
-// 	f3 = 0;
-// 	count = 0;
-// 	while (str && str[i])
-// 	{
-// 		ignore_quotes(str);
-// 		while (!is_meta(str[i]) && i++)
-// 			f1 = 1;
-// 		while (str && str[i] == '<' && i++)
-// 			f2 = 1;
-// 		while (str && str[i] == '>' && i++)
-// 			f3 = 1;
-// 		while (str && (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'))
-// 		{
-// 			if ((f1 == 1 && count++ && (f1 = 0))
-// 				|| (f2 == 1 && count++ && (f2 = 0))
-// 				|| (f3 == 1 && count++ && (f3 = 0)))
-// 				;
-// 			i++;
-// 		}
-// 			i++;
-// 	}
-// 	return (count);
-// }
+	i = 0;
+	f1 = 0;
+	f2 = 0;
+	f3 = 0;
+	count = 0;
+	while (str && str[i])
+	{
+		ignore_quotes(str);
+		while (!is_meta(str[i]) && i++)
+			f1 = 1;
+		while (str && str[i] == '<' && i++)
+			f2 = 1;
+		while (str && str[i] == '>' && i++)
+			f3 = 1;
+		while (str && (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'))
+		{
+			if ((f1 == 1 && count++ && (f1 = 0))
+				|| (f2 == 1 && count++ && (f2 = 0))
+				|| (f3 == 1 && count++ && (f3 = 0)))
+				;
+			i++;
+		}
+			i++;
+	}
+	return (count);
+}

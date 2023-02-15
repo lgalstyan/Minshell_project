@@ -44,9 +44,7 @@ int	last(char *s, char *set)
 
 	i = ft_strlen(s) - 1;
 	while (gtav(set, s[i]) == 1 && i > 0)
-	{
 		i--;
-	}
 	return (i);
 }
 
@@ -74,8 +72,10 @@ char	*ft_strtrim(char *s1, char *set, int *f)
 		start++;
 	}
 	trim[i] = '\0';
-	if (ft_strlen(s1) != ft_strlen(set))
+	if (ft_strlen(s1) != ft_strlen(trim))
 		(*f) = 1; 		
+	if (is_space(set[0]))
+		*f = 0;
 	free(s1);
 	return (trim);
 }
