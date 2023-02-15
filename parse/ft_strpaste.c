@@ -24,7 +24,7 @@ char	*ft_strpaste(char *dst, char *src)
 		dst[i] = src[i];
 		i++;
 		if (src[i] == '\"' || src[i] == '\'')
-			break;
+			break ;
 	}
 	dst[i] = '\0';
 	return (dst);

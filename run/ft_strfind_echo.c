@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 17:23:13 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/02/07 17:05:30 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/15 15:05:31 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,36 +30,35 @@ void	var_values(char *str, t_env *en)
 	}
 }
 
+void	ft_strfind(char *str, t_env **en)
+{
+	int		i;
+	int		start;
+	char	*word;
 
-// void	ft_strfind(char *str, t_env **en)
-// {
-// 	int		i;
-// 	int		start;
-// 	char	*word;
-
-// 	i = 0;
-// 	while (str && str[i])
-// 	{
-// 		if (str[i] == '$')
-// 		{
-// 			if (!str[i + 1] || (is_space(str[i]) && i++))
-// 				printf("$");
-// 			if (str[++i] == '?' && i++)
-// 			{
-// 				print_exit_code(en);
-// 				printf("%s", str + i);
-// 				return ;
-// 			}
-// 			start = i;
-// 			while (str[i] && check_valid(str[i]))
-// 				i++;
-// 			word = ft_substr(str, start, i - start);
-// 			var_values(word, *en);
-// 		}
-// 		else
-// 		{
-// 			printf("%c", str[i]);
-// 			++i;
-// 		}
-// 	}
-// }
+	i = 0;
+	while (str && str[i])
+	{
+		if (str[i] == '$')
+		{
+			if (!str[i + 1] || (is_space(str[i]) && i++))
+				printf("$");
+			if (str[++i] == '?' && i++)
+			{
+				print_exit_code(en);
+				printf("%s", str + i);
+				return ;
+			}
+			start = i;
+			while (str[i] && check_valid(str[i]))
+				i++;
+			word = ft_substr(str, start, i - start);
+			var_values(word, *en);
+		}
+		else
+		{
+			printf("%c", str[i]);
+			++i;
+		}
+	}
+}

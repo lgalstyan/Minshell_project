@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 14:02:15 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/02/07 16:48:39 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/15 14:52:34 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,9 @@ int	last(char *s, char *set)
 
 	i = ft_strlen(s) - 1;
 	while (gtav(set, s[i]) == 1 && i > 0)
+	{
 		i--;
+	}
 	return (i);
 }
 

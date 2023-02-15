@@ -10,7 +10,7 @@ char *ft_fill(char *str, int start, int end, char *replace)
 	i = 0;
 	// if (!str)
 	// 	return (0);
-	fill = ft_calloc(sizeof(char), ft_strlen(str) - (end - start) + ft_strlen(replace));
+	fill = ft_calloc(sizeof(char), ft_strlen(str) - (end - start) + ft_strlen(replace) + 1);
 	while (str && str[i] && i < start)
 	{
 		fill[i] = str[i];
@@ -28,7 +28,7 @@ char *ft_fill(char *str, int start, int end, char *replace)
 		++i;
 		++end;
 	}
-	fill[i] = '\0';
+	// fill[i] = '\0';
 	free(str);
 	return (fill);
 }
@@ -39,7 +39,6 @@ static char	*replace(char *str, t_env *en)
 	{
 		if (!ft_strcmp(en->key, str))
 			return (en->value);
-			// printf("value = %s\n", en->value);
 		en = en->next;
 	}
 	return (0);
@@ -87,29 +86,22 @@ char	*change_doll(char *str, t_env **en)
 	char	*word;
 	int	end;
 
-	//(void)en;
 	i = 0;
 	start = 0;
 	word = NULL;
 	while (str && str[i])
 	{
-		//printf("str - %s, str[i] - %c\n", str, str[i]);
 		print_doll(str, &i);
 		if (str[i] == '$')
 		{
 			start = i;
-			// if (str[i])
-			// 	write(1, "h\n", 2);
 			if (str[i] && !print_doll(str, &i))
 			{
 				++i;
-			//printf("stri -%c, i = %d\n", str[i], start);
-				//write(1, "h\n", 2);	
 				while (str[i] && (str[i] != ' ' || str[i] != '$'))
 					++i;
 				end = i;
 				str = ft_fill(str, start, end, replace(str + start + 1, *en));
-				//printf("doll str |%s|\n", str);
 			}
 		// {
 		// 	i++;
@@ -119,7 +111,8 @@ char	*change_doll(char *str, t_env **en)
 		// 		i++;
 		// 	word = ft_substr(str, start, i - start);
 		}
-		i++;
+		if (str && str[i])
+			i++;
 		//write(1, "kuku\n", 5);
 		// if (str[i] == '\'')
 		// {
