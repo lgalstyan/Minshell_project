@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 14:34:10 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/30 13:21:22 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/17 15:03:32 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ void	initial_nodes(t_node *node)
 		++i;
 	}
 	node = cut_redir(node);
-	r += put_cmd(node, r);
+	node->cmd = ft_split(node->readline, ' ');
+	r += ft_wcount(node->readline, ' ');
 }
