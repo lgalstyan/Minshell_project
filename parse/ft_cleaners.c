@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 17:33:18 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/02/17 15:07:56 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/17 15:40:57 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,7 @@ char	**ft_clean(char **str, t_env **envir)
 			continue;
 		}
 		str[i] = ft_strtrim(str[i], "\"", &f);
-		if (f)
-			change_doll(str[i], envir);
+		str[i] = change_doll(str[i], envir);
 		// if (!f && t && !ft_strcmp(str[0], "echo") && i != 0)
 		// 	printf("%s", str[i]);
 		// if (!f && !t && !ft_strcmp(str[0], "echo") && i != 0)
@@ -55,6 +54,7 @@ void	ft_clean_spasec(t_node *head, t_env **envir)
 	while (node)
 	{
 		node->cmd = ft_clean(node->cmd, envir);
+		//printf("+%s %s %s\n", node->cmd[0], node->cmd[1], node->cmd[2]);
 		node->infile = ft_clean(node->infile, envir);
 		node->outfile = ft_clean(node->outfile, envir);
 		node->append = ft_clean(node->append, envir);
