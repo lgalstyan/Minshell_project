@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 17:33:18 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/02/17 15:40:57 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/17 16:05:57 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,35 +17,28 @@ char	**ft_clean(char **str, t_env **envir)
 	int	i;
 	int	f;
 	int	t;
-	
+
 	i = 0;
 	f = 0;
 	t = 0;
 	(void)envir;
 	while (str && str[i])
 	{
-		// change_doll(str[i], envir);
-		// printf("repleced is->%s\n", str[i]);
-		//printf("str[i] - %s\n", str[i]);
-		// str[i] = change_doll(str[i], envir);
 		str[i] = ft_strtrim(str[i], SPACES, &f);
 		str[i] = ft_strtrim(str[i], "\'", &t);
 		if (t)
 		{
 			++i;
-			continue;
+			continue ;
 		}
 		str[i] = ft_strtrim(str[i], "\"", &f);
 		str[i] = change_doll(str[i], envir);
-		// if (!f && t && !ft_strcmp(str[0], "echo") && i != 0)
-		// 	printf("%s", str[i]);
-		// if (!f && !t && !ft_strcmp(str[0], "echo") && i != 0)
-		// 	change_doll(str[i], envir);
+		//printf("%s\n", str[i]);
 		i++;
 	}
-	// printf("str[i]%s\n", str[0]);
 	return (str);
 }
+
 void	ft_clean_spasec(t_node *head, t_env **envir)
 {
 	t_node	*node;
@@ -54,7 +47,6 @@ void	ft_clean_spasec(t_node *head, t_env **envir)
 	while (node)
 	{
 		node->cmd = ft_clean(node->cmd, envir);
-		//printf("+%s %s %s\n", node->cmd[0], node->cmd[1], node->cmd[2]);
 		node->infile = ft_clean(node->infile, envir);
 		node->outfile = ft_clean(node->outfile, envir);
 		node->append = ft_clean(node->append, envir);

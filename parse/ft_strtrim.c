@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 14:02:15 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/02/15 14:52:34 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/17 15:57:57 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ char	*ft_strtrim(char *s1, char *set, int *f)
 	}
 	trim[i] = '\0';
 	if (ft_strlen(s1) != ft_strlen(trim))
-		(*f) = 1; 		
+		(*f) = 1;
 	if (is_space(set[0]))
 		*f = 0;
 	free(s1);

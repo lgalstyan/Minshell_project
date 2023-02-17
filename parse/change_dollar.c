@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   change_dollar.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/17 15:44:13 by tyenokya          #+#    #+#             */
+/*   Updated: 2023/02/17 16:42:54 by tyenokya         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
-char *ft_fill(char *str, int start, int end, char *replace)
+char	*ft_fill(char *str, int start, int end, char *replace)
 {
 	int		i;
 	int		k;
@@ -8,9 +20,10 @@ char *ft_fill(char *str, int start, int end, char *replace)
 
 	k = 0;
 	i = 0;
-	// if (!str)
-	// 	return (0);
-	fill = ft_calloc(sizeof(char), ft_strlen(str) - (end - start) + ft_strlen(replace) + 1);
+	if (!str)
+		return (0);
+	fill = ft_calloc(sizeof(char),
+			ft_strlen(str) - (end - start) + ft_strlen(replace) + 1);
 	while (str && str[i] && i < start)
 	{
 		fill[i] = str[i];
@@ -28,7 +41,7 @@ char *ft_fill(char *str, int start, int end, char *replace)
 		++i;
 		++end;
 	}
-	// fill[i] = '\0';
+	fill[i] = '\0';
 	free(str);
 	return (fill);
 }
@@ -55,90 +68,31 @@ int	print_doll(char *str, int *i)
 	return (0);
 }
 
-// static void	assist(char **str, int i, t_env **en)
-// {
-// 	int	start;
-// 	int	end;
-
-// 	start = i;
-// 	// while (str[i] != ' ' || str[i] != '$')
-// 		// ++i;
-// 	if (*str[i] == '$')
-// 	{
-// 		start = i;
-// 		if (i++ && *str[i] && !print_doll(*str, &i))
-// 		{
-// 			while (*str[i] != ' ' || *str[i] != '$')
-// 				++i;
-// 			end = i;
-// 			*str = ft_fill(*str, start, end, replace(*(str + i), *en));
-// 		}
-// 	}
-// 	// end = i;
-// 	// str = ft_fill(str, start, end, replace(str + i, *en));
-// }
-
-
 char	*change_doll(char *str, t_env **en)
 {
 	int		i;
 	int		start;
-	char	*word;
-	int	end;
+	int		end;
 
 	i = 0;
 	start = 0;
-	word = NULL;
 	while (str && str[i])
 	{
 		print_doll(str, &i);
-		if (str[i] == '$')
+		if (str[i] == '$' && (str[i + 1] == '_' || ft_isalpha(str[i + 1])))
 		{
 			start = i;
 			if (str[i] && !print_doll(str, &i))
 			{
 				++i;
-				while (str[i] && (str[i] != ' ' || str[i] != '$'))
+				while (str[i] && (str[i] != ' ' || str[i] != '$'))//metacharacterov petqa woncor stugel
 					++i;
 				end = i;
 				str = ft_fill(str, start, end, replace(str + start + 1, *en));
 			}
-		// {
-		// 	i++;
-		// 	//assist(str, i, en);
-		// 	start = i;
-		// 	while (str[i] && check_valid(str[i]))
-		// 		i++;
-		// 	word = ft_substr(str, start, i - start);
 		}
 		if (str && str[i])
 			i++;
-		//write(1, "kuku\n", 5);
-		// if (str[i] == '\'')
-		// {
-		// 	++i;
-		// 	while (str[i] && str[i] != '\'')
-		// 		++i;
-		// }
-		// if (str[i] == '\"')
-		// {
-		// 	// if (str[i] == '$')
-		// 		assist(&str, i, en);
-		// 	// if (str[i] == '$')
-		// 	// {
-		// 	// 	start = i;
-		// 	// 	if (i++ && str[i] == '?')
-		// 	// 		++i;
-		// 	// 	if (str[i] && !print_doll(str, &i))
-		// 	// 	{
-		// 	// 		while (str[i] != ' ' || str[i] != '$')
-		// 	// 			++i;
-		// 	// 		end = i;
-		// 	// 		str = ft_fill(str, start, end, replace(str + i, en));
-		// 	// 	}
-		// 	// }
-		// }
 	}
-	// printf("repleced is->%s\n", str);
 	return (str);
 }
