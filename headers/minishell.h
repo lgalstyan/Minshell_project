@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:44:17 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/02/17 16:41:28 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/18 14:14:00 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ char	**pars_ft_split(char *s, char c);
 int		put_in_out(t_node *node, char c);
 int		put_hd_app(t_node *node, char c);
 int		put_cmd(t_node *node, int i);
-void	initial_nodes(t_node *node);
+int 	initial_nodes(t_node *node);
 int		ft_infile_count(char *line);
 int		ft_outfile_count(char *line);
 int		ft_heredoc_count(char *line);

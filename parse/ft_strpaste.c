@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strpaste.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 17:06:36 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/16 15:13:13 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/02/17 16:48:22 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+/*#include "minishell.h"
 
 char	*ft_strpaste(char *dst, char *src)
 {
@@ -28,4 +28,4 @@ char	*ft_strpaste(char *dst, char *src)
 	}
 	dst[i] = '\0';
 	return (dst);
-}
+}*/

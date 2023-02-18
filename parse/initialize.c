@@ -6,13 +6,13 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 14:34:10 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/02/17 15:03:32 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/18 16:31:09 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	initial_nodes(t_node *node)
+int	initial_nodes(t_node *node)
 {
 	int	i;
 	int	r;
@@ -32,6 +32,10 @@ void	initial_nodes(t_node *node)
 		++i;
 	}
 	node = cut_redir(node);
-	node->cmd = ft_split(node->readline, ' ');
+	if (!node->readline)
+		return (0); // petqa maqrel error tpel u durs gal erevi bayc myus funkcyayum ereviiiiiii
+	node->cmd = pars_ft_split(node->readline, ' ');
 	r += ft_wcount(node->readline, ' ');
+	free(node->readline);
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 17:25:38 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/02/08 17:17:10 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/02/18 14:15:55 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,21 +27,22 @@ void	allocate_matrix(t_node	*head)
 	head->cmd = ft_calloc((head->counts.s_cmd + 1), sizeof(char *));
 }
 
-void	initialize(t_node	*head)
+int	initialize(t_node	*head)
 {
 	while (head)
 	{
 		allocate_matrix(head);
-		initial_nodes(head);
+		if (!initial_nodes(head))// ay estex maqrel nodery u listy arandzin funkcyayov
+			return (0);
 		head = head->next;
 	}
+	return (1);
 }
 
 t_node	*parser(t_node *head, t_env **envir)
 {
-	if ((check_quote_2(head, envir) || unexpected_tokens(head, envir)))
+	if (check_quote_2(head, envir) || unexpected_tokens(head, envir) || !initialize(head)) //kam kareliya estex free-i funkcyan kanchel woncor es 3um el malloc ka
 		return (0);
-	initialize(head);
 	ft_clean_sp_redir(head);
 	ft_clean_spasec(head, envir);
 	return (head);

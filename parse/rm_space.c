@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   rm_space.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 15:02:14 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/01/16 16:14:21 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/02/17 16:50:38 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+/*#include "minishell.h"
 
 char	*rm_space(char *str)
 {
@@ -36,3 +36,4 @@ char	*rm_space(char *str)
 	dst[d] = '\0';
 	return (dst);
 }
+*/

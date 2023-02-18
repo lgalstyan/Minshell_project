@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 17:33:18 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/02/17 16:05:57 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/17 16:47:16 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ char	*ft_clean_spase_between(char *str)
 			res = ft_substr(str, 0, start);
 			temp = ft_substr(str, i, ft_strlen(str) - i);
 			res = ft_strjoin(res, temp);
+			free(temp);
 		}
 	}
 	return (res);
