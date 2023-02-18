@@ -6,12 +6,11 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 18:18:26 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/02/18 16:38:51 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/18 17:43:38 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
 
 static	void	*pars_ft_memchr(void *s, int c, int n)
 {
@@ -34,7 +33,7 @@ static char	*pars_ft_strchr(char *s, int c)
 
 int	is_meta(char c)
 {
-	if (pars_ft_strchr(METACHARACTERS, c) != 0)
+	if (pars_ft_strchr(METACHARACTERS, c))
 		return (1);
 	return (0);
 }

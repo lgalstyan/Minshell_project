@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 15:57:27 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/02/06 17:34:09 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/02/18 17:30:40 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,10 @@ static void	ft_print_echo(t_node	node, int i)
 {
 	while (node.cmd && node.cmd[i])
 	{
-		// if (!ft_strcmp(node.cmd[i], "$?"))
-		// 	print_exit_code(en);
-		// else
+		if (i > 1)
+			ft_putstr_fd(" ", 1);
 		ft_putstr_fd(node.cmd[i], 1);
-			// ft_strfind(node.cmd[i], en);
 		i++;
-		if (node.cmd[i])
-			printf(" ");
 	}
 }
 

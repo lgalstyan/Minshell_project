@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 12:51:29 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/02/06 17:36:13 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/02/18 17:05:32 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_strlen(char *s)
 	int	i;
 
 	i = 0;
-	while (s && s[i] != 0)
+	while (s && s[i])
 		i++;
 	return (i);
 }

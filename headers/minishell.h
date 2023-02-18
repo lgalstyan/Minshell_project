@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:44:17 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/02/18 14:14:00 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/18 17:42:41 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ char	ft_strgtav(char *str, int c);
 void	ft_lstadd_back(t_node **lst, t_node *new_env);
 void	ft_lstadd_back_env(t_env **lst, t_env *new_env);
 void	ft_inint_env(char *elem1, char *elem2, t_env *node);
-void	ft_strfind(char *str, t_env **en);
 int		builtin(t_node node, t_env **en);
 int		is_builtin(char *cmd);
 int		cmd_pwd(t_env **en);
