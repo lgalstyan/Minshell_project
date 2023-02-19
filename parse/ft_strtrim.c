@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 14:02:15 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/02/18 17:46:27 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/17 15:57:57 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char	*ft_strtrim(char *s1, char *set, int *f)
 	char	*trim;
 	int		len;
 
-	i = -1;
+	i = 0;
 	*f = 0;
 	if (last(s1, set) == 0 && first(s1, set) == ft_strlen(s1))
 		len = 1;
@@ -66,9 +66,13 @@ char	*ft_strtrim(char *s1, char *set, int *f)
 	trim = malloc(len + 1);
 	if (!trim)
 		return (0);
-	start = first(s1, set) - 1;
-	while (s1[start] && i < len && i++ && start++)
+	start = first(s1, set);
+	while (s1[start] && i < len)
+	{
 		trim[i] = s1[start];
+		i++;
+		start++;
+	}
 	trim[i] = '\0';
 	if (ft_strlen(s1) != ft_strlen(trim))
 		(*f) = 1;

@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 17:33:18 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/02/17 16:47:16 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/19 15:01:32 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ char	**ft_clean(char **str, t_env **envir)
 		}
 		str[i] = ft_strtrim(str[i], "\"", &f);
 		str[i] = change_doll(str[i], envir);
-		//printf("%s\n", str[i]);
 		i++;
 	}
 	return (str);

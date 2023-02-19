@@ -6,35 +6,11 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 17:25:38 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/02/18 17:44:40 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/19 15:17:39 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-void	free_enviraments(t_env **env)
-{
-	t_env	*tmp;
-
-	tmp = *env;
-	while (tmp)
-	{
-		free(tmp->key);
-		free(tmp->value);
-		tmp = tmp->next;
-	}
-	free(env);
-}
-
-void	free_matrix(t_node *head)
-{
-	free(head->infile);
-	free(head->outfile);
-	free(head->heredoc);
-	free(head->append);
-	free(head->cmd);
-	free(head);
-}
 
 void	allocate_matrix(t_node	*head)
 {
@@ -56,22 +32,17 @@ int	initialize(t_node	*head)
 	while (head)
 	{
 		allocate_matrix(head);
-		if (!initial_nodes(head)) // ay estex maqrel nodery u listy arandzin funkcyayov
+		if (!initial_nodes(head))// ay estex maqrel nodery u listy arandzin funkcyayov
 			return (0);
 		head = head->next;
 	}
 	return (1);
 }
-
+//echo "$PWD "" "  menak senc kpcrac chakertneri pahna sxal es mtacum em sxala lcrac et hatvacna
 t_node	*parser(t_node *head, t_env **envir)
 {
-	if (check_quote_2(head, envir)
-		|| unexpected_tokens(head, envir) || !initialize(head))
-	{
-		free_matrix(head);
-		free_enviraments(envir);
+	if (check_quote_2(head, envir) || unexpected_tokens(head, envir) || !initialize(head)) //kam kareliya estex free-i funkcyan kanchel woncor es 3um el malloc ka
 		return (0);
-	}
 	ft_clean_sp_redir(head);
 	ft_clean_spasec(head, envir);
 	return (head);
