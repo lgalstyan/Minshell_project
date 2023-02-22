@@ -42,9 +42,7 @@ int	checkquotes(char *str)
 				++count[1];
 			}
 		}
-			write(1, "before\n", 7);
 		++i;
-			write(1, "after\n", 6);
 	}
 	if (count[0] % 2 || count[1] % 2)
 		return (1);
@@ -70,13 +68,13 @@ int	check_quote_2(t_node *node, t_env **en)
 				set_exit_code("258", en);
 				return (1);
 			}
-			printf("READLINE  : %s\n", node->readline);
+			// printf("READLINE  : %s\n", node->readline);
 			while (curr[i] && curr[i] != c)
 				i++;
 			if (curr[i] != c)
 			{
-				printf("QYURS : -%c-\t C : %c\n", curr[i], c);
-				printf("LLLLLLLLLminishell: syntax error near unexpected token\n");
+				// printf("QYURS : -%c-\t C : %c\n", curr[i], c);
+				printf("minishell: syntax error near unexpected token\n");
 				set_exit_code("258", en);
 				return (1);
 			}

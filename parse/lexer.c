@@ -14,7 +14,7 @@
 
 t_node	*init_readline(char *str, t_node *node)
 {
-	printf("str = %s\n", str);
+	// printf("str = %s\n", str);
 	node->readline = ft_strdup(str);
 	node->next = NULL;
 	return (node);
