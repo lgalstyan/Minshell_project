@@ -20,10 +20,9 @@ char	*ft_fill(char *str, int start, int end, char *replace)
 
 	k = 0;
 	i = 0;
-	if (!str)
+	if (!str || !replace)
 		return (0);
-	fill = ft_calloc(sizeof(char),
-			ft_strlen(str) - (end - start) + ft_strlen(replace) + 1);
+	fill = ft_calloc(sizeof(char), ft_strlen(str) - (end - start) + ft_strlen(replace) + 1);
 	while (str && str[i] && i < start)
 	{
 		fill[i] = str[i];
@@ -50,8 +49,7 @@ static char	*replace(char *str,int start, int end, t_env *en)
 {
 	char	*s;
 	
-	s = ft_substr(str, start, end - start + 1);//ft_strlen(str) - ft_strlen(str + end));
-	// printf("str = |%s|\ns = |%s|\nstart = %d\nlen = %d\n", str, s, start, end - start);
+	s = ft_substr(str, start, end - start + 1);
 	while (en)
 	{
 		if (!ft_strcmp(en->key, s))
@@ -61,7 +59,7 @@ static char	*replace(char *str,int start, int end, t_env *en)
 	if (!ft_strcmp("?", s))
 		return ("0");
 	free (s);
-	return (0);
+	return (NULL);
 }
 
 int	print_doll(char *str, int *i)
@@ -74,43 +72,44 @@ int	print_doll(char *str, int *i)
 	}
 	return (0);
 }
-//echo "'$PWD'" chi ashxatum worovhetev replace funkcyayin PWD' a poxancum strcmp aneluc chi gtnum dra hamara ' menak tpum chem karum argumenty poxem worovhetev builtinnerum shat es et funkcyan ogtagorcum
+
+static int check_afterelem1(char c)
+{
+	if (c && (c == '_' || ft_isalpha(c) || c == '?'))
+		return (0);
+	return (1);
+}
+
+static int check_afterelem2(char c)
+{
+	if (c && c != '\'' && c != '\"' && c != ' ' && (c != '$' || !is_meta(c)))
+		return (0);
+	return (1);
+}
+
 char	*change_doll(char *str, t_env **en)
 {
 	int		i;
 	int		start;
 	int		end;
-	// char	*repl;
 
 	i = 0;
 	start = 0;
-	// repl = NULL;
 	while (str && str[i])
 	{
 		print_doll(str, &i);
-		if (str[i] == '$' && str[i + 1] && (str[i + 1] == '_' || ft_isalpha(str[i + 1]) || str[i + 1] == '?'))// ?-i depqy woncor grac chi
-		{																					//?i pahy ashxatuma bayc woch 1in angamic
+		if (str[i] == '$' && !check_afterelem1(str[i + 1]))
+		{
 			start = i;
-			// printf("1:i = %d\n", i);
-			// printf("1:str = |%s|\n", str);
 			if (str[i] && !print_doll(str, &i))
 			{
 				++i;
-				while (str[i] && str[i + 1] && str[i + 1] != '\'' && str[i + 1] != '\"' && str[i + 1] != ' ' && (str[i + 1] != '$' || !is_meta(str[i + 1])))//metacharacterov petqa woncor stugel
+				while (str[i] && !check_afterelem2(str[i + 1]))
 					++i;
-				// printf("2:i = %d\n", i);
 				end = i;
-				// printf("str = |%s|\n", str);
-				// printf("end = |%d|\n", end);
-				// printf("start = |%d|\n", start);
-				// printf("replace(str, start+1, end, *en) = %s\n", replace(str, start+1, end, *en));
-				// repl = replace(str, start + 1, end, *en);
 				str = ft_fill(str, start, end + 1, replace(str, start + 1, end, *en));
-				// printf("2:str = |%s|\n", str);
-				// printf("3:i = %d\n", i);
 			}
 		}
-		// printf("str[i] = |%c|\n", str[i]);
 		if (!str || !str[i])
 			break ;
 		i++;
