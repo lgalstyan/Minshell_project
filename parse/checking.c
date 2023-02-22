@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checking.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgalstya <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 17:17:24 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/02/17 15:51:34 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/20 13:37:35 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,27 @@ int	checkquotes(char *str)
 	{
 		if (str[i] == '\"')
 		{
-			while (str[i] != '\"')
-				++i;
 			++count[0];
+			while (str[++i] && str[i] != '\"')
+				;
+			if (str[i] == '\"')
+			{
+				++count[0];
+			}
 		}
 		else if (str[i] == '\'')
 		{
-			while (str[i] != '\'')
-				++i;
 			++count[1];
+			while (str[++i] && str[i] != '\'')
+				;
+			if (str[i] == '\'')
+			{
+				++count[1];
+			}
 		}
+			write(1, "before\n", 7);
 		++i;
+			write(1, "after\n", 6);
 	}
 	if (count[0] % 2 || count[1] % 2)
 		return (1);
@@ -60,11 +70,13 @@ int	check_quote_2(t_node *node, t_env **en)
 				set_exit_code("258", en);
 				return (1);
 			}
+			printf("READLINE  : %s\n", node->readline);
 			while (curr[i] && curr[i] != c)
 				i++;
 			if (curr[i] != c)
 			{
-				printf("minishell: syntax error near unexpected token\n");
+				printf("QYURS : -%c-\t C : %c\n", curr[i], c);
+				printf("LLLLLLLLLminishell: syntax error near unexpected token\n");
 				set_exit_code("258", en);
 				return (1);
 			}
@@ -108,11 +120,12 @@ static int	check_redir(char *s, t_env	**en)
 
 static int	unexp_symv(char *tmp, int i, t_env **en)
 {
+	//Larisa es incher es arel, AAAAAAAAAAA  echo "cat < a | > b"
 	if (tmp[i] == '\0' || ft_strchr("|&;()", tmp[i]))
 	{
 		if (tmp[i] == '\0' || ft_strchr("|&;()", tmp[i]))
 		{
-			printf("minishell: syntax error near unexpected token\n");
+			printf("minishell: syntax error near unexpected token\n");//layisyaaaaaaa syntax errory write-ov kanes fd-n 2 ktas
 			set_exit_code("258", en);
 			return (1);
 		}
@@ -133,13 +146,20 @@ int	unexpected_tokens(t_node *node, t_env **en)
 			return (1);
 		while (curr[i] && ft_strchr(SPACES, curr[i]))
 			i++;
-		if (curr[i] && ft_strchr("|&;()", curr[i]))
+		ignore_quotes(node->readline, &i);
+		if (!curr[i])
+		{
+			//write(1, "hello\n", 6);
+			return (0);
+		}
+		//printf("debil%d\n", i);
+		{if (curr[i] && ft_strchr("|&;()", curr[i]))
 		{
 			if (unexp_symv(curr, i, en))
 				return (1);
 		}
 		if (curr[i] && !ft_strchr("|&;()", curr[i]))
-			i++;
+			i++;}
 	}
 	return (0);
 }

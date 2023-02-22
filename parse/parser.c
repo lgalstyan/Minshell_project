@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 17:25:38 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/02/19 15:17:39 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/20 13:10:57 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	allocate_matrix(t_node	*head)
 	head->outfile = ft_calloc((head->counts.s_outfile + 1), sizeof(char *));
 	head->heredoc = ft_calloc((head->counts.s_heredoc + 1), sizeof(char *));
 	head->append = ft_calloc((head->counts.s_append + 1), sizeof(char *));
-	head->cmd = ft_calloc((head->counts.s_cmd + 1), sizeof(char *));
+	// head->cmd = ft_calloc((head->counts.s_cmd + 1), sizeof(char *));
 }
 
 int	initialize(t_node	*head)

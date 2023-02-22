@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 15:44:13 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/02/19 15:20:28 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/19 15:57:05 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,9 @@ char	*ft_fill(char *str, int start, int end, char *replace)
 
 static char	*replace(char *str,int start, int end, t_env *en)
 {
-	
 	char	*s;
-	
+
 	s = ft_substr(str, start, ft_strlen(str) - ft_strlen(str + end));
-	
-	
 	while (en)
 	{
 		if (!ft_strcmp(en->key, s))
@@ -102,6 +99,5 @@ char	*change_doll(char *str, t_env **en)
 		if (str && str[i])
 			i++;
 	}
-
 	return (str);
 }

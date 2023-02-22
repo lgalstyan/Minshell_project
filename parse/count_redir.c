@@ -6,11 +6,32 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 16:04:31 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/02/07 17:00:08 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/20 14:26:31 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	ignore_quotes(char *str, int *i)
+{
+	while (str && str[*i])
+	{
+		if (str[*i] == '\"')
+		{
+			while (str[++*i] && str[*i] != '\"')
+				;
+			++*i;
+		}
+		else if (str[*i] == '\'')
+		{
+			while (str[++*i] && str[*i] != '\'')
+				++*i;
+		}
+		if (!str[*i])
+			break ;
+		++*i;
+	}
+}
 
 t_node	*cut_redir(t_node *node)
 {

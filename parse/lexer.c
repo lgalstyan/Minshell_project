@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 16:59:37 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/02/03 17:40:46 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/20 14:44:25 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 t_node	*init_readline(char *str, t_node *node)
 {
+	printf("str = %s\n", str);
 	node->readline = ft_strdup(str);
 	node->next = NULL;
 	return (node);
@@ -28,6 +29,26 @@ static int	pipe_count(char *line)
 	count = 0;
 	while (line && line[i])
 	{
+		if (line[i] == '\"' || line[i] == '\'')
+			ignore_quotes(line, &i);
+		if (!line[i])
+			break ;
+		//Lernona grel
+		// if (line[i] == '\"')
+		// {
+		// 	while (line[++i] && line[i] != '\"')
+		// 		;
+		// 	++i;	
+		// }
+		// else if (line[i] == '\'')
+		// {
+		// 	while (line[++i] && line[i] != '\'')
+		// 		;
+		// 	++i;	
+		// }
+		// if (line && line[i] == '\0')
+		// 	break ;
+		//esqany
 		if (line[i] == '|')
 			count++;
 		i++;
@@ -67,10 +88,11 @@ t_node	*lexer(char *str, t_env **en)
 	while (sp && sp[i])
 	{
 		new = malloc(sizeof(t_node));
-		init_readline(sp[i], new);
+		init_readline(sp[i], new);//stex petqa listnel nodenel maqrel ete new-n chi stexcvum, sp-n el
 		ft_list_add_back(&node, new);
 		++i;
 	}
 	node->counts.s_pipe = pipe_count(str);
+	free(sp);
 	return (node);
 }

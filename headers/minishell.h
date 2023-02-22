@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:44:17 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/02/18 17:42:41 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/20 10:53:26 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int		ft_all_redir_size(t_node *node);
 char	*ft_strcut(char *readline, char *str);
 int		is_meta(char c);
 int		is_space(char c);
-int		ignore_quotes(char *str);
+void	ignore_quotes(char *str, int *i);
 void	set_exit_code(char *value, t_env **en);
 int		check_quote_2(t_node *node, t_env **en);
 int		unexpected_tokens(t_node *node, t_env **en);

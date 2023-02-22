@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 12:38:27 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/02/18 16:27:08 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/20 13:21:56 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,19 @@ int	ft_wcount(char *s, char c)
 		;
 	// if (i == ft_strlen(s))
 	// 	return (0);
-	while (s[i] && i < l)
+	while (s && s[i] && i < l)
 	{
 		if (s[i] == '\"')
-			while (s[++i] != '\"')
+			while (s[++i] && s[i] != '\"')
 				;
 		if (s[i] == '\'')
-			while (s[++i] != '\'')
+			while (s[++i] && s[i] != '\'')
 				;
 		if (s[i] == c && s[i - 1] != c)
 			count++;
 		i++;
 	}
+	//printf("count = %d\n", count);
 	return (count);
 }
 
@@ -78,9 +79,12 @@ char	**pars_ft_split(char *s, char c)
 		t = h;
 		while (s[t] && s[t] != c)
 		{
-			if (s[t] == '\"')
-				while (s[++t] != '\"')
-					;
+			if (s[t] == '\"' || s[t] == '\'')
+				ignore_quotes(s, &t);
+				// while (s[++t] != '\"')
+				// 	;
+			if (!s[t])
+				break ;
 			++t;
 		}
 		sp[i] = fill(s, h, t - h);
