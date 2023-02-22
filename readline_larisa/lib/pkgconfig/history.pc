@@ -1,4 +1,4 @@
-prefix=/Users/lgalstya/Desktop/minishell/readline_larisa
+prefix=/Users/lgalstyan/Desktop/minish/readline_larisa
 exec_prefix=${prefix}
 libdir=${exec_prefix}/lib
 includedir=${prefix}/include

@@ -15,9 +15,7 @@
 int	initial_nodes(t_node *node)
 {
 	int	i;
-	int	r;
 
-	r = 0;
 	i = 0;
 	while (node->readline && node->readline[i])
 	{
@@ -39,7 +37,7 @@ int	initial_nodes(t_node *node)
 	if (!node->readline)
 		return (0); // petqa maqrel error tpel u durs gal erevi bayc myus funkcyayum ereviiiiiii
 	node->cmd = pars_ft_split(node->readline, ' ');
-	r += ft_wcount(node->readline, ' ');
+	ft_wcount(node->readline, ' ');
 	free(node->readline);
 	return (1);
 }

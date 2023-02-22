@@ -23,13 +23,13 @@ void	exit_normal(char **cmd, t_env **en)
 	{
 		ft_putstr_fd("exit\n", 2);
 		code = 256 - (dig * (-1)) % 256;
-		exit(256 - (dig * (-1)) % 256);
+		exit(code);
 	}
 	else
 	{
 		ft_putstr_fd("exit\n", 2);
 		code = dig % 256;
-		exit(dig % 256);
+		exit(code);
 	}
 }
 

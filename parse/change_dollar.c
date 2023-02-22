@@ -111,7 +111,7 @@ char	*change_doll(char *str, t_env **en)
 			}
 		}
 		// printf("str[i] = |%c|\n", str[i]);
-		if (str || !str[i])
+		if (!str || !str[i])
 			break ;
 		i++;
 	}
