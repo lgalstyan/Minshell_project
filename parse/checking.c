@@ -64,17 +64,15 @@ int	check_quote_2(t_node *node, t_env **en)
 			c = curr[i++];
 			if (curr[i] == '\0')
 			{
-				printf("minishell: syntax error near unexpected token\n");
+				ft_putstr_fd("minishell: syntax error near unexpected token\n", 2);
 				set_exit_code("258", en);
 				return (1);
 			}
-			// printf("READLINE  : %s\n", node->readline);
 			while (curr[i] && curr[i] != c)
 				i++;
 			if (curr[i] != c)
 			{
-				// printf("QYURS : -%c-\t C : %c\n", curr[i], c);
-				printf("minishell: syntax error near unexpected token\n");
+				ft_putstr_fd("minishell: syntax error near unexpected token\n", 2);
 				set_exit_code("258", en);
 				return (1);
 			}
@@ -90,7 +88,7 @@ static int	find_unexpected_token(char *s, int i, t_env **en)
 		i++;
 	if (s[i] == '\0' || ft_strchr("|&;()><", s[i]))
 	{
-		printf("minishell: syntax error near unexpected token\n");
+		ft_putstr_fd("minishell: syntax error near unexpected token\n", 2);
 		set_exit_code("258", en);
 		return (1);
 	}
@@ -123,7 +121,8 @@ static int	unexp_symv(char *tmp, int i, t_env **en)
 	{
 		if (tmp[i] == '\0' || ft_strchr("|&;()", tmp[i]))
 		{
-			printf("minishell: syntax error near unexpected token\n");//layisyaaaaaaa syntax errory write-ov kanes fd-n 2 ktas
+			ft_putstr_fd("minishell: syntax error near unexpected token\n", 2);
+			// printf("minishell: syntax error near unexpected token\n");//layisyaaaaaaa syntax errory write-ov kanes fd-n 2 ktas
 			set_exit_code("258", en);
 			return (1);
 		}
@@ -146,18 +145,14 @@ int	unexpected_tokens(t_node *node, t_env **en)
 			i++;
 		ignore_quotes(node->readline, &i);
 		if (!curr[i])
-		{
-			//write(1, "hello\n", 6);
 			return (0);
-		}
-		//printf("debil%d\n", i);
-		{if (curr[i] && ft_strchr("|&;()", curr[i]))
+			if (curr[i] && ft_strchr("|&;()", curr[i]))
 		{
 			if (unexp_symv(curr, i, en))
 				return (1);
 		}
 		if (curr[i] && !ft_strchr("|&;()", curr[i]))
-			i++;}
+			i++;
 	}
 	return (0);
 }

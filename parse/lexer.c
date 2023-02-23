@@ -14,7 +14,6 @@
 
 t_node	*init_readline(char *str, t_node *node)
 {
-	// printf("str = %s\n", str);
 	node->readline = ft_strdup(str);
 	node->next = NULL;
 	return (node);
@@ -55,16 +54,47 @@ static int	pipe_count(char *line)
 	}
 	return (count);
 }
+int ft_check_pipe(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str && str[i])
+	{
+		while (str[i] && str[i] != '|')
+			++i;
+		if (str[i] == '|')
+		{
+			++i;
+			while (str && str[i] && is_space(str[i]) == 1)
+				++i;
+			if (str[i] == '|')
+				return (1);
+		}
+		else
+			break ;
+		++i;
+	}
+	return (0);
+	
+}
 
 static int	checks(char *str, t_env **en)
 {
+	// int	i = 0;
+	// while(str && str[i])
+	// 	if (is_space(str[i]))
+	// 		++i;
+	// if (!str[i]){
+	// 	set_exit_code("258", en);//esi sirun implementacnenq tex chgravi, hetoel es kodov exity chi ashxatum
+	// 	return (1);}            //u mekel es printfy write petqa lini kareliya sirun funkya grel tox tal u exiti tivy inqy arandzin ani tex chgravi
 	if (checkquotes(str))
 	{
 		printf("Syntax error: the number of quotes is incorrect\n");
 		set_exit_code("258", en);
 		return (1);
 	}
-	if (pipe_count(str) + 1 != ft_wcount(str, '|'))
+	if (ft_check_pipe(str) || pipe_count(str) + 1 != ft_wcount(str, '|'))
 	{
 		printf("Syntax error: the number of pipe is incorrect\n");
 		set_exit_code("258", en);

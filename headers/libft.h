@@ -34,6 +34,5 @@ char		**ft_split(char *s, char c);
 char		**ft_split_pars(char *s, char c);
 char		**ft_split_export(char *s, char c);
 long long	ft_atoi(char *str);
-void		ft_putstr_fd(char *s, int fd);
 
 #endif

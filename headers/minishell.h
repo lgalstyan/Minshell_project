@@ -99,6 +99,8 @@ char	*ft_clean_spase_between(char *str);
 void	ft_clean_sp_redir(t_node *node);
 int		get_exit_code(t_env **en);
 char	*change_doll(char *str, t_env **en);
-int	ft_isalpha(int c);
+int		ft_isalpha(int c);
+void	ft_putstr_fd(char *s, int fd);
+
 
 #endif
