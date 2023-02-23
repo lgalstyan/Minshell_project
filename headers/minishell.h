@@ -101,6 +101,7 @@ int		get_exit_code(t_env **en);
 char	*change_doll(char *str, t_env **en);
 int		ft_isalpha(int c);
 void	ft_putstr_fd(char *s, int fd);
+void	ft_heredoc(t_node *node);
 
 
 #endif

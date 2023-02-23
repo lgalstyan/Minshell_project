@@ -39,7 +39,10 @@ void	ft_infile(t_node *node)
 		while (node->infile[++i])
 		{
 			if (i == ft_arrlen(node->infile) - 1)
+			{
+				printf("%s\n", node->infile[i]);
 				cmd_infile(node->infile[i], 0);
+			}
 			else
 				cmd_infile(node->infile[i], 1);
 		}

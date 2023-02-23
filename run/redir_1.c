@@ -38,7 +38,7 @@ void	cmd_append(char *file, int flag)
 {
 	int	fd;
 
-	fd = open(file, O_CREAT | O_WRONLY | O_APPEND, 0644);
+	fd = open(file + 2, O_CREAT | O_WRONLY | O_APPEND, 0644);
 	if (flag == 1)
 		dup2(fd, 1);
 	close(fd);
