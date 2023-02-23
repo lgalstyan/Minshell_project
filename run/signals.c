@@ -17,7 +17,18 @@
 // 	(void)sig;
 // 	exit(1);
 // }
+// void handler(int sig)
+// {
+// 	(void)sig;
+// 	//write(1,"\n",1);
+// 	// rl_done = 1;
+// 	write(1,"\n",1);
+// 	//rl_clear_visible_line();
+// 	rl_replace_line("",0);
+// 	rl_on_new_line();
+// 	rl_redisplay();
 
+// }
 void	handler(int sig)
 {
 	(void)sig;

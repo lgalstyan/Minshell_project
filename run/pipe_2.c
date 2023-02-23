@@ -12,8 +12,19 @@
 
 #include "minishell.h"
 
-void	child_error(void)
+void kill_proces(int child, int i)
 {
+	while (i > -1)
+	{
+		kill(child, SIGKILL);
+		waitpid(child, NULL, WUNTRACED);
+		i--;
+	}
+}
+
+void	child_error(int child, int i)
+{
+	kill_proces(child, i);
 	perror("minishell: fork ");
 	exit(1);
 }

@@ -63,7 +63,7 @@ void	ft_pipe(t_node *node, t_env **envir)
 	{
 		child = fork();
 		if (child == -1)
-			child_error();
+			child_error(child, i);
 		else if (child == 0)
 		{
 			child_process(fds, i, n);

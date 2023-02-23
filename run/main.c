@@ -12,16 +12,6 @@
 
 #include "minishell.h"
 
-// void	ignore_signals(void)
-// {
-// 	// "Ctrl-C"
-//    	signal(SIGINT, SIG_IGN);
-// 	// "Ctrl-Z"
-//     signal(SIGTSTP, SIG_IGN);
-// 	// "Ctrl-\"
-//     signal(SIGQUIT, SIG_IGN);
-// }
-
 static void	take_pars_val(t_node *node, t_env **envir, int in_cpy, int out_cpy)
 {
 	if (node->counts.s_pipe > 0)

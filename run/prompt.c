@@ -88,7 +88,10 @@ int	commands(t_node node, t_env **envir)
 		{
 			exec_status = child_proc(node, envir, ch_env);
 			if (exec_status < 0)
+			{
 				set_exit_code("127", envir);
+				exit(127);
+			}
 		}
 		wait(&status);
 		status_wait(status, exec_status, envir);

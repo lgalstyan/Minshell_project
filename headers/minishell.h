@@ -60,7 +60,7 @@ void	print_node(t_node *node);
 int		check_pluse_equal(char *str);
 void	pluse_equal_2(char *cmd, t_env **en, char **array);
 void	pluse_equal(char **array, t_env **en);
-void	child_error(void);
+void	child_error(int child, int i);
 int		ft_arrlen(char **str);
 void	ft_free_str(char *cmd);
 void	cmd_infile(char *file, int flag);
