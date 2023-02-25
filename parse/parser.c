@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 17:25:38 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/02/25 17:38:46 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/25 18:23:08 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ int	initialize(t_node	*head)
 	while (head)
 	{
 		allocate_matrix(head);
-		// printf("hello\n");
 		if (!initial_nodes(head))// ay estex maqrel nodery u listy arandzin funkcyayov
 			return (0);
 		head = head->next;
@@ -81,16 +80,10 @@ int	initialize(t_node	*head)
 //echo "$PWD "" "  menak senc kpcrac chakertneri pahna sxal es mtacum em sxala lcrac et hatvacna
 t_node	*parser(t_node *head, t_env **envir)
 {
-	// if (!initialize(head))
-	// {
-	// }
 	if (check_quote_2(head, envir) || unexpected_tokens(head, envir) || !initialize(head) ) //kam kareliya estex free-i funkcyan kanchel woncor es 3um el malloc ka
-	{
 		return (0);
-	}
 	ft_clean_sp_redir(head); //estexic maqruma
-	ft_clean_spasec(head, envir);
-	//printf("head->cmd[1] = %s\n", head->cmd[1]);
+	ft_clean_spasec(head, envir);     
 	print_node(head);
 	return (head);
 }

@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 12:38:27 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/02/20 13:21:56 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/25 18:22:46 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ int	ft_wcount(char *s, char c)
 		;
 	while (s[--l] && s[l] == ' ' && i < l)
 		;
-	// if (i == ft_strlen(s))
-	// 	return (0);
 	while (s && s[i] && i < l)
 	{
 		if (s[i] == '\"')
@@ -81,8 +79,6 @@ char	**pars_ft_split(char *s, char c)
 		{
 			if (s[t] == '\"' || s[t] == '\'')
 				ignore_quotes(s, &t);
-				// while (s[++t] != '\"')
-				// 	;
 			if (!s[t])
 				break ;
 			++t;
@@ -93,3 +89,4 @@ char	**pars_ft_split(char *s, char c)
 	sp[i] = 0;
 	return (sp);
 }
+
