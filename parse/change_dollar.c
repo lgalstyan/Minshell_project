@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/17 15:44:13 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/02/19 15:20:28 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/25 17:20:48 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_fill(char *str, int start, int end, char *replace)
 	i = 0;
 	if (!str || !replace)
 		return (0);
-	fill = ft_calloc(sizeof(char), ft_strlen(str) - (end - start) + ft_strlen(replace) + 1);
+	fill = malloc(sizeof(char) * (ft_strlen(str) - (end - start) + ft_strlen(replace) + 1));
 	while (str && str[i] && i < start)
 	{
 		fill[i] = str[i];
@@ -108,6 +108,7 @@ char	*change_doll(char *str, t_env **en)
 					++i;
 				end = i;
 				str = ft_fill(str, start, end + 1, replace(str, start + 1, end, *en));
+				i = 0;
 			}
 		}
 		if (!str || !str[i])

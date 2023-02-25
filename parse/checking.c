@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 17:17:24 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/02/20 13:37:35 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/25 15:06:03 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int	checkquotes(char *str)
 				++count[1];
 			}
 		}
+		if (!str || !str[i])
+			break;
 		++i;
 	}
 	if (count[0] % 2 || count[1] % 2)

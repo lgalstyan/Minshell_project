@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:16:22 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/02/07 17:02:29 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/25 15:37:03 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ int	commands(t_node node, t_env **envir)
 	exec_status = 0;
 	ch_env = list_to_char(*envir);
 	ft_redirs(&node);
+	printf("💜\n");
 	if (is_builtin(node.cmd[0]))
 		exec_status = builtin(node, envir);
 	else

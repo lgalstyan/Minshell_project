@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 14:34:10 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/02/20 13:17:56 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/25 16:12:22 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ int	initial_nodes(t_node *node)
 	}
 	node = cut_redir(node);
 	if (!node->readline)
-		return (0); // petqa maqrel error tpel u durs gal erevi bayc myus funkcyayum ereviiiiiii
+	{
+		return (1); // petqa maqrel error tpel u durs gal erevi bayc myus funkcyayum ereviiiiiii
+	}
 	node->cmd = pars_ft_split(node->readline, ' ');
 	ft_wcount(node->readline, ' ');
 	free(node->readline);
