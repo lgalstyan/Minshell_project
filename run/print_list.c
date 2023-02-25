@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_list.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgalstya <lgalstya@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:20:48 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/01/21 13:21:38 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/02/25 17:34:15 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,11 @@ void	print_list(t_env **node)
 	{
 		if (curr->value)
 		{
-			printf("%s", curr->key);
-			printf("=%s\n", curr->value);
+			if (ft_strcmp(curr->key, "?") != 0)
+			{
+				printf("%s", curr->key);
+				printf("=%s\n", curr->value);
+			}
 		}
 		curr = curr->next;
 	}
@@ -35,11 +38,14 @@ static void	print_list_added(t_env **node)
 	curr = (*node);
 	while (curr)
 	{
-		printf("declare -x %s", curr->key);
-		if (curr->value)
-			printf("=\"%s\"\n", curr->value);
-		else
-			printf("\n");
+		if (ft_strcmp(curr->key, "?") != 0)
+		{	
+			printf("declare -x %s", curr->key);
+			if (curr->value)
+				printf("=\"%s\"\n", curr->value);
+			else
+				printf("\n");
+		}
 		curr = curr->next;
 	}
 }

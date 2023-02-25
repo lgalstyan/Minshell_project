@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 18:08:50 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/02/18 16:20:04 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/25 17:24:15 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_node
 	char			**cmd;
 	int				*redir;
 	struct s_node	*next;
+	int				pid;
 }					t_node;
 
 typedef struct s_env
