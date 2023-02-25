@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:10:37 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/02/25 17:26:10 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/25 17:41:41 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int	main(int argc, char **argv, char **env)
 	(void)argc;
 	rl_catch_signals = 0;
 	rl_event_hook = second_hook;
+	rl_done = 1;
 	signal(SIGINT, &handler);
 	signal(SIGQUIT, SIG_IGN);
 	envir = NULL;

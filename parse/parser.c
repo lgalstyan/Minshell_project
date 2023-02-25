@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 17:25:38 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/02/25 16:14:17 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/25 17:38:46 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ t_node	*parser(t_node *head, t_env **envir)
 	ft_clean_sp_redir(head); //estexic maqruma
 	ft_clean_spasec(head, envir);
 	//printf("head->cmd[1] = %s\n", head->cmd[1]);
-	//print_node(head);
+	print_node(head);
 	return (head);
 }
 

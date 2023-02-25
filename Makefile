@@ -16,7 +16,7 @@ RM		= rm -f
 all : ${NAME}
 
 ${NAME} : ${OBJS}
-	${CC} ${CFLAGS} ${READFL} ${OBJS} ${LINKER} -o ${NAME} && ./minishell
+	${CC} ${CFLAGS} ${READFL} ${OBJS} ${LINKER} -o ${NAME}
 
 clean : 
 	${RM} ${OBJS}
