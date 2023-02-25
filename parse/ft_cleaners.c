@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 17:33:18 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/02/19 15:01:32 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/24 15:39:06 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ char	*ft_clean_spase_between(char *str)
 	int		end;
 
 	i = -1;
-	start = 0;
-	end = 0;
+	start = 0;//es toxy indz tvuma kareliya jnjelel
+	end = 0; //esel
 	temp = NULL;
 	res = NULL;
 	while (str && str[++i])
@@ -73,7 +73,8 @@ char	*ft_clean_spase_between(char *str)
 		while (str[i] && is_space(str[i]))
 			i++;
 		end = i;
-		if (start != end)
+		printf("end = %d\n", end);
+		if (start = end)//deblot es paymanica (start = end) wor ls >>a chi ashxatum //uxxaki (end)ashxatuma bayc ankap bana et  bayc chgitem chisht em poxel te che, kam endy xia petq?
 		{
 			res = ft_substr(str, 0, start);
 			temp = ft_substr(str, i, ft_strlen(str) - i);
@@ -118,5 +119,6 @@ void	ft_clean_sp_redir(t_node *node)
 		node->append[i] = ft_clean_spase_between(node->append[i]);
 		i++;
 	}
+	printf("node->append = %s\n", node->append[0]);
 	ft_clean_sp_redir_2(node);
 }

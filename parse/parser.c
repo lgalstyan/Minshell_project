@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 17:25:38 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/02/20 13:10:57 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/24 15:24:08 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,8 @@ t_node	*parser(t_node *head, t_env **envir)
 {
 	if (check_quote_2(head, envir) || unexpected_tokens(head, envir) || !initialize(head)) //kam kareliya estex free-i funkcyan kanchel woncor es 3um el malloc ka
 		return (0);
-	ft_clean_sp_redir(head);
+	//printf("head->append = %s\n", head->append[0]);
+	ft_clean_sp_redir(head); //estexic maqruma
 	ft_clean_spasec(head, envir);
 	print_node(head);
 	return (head);

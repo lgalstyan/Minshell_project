@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 18:15:21 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/02/20 12:48:26 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/24 15:21:22 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ int	put_hd_app(t_node *node, char c)
 	i = 0;
 	s = 0;
 	start = 0;
-		//printf("l = \n");
 	while (node->readline[start])
 	{
 		l = size_heredoc(node->readline, start, c) - start;
@@ -96,5 +95,6 @@ int	put_hd_app(t_node *node, char c)
 		}
 		start++;
 	}
+	//printf("node->append = %s\n", node->append[0]);
 	return (s);
 }

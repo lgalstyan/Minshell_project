@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 16:59:37 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/02/20 14:44:25 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/02/24 15:16:22 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,11 @@ static int	checks(char *str, t_env **en)
 	// while(str && str[i])
 	// 	if (is_space(str[i]))
 	// 		++i;
-	// if (!str[i]){
-	// 	set_exit_code("258", en);//esi sirun implementacnenq tex chgravi, hetoel es kodov exity chi ashxatum
-	// 	return (1);}            //u mekel es printfy write petqa lini kareliya sirun funkya grel tox tal u exiti tivy inqy arandzin ani tex chgravi
+	// if (!str[i])
+	// 	{
+	// 		set_exit_code("258", en);//esi sirun implementacnenq tex chgravi, hetoel es kodov exity chi ashxatum
+	// 		return (1);
+	// 	}            //u mekel es printfy write petqa lini kareliya sirun funkya grel tox tal u exiti tivy inqy arandzin ani tex chgravi
 	if (checkquotes(str))
 	{
 		printf("Syntax error: the number of quotes is incorrect\n");
