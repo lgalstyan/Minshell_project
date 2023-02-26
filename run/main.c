@@ -51,7 +51,7 @@ void	readline_main(t_node *node, t_env *envir, int in_cpy, int out_cpy)
 	while (1)
 	{
 		printf(ESC_GREEN);
-		line = readline("💚minishell :"ESC_WHITE);
+		line = readline("💚 minishell :"ESC_WHITE);
 		if (!line)
 			ft_print_exit();
 		if (line[0])

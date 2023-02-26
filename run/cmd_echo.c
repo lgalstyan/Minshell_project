@@ -31,7 +31,7 @@ static int	ft_wait_n(char **cmd)
 	int	i;
 
 	i = 1;
-	while (cmd[i][0] == '-')
+	while (cmd[i] && cmd[i][0] == '-')
 	{
 		if (ft_option_check(cmd[i]) == 0)
 			return (i * (-1));
