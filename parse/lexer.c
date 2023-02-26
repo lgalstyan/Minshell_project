@@ -125,6 +125,6 @@ t_node	*lexer(char *str, t_env **en)
 		++i;
 	}
 	node->counts.s_pipe = pipe_count(str);
-	free(sp);
+	free_arr(sp);
 	return (node);
 }

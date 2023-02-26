@@ -20,7 +20,7 @@ char	*ft_fill(char *str, int start, int end, char *replace)
 
 	k = 0;
 	i = 0;
-	if (!str || !replace)
+	if (!str)
 		return (0);
 	fill = malloc(sizeof(char) * (ft_strlen(str) - (end - start) + ft_strlen(replace) + 1));
 	while (str && str[i] && i < start)
@@ -53,11 +53,17 @@ static char	*replace(char *str,int start, int end, t_env *en)
 	while (en)
 	{
 		if (!ft_strcmp(en->key, s))
+		{
+			free(s);
 			return (en->value);
+		}
 		en = en->next;
 	}
 	if (!ft_strcmp("?", s))
+	{
+		free(s);
 		return ("0");
+	}
 	free (s);
 	return (NULL);
 }

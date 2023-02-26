@@ -33,7 +33,6 @@ typedef struct s_node
 	char			**infile;
 	char			**outfile;
 	char			**cmd;
-	int				*redir;
 	struct s_node	*next;
 	int				pid;
 }					t_node;

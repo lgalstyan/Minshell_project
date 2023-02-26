@@ -14,8 +14,8 @@
 
 void	ft_inint_env(char *elem1, char *elem2, t_env *node)
 {
-	node->key = elem1;
-	node->value = elem2;
+	node->key = ft_strdup(elem1);
+	node->value = ft_strdup(elem2);
 	node->next = NULL;
 }
 
@@ -33,5 +33,7 @@ void	environments(char **env, t_env **envir)
 		ft_inint_env(array[0], array[1], new_node);
 		ft_lstadd_back_env(envir, new_node);
 		++i;
+		free_arr(array);
+		array = NULL;
 	}
 }

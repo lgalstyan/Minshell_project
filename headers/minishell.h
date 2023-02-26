@@ -101,7 +101,9 @@ int		get_exit_code(t_env **en);
 char	*change_doll(char *str, t_env **en);
 int		ft_isalpha(int c);
 void	ft_putstr_fd(char *s, int fd);
+void	not_found_error(char *cmd, t_env **en);
 void	ft_heredoc(t_node *node);
+void	*free_arr(char **s);
 
 
 #endif

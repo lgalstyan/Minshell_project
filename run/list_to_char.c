@@ -29,15 +29,27 @@ char	**list_to_char(t_env *env)
 {
 	int		i;
 	char	**res;
+	char 	*tmp;
 
 	i = 0;
+	tmp = NULL;
 	res = malloc(sizeof(char *) * (ft_lst_size(env) + 1));
 	while (env)
 	{
 		if (env->key)
-			res[i] = ft_strjoin(env->key, "=");
+		{
+			tmp = ft_strjoin(env->key, "=");
+			res[i] = tmp;
+			free(tmp);
+			tmp = NULL;
+		}
 		if (env->value)
-			res[i] = ft_strjoin(res[i], env->value);
+		{
+			tmp = ft_strjoin(res[i], env->value);
+			res[i] = tmp;
+			free(tmp);
+			tmp = NULL;
+		}
 		i++;
 		env = env->next;
 	}

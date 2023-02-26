@@ -51,6 +51,21 @@ static	int	gtav(char *s, char c)
 	return (count);
 }
 
+void	*free_arr(char **s)
+{
+	int	i;
+
+	i = 0;
+	while (s && s[i])
+	{
+		free(s[i]);
+		i++;
+	}
+	if (s)
+		free(s);
+	return (0);
+}
+
 char	**ft_split(char *s, char c)
 {
 	int		h;

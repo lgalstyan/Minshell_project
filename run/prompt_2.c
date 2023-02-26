@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipe_2.c                                           :+:      :+:    :+:   */
+/*   prompt_2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgalstya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/06 17:10:34 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/02/06 17:10:36 by lgalstya         ###   ########.fr       */
+/*   Created: 2023/02/26 14:27:59 by lgalstya          #+#    #+#             */
+/*   Updated: 2023/02/26 14:28:01 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	kill_proces(int child, int i)
+void	not_found_error(char *cmd, t_env **en)
 {
-	while (i > -1)
-	{
-		kill(child, SIGKILL);
-		waitpid(child, NULL, WUNTRACED);
-		i--;
-	}
-	ft_putstr_fd("minishell: fork error\n", 2);
-}
-
-void	child_error(int child, int i)
-{
-	kill_proces(child, i);
-	perror("minishell: fork ");
-	exit(1);
+	ft_putstr_fd("minishell: Command not found: ", 2);
+	ft_putstr_fd(cmd, 2);
+	ft_putstr_fd("\n", 2);
+	set_exit_code("127", en);
+	exit (127);
 }

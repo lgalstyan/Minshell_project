@@ -43,8 +43,10 @@ void	pluse_equal(char **array, t_env **en)
 {
 	int		flag;
 	t_env	*curr;
+	char 	*tmp;
 
 	flag = 0;
+	tmp = NULL;
 	curr = *en;
 	if (!array[1])
 		array[1] = "";
@@ -52,7 +54,10 @@ void	pluse_equal(char **array, t_env **en)
 	{
 		if (!ft_strcmp(curr->key, array[0]))
 		{
-			curr->value = ft_strjoin(curr->value, array[1]);
+			tmp = ft_strjoin(curr->value, array[1]);
+			curr->value = tmp;
+			free(tmp);
+			tmp = NULL; 
 			flag = 1;
 		}
 		curr = curr->next;

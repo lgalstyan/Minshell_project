@@ -17,28 +17,30 @@ char	*accses_to_exec(char *cmd, char *path)
 	int		i;
 	char	**token;
 	char	*cmd_accs;
+	char	*tmp;
 
 	i = 0;
+	tmp = NULL;
 	token = ft_split(path, ':');
 	if (cmd[0] != '.')
-		cmd = ft_strjoin("/", cmd);
+	{
+		tmp = ft_strjoin("/", cmd);
+		cmd = tmp;
+		free(tmp);
+		tmp = NULL;
+	}
 	while (token[i])
 	{
 		cmd_accs = ft_strjoin(token[i], cmd);
+		cmd_accs = tmp;
+		free(tmp);
+		tmp = NULL;
 		if (access(cmd_accs, 0) == 0)
 			return (cmd_accs);
 		i++;
 	}
+	free_arr(token);
 	return (cmd);
-}
-
-void	not_found_error(char *cmd, t_env **en)
-{
-	ft_putstr_fd("minishell: Command not found: ", 2);
-	ft_putstr_fd(cmd, 2);
-	ft_putstr_fd("\n", 2);
-	set_exit_code("127", en);
-	exit (127);
 }
 
 static int	child_proc(t_node node, t_env **envir, char **ch_env)
@@ -69,6 +71,12 @@ void	status_wait(int status, int exec_status, t_env **en)
 		set_exit_code(ft_itoa(WEXITSTATUS(status)), en);
 }
 
+void	exit_for_norm(t_env **env)
+{
+	set_exit_code("127", env);
+	exit(127);
+}
+
 int	commands(t_node node, t_env **envir)
 {
 	int		exec_status;
@@ -79,7 +87,6 @@ int	commands(t_node node, t_env **envir)
 	exec_status = 0;
 	ch_env = list_to_char(*envir);
 	ft_redirs(&node);
-	// printf("💜\n");
 	if (is_builtin(node.cmd[0]))
 		exec_status = builtin(node, envir);
 	else
@@ -89,10 +96,7 @@ int	commands(t_node node, t_env **envir)
 		{
 			exec_status = child_proc(node, envir, ch_env);
 			if (exec_status < 0)
-			{
-				set_exit_code("127", envir);
-				exit(127);
-			}
+				exit_for_norm(envir);
 		}
 		wait(&status);
 		status_wait(status, exec_status, envir);

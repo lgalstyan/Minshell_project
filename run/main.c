@@ -42,6 +42,24 @@ void	shlvl(t_env **en)
 	}
 }
 
+void free_node(t_node *node)
+{
+	while (node)
+	{
+		if (node->heredoc)
+			free_arr(node->heredoc);
+		if (node->append)
+			free_arr(node->append);
+		if (node->outfile)
+			free_arr(node->outfile);
+		if (node->infile)
+			free_arr(node->infile);
+		if (node->cmd)
+			free_arr(node->cmd);
+		node = node->next;
+	}
+}
+
 void	readline_main(t_node *node, t_env *envir, int in_cpy, int out_cpy)
 {
 	char	*line;
@@ -62,9 +80,13 @@ void	readline_main(t_node *node, t_env *envir, int in_cpy, int out_cpy)
 		if (!node)
 			continue ;
 		node = parser(node, &envir);
+		system("leaks minishell");
 		if (!node)
 			continue ;
 		take_pars_val(node, &envir, in_cpy, out_cpy);
+		free(line);
+		line = NULL;
+		free_node(node);
 	}
 }
 
