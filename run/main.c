@@ -78,16 +78,16 @@ void	readline_main(t_node *node, t_env *envir, int in_cpy, int out_cpy)
 		else
 			continue ;
 		node = lexer(line, &envir);
-		// system("leaks minishell");
+		free(line);
+		line = NULL;
 		if (!node)
 			continue ;
 		node = parser(node, &envir);
 		if (!node)
 			continue ;
 		take_pars_val(node, &envir, in_cpy, out_cpy);
-		free(line);
-		line = NULL;
 		free_node(node);
+		system("leaks minishell");
 	}
 }
 
