@@ -24,13 +24,17 @@ void	equal_only(char **array, t_env **en)
 	{
 		if (!ft_strcmp(curr->key, array[0]))
 		{
-			curr->value = ft_strdup(array[1]);
+			if (ft_strcmp(curr->value, array[1]) != 0)
+			{
+				free(curr->value);
+				curr->value = ft_strdup(array[1]);
+			}
 			flag = 1;
 		}
 		curr = curr->next;
 	}
 	if (!array[1])
-		array[1] = "";
+		array[1] = ft_strdup("");
 	if (!flag)
 	{
 		new_node = malloc(sizeof(t_env));
@@ -115,7 +119,8 @@ static void	cmd_one_export(char *cmd, t_env **en)
 	}
 	else
 		add_only(cmd, en);
-		free_arr(array);
+	free_arr(array);
+	array = NULL;
 }
 
 void	cmd_export(t_node node, t_env **en)
@@ -126,7 +131,7 @@ void	cmd_export(t_node node, t_env **en)
 	if (!node.cmd[1])
 	{
 		sort_list(en);
-		set_exit_code("0", en);
+		// set_exit_code("0", en);
 		return ;
 	}
 	while (node.cmd[i])

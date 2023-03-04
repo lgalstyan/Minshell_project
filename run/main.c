@@ -44,8 +44,11 @@ void	shlvl(t_env **en)
 
 void free_node(t_node *node)
 {
+	t_node	*tmp;
+
 	while (node)
 	{
+		tmp = node->next;
 		if (node->heredoc)
 			free_arr(node->heredoc);
 		if (node->append)
@@ -56,10 +59,13 @@ void free_node(t_node *node)
 			free_arr(node->infile);
 		if (node->cmd)
 			free_arr(node->cmd);
-		node = node->next;
+		if (node->readline)
+			free(node->readline);
+		free(node);
+		node = NULL;
+		node = tmp;
 	}
-	free(node);
-	node = NULL;
+	// free(node);
 }
 
 void	readline_main(t_node *node, t_env *envir, int in_cpy, int out_cpy)
@@ -69,15 +75,17 @@ void	readline_main(t_node *node, t_env *envir, int in_cpy, int out_cpy)
 	line = NULL;
 	while (1)
 	{
-		printf(ESC_GREEN);
-		line = readline("💚 minishell :"ESC_WHITE);
+		line = readline(ESC_GREEN"💚 minishell :"ESC_WHITE);
 		if (!line)
 			ft_print_exit();
 		if (line[0])
 			add_history(line);
 		else
+		{
+			free(line);
 			continue ;
-		node = lexer(line, &envir);
+		}
+		lexer(&node, line, &envir);
 		free(line);
 		line = NULL;
 		if (!node)
@@ -87,7 +95,6 @@ void	readline_main(t_node *node, t_env *envir, int in_cpy, int out_cpy)
 			continue ;
 		take_pars_val(node, &envir, in_cpy, out_cpy);
 		free_node(node);
-		system("leaks minishell");
 	}
 }
 

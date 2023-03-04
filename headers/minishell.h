@@ -52,7 +52,7 @@ void	sort_list(t_env **env);
 int		commands(t_node node, t_env **envir);
 void	environments(char **env, t_env **envir);
 char	**list_to_char(t_env *env);
-t_node	*lexer(char *str, t_env **en);
+void	lexer(t_node **node, char *str, t_env **en);
 t_node	*parser(t_node *node, t_env **en);
 int		node_len(t_node *node);
 void	ft_pipe(t_node *node, t_env **envir);
@@ -63,7 +63,8 @@ void	pluse_equal(char **array, t_env **en);
 void	child_error(int child, int i);
 int		ft_arrlen(char **str);
 void	ft_free_str(char *cmd);
-void	cmd_infile(char *file, int flag);
+void	cmd_no_infile(char *file, t_node *node);
+void	cmd_infile(char *file, t_node *node);
 void	cmd_outfile(char *file, int flag);
 void	cmd_append(char *file, int flag);
 void	heredoc(char *str);
@@ -104,6 +105,7 @@ void	ft_putstr_fd(char *s, int fd);
 void	not_found_error(char *cmd, t_env **en);
 void	ft_heredoc(t_node *node);
 void	*free_arr(char **s);
+int		command_for_pipe(t_node node, t_env **envir);
 
 
 #endif

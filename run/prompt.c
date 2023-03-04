@@ -40,6 +40,12 @@ char	*accses_to_exec(char *cmd, char *path)
 		// printf("cmd_accs = %s\n", cmd_accs);
 		if (access(cmd_accs, 0) == 0)
 			return (cmd_accs);
+		else
+		{
+			//es em avlacrel
+			free(cmd_accs);
+			cmd_accs = NULL;
+		}
 		i++;
 	}
 	free_arr(token);
@@ -58,6 +64,8 @@ static int	child_proc(t_node node, t_env **envir, char **ch_env)
 	signal(SIGTSTP, SIG_IGN);
 	ret = 0;
 	path = search_list(*envir, "PATH");
+	if (!path)
+		not_found_error(node.cmd[0], envir);
 	cmd = accses_to_exec(node.cmd[0], path);
 	if (node.cmd[0][0] == '/' || node.cmd[0][0] == '.')
 		ret = execve(node.cmd[0], node.cmd, ch_env);
@@ -65,6 +73,8 @@ static int	child_proc(t_node node, t_env **envir, char **ch_env)
 		ret = execve(cmd, node.cmd, ch_env);
 	if (ret == -1)
 		not_found_error(node.cmd[0], envir);
+	// free(cmd);
+	// cmd = NULL;
 	return (ret);
 }
 
@@ -99,10 +109,11 @@ int	commands(t_node node, t_env **envir)
 	exec_status = 0;
 	ch_env = list_to_char(*envir);
 	ft_redirs(&node);
-	if (is_builtin(node.cmd[0]))
+	if (node.cmd && node.cmd[0] != NULL && is_builtin(node.cmd[0]))
 		exec_status = builtin(node, envir);
-	else
+	else if (node.inf_stat != -1)
 	{
+
 		pid = fork();
 		if (pid == 0)
 		{
@@ -115,6 +126,33 @@ int	commands(t_node node, t_env **envir)
 		signal(SIGINT, &handler);
 		signal(SIGQUIT, SIG_IGN);
 	}
+
 	free_arr(ch_env);
+	return (exec_status);
+}
+
+
+int	command_for_pipe(t_node node, t_env **envir)
+{
+	int		exec_status;
+	char	**ch_env;
+
+	exec_status = 0;
+	ch_env = list_to_char(*envir);
+	if (node.cmd && node.cmd[0] != NULL && is_builtin(node.cmd[0]))
+		exec_status = builtin(node, envir);
+	else if (node.cmd && node.inf_stat != -1)
+	{
+		exec_status = child_proc(node, envir, ch_env);
+		if (exec_status < 0)
+			exit_for_norm(envir);
+		signal(SIGINT, &handler);
+		signal(SIGQUIT, SIG_IGN);
+	}
+
+	free_arr(ch_env);
+	printf("exec_status is %d\n", exec_status);
+	if (exec_status < 0)
+		return (127);
 	return (exec_status);
 }
