@@ -41,6 +41,7 @@ t_node	*parser(t_node *head, t_env **envir)
 	t_node	*node;
 
 	node = head;
+
 	if (check_quote_2(head, envir) || unexpected_tokens(head, envir))
 	{
 		free_node(head);

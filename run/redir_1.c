@@ -21,7 +21,7 @@ void	cmd_no_infile(char *file, t_node *node)
 	{
 		if (node->inf_stat != 1)
 		{
-			write(2, "No such file or directory\n", 27);
+			// write(2, "No such file or directory\n", 27);
 			node->inf_err_code = -1;
 			return ;
 		}
@@ -39,7 +39,7 @@ void	cmd_infile(char *file, t_node *node)
 		if (node->inf_err_code != 1)
 		{
 			node->inf_stat = -1;
-			perror("minishell : no such file or directori");
+			perror("minishell : no such file or directori\n");
 			return ;
 		}
 	}

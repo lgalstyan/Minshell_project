@@ -39,13 +39,13 @@ void	readline_main(t_node *node, t_env *envir, int in_cpy, int out_cpy)
 	{
 		line = readline(ESC_GREEN"💚 minishell :"ESC_WHITE);
 		not_line(line);
-		if (line[0])
-			add_history(line);
-		else
+		if (!line || !ft_noly_space(line))
 		{
 			free(line);
 			continue ;
 		}
+		else
+			add_history(line);
 		lexer(&node, line, &envir);
 		free(line);
 		line = NULL;

@@ -18,10 +18,12 @@ static int	ft_find(char *str, char *to_find)
 	int	j;
 
 	i = 0;
-	if (to_find[0] == '\0')
+	if (!to_find || !str)
 		return (0);
-	if (str[0] == '\0')
-		return (0);
+	// if (to_find[0] == '\0')
+	// 	return (0);
+	// if (str[0] == '\0')
+	// 	return (0);
 	while (str[i])
 	{
 		j = 0;

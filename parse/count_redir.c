@@ -42,10 +42,25 @@ t_node	*cut_redir(t_node *node)
 		return (0);
 	i = -1;
 	while (node && node->infile && node->infile[++i])
-		node->readline = ft_strcut(node->readline, node->infile[i]);
+	{
+		str = ft_strdup(node->readline);
+		free(node->readline);
+		node->readline = ft_strcut(str, node->infile[i]);
+		if (str && !ft_strcmp(str, node->infile[i]))
+			free(str);
+		str = 0;
+	}
 	i = -1;
 	while (node && node->outfile && node->outfile[++i])
-		node->readline = ft_strcut(node->readline, node->outfile[i]);
+	{
+		if (node->readline)
+			str = ft_strdup(node->readline);
+		free(node->readline);
+		node->readline = ft_strcut(str, node->outfile[i]);
+		if (!ft_strcmp(str, node->outfile[i]))
+			free(str);
+		str = 0;
+	}
 	i = -1;
 	while (node && node->heredoc && node->heredoc[++i])
 	{
@@ -58,6 +73,13 @@ t_node	*cut_redir(t_node *node)
 	}	
 	i = -1;
 	while (node && node->append && node->append[++i])
-		node->readline = ft_strcut(node->readline, node->append[i]);
+	{
+		str = ft_strdup(node->readline);
+		free(node->readline);
+		node->readline = ft_strcut(str, node->append[i]);
+		if (!ft_strcmp(str, node->append[i]))
+			free(str);
+		str = 0;
+	}
 	return (node);
 }

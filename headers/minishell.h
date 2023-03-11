@@ -114,5 +114,6 @@ int		dumb(t_env **en);
 void	shlvl(t_env **en);
 void	ft_close(int (*fd)[2], int len);
 void	add_env(char **array, t_env **en);
+int		ft_noly_space(char *str);
 
 #endif
