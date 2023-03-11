@@ -82,21 +82,21 @@ char	*ft_clean_spase_between(char *str)
 	return (res);
 }
 
-void	ft_clean_red(t_node *node)
-{
-	int		i;
-	char	*tmp;
+// void	ft_clean_red(t_node *node)
+// {
+// 	int		i;
+// 	char	*tmp;
 
-	i = 0;
-	tmp = NULL;
-	while (node->outfile && node->outfile[i])
-	{
-		tmp = ft_strdup(node->outfile[i]);
-		free(node->outfile[i]);
-		node->outfile[i] = 0;
-		node->outfile[i] = ft_clean_spase_between(tmp);
-		free(tmp);
-		tmp = NULL;
-		i++;
-	}
-}
+// 	i = 0;
+// 	tmp = NULL;
+// 	while (node->outfile && node->outfile[i])
+// 	{
+// 		tmp = ft_strdup(node->outfile[i]);
+// 		free(node->outfile[i]);
+// 		node->outfile[i] = 0;
+// 		node->outfile[i] = ft_clean_spase_between(tmp);
+// 		free(tmp);
+// 		tmp = NULL;
+// 		i++;
+// 	}
+// }

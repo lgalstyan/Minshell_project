@@ -54,6 +54,7 @@ char	*ft_fill(char *str, int start, int end, char *replace)
 		++end;
 	}
 	fill[i] = '\0';
-	free(str);
+	if (str)
+		free(str);
 	return (fill);
 }

@@ -42,6 +42,7 @@ int	ft_fork(int pid, t_node node, t_env **envir, char	**ch_env)
 		exec_status = child_proc(node, envir, ch_env);
 		if (exec_status < 0)
 			exit_for_norm(envir);
+		exit(exec_status);
 	}
 	return (exec_status);
 }
@@ -89,7 +90,6 @@ int	command_for_pipe(t_node node, t_env **envir)
 		signal(SIGQUIT, SIG_IGN);
 	}
 	free_arr(ch_env);
-	printf("exec_status is %d\n", exec_status);
 	if (exec_status < 0)
 		return (127);
 	return (exec_status);

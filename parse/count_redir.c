@@ -52,7 +52,8 @@ t_node	*cut_redir(t_node *node)
 		str = ft_strdup(node->readline);
 		free(node->readline);
 		node->readline = ft_strcut(str, node->heredoc[i]);
-		free(str);
+		if (!ft_strcmp(str, node->heredoc[i]))
+			free(str);
 		str = 0;
 	}	
 	i = -1;

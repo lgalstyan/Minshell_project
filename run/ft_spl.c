@@ -56,7 +56,7 @@ void	*free_arr(char **s)
 	int	i;
 
 	i = 0;
-	while (s && s[i])
+	while (s != NULL && s[i] != NULL)
 	{
 		free(s[i]);
 		i++;
