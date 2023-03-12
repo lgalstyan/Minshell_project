@@ -49,9 +49,14 @@ void	cmd_infile(char *file, t_node *node)
 
 void	cmd_outfile(char *file, int flag)
 {
-	int	fd;
+	int		fd;
+	char	*tmp;
 
-	fd = open(++file, O_CREAT | O_WRONLY | O_TRUNC, 0644);
+	tmp = file + 1;
+	free(file);
+	tmp = ft_strtrim_red(tmp, " ");
+	file = tmp;
+	fd = open(tmp, O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	if (flag == 1)
 		dup2(fd, 1);
 	close(fd);

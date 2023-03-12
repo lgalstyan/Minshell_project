@@ -12,6 +12,19 @@
 
 #include "minishell.h"
 
+void	ft_close(int (*fd)[2], int len)
+{
+	int	i;
+
+	i = 0;
+	while (i < len)
+	{
+		close(fd[i][0]);
+		close(fd[i][1]);
+		i++;
+	}
+}
+
 static void	child_process(int (*fds)[2], int i, int n)
 {
 	if (i == 0)
@@ -35,7 +48,7 @@ static void	ft_filedisc_init(int (*fds)[2], int n)
 		pipe(fds[i]);
 }
 
-static void	ft_wait(int n, t_env **env, int	*pid, int (*fds)[2])
+void	ft_wait(int n, t_env **env, int	*pid, int (*fds)[2])
 {
 	int		ret;
 	int		i;
@@ -43,7 +56,6 @@ static void	ft_wait(int n, t_env **env, int	*pid, int (*fds)[2])
 
 	i = -1;
 	tmp = 0;
-	ft_close(fds, n);
 	while (++i < n)
 	{
 		waitpid(pid[i], &ret, 0);
@@ -54,40 +66,18 @@ static void	ft_wait(int n, t_env **env, int	*pid, int (*fds)[2])
 			free(tmp);
 		}
 	}
-	free(fds);
 	free(pid);
+	free(fds);
 }
 
-void	ft_fork_norm(int i, t_node *node, t_env **envir, int (*f)[2], int *pid)
-{
-	int	child;
-	int	n;
-
-	n = node_len(node);
-	child = 0;
-	if (pid[i] == -1)
-	{
-		free_node(node);
-		child_error(pid[i], i);
-	}
-	else if (pid[i] == 0)
-	{
-		child_process(f, i, n);
-		child = command_for_pipe(*node, envir);
-		free_node(node);
-		exit(child);
-	}
-}
-
-void	ft_pipe(t_node *node, t_env **envir)
+void	ft_pipe(t_node *node, t_env **envir, int n)
 {
 	int	(*fds)[2];
+	int	child;
 	int	i;
-	int	n;
 	int	*pid;
 
 	i = -1;
-	n = node_len(node);
 	fds = ft_calloc(sizeof(int *), node->counts.s_pipe + 1);
 	pid = malloc(sizeof(int) * n);
 	ft_filedisc_init(fds, n);
@@ -95,8 +85,16 @@ void	ft_pipe(t_node *node, t_env **envir)
 	{
 		ft_redirs(node);
 		pid[i] = fork();
-		ft_fork_norm(i, node, envir, fds, pid);
+		ft_error_fork(pid[i], i, node);
+		if (pid[i] == 0)
+		{
+			child_process(fds, i, n);
+			child = command_for_pipe(*node, envir);
+			free_node(node);
+			exit(child);
+		}
 		node = node->next;
 	}
+	ft_close(fds, n);
 	ft_wait(n, envir, pid, fds);
 }

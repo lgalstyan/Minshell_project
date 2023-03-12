@@ -44,21 +44,6 @@ char	*ft_strcut(char *readline, char *str)
 	i = -1;
 	k = 0;
 	find = ft_find(readline, str);
-	// if (find == -1)
-	// {
-	// 	printf("finddddddddddddddd\n");
-	// 	return (0);
-	// }
-	// if (!str)
-	// {
-	// 	printf("str\n");
-	// 	return (0);
-	// }
-	// if (!readline)
-	// {
-	// 	printf("readline\n");
-	// 	return (0);
-	// }
 	if (find == -1 || !readline || !str)
 		return (0);
 	cmdline = ft_calloc(sizeof(char),

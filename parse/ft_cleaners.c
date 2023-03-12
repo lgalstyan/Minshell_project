@@ -37,7 +37,7 @@ char	**ft_clean(char **str, t_env **envir)
 	return (str);
 }
 
-void	ft_clean_spasec(t_node *head, t_env **envir)
+t_node	*ft_clean_spasec(t_node *head, t_env **envir)
 {
 	t_node	*node;
 
@@ -52,6 +52,7 @@ void	ft_clean_spasec(t_node *head, t_env **envir)
 		node->append = ft_clean(node->append, envir);
 	if (node->heredoc[0])
 		node->heredoc = ft_clean(node->heredoc, envir);
+	return (node);
 }
 
 char	*ft_clean_spase_between(char *str)
@@ -81,22 +82,3 @@ char	*ft_clean_spase_between(char *str)
 	}
 	return (res);
 }
-
-// void	ft_clean_red(t_node *node)
-// {
-// 	int		i;
-// 	char	*tmp;
-
-// 	i = 0;
-// 	tmp = NULL;
-// 	while (node->outfile && node->outfile[i])
-// 	{
-// 		tmp = ft_strdup(node->outfile[i]);
-// 		free(node->outfile[i]);
-// 		node->outfile[i] = 0;
-// 		node->outfile[i] = ft_clean_spase_between(tmp);
-// 		free(tmp);
-// 		tmp = NULL;
-// 		i++;
-// 	}
-// }

@@ -29,7 +29,6 @@ static void	ft_clean_sp_outfile(t_node *node)
 		tmp = NULL;
 		i++;
 	}
-	i = 0;
 }
 
 static void	ft_clean_sp_infile(t_node *node)
@@ -39,6 +38,7 @@ static void	ft_clean_sp_infile(t_node *node)
 
 	i = 0;
 	tmp = NULL;
+	// printf("%s\n", node->infile[0]);
 	while (node->infile && node->infile[i])
 	{
 		tmp = ft_strdup(node->infile[i]);
@@ -70,7 +70,7 @@ static void	ft_clean_sp_append(t_node *node)
 	}
 }
 
-void	ft_clean_sp_redir(t_node *node)
+t_node	*ft_clean_sp_redir(t_node *node)
 {
 	int		i;
 	char	*tmp;
@@ -90,4 +90,6 @@ void	ft_clean_sp_redir(t_node *node)
 	ft_clean_sp_append(node);
 	ft_clean_sp_outfile(node);
 	ft_clean_sp_infile(node);
+	// print_node(node);
+	return (node);
 }

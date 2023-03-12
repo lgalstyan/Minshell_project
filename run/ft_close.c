@@ -12,18 +12,18 @@
 
 #include "minishell.h"
 
-void	ft_close(int (*fd)[2], int len)
-{
-	int	i;
+// void	ft_close(int (*fd)[2], int len)
+// {
+// 	int	i;
 
-	i = 0;
-	while (i < len)
-	{
-		close(fd[i][0]);
-		close(fd[i][1]);
-		i++;
-	}
-}
+// 	i = 0;
+// 	while (i < len)
+// 	{
+// 		close(fd[i][0]);
+// 		close(fd[i][1]);
+// 		i++;
+// 	}
+// }
 
 void	add_env(char **array, t_env **en)
 {

@@ -29,7 +29,7 @@ static int	pipe_count(char *line)
 	while (line && line[i])
 	{
 		if (line[i] == '\"' || line[i] == '\'')
-			ignore_quotes(line, &i);
+			skipquotes(&line, &i);
 		if (!line[i])
 			break ;
 		if (line[i] == '|')
@@ -50,8 +50,6 @@ int	ft_check_pipe(char *str)
 			ignore_quotes(str, &i);
 		if (!str[i])
 			break ;
-		// while (str[i] && str[i] != '|')
-		// 	++i;
 		if (str[i] == '|')
 		{
 			++i;
@@ -60,8 +58,6 @@ int	ft_check_pipe(char *str)
 			if (str[i] == '|')
 				return (1);
 		}
-		// else
-		// 	break ;
 		++i;
 	}
 	return (0);

@@ -45,3 +45,32 @@ int	checkquotes(char *str)
 		return (1);
 	return (0);
 }
+
+void	skipquotes(char **promt, int *j)
+{
+	int	i;
+
+	i = *j;
+	if (i > 0 && (*promt)[i - 1] && (*promt)[i - 1] == 92)
+	{
+		(*j)++;
+		return ;
+	}
+	if ((*promt)[i] && (*promt)[i] == 34)
+	{
+		i++;
+		while ((*promt)[i] && (*promt)[i] != 34)
+			i++;
+		if ((*promt)[i])
+			i++;
+	}
+	if ((*promt)[i] && (*promt)[i] == 39)
+	{
+		i++;
+		while ((*promt)[i] && (*promt)[i] != 39)
+			i++;
+		if ((*promt)[i])
+			i++;
+	}
+	*j = i;
+}

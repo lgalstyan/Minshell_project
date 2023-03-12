@@ -17,6 +17,25 @@ void	ft_putstr_fd(char *s, int fd)
 	write(fd, s, ft_strlen(s));
 }
 
+char	*ft_strtrim_red(char *s, char *set)
+{
+	char	*res;
+	size_t	start;
+	size_t	i;
+
+	start = 0;
+	i = 0;
+	if (set == 0 && s == 0)
+		return (0);
+	while (s[start] && ft_strchr (set, s[start]))
+		start++;
+	i = ft_strlen (s);
+	while (*s && ft_strchr (set, s[i]))
+		i--;
+	res = ft_substr (s, start, i - start + 1);
+	return (res);
+}
+
 long long	ft_atoi(char *str)
 {
 	long	c;

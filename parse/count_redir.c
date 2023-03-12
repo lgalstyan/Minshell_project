@@ -49,6 +49,51 @@ int	is_cmd(char *s)
 	return (1);
 }
 
+void	cut_redir2(t_node **node, int flag)
+{
+	int		i;
+	char	*str;
+
+	i = -1;
+	while ((*node) && (*node)->heredoc && (*node)->heredoc[++i])
+	{
+		str = ft_strdup((*node)->readline);
+		free((*node)->readline);
+		(*node)->readline = ft_strcut(str, (*node)->heredoc[i]);
+		if (!flag && str && !ft_strcmp(str, (*node)->heredoc[i]))
+			free(str);
+		str = 0;
+	}	
+	i = -1;
+	while ((*node) && (*node)->append && (*node)->append[++i])
+	{
+		str = ft_strdup((*node)->readline);
+		free((*node)->readline);
+		(*node)->readline = ft_strcut(str, (*node)->append[i]);
+		if (!flag && str && !ft_strcmp(str, (*node)->append[i]))
+			free(str);
+		str = 0;
+	}
+}
+
+void	cut_redir3(t_node **node, int flag)
+{
+	int		i;
+	char	*str;
+
+	i = -1;
+	while ((*node) && (*node)->outfile && (*node)->outfile[++i])
+	{
+		if ((*node)->readline)
+			str = ft_strdup((*node)->readline);
+		free((*node)->readline);
+		(*node)->readline = ft_strcut(str, (*node)->outfile[i]);
+		if (!flag && str && !ft_strcmp(str, (*node)->outfile[i]))
+			free(str);
+		str = 0;
+	}
+}
+
 t_node	*cut_redir(t_node *node)
 {
 	int		i;
@@ -68,36 +113,7 @@ t_node	*cut_redir(t_node *node)
 			free(str);
 		str = 0;
 	}
-	i = -1;
-	while (node && node->outfile && node->outfile[++i])
-	{
-		if (node->readline)
-			str = ft_strdup(node->readline);
-		free(node->readline);
-		node->readline = ft_strcut(str, node->outfile[i]);
-		if (str && !ft_strcmp(str, node->outfile[i]))
-			free(str);
-		str = 0;
-	}
-	i = -1;
-	while (node && node->heredoc && node->heredoc[++i])
-	{
-		str = ft_strdup(node->readline);
-		free(node->readline);
-		node->readline = ft_strcut(str, node->heredoc[i]);
-		if (str && !ft_strcmp(str, node->heredoc[i]))
-			free(str);
-		str = 0;
-	}	
-	i = -1;
-	while (node && node->append && node->append[++i])
-	{
-		str = ft_strdup(node->readline);
-		free(node->readline);
-		node->readline = ft_strcut(str, node->append[i]);
-		if (str && !ft_strcmp(str, node->append[i]))
-			free(str);
-		str = 0;
-	}
+	cut_redir3(&node, flag);
+	cut_redir2(&node, flag);
 	return (node);
 }

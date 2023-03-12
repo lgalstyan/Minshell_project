@@ -12,6 +12,45 @@
 
 #include "minishell.h"
 
+void	print_node(t_node *node)
+{
+	int	i;
+
+	i = 0;
+	if (node)
+	{
+		while (node->cmd && node->cmd[i])
+		{
+			printf("cmd%d=%s_\n", i, node->cmd[i]);
+			i++;
+		}
+		i = 0; 
+		while (node->heredoc && node->heredoc[i])
+		{
+			printf("heredoc = %s\n", node->heredoc[i]);
+			i++;
+		}
+		i = 0; 
+		while (node->append && node->append[i])
+		{
+			printf("append = %s\n", node->append[i]);
+			i++;
+		}
+		i = 0; 
+		while (node->outfile && node->outfile[i])
+		{
+			printf("outfile = %s\n", node->outfile[i]);
+			i++;
+		}
+		i = 0; 
+		while (node->infile && node->infile[i])
+		{
+			printf("infile = %s\n", node->infile[i]);
+			i++;
+		}
+	}
+}
+
 void	allocate_matrix(t_node	*head)
 {
 	head->counts.s_infile = ft_infile_count(head->readline);
@@ -49,8 +88,8 @@ t_node	*parser(t_node *head, t_env **envir)
 	initialize(head);
 	while (node)
 	{
-		ft_clean_sp_redir(node);
-		ft_clean_spasec(node, envir);
+		node = ft_clean_sp_redir(node);
+		node = ft_clean_spasec(node, envir);
 		node = node->next;
 	}
 	return (head);

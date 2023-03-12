@@ -16,8 +16,11 @@ int	g_exit_code = 0;
 
 static void	take_pars_val(t_node *node, t_env **envir, int in_cpy, int out_cpy)
 {
+	int	n;
+
+	n = node_len(node);
 	if (node->counts.s_pipe > 0)
-		ft_pipe(node, envir);
+		ft_pipe(node, envir, n);
 	else
 		commands(*node, envir);
 	dup2(in_cpy, 0);

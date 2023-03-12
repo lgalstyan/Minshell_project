@@ -34,8 +34,8 @@ int	put_in_out(t_node *node, char c)
 
 	i = 0;
 	s = 0;
-	start = 0;
-	while (node->readline[start])
+	start = -1;
+	while (node->readline[++start])
 	{
 		l = size_infile(node->readline, start, c) - start;
 		if (node->readline[start] == c && node->readline[start + 1] != c
@@ -50,7 +50,6 @@ int	put_in_out(t_node *node, char c)
 			start += l;
 			i++;
 		}
-		start++;
 	}
 	return (s);
 }

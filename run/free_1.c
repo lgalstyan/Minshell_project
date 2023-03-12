@@ -61,3 +61,12 @@ void	free_node(t_node *node)
 		node = tmp;
 	}
 }
+
+void	ft_error_fork(int pid, int i, t_node *node)
+{
+	if (pid == -1)
+	{
+		free_node(node);
+		child_error(pid, i);
+	}
+}
