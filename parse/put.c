@@ -47,6 +47,7 @@ int	put_in_out(t_node *node, char c)
 			else if (c == '>')
 				node->outfile[i] = ft_substr(node->readline, start, l);
 			s += l;
+			start += l;
 			i++;
 		}
 		start++;

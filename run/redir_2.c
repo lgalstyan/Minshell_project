@@ -36,10 +36,14 @@ void	ft_infile(t_node *node)
 	i = -1;
 	if (*node->infile)
 	{
+
 		while (node->infile[++i])
 		{
 			if (i == ft_arrlen(node->infile) - 1)
+			{
+				
 				cmd_infile(node->infile[i], node);
+			}
 			else
 				cmd_no_infile(node->infile[i], node);
 		}
@@ -84,7 +88,9 @@ void	ft_redirs(t_node *node)
 {
 	node->inf_err_code = 0;
 	node->inf_stat = 0;
+
 	ft_heredoc(node);
+
 	ft_infile(node);
 	ft_outfile(node);
 	ft_append(node);

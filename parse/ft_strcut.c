@@ -19,11 +19,7 @@ static int	ft_find(char *str, char *to_find)
 
 	i = 0;
 	if (!to_find || !str)
-		return (0);
-	// if (to_find[0] == '\0')
-	// 	return (0);
-	// if (str[0] == '\0')
-	// 	return (0);
+		return (-1);
 	while (str[i])
 	{
 		j = 0;
@@ -35,7 +31,7 @@ static int	ft_find(char *str, char *to_find)
 		}
 		i++;
 	}
-	return (0);
+	return (-1);
 }
 
 char	*ft_strcut(char *readline, char *str)
@@ -48,7 +44,22 @@ char	*ft_strcut(char *readline, char *str)
 	i = -1;
 	k = 0;
 	find = ft_find(readline, str);
-	if (!find || !readline || !str)
+	// if (find == -1)
+	// {
+	// 	printf("finddddddddddddddd\n");
+	// 	return (0);
+	// }
+	// if (!str)
+	// {
+	// 	printf("str\n");
+	// 	return (0);
+	// }
+	// if (!readline)
+	// {
+	// 	printf("readline\n");
+	// 	return (0);
+	// }
+	if (find == -1 || !readline || !str)
 		return (0);
 	cmdline = ft_calloc(sizeof(char),
 			(ft_strlen(readline) - ft_strlen(str)) + 1);

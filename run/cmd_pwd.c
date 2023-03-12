@@ -21,7 +21,7 @@ int	cmd_pwd(t_env **en)
 	if (!(getcwd(cwd, sizeof(cwd))))
 	{
 		set_exit_code("1", en);
-		perror("minishell: ");
+		perror("minishell ");
 		return (-1);
 	}
 	else

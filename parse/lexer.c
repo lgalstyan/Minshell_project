@@ -46,8 +46,12 @@ int	ft_check_pipe(char *str)
 	i = 0;
 	while (str && str[i])
 	{
-		while (str[i] && str[i] != '|')
-			++i;
+		if (str[i] == '\"' || str[i] == '\'')
+			ignore_quotes(str, &i);
+		if (!str[i])
+			break ;
+		// while (str[i] && str[i] != '|')
+		// 	++i;
 		if (str[i] == '|')
 		{
 			++i;
@@ -56,8 +60,8 @@ int	ft_check_pipe(char *str)
 			if (str[i] == '|')
 				return (1);
 		}
-		else
-			break ;
+		// else
+		// 	break ;
 		++i;
 	}
 	return (0);

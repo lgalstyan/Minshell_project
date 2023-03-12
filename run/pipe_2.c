@@ -26,6 +26,6 @@ void	kill_proces(int child, int i)
 void	child_error(int child, int i)
 {
 	kill_proces(child, i);
-	perror("minishell: fork ");
+	perror("minishell ");
 	exit(1);
 }

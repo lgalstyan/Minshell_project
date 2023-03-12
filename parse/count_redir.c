@@ -33,11 +33,29 @@ void	ignore_quotes(char *str, int *i)
 	}
 }
 
+int	is_cmd(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s && s[i] == ' ')
+		i++;
+	while (s && s[i])
+	{
+		if (s[i] == '<' || s[i] == '>')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 t_node	*cut_redir(t_node *node)
 {
 	int		i;
 	char	*str;
+	int		flag;
 
+	flag = is_cmd(node->readline);
 	if (!node)
 		return (0);
 	i = -1;
@@ -46,7 +64,7 @@ t_node	*cut_redir(t_node *node)
 		str = ft_strdup(node->readline);
 		free(node->readline);
 		node->readline = ft_strcut(str, node->infile[i]);
-		if (str && !ft_strcmp(str, node->infile[i]))
+		if (!flag && str && !ft_strcmp(str, node->infile[i]))
 			free(str);
 		str = 0;
 	}
@@ -57,7 +75,7 @@ t_node	*cut_redir(t_node *node)
 			str = ft_strdup(node->readline);
 		free(node->readline);
 		node->readline = ft_strcut(str, node->outfile[i]);
-		if (!ft_strcmp(str, node->outfile[i]))
+		if (str && !ft_strcmp(str, node->outfile[i]))
 			free(str);
 		str = 0;
 	}
@@ -67,7 +85,7 @@ t_node	*cut_redir(t_node *node)
 		str = ft_strdup(node->readline);
 		free(node->readline);
 		node->readline = ft_strcut(str, node->heredoc[i]);
-		if (!ft_strcmp(str, node->heredoc[i]))
+		if (str && !ft_strcmp(str, node->heredoc[i]))
 			free(str);
 		str = 0;
 	}	
@@ -77,7 +95,7 @@ t_node	*cut_redir(t_node *node)
 		str = ft_strdup(node->readline);
 		free(node->readline);
 		node->readline = ft_strcut(str, node->append[i]);
-		if (!ft_strcmp(str, node->append[i]))
+		if (str && !ft_strcmp(str, node->append[i]))
 			free(str);
 		str = 0;
 	}

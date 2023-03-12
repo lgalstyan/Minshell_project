@@ -19,7 +19,7 @@ char	*get_current_path(void)
 	path = getcwd(NULL, 0);
 	if (path == NULL)
 	{
-		perror("minishell: No such file or directory\n");
+		perror("minishell \n");
 	}
 	return (path);
 }
