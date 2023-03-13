@@ -21,7 +21,7 @@ RL_LIBRARY_VERSION = 8.2
 SHELL = /bin/sh
 RM = rm -f
 
-prefix = /Users/lgalstya/Desktop/Minshell_project/readline_larisa
+prefix = /Users/lgalstyan/Desktop/Minshell_project/readline_larisa
 exec_prefix = ${prefix}
 
 datarootdir = ${prefix}/share
@@ -32,7 +32,7 @@ datadir = ${datarootdir}
 
 top_srcdir = ..
 #BUILD_DIR = .
-BUILD_DIR = /Users/lgalstya/Desktop/Minshell_project/readline-master
+BUILD_DIR = /Users/lgalstyan/Desktop/Minshell_project/readline-master
 installdir = $(datadir)/readline
 
 INSTALL = /usr/bin/install -c

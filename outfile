@@ -1,0 +1,13 @@
+total 200
+drwxr-xr-x   12 lgalstyan  staff    384 Mar 13 18:33 .
+drwx------@   8 lgalstyan  staff    256 Mar 13 18:26 ..
+drwxr-xr-x   12 lgalstyan  staff    384 Mar 13 18:12 .git
+-rw-r--r--    1 lgalstyan  staff   1449 Mar 13 18:12 Makefile
+drwxr-xr-x    5 lgalstyan  staff    160 Mar 13 18:12 headers
+-rw-r--r--    1 lgalstyan  staff     51 Mar 13 18:32 infile
+-rwxr-xr-x    1 lgalstyan  staff  91712 Mar 13 18:29 minishell
+-rw-r--r--    1 lgalstyan  staff      0 Mar 13 18:34 outfile
+drwxr-xr-x   51 lgalstyan  staff   1632 Mar 13 18:29 parse
+drwxr-xr-x  129 lgalstyan  staff   4128 Mar 13 18:13 readline-master
+drwxr-xr-x    6 lgalstyan  staff    192 Mar 13 18:13 readline_larisa
+drwxr-xr-x   79 lgalstyan  staff   2528 Mar 13 18:14 run
