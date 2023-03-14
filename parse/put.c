@@ -87,21 +87,29 @@ void	put_hd_app(t_node *node, char c, int start)
 	i = 0;
 	// s = 0;
 	// start = 0;
-	while (node->readline[start])
-	{
+	// while (node->readline[start])
+	// {
 		l = size_heredoc(node->readline, start, c) - start;
 		if (node->readline[start] == c && node->readline[start + 1] == c)
 		{
 			if (c == '<')
+			{
+				while (node->heredoc[i])
+					i++;
 				node->heredoc[i] = ft_substr(node->readline, start, l);
+			}
 			else if (c == '>')
+			{
+				while (node->append[i])
+					i++;
 				node->append[i] = ft_substr(node->readline, start, l);
+			}
 			// s += l - 1;
-			i++;
-			while (node->readline[start + 2] == c)
-				++start;
-		}
-		start++;
+			// i++;
+			// while (node->readline[start + 2] == c)
+			// 	++start;
+		// }
+		// start++;
 	}
 	// return (start);
 }

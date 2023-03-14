@@ -32,7 +32,11 @@ void	cmd_no_infile(char *file, t_node *node)
 void	cmd_infile(char *file, t_node *node)
 {
 	int	fd;
+	// char	*tmp;
 
+	// tmp = ft_strtrim_red(file + 1, " ");
+	// fd = open(tmp, O_CREAT | O_WRONLY | O_TRUNC, 0644);
+	// free(tmp);
 	fd = open(++file, O_RDONLY, 0644);
 	if (fd < 0)
 	{
