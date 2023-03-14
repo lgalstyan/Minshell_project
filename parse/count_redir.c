@@ -89,7 +89,11 @@ void	cut_redir3(t_node **node, int flag)
 		free((*node)->readline);
 		(*node)->readline = ft_strcut(str, (*node)->outfile[i]);
 		if (!flag && str && !ft_strcmp(str, (*node)->outfile[i]))
+		{
+			printf("hello out\n");
 			free(str);
+		}
+			// free(str);
 		str = 0;
 	}
 }
@@ -110,7 +114,10 @@ t_node	*cut_redir(t_node *node)
 		free(node->readline);
 		node->readline = ft_strcut(str, node->infile[i]);
 		if (!flag && str && !ft_strcmp(str, node->infile[i]))
+		{
+			printf("hello in\n");
 			free(str);
+		}
 		str = 0;
 	}
 	cut_redir3(&node, flag);

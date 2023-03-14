@@ -46,12 +46,12 @@ int	put_in_out(t_node *node, char c)
 				node->infile[i] = ft_substr(node->readline, start, l);
 			else if (c == '>')
 				node->outfile[i] = ft_substr(node->readline, start, l);
-			s += l;
-			start += l;
+			s += l - 1;
+			start += l - 1;
 			i++;
 		}
 	}
-	return (s);
+	return (start);
 }
 
 static int	size_heredoc(char *str, int i, char c)
@@ -88,12 +88,12 @@ int	put_hd_app(t_node *node, char c)
 				node->heredoc[i] = ft_substr(node->readline, start, l);
 			else if (c == '>')
 				node->append[i] = ft_substr(node->readline, start, l);
-			s += l;
+			s += l - 1;
 			i++;
 			while (node->readline[start + 2] == c)
 				++start;
 		}
 		start++;
 	}
-	return (s);
+	return (start);
 }

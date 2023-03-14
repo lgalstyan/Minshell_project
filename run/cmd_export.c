@@ -23,7 +23,7 @@ void	equal_only(char **array, t_env **en)
 	{
 		if (!ft_strcmp(curr->key, array[0]))
 		{
-			if (array[1] != NULL && ft_strcmp(curr->value, array[1]) != 0)
+			if (curr->value && array[1] != NULL && ft_strcmp(curr->value, array[1]) != 0)
 			{
 				free(curr->value);
 				curr->value = ft_strdup(array[1]);

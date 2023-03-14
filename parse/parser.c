@@ -92,5 +92,6 @@ t_node	*parser(t_node *head, t_env **envir)
 		node = ft_clean_spasec(node, envir);
 		node = node->next;
 	}
+	print_node(head);
 	return (head);
 }

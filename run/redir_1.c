@@ -52,11 +52,9 @@ void	cmd_outfile(char *file, int flag)
 	int		fd;
 	char	*tmp;
 
-	tmp = file + 1;
-	free(file);
-	tmp = ft_strtrim_red(tmp, " ");
-	file = tmp;
+	tmp = ft_strtrim_red(file + 1, " ");
 	fd = open(tmp, O_CREAT | O_WRONLY | O_TRUNC, 0644);
+	free(tmp);
 	if (flag == 1)
 		dup2(fd, 1);
 	close(fd);
