@@ -22,16 +22,9 @@ void	ft_heredoc(t_node *node)
 		while (node->heredoc[++i])
 		{
 			if (i == ft_arrlen(node->heredoc) - 1)
-			{
 				heredoc(node->heredoc[i]);
-
-			}
 			else
-			{
-				printf("ok\n");
 				heredoc_not(node->heredoc[i]);
-
-			}
 		}
 	}
 }

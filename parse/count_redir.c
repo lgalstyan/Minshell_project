@@ -55,6 +55,7 @@ void	cut_redir2(t_node **node, int flag)
 	char	*str;
 
 	i = -1;
+	(void)flag;
 	while ((*node) && (*node)->heredoc && (*node)->heredoc[++i])
 	{
 		str = ft_strdup((*node)->readline);
@@ -82,17 +83,18 @@ void	cut_redir3(t_node **node, int flag)
 	char	*str;
 
 	i = -1;
+	(void)flag;
 	while ((*node) && (*node)->outfile && (*node)->outfile[++i])
 	{
 		if ((*node)->readline)
 			str = ft_strdup((*node)->readline);
 		free((*node)->readline);
 		(*node)->readline = ft_strcut(str, (*node)->outfile[i]);
-		if (!flag && str && !ft_strcmp(str, (*node)->outfile[i]))
-		{
-			printf("hello out\n");
-			free(str);
-		}
+		// if (!flag && str && !ft_strcmp(str, (*node)->outfile[i]))
+		// {
+		// 	printf("hello out\n");
+		// 	free(str);
+		// }
 			// free(str);
 		str = 0;
 	}

@@ -31,7 +31,7 @@ PACKAGE_TARNAME = readline
 srcdir = .
 
 top_srcdir = .
-BUILD_DIR = /Users/tumolabs/Desktop/Minshell_project/readline-master
+BUILD_DIR = /Users/lgalstyan/Desktop/Minshell_project/readline-master
 
 INSTALL = /usr/bin/install -c
 INSTALL_PROGRAM = ${INSTALL}
@@ -48,7 +48,7 @@ MV = mv
 
 SHELL = /bin/sh
 
-prefix = /Users/tumolabs/Desktop/Minshell_project/readline_larisa
+prefix = /Users/lgalstyan/Desktop/Minshell_project/readline_larisa
 exec_prefix = ${prefix}
 
 datarootdir = ${prefix}/share

@@ -25,33 +25,41 @@ static int	size_infile(char *str, int i, char c)
 	return (i);
 }
 
-int	put_in_out(t_node *node, char c)
+void	put_in_out(t_node *node, char c, int start)
 {
 	int	i;
 	int	l;
-	int	start;
-	int	s;
+	// int	start;
+	// int	s;
 
 	i = 0;
-	s = 0;
-	start = -1;
-	while (node->readline[++start])
-	{
-		l = size_infile(node->readline, start, c) - start;
+	// s = 0;
+	// start = -1;
+	l = size_infile(node->readline, start, c) - start;
+	// while (node->readline[++start])
+	// {
 		if (node->readline[start] == c && node->readline[start + 1] != c
 			&& ((start - 1 < 0) || ((start - 1) >= 0
 					&& node->readline[start - 1] != c)))
 		{
 			if (c == '<')
+			{
+				while (node->infile[i])
+					i++;
 				node->infile[i] = ft_substr(node->readline, start, l);
+			}
 			else if (c == '>')
+			{
+				while (node->outfile[i])
+					i++;
 				node->outfile[i] = ft_substr(node->readline, start, l);
-			s += l - 1;
-			start += l - 1;
+			}
+			// s += l - 1;
+			// start += l - 1;
 			i++;
 		}
-	}
-	return (start);
+	// }
+	// return (start);
 }
 
 static int	size_heredoc(char *str, int i, char c)
@@ -69,16 +77,16 @@ static int	size_heredoc(char *str, int i, char c)
 	return (i);
 }
 
-int	put_hd_app(t_node *node, char c)
+void	put_hd_app(t_node *node, char c, int start)
 {
 	int	i;
 	int	l;
-	int	start;
-	int	s;
+	// int	start;
+	// int	s;
 
 	i = 0;
-	s = 0;
-	start = 0;
+	// s = 0;
+	// start = 0;
 	while (node->readline[start])
 	{
 		l = size_heredoc(node->readline, start, c) - start;
@@ -88,12 +96,12 @@ int	put_hd_app(t_node *node, char c)
 				node->heredoc[i] = ft_substr(node->readline, start, l);
 			else if (c == '>')
 				node->append[i] = ft_substr(node->readline, start, l);
-			s += l - 1;
+			// s += l - 1;
 			i++;
 			while (node->readline[start + 2] == c)
 				++start;
 		}
 		start++;
 	}
-	return (start);
+	// return (start);
 }
