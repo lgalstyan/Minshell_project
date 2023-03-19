@@ -19,9 +19,9 @@ void	hidden_file(char **cmd)
 	tmp = NULL;
 	if ((*cmd[0]) != '.')
 	{
-		tmp = ft_strjoin("/", *cmd);
-		free(*cmd);
-		(*cmd) = tmp;
+		tmp = ft_strdup(*cmd);
+		*cmd = ft_strjoin("/", tmp);
+		free(tmp);
 	}
 }
 

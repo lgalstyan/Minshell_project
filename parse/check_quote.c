@@ -46,6 +46,27 @@ int	checkquotes(char *str)
 	return (0);
 }
 
+int	ft_check_reedir(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str && str[i])
+	{
+		ignore_double_quotes(str, &i);
+		if (!str[i])
+			break ;
+		if (str[i] && str[i] == '<' && str[i + 1]
+			&& str[i + 1] == '<' && str[i + 2] && str[i + 2] == '<')
+			return (1);
+		else if (str[i] && str[i] == '>' && str[i + 1]
+			&& str[i + 1] == '>' && str[i + 2] && str[i + 2] == '>')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 void	skipquotes(char **promt, int *j)
 {
 	int	i;

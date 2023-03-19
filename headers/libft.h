@@ -6,7 +6,7 @@
 /*   By: lgalstya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 18:08:38 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/02/09 18:08:41 by lgalstya         ###   ########.fr       */
+/*   Updated: 2023/03/19 17:06:57 by tumolabs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char		*ft_strcpy(char *dst, char *src);
 char		*ft_strjoin(char *s1, char *s2);
 int			ft_strlcpy(char *dst, char *src, int l);
 char		*ft_strnstr(char *str, char *to_find, int len);
-int			ft_isdigit(char c);
+int			ft_isdigit(char *str);
 char		*ft_itoa(int n);
 void		*ft_calloc(size_t c, size_t s);
 int			ft_wcount(char *s, char c);

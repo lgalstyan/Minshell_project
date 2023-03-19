@@ -77,6 +77,12 @@ static int	checks(char *str, t_env **en)
 		set_exit_code("258", en);
 		return (1);
 	}
+	if (ft_check_reedir(str))
+	{
+		printf("Syntax error: syntax error near unexpected token\n");
+		set_exit_code("258", en);
+		return (1);
+	}
 	return (0);
 }
 

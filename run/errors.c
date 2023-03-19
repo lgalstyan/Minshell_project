@@ -12,12 +12,6 @@
 
 #include "minishell.h"
 
-// void	exit_minishell(t_env **en)
-// {
-// 	delete_list(en);
-// 	exit(0);
-// }
-
 void	ft_print_exit(void)
 {
 	printf("minishell :exit");

@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-static char	*replace(char *str, int start, int end, t_env *en)
+char	*replace(char *str, int start, int end, t_env *en)
 {
 	char	*s;
 
@@ -45,40 +45,18 @@ int	print_doll(char *str, int *i)
 	return (0);
 }
 
-static int	check_afterelem1(char c)
-{
-	if (c && (c == '_' || ft_isalpha(c) || c == '?'))
-		return (0);
-	return (1);
-}
-
-static int	check_afterelem2(char c)
-{
-	if (c && c != '\'' && c != '\"' && c != ' ' && (c != '$' || !is_meta(c)))
-		return (0);
-	return (1);
-}
-
 char	*change_doll(char *str, t_env **en)
 {
 	int		i;
-	int		s;
 
 	i = 0;
 	while (str && str[i])
 	{
+		ignore_single_quotes(str, &i);
 		print_doll(str, &i);
-		if (str[i] == '$' && !check_afterelem1(str[i + 1]))
+		if (str[i] == '$')
 		{
-			s = i;
-			if (str[i] && !print_doll(str, &i))
-			{
-				++i;
-				while (str[i] && !check_afterelem2(str[i + 1]))
-					++i;
-				str = ft_fill(str, s, i + 1, replace(str, s + 1, i, *en));
-				i = 0;
-			}
+			str = change(str, en, i);
 		}
 		if (!str || !str[i])
 			break ;

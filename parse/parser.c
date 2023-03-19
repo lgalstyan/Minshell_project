@@ -12,45 +12,6 @@
 
 #include "minishell.h"
 
-void	print_node(t_node *node)
-{
-	int	i;
-
-	i = 0;
-	if (node)
-	{
-		while (node->cmd && node->cmd[i])
-		{
-			printf("cmd%d=%s_\n", i, node->cmd[i]);
-			i++;
-		}
-		i = 0; 
-		while (node->heredoc && node->heredoc[i])
-		{
-			printf("heredoc = %s\n", node->heredoc[i]);
-			i++;
-		}
-		i = 0; 
-		while (node->append && node->append[i])
-		{
-			printf("append = %s\n", node->append[i]);
-			i++;
-		}
-		i = 0; 
-		while (node->outfile && node->outfile[i])
-		{
-			printf("outfile = %s\n", node->outfile[i]);
-			i++;
-		}
-		i = 0; 
-		while (node->infile && node->infile[i])
-		{
-			printf("infile = %s\n", node->infile[i]);
-			i++;
-		}
-	}
-}
-
 void	allocate_matrix(t_node	*head)
 {
 	head->counts.s_infile = ft_infile_count(head->readline);
@@ -67,10 +28,13 @@ void	allocate_matrix(t_node	*head)
 
 void	initialize(t_node	*head)
 {
+	int	i;
+
+	i = 0;
 	while (head)
 	{
 		allocate_matrix(head);
-		initial_nodes(head);
+		initial_nodes(head, i);
 		head = head->next;
 	}
 }
@@ -80,7 +44,7 @@ t_node	*parser(t_node *head, t_env **envir)
 	t_node	*node;
 
 	node = head;
-	if (check_quote_2(head, envir) || unexpected_tokens(head, envir))
+	if (check_quote_2(head, envir) || unexpected_tokens(head, envir) == 1)
 	{
 		free_node(head);
 		return (0);
@@ -92,6 +56,44 @@ t_node	*parser(t_node *head, t_env **envir)
 		node = ft_clean_spasec(node, envir);
 		node = node->next;
 	}
-	// print_node(head);
 	return (head);
 }
+
+// void	print_node(t_node *node)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	if (node)
+// 	{
+// 		while (node->cmd && node->cmd[i])
+// 		{
+// 			printf("cmd%d=%s_\n", i, node->cmd[i]);
+// 			i++;
+// 		}
+// 		i = 0; 
+// 		while (node->heredoc && node->heredoc[i])
+// 		{
+// 			printf("heredoc = %s\n", node->heredoc[i]);
+// 			i++;
+// 		}
+// 		i = 0; 
+// 		while (node->append && node->append[i])
+// 		{
+// 			printf("append = %s\n", node->append[i]);
+// 			i++;
+// 		}
+// 		i = 0; 
+// 		while (node->outfile && node->outfile[i])
+// 		{
+// 			printf("outfile = %s\n", node->outfile[i]);
+// 			i++;
+// 		}
+// 		i = 0; 
+// 		while (node->infile && node->infile[i])
+// 		{
+// 			printf("infile = %s\n", node->infile[i]);
+// 			i++;
+// 		}
+// 	}
+// }

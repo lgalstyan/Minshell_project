@@ -38,11 +38,8 @@ void	ignor(char *s, int *i)
 	}
 }
 
-int	initial_nodes(t_node *node)
+int	initial_nodes(t_node *node, int i)
 {
-	int	i;
-
-	i = 0;
 	node->cmd = NULL;
 	if (!check_redir(node->readline))
 		ignor(node->readline, &i);
@@ -51,7 +48,7 @@ int	initial_nodes(t_node *node)
 		if (node->readline[i] == '\"' || node->readline[i] == '\'')
 			ignore_quotes(node->readline, &i);
 		if (!node->readline[i])
- 			break ;
+			break ;
 		if (node->readline[i] == '>' && node->readline[i + 1] == '>')
 			put_hd_app(node, '>', i);
 		else if (node->readline[i] == '<' && node->readline[i + 1] == '<')

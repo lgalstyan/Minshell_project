@@ -85,3 +85,23 @@ void	pluse_equal_2(char *cmd, t_env **en)
 	pluse_equal(array0, en);
 	free_arr(array0);
 }
+
+char	*pluse_equal_3(char *value, char *array, int *flag)
+{
+	char	*tmp;
+
+	tmp = NULL;
+	if (value)
+	{
+		tmp = ft_strjoin(value, array);
+		free(value);
+		value = tmp;
+		*flag = 1;
+	}
+	else
+	{
+		value = ft_strdup(array);
+		*flag = 1;
+	}
+	return (value);
+}

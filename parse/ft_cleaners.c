@@ -23,6 +23,7 @@ char	**ft_clean(char **str, t_env **envir)
 	t = 0;
 	while (str && str[i])
 	{
+		str[i] = change_doll(str[i], envir);
 		str[i] = ft_strtrim(str[i], SPACES, &f);
 		str[i] = ft_strtrim(str[i], "\'", &t);
 		if (t)
@@ -31,7 +32,6 @@ char	**ft_clean(char **str, t_env **envir)
 			continue ;
 		}
 		str[i] = ft_strtrim(str[i], "\"", &f);
-		str[i] = change_doll(str[i], envir);
 		i++;
 	}
 	return (str);
@@ -61,19 +61,20 @@ char	*ft_clean_spase_between(char *str)
 	char	*res;
 	char	*res_temp;
 	char	*temp;
-	int		start;
 
 	i = -1;
-	start = 0;
 	temp = NULL;
 	res = NULL;
 	while (str && str[++i])
 	{
-		start = i;
+		while (str[i] && !is_space(str[i]))
+			i++;
+		res_temp = ft_substr(str, 0, i);
 		while (str[i] && is_space(str[i]))
 			i++;
-		res_temp = ft_substr(str, 0, start);
 		temp = ft_substr(str, i, ft_strlen(str) - i);
+		while (str[i] && !is_space(str[i]))
+			i++;
 		res = ft_strjoin(res_temp, temp);
 		if (res && str[i] && str[i + 1])
 			free(res);

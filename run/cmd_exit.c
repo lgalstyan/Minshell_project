@@ -12,49 +12,58 @@
 
 #include "minishell.h"
 
-void	exit_normal(char **cmd, t_env **en)
+void	exit_normal(char *str)
 {
-	long long	dig;
-	long long	code;
+	long long	num;
 
-	dig = ft_atoi(cmd[1]);
-	code = get_exit_code(en);
-	if (dig < 0)
+	num = 0;
+	if (check_longlongd(str))
 	{
-		ft_putstr_fd("exit\n", 2);
-		code = 256 - (dig * (-1)) % 256;
-		exit(code);
+		num = ft_atoi(str);
+		if (num < 0)
+		{
+			ft_putstr_fd("exit\n", 2);
+			exit(256 - (num * (-1) % 256));
+		}
+		else if (num >= 0)
+		{
+			ft_putstr_fd("exit\n", 2);
+			exit(num % 256);
+			g_exit_code = num % 256;
+		}
 	}
 	else
 	{
+		ft_putstr_fd("minishell: :exit: numeric argument required\n", 2);
 		ft_putstr_fd("exit\n", 2);
-		code = dig % 256;
-		exit(code);
+		exit(255);
 	}
+	free(str);
 }
 
 void	cmd_exit(char **cmd, t_env **en)
 {
+	char	*str;
+
 	if (!cmd[1])
 	{
 		ft_putstr_fd("exit\n", 2);
 		exit(get_exit_code(en));
 	}
-	if (cmd[1] && (!(ft_isdigit(cmd[1][0]) || cmd[1][0] == '-')
-		|| (ft_strlen(cmd[1]) == 19 && (cmd[1][ft_strlen(cmd[1]) - 1] == '8'
-		|| cmd[1][ft_strlen(cmd[1]) - 1] == '9'))))
+	if (cmd[1] && !ft_isdigit(cmd[1]))
 	{
 		ft_putstr_fd("exit\n", 2);
 		ft_putstr_fd("minishell: :exit: numeric argument required\n", 2);
 		set_exit_code("255", en);
 		exit(get_exit_code(en));
 	}
-	if (cmd[2])
+	if (cmd[2] && ft_isdigit(cmd[1]))
 	{
 		ft_putstr_fd("exit\n", 2);
 		ft_putstr_fd("minishell: :exit: too many arguments: \n", 2);
 		set_exit_code("1", en);
 		return ;
 	}
-	exit_normal(cmd, en);
+	str = ft_cat_str(cmd[1]);
+	exit_normal(str);
 }

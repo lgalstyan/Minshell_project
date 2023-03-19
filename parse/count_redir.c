@@ -61,8 +61,6 @@ void	cut_redir2(t_node **node, int flag)
 		str = ft_strdup((*node)->readline);
 		free((*node)->readline);
 		(*node)->readline = ft_strcut(str, (*node)->heredoc[i]);
-		// if (!flag && str && !ft_strcmp(str, (*node)->heredoc[i]))
-		// 	free(str);
 		str = 0;
 	}	
 	i = -1;
@@ -71,8 +69,6 @@ void	cut_redir2(t_node **node, int flag)
 		str = ft_strdup((*node)->readline);
 		free((*node)->readline);
 		(*node)->readline = ft_strcut(str, (*node)->append[i]);
-		// if (!flag && str && !ft_strcmp(str, (*node)->append[i]))
-		// 	free(str);
 		str = 0;
 	}
 }
@@ -90,12 +86,6 @@ void	cut_redir3(t_node **node, int flag)
 			str = ft_strdup((*node)->readline);
 		free((*node)->readline);
 		(*node)->readline = ft_strcut(str, (*node)->outfile[i]);
-		// if (!flag && str && !ft_strcmp(str, (*node)->outfile[i]))
-		// {
-		// 	printf("hello out\n");
-		// 	free(str);
-		// }
-			// free(str);
 		str = 0;
 	}
 }
@@ -115,11 +105,6 @@ t_node	*cut_redir(t_node *node)
 		str = ft_strdup(node->readline);
 		free(node->readline);
 		node->readline = ft_strcut(str, node->infile[i]);
-		// if (!flag && str && !ft_strcmp(str, node->infile[i]))
-		// {
-		// 	printf("hello in\n");
-		// 	free(str);
-		// }
 		str = 0;
 	}
 	cut_redir3(&node, flag);

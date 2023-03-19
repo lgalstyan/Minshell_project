@@ -23,11 +23,14 @@ void	equal_only(char **array, t_env **en)
 	{
 		if (!ft_strcmp(curr->key, array[0]))
 		{
-			if (curr->value && array[1] != NULL && ft_strcmp(curr->value, array[1]) != 0)
+			if (curr->value && array[1] != NULL
+				&& ft_strcmp(curr->value, array[1]) != 0)
 			{
 				free(curr->value);
 				curr->value = ft_strdup(array[1]);
 			}
+			else if (!curr->value && array[1] != NULL)
+				curr->value = ft_strdup(array[1]);
 			flag = 1;
 		}
 		curr = curr->next;
@@ -42,10 +45,8 @@ void	pluse_equal(char **array, t_env **en)
 {
 	int		flag;
 	t_env	*curr;
-	char	*tmp;
 
 	flag = 0;
-	tmp = NULL;
 	curr = *en;
 	if (!array[1])
 		array[1] = ft_strdup("");
@@ -53,10 +54,7 @@ void	pluse_equal(char **array, t_env **en)
 	{
 		if (!ft_strcmp(curr->key, array[0]))
 		{
-			tmp = ft_strjoin(curr->value, array[1]);
-			free(curr->value);
-			curr->value = tmp;
-			flag = 1;
+			curr->value = pluse_equal_3(curr->value, array[1], &flag);
 		}
 		curr = curr->next;
 		if (flag)

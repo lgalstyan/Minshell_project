@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:44:17 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/02/25 18:22:50 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/03/19 16:59:39 by tumolabs         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ char	*search_list(t_env *env, char *key);
 void	delete_list(t_env **env);
 int		check_valid(char c);
 int		check_valid_identif(char *str, t_env **en);
+int		ft_check_ignore_quotes(char **str, int *i);
 void	update_list_item(t_env **lst, char *key, char *value);
 char	*get_current_path(void);
 void	sort_list(t_env **env);
@@ -52,7 +53,7 @@ int		commands(t_node node, t_env **envir);
 void	environments(char **env, t_env **envir);
 char	**list_to_char(t_env *env);
 void	lexer(t_node **node, char *str, t_env **en);
-t_node	*parser(t_node *node, t_env **en);
+t_node	*parser(t_node *head, t_env **envir);
 int		node_len(t_node *node);
 void	ft_pipe(t_node *node, t_env **env, int t);
 void	print_node(t_node *node);
@@ -79,7 +80,7 @@ char	**pars_ft_split(char *s, char c);
 void	put_in_out(t_node *node, char c, int i);
 void	put_hd_app(t_node *node, char c, int i);
 int		put_cmd(t_node *node, int i);
-int		initial_nodes(t_node *node);
+int		initial_nodes(t_node *node, int i);
 int		ft_infile_count(char *line);
 int		ft_outfile_count(char *line);
 int		ft_heredoc_count(char *line);
@@ -94,10 +95,8 @@ int		check_quote_2(t_node *node, t_env **en);
 int		unexpected_tokens(t_node *node, t_env **en);
 void	ft_list_add_back(t_node **lst, t_node *new);
 char	**ft_clean(char **str, t_env **envir);
-// void	ft_clean_spasec(t_node *head, t_env **envir);
 t_node	*ft_clean_spasec(t_node *head, t_env **envir);
 char	*ft_clean_spase_between(char *str);
-// void	ft_clean_sp_redir(t_node *node);
 t_node	*ft_clean_sp_redir(t_node *node);
 int		get_exit_code(t_env **en);
 char	*change_doll(char *str, t_env **en);
@@ -120,5 +119,14 @@ int		ft_noly_space(char *str);
 void	skipquotes(char **promt, int *j);
 void	ft_error_fork(int pid, int i, t_node *node);
 char	*ft_strtrim_red(char *s, char *set);
+void	ignore_single_quotes(char *str, int *i);
+char	*replace(char *str, int start, int end, t_env *en);
+char	*change(char *str, t_env **en, int t);
+void	pars_free(t_node **head, char **line);
+void	ignore_double_quotes(char *str, int *i);
+int		ft_check_reedir(char *str);
+int		check_longlongd(char *str);
+char	*ft_cat_str(char *s);
+char	*pluse_equal_3(char *value, char *array, int *flag);
 
 #endif

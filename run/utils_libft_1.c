@@ -12,11 +12,20 @@
 
 #include "minishell.h"
 
-int	ft_isdigit(char c)
+int	ft_isdigit(char *str)
 {
-	if (c > 47 && c < 58)
-		return (1);
-	return (0);
+	int	i;
+
+	i = 0;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while (str[i])
+	{
+		if (str[i] < '0' || str[i] > '9')
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 char	*ft_strnstr(char *str, char *to_find, int len)

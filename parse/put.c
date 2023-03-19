@@ -29,37 +29,27 @@ void	put_in_out(t_node *node, char c, int start)
 {
 	int	i;
 	int	l;
-	// int	start;
-	// int	s;
 
 	i = 0;
-	// s = 0;
-	// start = -1;
 	l = size_infile(node->readline, start, c) - start;
-	// while (node->readline[++start])
-	// {
-		if (node->readline[start] == c && node->readline[start + 1] != c
-			&& ((start - 1 < 0) || ((start - 1) >= 0
-					&& node->readline[start - 1] != c)))
+	if (node->readline[start] == c && node->readline[start + 1] != c
+		&& ((start - 1 < 0) || ((start - 1) >= 0
+				&& node->readline[start - 1] != c)))
+	{
+		if (c == '<')
 		{
-			if (c == '<')
-			{
-				while (node->infile[i])
-					i++;
-				node->infile[i] = ft_substr(node->readline, start, l);
-			}
-			else if (c == '>')
-			{
-				while (node->outfile[i])
-					i++;
-				node->outfile[i] = ft_substr(node->readline, start, l);
-			}
-			// s += l - 1;
-			// start += l - 1;
-			i++;
+			while (node->infile[i])
+				i++;
+			node->infile[i] = ft_substr(node->readline, start, l);
 		}
-	// }
-	// return (start);
+		else if (c == '>')
+		{
+			while (node->outfile[i])
+				i++;
+			node->outfile[i] = ft_substr(node->readline, start, l);
+		}
+	i++;
+	}
 }
 
 static int	size_heredoc(char *str, int i, char c)
@@ -81,35 +71,22 @@ void	put_hd_app(t_node *node, char c, int start)
 {
 	int	i;
 	int	l;
-	// int	start;
-	// int	s;
 
 	i = 0;
-	// s = 0;
-	// start = 0;
-	// while (node->readline[start])
-	// {
-		l = size_heredoc(node->readline, start, c) - start;
-		if (node->readline[start] == c && node->readline[start + 1] == c)
+	l = size_heredoc(node->readline, start, c) - start;
+	if (node->readline[start] == c && node->readline[start + 1] == c)
+	{
+		if (c == '<')
 		{
-			if (c == '<')
-			{
-				while (node->heredoc[i])
-					i++;
-				node->heredoc[i] = ft_substr(node->readline, start, l);
-			}
-			else if (c == '>')
-			{
-				while (node->append[i])
-					i++;
-				node->append[i] = ft_substr(node->readline, start, l);
-			}
-			// s += l - 1;
-			// i++;
-			// while (node->readline[start + 2] == c)
-			// 	++start;
-		// }
-		// start++;
+			while (node->heredoc[i])
+				i++;
+			node->heredoc[i] = ft_substr(node->readline, start, l);
+		}
+		else if (c == '>')
+		{
+			while (node->append[i])
+				i++;
+			node->append[i] = ft_substr(node->readline, start, l);
+		}
 	}
-	// return (start);
 }
