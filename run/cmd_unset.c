@@ -52,6 +52,7 @@ void	cmd_unset(char *del_env, t_env **env)
 			free(delet->value);
 			free(delet->key);
 			free(delet);
+			set_exit_code("0", env);
 		}
 		if (curr->next)
 		curr = curr->next;
