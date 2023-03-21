@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:44:17 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/03/19 16:59:39 by tumolabs         ###   ########.fr       */
+/*   Updated: 2023/03/21 16:22:29 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,5 +128,6 @@ int		ft_check_reedir(char *str);
 int		check_longlongd(char *str);
 char	*ft_cat_str(char *s);
 char	*pluse_equal_3(char *value, char *array, int *flag);
+void	free_node_for_pipe(t_node *node, int i);
 
 #endif

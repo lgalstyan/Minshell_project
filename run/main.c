@@ -6,7 +6,7 @@
 /*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:10:37 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/02/25 17:41:41 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/03/21 16:28:30 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ void	readline_main(t_node *node, t_env *envir, int in_cpy, int out_cpy)
 		else
 			add_history(line);
 		lexer(&node, line, &envir);
-		free(line);
-		line = NULL;
+		if (line)
+			free(line);
 		if (!node)
 			continue ;
 		node = parser(node, &envir);

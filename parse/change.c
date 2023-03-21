@@ -43,6 +43,8 @@ int	dollarlen(char *s, int i)
 		&& !ft_strchr(METACHARACTERS, s[i + len] && s[i + len] != '\"'
 			&& s[i + len] != '\''))
 	{
+		if (s[i + len + 1] && s[i + len] == '$' && s[i + len + 1] == '?')
+			return (2);
 		++len;
 		if (s[i + len] == '$')
 			break ;
